@@ -1,0 +1,12 @@
+.settings
+build
+target
+*/target
+*/*/target
+gen
+*/gen
+*/*/gen
+bin
+*/bin
+*/*/bin
+classes
