@@ -3,11 +3,21 @@
  */
 package com.gmail.yuyang226.contactswidget;
 
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.Context;
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.QuickContact;
@@ -20,6 +30,7 @@ import android.widget.RemoteViews;
 public class ContactsWidgetProvider extends AppWidgetProvider {
 	public static final String SHOW_QUICK_CONTACT_ACTION = "com.gmail.yuyang226.contactswidget.SHOW_QUICK_CONTACT_ACTION"; //$NON-NLS-1$
 	public static final String CONTACT_URI = "com.gmail.yuyang226.contactswidget.CONTACT_URI"; //$NON-NLS-1$
+	public static final String CONTACTS = "com.gmail.yuyang226.contactswidget.CONTACTS"; //$NON-NLS-1$
 
 	/**
 	 * 
@@ -75,5 +86,61 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
         }
         super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
+    
+    /**
+     * Obtains the contact list for the currently selected account.
+     *
+     * @return A cursor for for accessing the contact list.
+     */
+    private List<Contact> getContacts(Context context) {
+    	final List<Contact> contacts = new ArrayList<Contact>();
+        // Run query
+        Uri uri = ContactsContract.Contacts.CONTENT_URI;
+        String[] projection = new String[] {
+                ContactsContract.Contacts._ID,
+                ContactsContract.Contacts.DISPLAY_NAME,
+                ContactsContract.Contacts.PHOTO_URI, 
+        };
+        String selection =  ContactsContract.Contacts.STARRED + " = '1'"; //$NON-NLS-1$
+        String[] selectionArgs = null;
+        String sortOrder = ContactsContract.Contacts.DISPLAY_NAME + " COLLATE LOCALIZED ASC"; //$NON-NLS-1$
+
+        CursorLoader loader = new CursorLoader(context, uri, projection, selection, selectionArgs, sortOrder);
+        Cursor cursor = null;
+        try {
+        	loader.startLoading();
+        	cursor = loader.loadInBackground();
+        	cursor.moveToFirst();
+            while (cursor.isAfterLast() == false) {
+                long contactId = cursor.getLong(0);
+                String displayName = cursor.getString(1);
+                String photoUri = cursor.getString(2);
+                Contact contact = new Contact();
+                contact.setContactId(contactId);
+                contact.setDisplayName(displayName);
+                contact.setPhotoUri(photoUri);
+                contact.setContactUri(ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, contactId));
+                contacts.add(contact);
+                if (photoUri != null && photoUri.length() > 0) {
+                	contact.setPhoto(loadContactPhoto(context.getContentResolver(), contact.getContactUri()));
+                }
+                cursor.moveToNext();
+            }
+        } finally {
+        	loader.stopLoading();
+        	if (cursor != null) {
+        		cursor.close();
+        	}
+        }
+        return contacts;
+    }
+    
+    private Bitmap loadContactPhoto(ContentResolver contentResolver, Uri uri) {
+	    InputStream input = ContactsContract.Contacts.openContactPhotoInputStream(contentResolver, uri);
+	    if (input == null) {
+	        return null;
+	    }
+	    return BitmapFactory.decodeStream(input);
+	}
     
 }

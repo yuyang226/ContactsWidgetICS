@@ -115,6 +115,11 @@ public class ContactsWidgetService extends RemoteViewsService {
 	    }
 
 	    public void onDestroy() {
+	    	for (Contact contact: mWidgetItems) {
+	    		if (contact.getPhoto() != null && !contact.getPhoto().isRecycled()) {
+	    			contact.getPhoto().recycle();
+	    		}
+	    	}
 	        mWidgetItems.clear();
 	    }
 
@@ -146,9 +151,6 @@ public class ContactsWidgetService extends RemoteViewsService {
             // action of a given item
             rv.setOnClickFillInIntent(R.id.contactPhoto, fillInIntent);
 
-           /* QuickContactBadge badge = null;
-            badge.assignContactFromPhone(phoneNumber, lazyLookup)*/
-	        // Return the remote views object.
 	        return rv;
 	    }
 
