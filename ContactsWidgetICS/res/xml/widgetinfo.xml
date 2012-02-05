@@ -30,9 +30,10 @@ android:configure="com.example.android.ExampleAppWidgetConfigure" -->
     android:minWidth="60dp"
     android:minHeight="60dp"
     android:updatePeriodMillis="900000"
-    android:previewImage="@drawable/ic_launcher"
+    android:previewImage="@drawable/preview"
     android:initialLayout="@layout/contact_manager"
-    android:resizeMode="horizontal|vertical"
-    android:minResizeWidth="60dp"
-  	android:minResizeHeight="60dp">
+    android:resizeMode="horizontal|vertical" >
+    <!-- disabled in order to support Android 3.2
+     android:minResizeWidth="60dp"
+  	android:minResizeHeight="60dp"> -->
 </appwidget-provider>
