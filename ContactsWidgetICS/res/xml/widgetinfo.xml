@@ -27,12 +27,12 @@
 
 android:configure="com.example.android.ExampleAppWidgetConfigure" -->
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:minWidth="80dp"
-    android:minHeight="80dp"
+    android:minWidth="60dp"
+    android:minHeight="60dp"
     android:updatePeriodMillis="900000"
     android:previewImage="@drawable/ic_launcher"
     android:initialLayout="@layout/contact_manager"
     android:resizeMode="horizontal|vertical"
-    android:minResizeWidth="80dp"
-  android:minResizeHeight="80dp">
+    android:minResizeWidth="60dp"
+  	android:minResizeHeight="60dp">
 </appwidget-provider>

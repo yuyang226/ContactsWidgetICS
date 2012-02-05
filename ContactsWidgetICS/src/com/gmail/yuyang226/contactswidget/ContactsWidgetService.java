@@ -75,9 +75,9 @@ public class ContactsWidgetService extends RemoteViewsService {
 	                ContactsContract.Contacts.DISPLAY_NAME,
 	                ContactsContract.Contacts.PHOTO_URI, 
 	        };
-	        String selection =  ContactsContract.Contacts.STARRED + " = '1'";
+	        String selection =  ContactsContract.Contacts.STARRED + " = '1'"; //$NON-NLS-1$
 	        String[] selectionArgs = null;
-	        String sortOrder = ContactsContract.Contacts.DISPLAY_NAME + " COLLATE LOCALIZED ASC";
+	        String sortOrder = ContactsContract.Contacts.DISPLAY_NAME + " COLLATE LOCALIZED ASC"; //$NON-NLS-1$
 
 	        CursorLoader loader = new CursorLoader(this.mContext, uri, projection, selection, selectionArgs, sortOrder); //(Context context, Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)
 	        Cursor cursor = null;
@@ -128,8 +128,9 @@ public class ContactsWidgetService extends RemoteViewsService {
 	        // We construct a remote views item based on our widget item xml file, and set the
 	        // text based on the position.
 	        RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.contact_entry);
-	        rv.setTextViewText(R.id.contactEntryText, mWidgetItems.get(position).getDisplayName());
-	        Bitmap photo = mWidgetItems.get(position).getPhoto();
+	        Contact contact = mWidgetItems.get(position);
+	        rv.setTextViewText(R.id.contactEntryText, contact.getDisplayName());
+	        Bitmap photo = contact.getPhoto();
 	        if (photo != null) {
 	        	//the contact has an icon
 	        	rv.setImageViewBitmap(R.id.contactPhoto, photo);
@@ -138,10 +139,9 @@ public class ContactsWidgetService extends RemoteViewsService {
 	        }
 	        
 	        Bundle extras = new Bundle();
-            extras.putInt(ContactsWidgetProvider.EXTRA_ITEM, position);
             Intent fillInIntent = new Intent();
             fillInIntent.putExtras(extras);
-            fillInIntent.setData(mWidgetItems.get(position).getContactUri());
+            fillInIntent.setData(contact.getContactUri());
             // Make it possible to distinguish the individual on-click
             // action of a given item
             rv.setOnClickFillInIntent(R.id.contactPhoto, fillInIntent);
