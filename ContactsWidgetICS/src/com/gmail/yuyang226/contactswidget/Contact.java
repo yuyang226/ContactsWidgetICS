@@ -4,6 +4,7 @@
 package com.gmail.yuyang226.contactswidget;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
 
 /**
  * @author Toby Yu(yuyang226@gmail.com)
@@ -11,6 +12,7 @@ import android.graphics.Bitmap;
  */
 public class Contact {
 	private long contactId;
+	private Uri contactUri;
 	private String displayName;
 	private String photoUri;
 	private boolean isFavourite;
@@ -25,6 +27,20 @@ public class Contact {
 		isFavourite = true;
 	}
 	
+	/**
+	 * @return the contactUri
+	 */
+	public Uri getContactUri() {
+		return contactUri;
+	}
+
+	/**
+	 * @param contactUri the contactUri to set
+	 */
+	public void setContactUri(Uri contactUri) {
+		this.contactUri = contactUri;
+	}
+
 	/**
 	 * @return the contactId
 	 */

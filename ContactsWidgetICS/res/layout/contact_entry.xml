@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2009 The Android Open Source Project
+<!--
+     Copyright (C) 2009 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,16 +15,19 @@
      limitations under the License.
 -->
 
-<!-- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:orientation="vertical"> -->
+              android:orientation="vertical">
+-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                >
-                 <!-- android:layout_alignParentTop="true" -->
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <!-- android:layout_alignParentTop="true" -->
+
     <ImageView
         android:id="@+id/contactPhoto"
         android:layout_width="64dp"
@@ -32,12 +36,27 @@
         android:contentDescription="@+string/contactImageDescription"
         android:src="@drawable/icon" />
 
-    <TextView android:text="@+id/contactEntryText"
-              android:id="@+id/contactEntryText"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_alignParentBottom="true"
-              />
+    <TextView
+        android:id="@+id/contactEntryText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@+id/contactEntryText" />
+
+    <!--
+    <QuickContactBadge  
+        android:id="@+id/badge_small"  
+        android:layout_width="match_parent"  
+        android:layout_height="wrap_content"  
+        android:src="@drawable/icon"></QuickContactBadge>  
+    <FrameLayout  
+        android:id="@+id/badge_holder_large"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"></FrameLayout>
+    -->
+
+
     <!-- android:layout_alignParentBottom="true" -->
-<!-- </LinearLayout> -->
+    <!-- </LinearLayout> -->
+
 </RelativeLayout>

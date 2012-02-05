@@ -3,12 +3,12 @@
  */
 package com.gmail.yuyang226.contactswidget;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.widget.GridView;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -17,9 +17,9 @@ import android.widget.Toast;
  *
  */
 public class ContactsWidgetProvider extends AppWidgetProvider {
-	private GridView mContactList;
-	public static final String TOAST_ACTION = "com.example.android.stackwidget.TOAST_ACTION";
-	public static final String EXTRA_ITEM = "com.example.android.stackwidget.EXTRA_ITEM";
+	public static final String TOAST_ACTION = "com.gmail.yuyang226.contactswidget.TOAST_ACTION";
+	public static final String EXTRA_ITEM = "com.gmail.yuyang226.contactswidget.EXTRA_ITEM";
+	public static final String CONTACT_URI = "com.gmail.yuyang226.contactswidget.CONTACT_URI";
 
 	/**
 	 * 
@@ -35,7 +35,8 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
             int appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
                     AppWidgetManager.INVALID_APPWIDGET_ID);
             int viewIndex = intent.getIntExtra(EXTRA_ITEM, 0);
-            Toast.makeText(context, "Touched view " + viewIndex, Toast.LENGTH_SHORT).show();
+            Uri uri = intent.getData();
+            Toast.makeText(context, "Touched view " + viewIndex + ", with photo URI: " + uri, Toast.LENGTH_SHORT).show();
         }
         super.onReceive(context, intent);
     }
@@ -63,13 +64,13 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
             // cannot setup their own pending intents, instead, the collection as a whole can
             // setup a pending intent template, and the individual items can set a fillInIntent
             // to create unique before on an item to item basis.
-           /* Intent toastIntent = new Intent(context, ContactsWidgetProvider.class);
+            Intent toastIntent = new Intent(context, ContactsWidgetProvider.class);
             toastIntent.setAction(ContactsWidgetProvider.TOAST_ACTION);
             toastIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds[i]);
             intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
             PendingIntent toastPendingIntent = PendingIntent.getBroadcast(context, 0, toastIntent,
                     PendingIntent.FLAG_UPDATE_CURRENT);
-            rv.setPendingIntentTemplate(R.id.stack_view, toastPendingIntent);*/
+            rv.setPendingIntentTemplate(R.id.contactList, toastPendingIntent);
 
             appWidgetManager.updateAppWidget(appWidgetIds[i], rv);
         }

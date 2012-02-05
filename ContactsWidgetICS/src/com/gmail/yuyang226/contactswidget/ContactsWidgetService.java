@@ -16,6 +16,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
@@ -41,8 +42,7 @@ public class ContactsWidgetService extends RemoteViewsService {
 		return new GridRemoteViewsFactory(this.getApplicationContext(), intent);
 	}
 	
-	public Bitmap loadContactPhoto(long  id) {
-	    Uri uri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, id);
+	public Bitmap loadContactPhoto(Uri uri) {
 	    InputStream input = ContactsContract.Contacts.openContactPhotoInputStream(getContentResolver(), uri);
 	    if (input == null) {
 	        return null;
@@ -93,16 +93,13 @@ public class ContactsWidgetService extends RemoteViewsService {
 	                contact.setContactId(contactId);
 	                contact.setDisplayName(displayName);
 	                contact.setPhotoUri(photoUri);
+	                contact.setContactUri(ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, contactId));
 	                contacts.add(contact);
 	                if (photoUri != null && photoUri.length() > 0) {
-	                	contact.setPhoto(loadContactPhoto(contactId));
+	                	contact.setPhoto(loadContactPhoto(contact.getContactUri()));
 	                }
-	                
 	                cursor.moveToNext();
 	            }
-	        	/*SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.contact_entry, cursor,
-	        			fields, new int[] {R.id.contactEntryText, R.id.contactPhoto});*/
-	        	//return managedQuery(uri, projection, selection, selectionArgs, sortOrder);
 	        } finally {
 	        	loader.stopLoading();
 	        	if (cursor != null) {
@@ -113,25 +110,11 @@ public class ContactsWidgetService extends RemoteViewsService {
 	    }
 
 	    public void onCreate() {
-	        // In onCreate() you setup any connections / cursors to your data source. Heavy lifting,
-	        // for example downloading or creating content etc, should be deferred to onDataSetChanged()
-	        // or getViewAt(). Taking more than 20 seconds in this call will result in an ANR.
 	       mWidgetItems.clear();
 	       mWidgetItems.addAll(getContacts());
-
-	        // We sleep for 3 seconds here to show how the empty view appears in the interim.
-	        // The empty view is set in the StackWidgetProvider and should be a sibling of the
-	        // collection view.
-	        try {
-	            Thread.sleep(3000);
-	        } catch (InterruptedException e) {
-	            e.printStackTrace();
-	        }
 	    }
 
 	    public void onDestroy() {
-	        // In onDestroy() you should tear down anything that was setup for your data source,
-	        // eg. cursors, connections, etc.
 	        mWidgetItems.clear();
 	    }
 
@@ -153,18 +136,18 @@ public class ContactsWidgetService extends RemoteViewsService {
 	        } else {
 	        	rv.setImageViewResource(R.id.contactPhoto, R.drawable.icon);
 	        }
+	        
+	        Bundle extras = new Bundle();
+            extras.putInt(ContactsWidgetProvider.EXTRA_ITEM, position);
+            Intent fillInIntent = new Intent();
+            fillInIntent.putExtras(extras);
+            fillInIntent.setData(mWidgetItems.get(position).getContactUri());
+            // Make it possible to distinguish the individual on-click
+            // action of a given item
+            rv.setOnClickFillInIntent(R.id.contactPhoto, fillInIntent);
 
-	        // You can do heaving lifting in here, synchronously. For example, if you need to
-	        // process an image, fetch something from the network, etc., it is ok to do it here,
-	        // synchronously. A loading view will show up in lieu of the actual contents in the
-	        // interim.
-	        try {
-	            System.out.println("Loading view " + position);
-	            Thread.sleep(500);
-	        } catch (InterruptedException e) {
-	            e.printStackTrace();
-	        }
-
+           /* QuickContactBadge badge = null;
+            badge.assignContactFromPhone(phoneNumber, lazyLookup)*/
 	        // Return the remote views object.
 	        return rv;
 	    }
