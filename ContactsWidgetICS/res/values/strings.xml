@@ -29,4 +29,13 @@
     <string name="empty_view_text">No Favourite Contacts</string>
     <string name="contactImageDescription">Contact Image</string>
     
+    <!-- Configurations -->
+    <string name="contactGroup">Group</string>
+    <string name="contactGroupPrompt">Select a contact group to display contacts</string>
+    <string name="contactSorting">Sorting</string>
+    <string name="buttonOk">OK</string>
+    <string name="buttonCancel">Cancel</string>
+    <string name="buttonContactFrequency">By Contact Frequency</string>
+    <string name="buttonContactDisplayName">By Display Name</string>
+    
 </resources>

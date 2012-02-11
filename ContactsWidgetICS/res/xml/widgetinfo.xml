@@ -27,13 +27,13 @@
 
 android:configure="com.example.android.ExampleAppWidgetConfigure" -->
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:minWidth="60dp"
-    android:minHeight="60dp"
-    android:updatePeriodMillis="900000"
+    android:minWidth="64dp"
+    android:minHeight="64dp"
+    android:configure="com.gmail.yuyang226.contactswidget.ContactsWidgetConfigurationActivity"
+    android:updatePeriodMillis="180000"
     android:previewImage="@drawable/preview"
     android:initialLayout="@layout/contact_manager"
     android:resizeMode="horizontal|vertical" >
-    <!-- disabled in order to support Android 3.2
-     android:minResizeWidth="60dp"
-  	android:minResizeHeight="60dp"> -->
+    android:minResizeWidth="64dp"
+  	android:minResizeHeight="64dp">
 </appwidget-provider>

@@ -40,7 +40,7 @@
         android:id="@+id/contactEntryText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/contactPhoto"
         android:text="@+id/contactEntryText" />
 
     <!-- android:layout_alignParentBottom="true" -->
