@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- more colors could be found at https://github.com/android/platform_frameworks_base/blob/master/core/res/res/values/colors.xml -->
     <!-- @android:color/holo_blue_light -->
      <!-- A light Holo shade of blue -->
     <color name="holo_blue_light">#ff33b5e5</color>
