@@ -14,6 +14,154 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parentPanel"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:layout_margin="@dimen/widget_margin"
+    android:layout_marginBottom="@dimen/widget_margin_bottom"
+    android:layout_marginTop="@dimen/widget_margin_top" >
+
+    <TextView
+        android:id="@+id/groupListText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:paddingTop="10dip"
+        android:text="@string/contactGroup"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="16dip" />
+
+    <TextView
+        android:id="@+id/line1"
+        style="?android:attr/listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/groupListText"
+        android:background="@android:color/holo_blue_light"
+        android:gravity="center_horizontal"
+        android:paddingTop="5dip" />
+
+    <Spinner
+        android:id="@+id/groupList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line1"
+        android:prompt="@string/contactGroupPrompt" />
+
+    <Space
+        android:id="@+id/space1"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/groupList"
+        android:layout_gravity="fill_horizontal" />
+
+    <!-- Begining of Sorting -->
+
+    <TextView
+        android:id="@+id/sortText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/space1"
+        android:layout_gravity="left"
+        android:text="@string/contactSorting"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="16dip" />
+
+    <TextView
+        android:id="@+id/line2"
+        style="?android:attr/listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/sortText"
+        android:background="@android:color/holo_blue_light"
+        android:gravity="center_horizontal"
+        android:paddingTop="5dip" />
+
+    <RadioGroup
+        android:id="@+id/contactSorting"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/line2"
+        android:orientation="vertical" >
+
+        <RadioButton
+            android:id="@+id/radioContactFrequency"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/buttonContactFrequency" />
+
+        <RadioButton
+            android:id="@+id/radioContactRecent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/buttonContactRecent" />
+
+        <RadioButton
+            android:id="@+id/radioContactDisplayName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/buttonContactDisplayName" />
+    </RadioGroup>
+    <!-- End of Sorting -->
+
+    <RelativeLayout
+        android:id="@+id/ButtonLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:baselineAligned="false" >
+
+        <Button
+            android:id="@+id/okButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="@string/buttonOk" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/okButton"
+            android:layout_gravity="left"
+            android:text="@string/buttonCancel" />
+    </RelativeLayout>
+
+    <!--
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Type here:"/>
+    <EditText
+        android:id="@+id/entry"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/editbox_background"
+        android:layout_below="@id/label"/>
+    <Button
+        android:id="@+id/ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/entry"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dip"
+        android:text="OK" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/ok"
+        android:layout_alignTop="@id/ok"
+        android:text="Cancel" />
+    -->
+
+</RelativeLayout><!--
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -29,7 +177,7 @@
 
     <Spinner
         android:id="@+id/groupList"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:prompt="@string/contactGroupPrompt" />
 
@@ -37,7 +185,7 @@
         android:layout_columnSpan="2"
         android:layout_gravity="fill_horizontal" />
 
-    <!-- Begining of Sorting -->
+    Begining of Sorting
     <TextView
         android:layout_columnSpan="2"
         android:layout_gravity="left"
@@ -63,7 +211,7 @@
           android:layout_height="wrap_content"
           android:text="@string/buttonContactDisplayName" />
     </RadioGroup>
-    <!-- End of Sorting -->
+    End of Sorting
 
     <Space
         android:layout_columnSpan="2"
@@ -78,3 +226,4 @@
         android:text="@string/buttonOk" />
 
 </GridLayout>
+-->
