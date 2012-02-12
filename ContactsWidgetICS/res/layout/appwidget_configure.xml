@@ -29,7 +29,7 @@
         android:layout_gravity="left"
         android:paddingTop="10dip"
         android:text="@string/contactGroup"
-        android:textColor="@android:color/holo_blue_light"
+        android:textColor="@color/holo_blue_light"
         android:textSize="16dip" />
 
     <TextView
@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/groupListText"
-        android:background="@android:color/holo_blue_light"
+        android:background="@color/holo_blue_light"
         android:gravity="center_horizontal"
         android:paddingTop="5dip" />
 
@@ -49,24 +49,15 @@
         android:layout_below="@+id/line1"
         android:prompt="@string/contactGroupPrompt" />
 
-    <Space
-        android:id="@+id/space1"
-        android:layout_width="fill_parent"
-        android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/groupList"
-        android:layout_gravity="fill_horizontal" />
-
     <!-- Begining of Sorting -->
-
     <TextView
         android:id="@+id/sortText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/space1"
+        android:layout_below="@+id/groupList"
         android:layout_gravity="left"
         android:text="@string/contactSorting"
-        android:textColor="@android:color/holo_blue_light"
+        android:textColor="@color/holo_blue_light"
         android:textSize="16dip" />
 
     <TextView
@@ -75,7 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/sortText"
-        android:background="@android:color/holo_blue_light"
+        android:background="@color/holo_blue_light"
         android:gravity="center_horizontal"
         android:paddingTop="5dip" />
 
@@ -132,36 +123,9 @@
             android:layout_gravity="left"
             android:text="@string/buttonCancel" />
     </RelativeLayout>
+</RelativeLayout>
 
-    <!--
-    <TextView
-        android:id="@+id/label"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Type here:"/>
-    <EditText
-        android:id="@+id/entry"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/editbox_background"
-        android:layout_below="@id/label"/>
-    <Button
-        android:id="@+id/ok"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/entry"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="10dip"
-        android:text="OK" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/ok"
-        android:layout_alignTop="@id/ok"
-        android:text="Cancel" />
-    -->
-
-</RelativeLayout><!--
+<!--
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"

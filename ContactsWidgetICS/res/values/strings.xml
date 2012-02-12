@@ -26,7 +26,7 @@
     <string name="selectLabel">Select label</string>
     <string name="targetAccountLabel">Target Account</string>
     <string name="undefinedTypeLabel">(Undefined)</string>
-    <string name="empty_view_text">No Favourite Contacts</string>
+    <string name="empty_view_text">No Contacts Loaded</string>
     <string name="contactImageDescription">Contact Image</string>
     
     <!-- Configurations -->

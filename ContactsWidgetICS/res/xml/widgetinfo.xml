@@ -22,7 +22,6 @@
     android:previewImage="@drawable/preview"
     android:initialLayout="@layout/contact_manager"
     android:resizeMode="horizontal|vertical" >
-    >
-    <!-- android:minResizeWidth="64dp"
-  	android:minResizeHeight="64dp" -->
+    android:minResizeWidth="64dp"
+  	android:minResizeHeight="64dp"
 </appwidget-provider>
