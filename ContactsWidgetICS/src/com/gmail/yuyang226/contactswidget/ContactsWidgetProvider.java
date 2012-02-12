@@ -58,7 +58,12 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 	 */
 	@Override
 	public void onDeleted(Context context, int[] appWidgetIds) {
+		Log.d(TAG, "onDeleted");
 		super.onDeleted(context, appWidgetIds);
+		for (int appWidgetId : appWidgetIds) {
+			ContactsWidgetConfigurationActivity.deleteSelectionString(context, appWidgetId);
+			ContactsWidgetConfigurationActivity.deleteSortingString(context, appWidgetId);
+		}
 	}
 	
 	static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,

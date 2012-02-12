@@ -35,7 +35,8 @@
     <string name="contactSorting">Sorting</string>
     <string name="buttonOk">OK</string>
     <string name="buttonCancel">Cancel</string>
-    <string name="buttonContactFrequency">By Contact Frequency</string>
+    <string name="buttonContactFrequency">By Times Contacted</string>
+    <string name="buttonContactRecent">By Last Time Contacted</string>
     <string name="buttonContactDisplayName">By Display Name</string>
     
 </resources>
