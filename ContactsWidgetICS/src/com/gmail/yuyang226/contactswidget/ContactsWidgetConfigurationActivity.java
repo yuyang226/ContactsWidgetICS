@@ -123,7 +123,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
             	break;
             }
             saveSortingString(context, mAppWidgetId, sortString);
-            String selection = groupList.getSelectedItemPosition() == 0 ? CONTACT_STARRED : 
+            String selection = groupList.getSelectedItemPosition() == 0 || contactGroups.isEmpty() ? CONTACT_STARRED : 
             	String.valueOf(contactGroups.get(groupList.getSelectedItemPosition()).getGroupId());
             saveSelectionString(context, mAppWidgetId, selection);
 
