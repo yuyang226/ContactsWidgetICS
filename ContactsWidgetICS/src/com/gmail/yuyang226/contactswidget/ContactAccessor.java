@@ -19,6 +19,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.ContactsContract;
+import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.Directory;
 
 import com.gmail.yuyang226.contactswidget.models.Contact;
@@ -27,7 +28,7 @@ import com.gmail.yuyang226.contactswidget.models.ContactGroup;
 
 /**
  * @author Toby Yu(yuyang226@gmail.com)
- *
+ * 
  */
 public class ContactAccessor {
 	private static final String STARRED_IN_ANDROID = "Starred in Android";
@@ -38,47 +39,49 @@ public class ContactAccessor {
 	public ContactAccessor() {
 		super();
 	}
-	
-	public List<ContactDirectory> getContactDirectories(Context context) {
-    	final List<ContactDirectory> directories = new ArrayList<ContactDirectory>();
-        // Run query
-        Uri uri = ContactsContract.Directory.CONTENT_URI;
-        String[] projection = new String[] {
-                ContactsContract.Directory._ID,
-                ContactsContract.Directory.ACCOUNT_NAME,
-                ContactsContract.Directory.ACCOUNT_TYPE, 
-        };
-        String selection = null; //$NON-NLS-1$
-        String[] selectionArgs = null;
-        String sortOrder = ContactsContract.Directory.DISPLAY_NAME + " COLLATE LOCALIZED ASC"; //$NON-NLS-1$
 
-        CursorLoader loader = new CursorLoader(context, uri, projection, selection, selectionArgs, sortOrder);
-        Cursor cursor = null;
-        try {
-        	loader.startLoading();
-        	cursor = loader.loadInBackground();
-        	cursor.moveToFirst();
-            while (cursor.isAfterLast() == false) {
-                long directoryId = cursor.getLong(0);
-                String accountName = cursor.getString(1);
-                if (accountName == null && directoryId == Directory.DEFAULT) {
-                	accountName = "Local";
-                }
-                String accountType = cursor.getString(2);
-                ContactDirectory directory = new ContactDirectory(directoryId, accountName, accountType);
-                directories.add(directory);
-                cursor.moveToNext();
-            }
-        } finally {
-        	loader.stopLoading();
-        	if (cursor != null) {
-        		cursor.close();
-        	}
-        }
-        return directories;
-    }
-	
-	public Collection<ContactGroup> getContactGroups(Context context, long directoryId) {
+	public List<ContactDirectory> getContactDirectories(Context context) {
+		final List<ContactDirectory> directories = new ArrayList<ContactDirectory>();
+		// Run query
+		Uri uri = ContactsContract.Directory.CONTENT_URI;
+		String[] projection = new String[] { ContactsContract.Directory._ID,
+				ContactsContract.Directory.ACCOUNT_NAME,
+				ContactsContract.Directory.ACCOUNT_TYPE, };
+		String selection = null; //$NON-NLS-1$
+		String[] selectionArgs = null;
+		String sortOrder = ContactsContract.Directory.DISPLAY_NAME
+				+ " COLLATE LOCALIZED ASC"; //$NON-NLS-1$
+
+		CursorLoader loader = new CursorLoader(context, uri, projection,
+				selection, selectionArgs, sortOrder);
+		Cursor cursor = null;
+		try {
+			loader.startLoading();
+			cursor = loader.loadInBackground();
+			cursor.moveToFirst();
+			while (cursor.isAfterLast() == false) {
+				long directoryId = cursor.getLong(0);
+				String accountName = cursor.getString(1);
+				if (accountName == null && directoryId == Directory.DEFAULT) {
+					accountName = "Local";
+				}
+				String accountType = cursor.getString(2);
+				ContactDirectory directory = new ContactDirectory(directoryId,
+						accountName, accountType);
+				directories.add(directory);
+				cursor.moveToNext();
+			}
+		} finally {
+			loader.stopLoading();
+			if (cursor != null) {
+				cursor.close();
+			}
+		}
+		return directories;
+	}
+
+	public Collection<ContactGroup> getContactGroups(Context context,
+			long directoryId) {
 		Comparator<ContactGroup> comparator = new Comparator<ContactGroup>() {
 
 			@Override
@@ -90,154 +93,194 @@ public class ContactAccessor {
 				}
 				return g1.getTitle().compareTo(g2.getTitle());
 			}
-			
+
 		};
-    	final Collection<ContactGroup> groups = new TreeSet<ContactGroup>(comparator);
-        // Run query
-        Uri uri = ContactsContract.Groups.CONTENT_URI;
-        String[] projection = new String[] {
-                ContactsContract.Groups._ID,
-                ContactsContract.Groups.ACCOUNT_NAME,
-                ContactsContract.Groups.ACCOUNT_TYPE, 
-                ContactsContract.Groups.TITLE,
-        };
-        String selection = null;
-        String[] selectionArgs = null;
-        String sortOrder = ContactsContract.Groups.TITLE + " COLLATE LOCALIZED ASC"; //$NON-NLS-1$
+		final Collection<ContactGroup> groups = new TreeSet<ContactGroup>(
+				comparator);
+		// Run query
+		Uri uri = ContactsContract.Groups.CONTENT_URI;
+		String[] projection = new String[] { ContactsContract.Groups._ID,
+				ContactsContract.Groups.ACCOUNT_NAME,
+				ContactsContract.Groups.ACCOUNT_TYPE,
+				ContactsContract.Groups.TITLE, };
+		String selection = null;
+		String[] selectionArgs = null;
+		String sortOrder = ContactsContract.Groups.TITLE
+				+ " COLLATE LOCALIZED ASC"; //$NON-NLS-1$
 
-        CursorLoader loader = new CursorLoader(context, uri, projection, selection, selectionArgs, sortOrder);
-        Cursor cursor = null;
-        try {
-        	loader.startLoading();
-        	cursor = loader.loadInBackground();
-        	cursor.moveToFirst();
-            while (cursor.isAfterLast() == false) {
-                long groupId = cursor.getLong(0);
-                String accountName = cursor.getString(1);
-                String accountType = cursor.getString(2);
-                String title = cursor.getString(3);
-                if (title.equalsIgnoreCase("My Contacts")) {
-                	//we dont want to handle My Contacts
-                	cursor.moveToNext();
-                	continue;
-                }
-                ContactGroup group = new ContactGroup(groupId, accountName, accountType, title);
-                groups.add(group);
-                cursor.moveToNext();
-            }
-        } finally {
-        	loader.stopLoading();
-        	if (cursor != null) {
-        		cursor.close();
-        	}
-        }
-        return groups;
-    }
-	
+		CursorLoader loader = new CursorLoader(context, uri, projection,
+				selection, selectionArgs, sortOrder);
+		Cursor cursor = null;
+		try {
+			loader.startLoading();
+			cursor = loader.loadInBackground();
+			cursor.moveToFirst();
+			while (cursor.isAfterLast() == false) {
+				long groupId = cursor.getLong(0);
+				String accountName = cursor.getString(1);
+				String accountType = cursor.getString(2);
+				String title = cursor.getString(3);
+				if (title.equalsIgnoreCase("My Contacts")) {
+					// we dont want to handle My Contacts
+					cursor.moveToNext();
+					continue;
+				}
+				ContactGroup group = new ContactGroup(groupId, accountName,
+						accountType, title);
+				groups.add(group);
+				cursor.moveToNext();
+			}
+		} finally {
+			loader.stopLoading();
+			if (cursor != null) {
+				cursor.close();
+			}
+		}
+		return groups;
+	}
+
 	/**
-     * Obtains the contact list for the currently selected account.
-     *
-     * @return A cursor for for accessing the contact list.
-     */
-    public List<Contact> getContacts(ContentResolver contentResolver, Context context, int appWidgetId) {
-    	final List<Contact> contacts = new ArrayList<Contact>();
-        // Run query
-        Uri uri = ContactsContract.Contacts.CONTENT_URI;
-        String[] projection = new String[] {
-                ContactsContract.Contacts._ID,
-                ContactsContract.Contacts.DISPLAY_NAME,
-                ContactsContract.Contacts.PHOTO_URI, 
-        };
-        
-        String selection = null;
-        
-        String groupId = ContactsWidgetConfigurationActivity.loadSelectionString(context, appWidgetId);
-        String sortOrder = ContactsWidgetConfigurationActivity.loadSortingString(context, appWidgetId);
-        if (ContactsWidgetConfigurationActivity.CONTACT_STARRED.equals(groupId)) {
-        	selection = groupId;
-        } else {
-        	return getContactsByGroup(contentResolver, context, appWidgetId, groupId, sortOrder);
-        }
-        String[] selectionArgs = null;
+	 * Obtains the contact list for the currently selected account.
+	 * 
+	 * @return A cursor for for accessing the contact list.
+	 */
+	public List<Contact> getContacts(ContentResolver contentResolver,
+			Context context, int appWidgetId) {
+		final List<Contact> contacts = new ArrayList<Contact>();
+		// Run query
+		Uri uri = ContactsContract.Contacts.CONTENT_URI;
+		String[] projection = new String[] { ContactsContract.Contacts._ID,
+				ContactsContract.Contacts.DISPLAY_NAME,
+				ContactsContract.Contacts.PHOTO_URI, };
 
-        CursorLoader loader = new CursorLoader(context, uri, projection, selection, selectionArgs, sortOrder);
-        Cursor cursor = null;
-        try {
-        	loader.startLoading();
-        	cursor = loader.loadInBackground();
-        	cursor.moveToFirst();
-            while (cursor.isAfterLast() == false) {
-                long contactId = cursor.getLong(0);
-                String displayName = cursor.getString(1);
-                String photoUri = cursor.getString(2);
-                Contact contact = new Contact();
-                contact.setContactId(contactId);
-                contact.setDisplayName(displayName);
-                contact.setPhotoUri(photoUri);
-                contact.setContactUri(ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, contactId));
-                contacts.add(contact);
-                if (photoUri != null && photoUri.length() > 0) {
-                	contact.setPhoto(loadContactPhoto(contentResolver, contact.getContactUri()));
-                }
-                cursor.moveToNext();
-            }
-        } finally {
-        	loader.stopLoading();
-        	if (cursor != null) {
-        		cursor.close();
-        	}
-        }
-        return contacts;
-    }
-    
-    private List<Contact> getContactsByGroup(ContentResolver contentResolver, Context context, int appWidgetId, String groupID, String sortOrder) {
-    	final List<Contact> contacts = new ArrayList<Contact>();
-    	Uri uri = ContactsContract.Data.CONTENT_URI;
-    	String[] projection = new String[]{
-    			ContactsContract.CommonDataKinds.GroupMembership.GROUP_ROW_ID ,
-    			ContactsContract.CommonDataKinds.GroupMembership.CONTACT_ID};
-    	String selection = ContactsContract.CommonDataKinds.GroupMembership.GROUP_ROW_ID+"="+groupID;
-    	String[] selectionArgs = null;
+		String selection = null;
 
-        CursorLoader loader = new CursorLoader(context, uri, projection, selection, selectionArgs, sortOrder);
-        Cursor cursor = null;
-        int index = 1;
-        try {
-        	loader.startLoading();
-        	cursor = loader.loadInBackground();
-        	cursor.moveToFirst();
-            while (cursor.isAfterLast() == false) {
-                long groupRowId = cursor.getLong(0);
-                long contactId = cursor.getLong(1);
-                
-                Contact contact = new Contact();
-                contact.setContactId(contactId);
-                Uri contactUri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, contactId);
-                contact.setContactUri(contactUri);
-                Uri uuri = ContactsContract.Contacts.lookupContact(contentResolver, contactUri);
-                contact.setDisplayName("User + " + index);
-                index++;
-                contacts.add(contact);
-                /*if (photoUri != null && photoUri.length() > 0) {
-                	contact.setPhoto(loadContactPhoto(contentResolver, contact.getContactUri()));
-                }*/
-                cursor.moveToNext();
-            }
-        } finally {
-        	loader.stopLoading();
-        	if (cursor != null) {
-        		cursor.close();
-        	}
-        }
-    	return contacts;
-    }
-    
+		String groupId = ContactsWidgetConfigurationActivity
+				.loadSelectionString(context, appWidgetId);
+		String sortOrder = ContactsWidgetConfigurationActivity
+				.loadSortingString(context, appWidgetId);
+		if (ContactsWidgetConfigurationActivity.CONTACT_STARRED.equals(groupId)) {
+			selection = groupId;
+		} else {
+			return getContactsByGroup(contentResolver, context, appWidgetId,
+					groupId, sortOrder);
+		}
+		String[] selectionArgs = null;
+
+		CursorLoader loader = new CursorLoader(context, uri, projection,
+				selection, selectionArgs, sortOrder);
+		Cursor cursor = null;
+		try {
+			loader.startLoading();
+			cursor = loader.loadInBackground();
+			cursor.moveToFirst();
+			while (cursor.isAfterLast() == false) {
+				long contactId = cursor.getLong(0);
+				String displayName = cursor.getString(1);
+				String photoUri = cursor.getString(2);
+				Contact contact = new Contact();
+				contact.setContactId(contactId);
+				contact.setDisplayName(displayName);
+				contact.setPhotoUri(photoUri);
+				contact.setContactUri(ContentUris.withAppendedId(
+						ContactsContract.Contacts.CONTENT_URI, contactId));
+				contacts.add(contact);
+				if (photoUri != null && photoUri.length() > 0) {
+					contact.setPhoto(loadContactPhoto(contentResolver,
+							contact.getContactUri()));
+				}
+				cursor.moveToNext();
+			}
+		} finally {
+			loader.stopLoading();
+			if (cursor != null) {
+				cursor.close();
+			}
+		}
+		return contacts;
+	}
+
+	private List<Contact> getContactsByGroup(ContentResolver contentResolver,
+			Context context, int appWidgetId, String groupID, String sortOrder) {
+		final List<Contact> contacts = new ArrayList<Contact>();
+		Uri uri = ContactsContract.Data.CONTENT_URI;
+		String[] projection = new String[] {
+				ContactsContract.CommonDataKinds.GroupMembership.GROUP_ROW_ID,
+				ContactsContract.CommonDataKinds.GroupMembership.CONTACT_ID };
+		String selection = ContactsContract.CommonDataKinds.GroupMembership.GROUP_ROW_ID
+				+ "=" + groupID;
+		String[] selectionArgs = null;
+
+		CursorLoader loader = new CursorLoader(context, uri, projection,
+				selection, selectionArgs, sortOrder);
+		Cursor cursor = null;
+		try {
+			loader.startLoading();
+			cursor = loader.loadInBackground();
+			cursor.moveToFirst();
+			while (cursor.isAfterLast() == false) {
+				long groupRowId = cursor.getLong(0);
+				long contactId = cursor.getLong(1);
+
+				contacts.add(loadContactById(contentResolver, context,
+						contactId, sortOrder));
+				cursor.moveToNext();
+			}
+		} finally {
+			loader.stopLoading();
+			if (cursor != null) {
+				cursor.close();
+			}
+		}
+		return contacts;
+	}
+
+	private Contact loadContactById(ContentResolver contentResolver,
+			Context context, long contactId, String sortOrder) {
+		Contact contact = new Contact();
+		contact.setContactId(contactId);
+		Uri contactUri = ContentUris.withAppendedId(
+				ContactsContract.Contacts.CONTENT_URI, contactId);
+		contact.setContactUri(contactUri);
+
+		Uri uri = ContactsContract.Contacts.CONTENT_URI;
+		String[] projection = new String[] { ContactsContract.Contacts._ID,
+				ContactsContract.Contacts.DISPLAY_NAME,
+				ContactsContract.Contacts.PHOTO_URI, };
+		String selection = Contacts._ID + "=?";
+		CursorLoader loader = new CursorLoader(context, uri, projection,
+				selection, new String[]{String.valueOf(contactId)}, sortOrder);
+		Cursor cursor = null;
+		try {
+			loader.startLoading();
+			cursor = loader.loadInBackground();
+			if (cursor.moveToFirst()) {
+				String displayName = cursor.getString(1);
+				String photoUri = cursor.getString(2);
+				contact.setContactId(contactId);
+				contact.setDisplayName(displayName);
+				contact.setPhotoUri(photoUri);
+				if (photoUri != null && photoUri.length() > 0) {
+					contact.setPhoto(loadContactPhoto(contentResolver,
+							contact.getContactUri()));
+				}
+			}
+		} finally {
+			loader.stopLoading();
+			if (cursor != null) {
+				cursor.close();
+			}
+		}
+		return contact;
+	}
+
 	private Bitmap loadContactPhoto(ContentResolver contentResolver, Uri uri) {
-	    InputStream input = ContactsContract.Contacts.openContactPhotoInputStream(contentResolver, uri);
-	    if (input == null) {
-	        return null;
-	    }
-	    return BitmapFactory.decodeStream(input);
+		InputStream input = ContactsContract.Contacts
+				.openContactPhotoInputStream(contentResolver, uri);
+		if (input == null) {
+			return null;
+		}
+		return BitmapFactory.decodeStream(input);
 	}
 
 }

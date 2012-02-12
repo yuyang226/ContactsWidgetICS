@@ -14,7 +14,6 @@ import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
@@ -34,8 +33,6 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	
 	private RadioGroup contactsSorting;
 	
-	private Button okButton;
-
 	int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
 	
 	private List<ContactGroup> contactGroups;
@@ -93,8 +90,18 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     	this.contactsSorting = (RadioGroup)findViewById(R.id.contactSorting);
     	this.contactsSorting.getCheckedRadioButtonId();
     	
-    	this.okButton = (Button)findViewById(R.id.okButton);
-    	this.okButton.setOnClickListener(mOnClickListener);
+    	Button okButton = (Button)findViewById(R.id.okButton);
+    	okButton.setOnClickListener(mOnClickListener);
+    	
+    	Button cancelButton = (Button)findViewById(R.id.cancelButton);
+    	cancelButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				finish();
+			}
+    		
+    	});
     }
     
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
