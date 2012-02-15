@@ -20,6 +20,7 @@
     android:layout_height="fill_parent"
     android:layout_margin="@dimen/widget_margin"
     android:layout_marginBottom="@dimen/widget_margin_bottom"
+    android:padding="10dp"
     android:layout_marginTop="@dimen/widget_margin_top" >
 
     <TextView
@@ -99,8 +100,9 @@
     </RadioGroup>
     <!-- End of Sorting -->
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/ButtonLayout"
+        android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -110,19 +112,19 @@
 
         <Button
             android:id="@+id/okButton"
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
             android:text="@string/buttonOk" />
 
         <Button
             android:id="@+id/cancelButton"
-            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/okButton"
             android:layout_gravity="left"
             android:text="@string/buttonCancel" />
-    </RelativeLayout>
+    </LinearLayout>
 </RelativeLayout>
 
 <!--
