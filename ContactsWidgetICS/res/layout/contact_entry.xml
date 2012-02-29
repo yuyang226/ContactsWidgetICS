@@ -51,6 +51,7 @@
     
     <ImageView
         android:id="@+id/contactPhoto"
+        android:adjustViewBounds="true"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:contentDescription="@+string/contactImageDescription"
@@ -65,7 +66,7 @@
         android:text="@+id/contactEntryText"
         android:textColor="@color/white" 
         android:padding="12dip"
-        android:background="@drawable/widget_item_background"/>
+        android:background="#20535252"/>
     
 </FrameLayout>
 
