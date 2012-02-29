@@ -58,7 +58,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 	 */
 	@Override
 	public void onDeleted(Context context, int[] appWidgetIds) {
-		Log.d(TAG, "onDeleted");
+		Log.d(TAG, "onDeleted"); //$NON-NLS-1$
 		super.onDeleted(context, appWidgetIds);
 		for (int appWidgetId : appWidgetIds) {
 			ContactsWidgetConfigurationActivity.deleteSelectionString(context, appWidgetId);
@@ -68,7 +68,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 	
 	static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
 			int appWidgetId) {
-		Log.d(TAG, "updateAppWidget appWidgetId=" + appWidgetId);
+		Log.d(TAG, "updateAppWidget appWidgetId=" + appWidgetId); //$NON-NLS-1$
 		// Here we setup the intent which points to the StackViewService which will
         // provide the views for this collection.
         Intent intent = new Intent(context, ContactsWidgetService.class);
@@ -76,7 +76,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
         // When intents are compared, the extras are ignored, so we need to embed the extras
         // into the data so that the extras will not be ignored.
         intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
-        RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.contact_manager);
+        RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.contact_manager_stack);
         rv.setRemoteAdapter(appWidgetId, R.id.contactList, intent);
 
         // The empty view is displayed when the collection has no items. It should be a sibling

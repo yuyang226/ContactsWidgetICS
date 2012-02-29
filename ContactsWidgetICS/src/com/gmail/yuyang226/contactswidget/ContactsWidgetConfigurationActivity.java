@@ -26,8 +26,8 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	= "com.gmail.yuyang226.contactswidget.config.contact_group"; //$NON-NLS-1$
 	public static final String CONTACT_STARRED = ContactsContract.Contacts.STARRED + " = '1'"; //$NON-NLS-1$
 	
-	public static final String PREF_GROUP_PREFIX = "group_";
-	public static final String PREF_SORTING_PREFIX = "sorting_";
+	public static final String PREF_GROUP_PREFIX = "group_"; //$NON-NLS-1$
+	public static final String PREF_SORTING_PREFIX = "sorting_"; //$NON-NLS-1$
 	
 	private Spinner groupList;
 	
@@ -155,7 +155,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         if (prefix != null) {
             return prefix;
         } else {
-            return ContactsContract.Contacts.TIMES_CONTACTED + " DESC";
+            return ContactsContract.Contacts.TIMES_CONTACTED + " DESC"; //$NON-NLS-1$
         }
     }
     

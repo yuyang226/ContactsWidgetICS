@@ -18,6 +18,8 @@
     <string name="accountSpinnerLabel">帐户</string>
     <string name="allAccounts">所有帐户</string>
     <string name="app_name">联系人小部件</string>
+    <string name="widget_name">联系人小部件</string>
+    <string name="widget_name_stack">联系人小部件(Stack View)</string>
     <string name="contactCreationFailure">创建联系人失败，请检查日志。</string>
     <string name="contactEmailLabel">联系人邮箱</string>
     <string name="contactNameLabel">联系人名字</string>

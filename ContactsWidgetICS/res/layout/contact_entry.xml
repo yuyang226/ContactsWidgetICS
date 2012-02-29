@@ -14,37 +14,57 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-
-<!--
-     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:orientation="vertical">
--->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:id="@+id/parentPanel"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical" >
-
-    <!-- android:layout_alignParentTop="true" -->
 
     <ImageView
         android:id="@+id/contactPhoto"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:contentDescription="@+string/contactImageDescription"
-        android:src="@drawable/icon" ></ImageView>
+        android:src="@drawable/icon" >
+    </ImageView>
 
     <TextView
         android:id="@+id/contactEntryText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/contactPhoto"
-        android:textColor="@color/white"
-        android:text="@+id/contactEntryText" />
+        android:layout_alignBottom="@+id/contactPhoto"
+        android:layout_alignLeft="@+id/contactPhoto"
+        android:layout_alignRight="@+id/contactPhoto"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="1dp"
+        android:background="@drawable/widget_item_background"
+        android:gravity="center"
+        android:text="@+id/contactEntryText"
+        android:textColor="@color/white" />
 
-    <!-- android:layout_alignParentBottom="true" -->
-    <!-- </LinearLayout> -->
-
-</RelativeLayout>
+</RelativeLayout><!--
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    
+    <ImageView
+        android:id="@+id/contactPhoto"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:contentDescription="@+string/contactImageDescription"
+        android:scaleType="fitXY"
+        android:src="@drawable/icon" >
+    </ImageView>
+    <TextView
+        android:id="@+id/contactEntryText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:text="@+id/contactEntryText"
+        android:textColor="@color/white" 
+        android:padding="12dip"
+        android:background="@drawable/widget_item_background"/>
+    
+</FrameLayout>
+-->
