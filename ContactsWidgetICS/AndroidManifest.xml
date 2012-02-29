@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <!-- The widget provider -->
-        <receiver android:name="ContactsWidgetProvider" >
+        <receiver android:name="ContactsWidgetProvider" android:label="@string/widget_name">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -30,6 +30,17 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widgetinfo" />
+        </receiver>
+                
+        <!-- The widget provider stack view -->
+        <receiver android:name="ContactsWidgetStackProvider" android:label="@string/widget_name_stack">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <!-- This specifies the widget provider info -->
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widgetinfo_stack" />
         </receiver>
 
         <service

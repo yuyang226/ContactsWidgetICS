@@ -12,7 +12,7 @@
      distributed under the License is distributed on an "AS IS" BASIS,
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
-     limitations under the License.
+     limitations under the License.
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/parentPanel"
@@ -20,8 +20,8 @@
     android:layout_height="fill_parent"
     android:layout_margin="@dimen/widget_margin"
     android:layout_marginBottom="@dimen/widget_margin_bottom"
-    android:padding="10dp"
-    android:layout_marginTop="@dimen/widget_margin_top" >
+    android:layout_marginTop="@dimen/widget_margin_top"
+    android:padding="10dp" >
 
     <TextView
         android:id="@+id/groupListText"
@@ -51,6 +51,7 @@
         android:prompt="@string/contactGroupPrompt" />
 
     <!-- Begining of Sorting -->
+
     <TextView
         android:id="@+id/sortText"
         android:layout_width="wrap_content"
@@ -102,94 +103,28 @@
 
     <LinearLayout
         android:id="@+id/ButtonLayout"
-        android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_centerHorizontal="true"
-        android:baselineAligned="false" >
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:text="@string/buttonCancel" />
 
         <Button
             android:id="@+id/okButton"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/buttonOk" />
-
-        <Button
-            android:id="@+id/cancelButton"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="@string/buttonCancel" />
     </LinearLayout>
+
 </RelativeLayout>
-
-<!--
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="@dimen/widget_margin"
-    android:alignmentMode="alignBounds"
-    android:columnCount="2"
-    android:columnOrderPreserved="false"
-    android:useDefaultMargins="true" >
-
-    <TextView
-        android:layout_gravity="left"
-        android:text="@string/contactGroup" />
-
-    <Spinner
-        android:id="@+id/groupList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:prompt="@string/contactGroupPrompt" />
-
-    <Space
-        android:layout_columnSpan="2"
-        android:layout_gravity="fill_horizontal" />
-
-    Begining of Sorting
-    <TextView
-        android:layout_columnSpan="2"
-        android:layout_gravity="left"
-        android:text="@string/contactSorting"
-        android:textSize="16dip" />
-    <RadioGroup
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:orientation="vertical"
-      android:layout_columnSpan="2"
-      android:id="@+id/contactSorting">
-      <RadioButton android:id="@+id/radioContactFrequency"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-          android:text="@string/buttonContactFrequency"
-          android:checked="true" />
-      <RadioButton android:id="@+id/radioContactRecent"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-          android:text="@string/buttonContactRecent" />
-      <RadioButton android:id="@+id/radioContactDisplayName"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-          android:text="@string/buttonContactDisplayName" />
-    </RadioGroup>
-    End of Sorting
-
-    <Space
-        android:layout_columnSpan="2"
-        android:layout_gravity="fill_vertical" />
-
-    <Button
-        android:id="@+id/okButton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_columnSpan="2"
-        android:text="@string/buttonOk" />
-
-</GridLayout>
--->
