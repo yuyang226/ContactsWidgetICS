@@ -14,7 +14,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/parentPanel"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -43,10 +43,11 @@
         android:text="@+id/contactEntryText"
         android:textColor="@color/white" />
 
-</RelativeLayout><!--
+</RelativeLayout> -->
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_width="128dp"
+    android:layout_height="128dp">
     
     <ImageView
         android:id="@+id/contactPhoto"
@@ -67,4 +68,4 @@
         android:background="@drawable/widget_item_background"/>
     
 </FrameLayout>
--->
+
