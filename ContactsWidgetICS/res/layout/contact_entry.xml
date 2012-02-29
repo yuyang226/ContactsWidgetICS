@@ -66,7 +66,7 @@
         android:text="@+id/contactEntryText"
         android:textColor="@color/white" 
         android:padding="12dip"
-        android:background="#20535252"/>
+        android:background="@android:color/transparent"/>
     
 </FrameLayout>
 
