@@ -22,6 +22,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 	public static final String SHOW_QUICK_CONTACT_ACTION = "com.gmail.yuyang226.contactswidget.SHOW_QUICK_CONTACT_ACTION"; //$NON-NLS-1$
 	public static final String CONTACT_URI = "com.gmail.yuyang226.contactswidget.CONTACT_URI"; //$NON-NLS-1$
 	public static final String CONTACTS = "contacts"; //$NON-NLS-1$
+	public static final String CONTACT_ENTRY_LAYOUT_ID = "contact.entry.layout.id"; //$NON-NLS-1$
 	private static final String TAG = ContactsWidgetProvider.class.getName();
 
 	/**
@@ -47,8 +48,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         // update each of the widgets with the remote adapter
         for (int i = 0; i < appWidgetIds.length; i++) {
-        	updateAppWidget(context, appWidgetManager, appWidgetIds[i]);
-            
+        	updateAppWidget(context, appWidgetManager, appWidgetIds[i], getWidgetLayoutId(), getWidgetEntryLayoutId());
         }
         super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
@@ -67,16 +67,17 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 	}
 	
 	static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-			int appWidgetId) {
+			int appWidgetId, int widgetLayoutId, int widgetEntryLayoutId) {
 		Log.d(TAG, "updateAppWidget appWidgetId=" + appWidgetId); //$NON-NLS-1$
 		// Here we setup the intent which points to the StackViewService which will
         // provide the views for this collection.
         Intent intent = new Intent(context, ContactsWidgetService.class);
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+        intent.putExtra(CONTACT_ENTRY_LAYOUT_ID, widgetEntryLayoutId);
         // When intents are compared, the extras are ignored, so we need to embed the extras
         // into the data so that the extras will not be ignored.
         intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
-        RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.contact_manager_stack);
+        RemoteViews rv = new RemoteViews(context.getPackageName(), widgetLayoutId);
         rv.setRemoteAdapter(appWidgetId, R.id.contactList, intent);
 
         // The empty view is displayed when the collection has no items. It should be a sibling
@@ -90,7 +91,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
         Intent toastIntent = new Intent(context, ContactsWidgetProvider.class);
         toastIntent.setAction(ContactsWidgetProvider.SHOW_QUICK_CONTACT_ACTION);
         toastIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-        //toastIntent.putParcelableArrayListExtra(CONTACTS, getContacts(context));
+        toastIntent.putExtra(CONTACT_ENTRY_LAYOUT_ID, widgetEntryLayoutId);
         intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
         PendingIntent toastPendingIntent = PendingIntent.getBroadcast(context, 0, toastIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
@@ -98,5 +99,13 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 
         appWidgetManager.updateAppWidget(appWidgetId, rv);
         appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.contactList);
+	}
+	
+	protected int getWidgetLayoutId() {
+		return R.layout.contact_manager;
+	}
+	
+	protected int getWidgetEntryLayoutId() {
+		return R.layout.contact_entry;
 	}
 }

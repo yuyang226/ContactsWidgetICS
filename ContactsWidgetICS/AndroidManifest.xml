@@ -21,6 +21,11 @@
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
+        <activity android:name=".ContactsWidgetStackConfigurationActivity" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
         <!-- The widget provider -->
         <receiver android:name="ContactsWidgetProvider" android:label="@string/widget_name">
             <intent-filter>

@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
@@ -42,11 +43,15 @@ public class ContactsWidgetService extends RemoteViewsService {
 	    private final List<Contact> mWidgetItems = new ArrayList<Contact>();
 	    private Context mContext;
 	    private int mAppWidgetId;
+	    private int widgetEntryLayoutId;
 
 	    public GridRemoteViewsFactory(Context context, Intent intent) {
 	        mContext = context;
 	        mAppWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
 	                AppWidgetManager.INVALID_APPWIDGET_ID);
+	        
+	        widgetEntryLayoutId = intent.getIntExtra(ContactsWidgetProvider.CONTACT_ENTRY_LAYOUT_ID,
+	                R.layout.contact_entry);
 	    }
 
 	    public void onCreate() {
@@ -73,9 +78,15 @@ public class ContactsWidgetService extends RemoteViewsService {
 
 	        // We construct a remote views item based on our widget item xml file, and set the
 	        // text based on the position.
-	        RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.contact_entry);
+	        RemoteViews rv = new RemoteViews(mContext.getPackageName(), widgetEntryLayoutId);
 	        Contact contact = mWidgetItems.get(position);
-	        rv.setTextViewText(R.id.contactEntryText, contact.getDisplayName());
+	        if (ContactsWidgetStackConfigurationActivity.loadShowName(this.mContext, this.mAppWidgetId)) {
+	        	rv.setViewVisibility(R.id.contactEntryText, View.VISIBLE);
+	        	rv.setTextViewText(R.id.contactEntryText, contact.getDisplayName());
+	        } else {
+	        	rv.setViewVisibility(R.id.contactEntryText, View.INVISIBLE);
+	        }
+	        
 	        Bitmap photo = contact.getPhoto();
 	        if (photo != null) {
 	        	//the contact has an icon
