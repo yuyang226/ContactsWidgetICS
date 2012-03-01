@@ -33,11 +33,36 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	
 	private RadioGroup contactsSorting;
 	
-	int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
+	private int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
 	
 	private List<ContactGroup> contactGroups;
 	
-    /** Called when the activity is first created. */
+	private int configActivityLayoutId;
+	private int widgetLayoutId;
+	private int widgetEntryLayoutId;
+	
+    /**
+	 * 
+	 */
+	public ContactsWidgetConfigurationActivity() {
+		this(R.layout.appwidget_configure, R.layout.contact_manager, R.layout.contact_entry);
+	}
+	
+	/**
+	 * @param widgetLayoutId
+	 * @param configActivityLayoutId
+	 */
+	protected ContactsWidgetConfigurationActivity(
+			int configActivityLayoutId, int widgetLayoutId, int widgetEntryLayoutId) {
+		super();
+		this.configActivityLayoutId = configActivityLayoutId;
+		this.widgetLayoutId = widgetLayoutId;
+		this.widgetEntryLayoutId = widgetEntryLayoutId;
+	}
+
+
+
+	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +72,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         setResult(RESULT_CANCELED);
 
         // Set the view layout resource to use.
-        setContentView(R.layout.appwidget_configure);
+        setContentView(configActivityLayoutId);
 
         //groups list
         
@@ -104,39 +129,40 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     	});
     }
     
+    protected void savePreferences(Context context, int appWidgetId) {
+        String sortString = null;
+        switch(contactsSorting.getCheckedRadioButtonId()) {
+        case R.id.radioContactDisplayName:
+        	sortString = ContactsContract.Contacts.DISPLAY_NAME + " COLLATE LOCALIZED ASC"; //$NON-NLS-1$
+        	break;
+        case R.id.radioContactRecent:
+        	sortString = ContactsContract.Contacts.LAST_TIME_CONTACTED + " DESC"; //$NON-NLS-1$
+        	break;
+        case R.id.radioContactFrequency:
+        
+        default:
+        	sortString = ContactsContract.Contacts.TIMES_CONTACTED + " DESC"; //$NON-NLS-1$
+        	break;
+        }
+        saveSortingString(context, appWidgetId, sortString);
+        String selection = groupList.getSelectedItemPosition() == 0 || contactGroups.isEmpty() ? CONTACT_STARRED : 
+        	String.valueOf(contactGroups.get(groupList.getSelectedItemPosition()).getGroupId());
+        saveSelectionString(context, appWidgetId, selection);
+
+        // Push widget update to surface with newly set prefix
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+        ContactsWidgetProvider.updateAppWidget(context, appWidgetManager,
+        		appWidgetId, widgetLayoutId, widgetEntryLayoutId);
+    }
+    
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
         public void onClick(View v) {
-            final Context context = ContactsWidgetConfigurationActivity.this;
-
-            String sortString = null;
-            switch(contactsSorting.getCheckedRadioButtonId()) {
-            case R.id.radioContactDisplayName:
-            	sortString = ContactsContract.Contacts.DISPLAY_NAME + " COLLATE LOCALIZED ASC"; //$NON-NLS-1$
-            	break;
-            case R.id.radioContactRecent:
-            	sortString = ContactsContract.Contacts.LAST_TIME_CONTACTED + " DESC"; //$NON-NLS-1$
-            	break;
-            case R.id.radioContactFrequency:
-            
-            default:
-            	sortString = ContactsContract.Contacts.TIMES_CONTACTED + " DESC"; //$NON-NLS-1$
-            	break;
-            }
-            saveSortingString(context, mAppWidgetId, sortString);
-            String selection = groupList.getSelectedItemPosition() == 0 || contactGroups.isEmpty() ? CONTACT_STARRED : 
-            	String.valueOf(contactGroups.get(groupList.getSelectedItemPosition()).getGroupId());
-            saveSelectionString(context, mAppWidgetId, selection);
-
-            // Push widget update to surface with newly set prefix
-            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-            ContactsWidgetProvider.updateAppWidget(context, appWidgetManager,
-                    mAppWidgetId);
-
-            // Make sure we pass back the original appWidgetId
+        	savePreferences(ContactsWidgetConfigurationActivity.this, mAppWidgetId);
+        	 // Make sure we pass back the original appWidgetId
             Intent resultValue = new Intent();
             resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
-            setResult(RESULT_OK, resultValue);
-            finish();
+        	setResult(RESULT_OK, resultValue);
+        	finish();
         }
     };
     

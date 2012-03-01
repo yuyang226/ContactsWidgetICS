@@ -30,6 +30,7 @@
     <string name="undefinedTypeLabel">(Undefined)</string>
     <string name="empty_view_text">No Contacts Loaded</string>
     <string name="contactImageDescription">Contact Image</string>
+    <string name="checkShowNameText">Show Contact Name</string>
     
     <!-- Configurations -->
     <string name="contactGroup">Group</string>
