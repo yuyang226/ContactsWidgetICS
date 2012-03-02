@@ -20,7 +20,7 @@ import android.widget.Spinner;
 import com.gmail.yuyang226.contactswidget.models.ContactGroup;
 
 public class ContactsWidgetConfigurationActivity extends Activity  {
-	private static final String TAG = ContactsWidgetConfigurationActivity.class.getName();
+//	private static final String TAG = ContactsWidgetConfigurationActivity.class.getName();
 
 	public static final String CONTACT_GROUP
 	= "com.gmail.yuyang226.contactswidget.config.contact_group"; //$NON-NLS-1$
@@ -38,14 +38,13 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	private List<ContactGroup> contactGroups;
 	
 	private int configActivityLayoutId;
-	private int widgetLayoutId;
 	private int widgetEntryLayoutId;
 	
     /**
 	 * 
 	 */
 	public ContactsWidgetConfigurationActivity() {
-		this(R.layout.appwidget_configure, R.layout.contact_manager, R.layout.contact_entry);
+		this(R.layout.appwidget_configure, R.layout.contact_entry);
 	}
 	
 	/**
@@ -53,10 +52,9 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	 * @param configActivityLayoutId
 	 */
 	protected ContactsWidgetConfigurationActivity(
-			int configActivityLayoutId, int widgetLayoutId, int widgetEntryLayoutId) {
+			int configActivityLayoutId, int widgetEntryLayoutId) {
 		super();
 		this.configActivityLayoutId = configActivityLayoutId;
-		this.widgetLayoutId = widgetLayoutId;
 		this.widgetEntryLayoutId = widgetEntryLayoutId;
 	}
 
@@ -152,7 +150,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         // Push widget update to surface with newly set prefix
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         ContactsWidgetProvider.updateAppWidget(context, appWidgetManager,
-        		appWidgetId, widgetLayoutId, widgetEntryLayoutId);
+        		appWidgetId, widgetEntryLayoutId);
     }
     
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
@@ -185,10 +183,14 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         }
     }
     
+    static void deletePreference(Context context, int appWidgetId, String prefix) {
+    	 SharedPreferences.Editor prefs = context.getSharedPreferences(prefix, 0).edit();
+         prefs.remove(prefix + appWidgetId);
+         prefs.commit();
+    }
+    
     static void deleteSortingString(Context context, int appWidgetId) {
-        SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_SORTING_PREFIX, 0).edit();
-        prefs.remove(PREF_SORTING_PREFIX + appWidgetId);
-        prefs.commit();
+        deletePreference(context, appWidgetId, PREF_SORTING_PREFIX);
     }
     
     static void saveSelectionString(Context context, int appWidgetId, String text) {
@@ -208,9 +210,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     }
     
     static void deleteSelectionString(Context context, int appWidgetId) {
-        SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_GROUP_PREFIX, 0).edit();
-        prefs.remove(PREF_GROUP_PREFIX + appWidgetId);
-        prefs.commit();
+        deletePreference(context, appWidgetId, PREF_GROUP_PREFIX);
     }
     
 }

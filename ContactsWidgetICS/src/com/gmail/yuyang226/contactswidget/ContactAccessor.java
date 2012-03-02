@@ -31,7 +31,7 @@ import com.gmail.yuyang226.contactswidget.models.ContactGroup;
  * 
  */
 public class ContactAccessor {
-	private static final String STARRED_IN_ANDROID = "Starred in Android";
+	private static final String STARRED_IN_ANDROID = "Starred in Android"; //$NON-NLS-1$
 
 	/**
 	 * 
@@ -47,7 +47,7 @@ public class ContactAccessor {
 		String[] projection = new String[] { ContactsContract.Directory._ID,
 				ContactsContract.Directory.ACCOUNT_NAME,
 				ContactsContract.Directory.ACCOUNT_TYPE, };
-		String selection = null; //$NON-NLS-1$
+		String selection = null;
 		String[] selectionArgs = null;
 		String sortOrder = ContactsContract.Directory.DISPLAY_NAME
 				+ " COLLATE LOCALIZED ASC"; //$NON-NLS-1$
@@ -120,7 +120,7 @@ public class ContactAccessor {
 				String accountName = cursor.getString(1);
 				String accountType = cursor.getString(2);
 				String title = cursor.getString(3);
-				if (title.equalsIgnoreCase("My Contacts")) {
+				if (title.equalsIgnoreCase("My Contacts")) { //$NON-NLS-1$
 					// we dont want to handle My Contacts
 					cursor.moveToNext();
 					continue;

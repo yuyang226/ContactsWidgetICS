@@ -6,6 +6,7 @@ package com.gmail.yuyang226.contactswidget;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.appwidget.AppWidgetProviderInfo;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -48,7 +49,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         // update each of the widgets with the remote adapter
         for (int i = 0; i < appWidgetIds.length; i++) {
-        	updateAppWidget(context, appWidgetManager, appWidgetIds[i], getWidgetLayoutId(), getWidgetEntryLayoutId());
+        	updateAppWidget(context, appWidgetManager, appWidgetIds[i], getWidgetEntryLayoutId());
         }
         super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
@@ -67,8 +68,9 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 	}
 	
 	static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-			int appWidgetId, int widgetLayoutId, int widgetEntryLayoutId) {
+			int appWidgetId, int widgetEntryLayoutId) {
 		Log.d(TAG, "updateAppWidget appWidgetId=" + appWidgetId); //$NON-NLS-1$
+		AppWidgetProviderInfo widgetProviderInfo = appWidgetManager.getAppWidgetInfo(appWidgetId);
 		// Here we setup the intent which points to the StackViewService which will
         // provide the views for this collection.
         Intent intent = new Intent(context, ContactsWidgetService.class);
@@ -77,13 +79,13 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
         // When intents are compared, the extras are ignored, so we need to embed the extras
         // into the data so that the extras will not be ignored.
         intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
-        RemoteViews rv = new RemoteViews(context.getPackageName(), widgetLayoutId);
+        RemoteViews rv = new RemoteViews(context.getPackageName(), widgetProviderInfo.initialLayout);
         rv.setRemoteAdapter(appWidgetId, R.id.contactList, intent);
-
+        
         // The empty view is displayed when the collection has no items. It should be a sibling
         // of the collection view.
         rv.setEmptyView(R.id.contactList, R.id.empty_view);
-
+        
         // Here we setup the a pending intent template. Individuals items of a collection
         // cannot setup their own pending intents, instead, the collection as a whole can
         // setup a pending intent template, and the individual items can set a fillInIntent
@@ -99,10 +101,6 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 
         appWidgetManager.updateAppWidget(appWidgetId, rv);
         appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.contactList);
-	}
-	
-	protected int getWidgetLayoutId() {
-		return R.layout.contact_manager;
 	}
 	
 	protected int getWidgetEntryLayoutId() {

@@ -68,13 +68,22 @@
             android:text="@string/checkShowNameText"
             android:checked="true" />
 	
+	<CheckBox
+            android:id="@+id/loopContacts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkShowName"
+            android:text="@string/loopContactsText"
+            android:checked="true" 
+            android:enabled="false"/>
+	
     <!-- Begining of Sorting -->
 
     <TextView
         android:id="@+id/sortText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/checkShowName"
+        android:layout_below="@+id/loopContacts"
         android:layout_gravity="left"
         android:text="@string/contactSorting"
         android:textColor="@color/holo_blue_light"
