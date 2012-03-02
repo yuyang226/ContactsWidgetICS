@@ -46,6 +46,7 @@ public class ContactsWidgetService extends RemoteViewsService {
 	    private int widgetEntryLayoutId;
 
 	    public GridRemoteViewsFactory(Context context, Intent intent) {
+	    	//Log.d(TAG, String.format("Input Params: %s, %s", String.valueOf(context), String.valueOf(intent))); //$NON-NLS-1$
 	        mContext = context;
 	        mAppWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
 	                AppWidgetManager.INVALID_APPWIDGET_ID);

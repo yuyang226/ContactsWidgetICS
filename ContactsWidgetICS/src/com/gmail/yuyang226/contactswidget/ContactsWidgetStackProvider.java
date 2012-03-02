@@ -19,14 +19,6 @@ public class ContactsWidgetStackProvider extends ContactsWidgetProvider {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.gmail.yuyang226.contactswidget.ContactsWidgetProvider#getWidgetLayoutId()
-	 */
-	@Override
-	protected int getWidgetLayoutId() {
-		return R.layout.contact_manager_stack;
-	}
-
-	/* (non-Javadoc)
 	 * @see com.gmail.yuyang226.contactswidget.ContactsWidgetProvider#getWidgetEntryLayoutId()
 	 */
 	@Override
@@ -39,6 +31,7 @@ public class ContactsWidgetStackProvider extends ContactsWidgetProvider {
 		super.onDeleted(context, appWidgetIds);
 		for (int appWidgetId : appWidgetIds) {
 			ContactsWidgetStackConfigurationActivity.deleteShowName(context, appWidgetId);
+			ContactsWidgetStackConfigurationActivity.deleteLoopContacts(context, appWidgetId);
 		}
 	}
 	

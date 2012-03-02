@@ -30,6 +30,7 @@
     <string name="undefinedTypeLabel">(未定义)</string>
     <string name="empty_view_text">没有联系人</string>
     <string name="contactImageDescription">联系人头像</string>
+    <string name="loopContactsText">循环显示联系人</string>
     
     <!-- Configurations -->
     <string name="contactGroup">联系人分组</string>

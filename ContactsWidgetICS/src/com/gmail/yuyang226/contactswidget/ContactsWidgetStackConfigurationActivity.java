@@ -14,9 +14,10 @@ import android.widget.CheckBox;
 public class ContactsWidgetStackConfigurationActivity extends
 		ContactsWidgetConfigurationActivity {
 	public static final String PREF_SHOWNAME_PREFIX = "showname_"; //$NON-NLS-1$
+	public static final String PREF_LOOPCONTACTS_PREFIX = "loopcontacts_"; //$NON-NLS-1$
 
 	public ContactsWidgetStackConfigurationActivity() {
-		super(R.layout.appwidget_configure_stack, R.layout.contact_manager_stack, R.layout.contact_entry_large);
+		super(R.layout.appwidget_configure_stack, R.layout.contact_entry_large);
 	}
 	
 	/* (non-Javadoc)
@@ -27,6 +28,8 @@ public class ContactsWidgetStackConfigurationActivity extends
 		super.savePreferences(context, appWidgetId);
 		CheckBox showName = (CheckBox)findViewById(R.id.checkShowName);
 		saveShowName(context, appWidgetId, showName.isChecked());
+		CheckBox loopContacts = (CheckBox)findViewById(R.id.loopContacts);
+		saveLoopContacts(context, appWidgetId, loopContacts.isChecked());
 	}
 
 	static void saveShowName(Context context, int appWidgetId, boolean showName) {
@@ -35,8 +38,6 @@ public class ContactsWidgetStackConfigurationActivity extends
         prefs.commit();
     }
 
-    // Read the prefix from the SharedPreferences object for this widget.
-    // If there is no preference saved, get the default from a resource
     static boolean loadShowName(Context context, int appWidgetId) {
         SharedPreferences prefs = context.getSharedPreferences(PREF_SHOWNAME_PREFIX, 0);
         String value = prefs.getString(PREF_SHOWNAME_PREFIX + appWidgetId, Boolean.TRUE.toString());
@@ -44,9 +45,23 @@ public class ContactsWidgetStackConfigurationActivity extends
     }
     
     static void deleteShowName(Context context, int appWidgetId) {
-        SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_SHOWNAME_PREFIX, 0).edit();
-        prefs.remove(PREF_SHOWNAME_PREFIX + appWidgetId);
+        deletePreference(context, appWidgetId, PREF_SHOWNAME_PREFIX);
+    }
+    
+    static void saveLoopContacts(Context context, int appWidgetId, boolean loopContacts) {
+        SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_LOOPCONTACTS_PREFIX, 0).edit();
+        prefs.putString(PREF_LOOPCONTACTS_PREFIX + appWidgetId, String.valueOf(loopContacts));
         prefs.commit();
+    }
+
+    static boolean loadLoopContacts(Context context, int appWidgetId) {
+        SharedPreferences prefs = context.getSharedPreferences(PREF_LOOPCONTACTS_PREFIX, 0);
+        String value = prefs.getString(PREF_LOOPCONTACTS_PREFIX + appWidgetId, Boolean.TRUE.toString());
+        return Boolean.valueOf(value);
+    }
+    
+    static void deleteLoopContacts(Context context, int appWidgetId) {
+        deletePreference(context, appWidgetId, PREF_LOOPCONTACTS_PREFIX);
     }
 
 }
