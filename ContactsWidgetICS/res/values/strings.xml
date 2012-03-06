@@ -43,4 +43,6 @@
     <string name="buttonContactRecent">By Last Time Contacted</string>
     <string name="buttonContactDisplayName">By Display Name</string>
     
+    <string name="invalid_provider_info">Invalid wiget provider info: </string>
+    
 </resources>
