@@ -14,6 +14,7 @@ import android.provider.ContactsContract;
 import android.provider.ContactsContract.QuickContact;
 import android.util.Log;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 /**
  * @author Toby Yu(yuyang226@gmail.com)
@@ -71,6 +72,11 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 			int appWidgetId, int widgetEntryLayoutId) {
 		Log.d(TAG, "updateAppWidget appWidgetId=" + appWidgetId); //$NON-NLS-1$
 		AppWidgetProviderInfo widgetProviderInfo = appWidgetManager.getAppWidgetInfo(appWidgetId);
+		if (context == null || widgetProviderInfo == null) {
+			Toast.makeText(context, context.getResources().getString(
+					R.string.invalid_provider_info) + widgetProviderInfo, Toast.LENGTH_LONG);
+			return;
+		}
 		// Here we setup the intent which points to the StackViewService which will
         // provide the views for this collection.
         Intent intent = new Intent(context, ContactsWidgetService.class);

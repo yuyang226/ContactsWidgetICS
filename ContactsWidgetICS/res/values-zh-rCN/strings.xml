@@ -42,4 +42,6 @@
     <string name="buttonContactRecent">按最近联系时间</string>
     <string name="buttonContactDisplayName">按姓名</string>
     
+    <string name="invalid_provider_info">无效的小组件信息: </string>
+    
 </resources>
