@@ -63,7 +63,7 @@ public class ContactAccessor {
 				long directoryId = cursor.getLong(0);
 				String accountName = cursor.getString(1);
 				if (accountName == null && directoryId == Directory.DEFAULT) {
-					accountName = "Local";
+					accountName = "Local"; //$NON-NLS-1$
 				}
 				String accountType = cursor.getString(2);
 				ContactDirectory directory = new ContactDirectory(directoryId,
@@ -180,7 +180,7 @@ public class ContactAccessor {
 				String photoUri = cursor.getString(2);
 				Contact contact = new Contact();
 				contact.setContactId(contactId);
-				contact.setDisplayName(displayName);
+				contact.setDisplayName(trimDisplayName(displayName));
 				contact.setPhotoUri(photoUri);
 				contact.setContactUri(ContentUris.withAppendedId(
 						ContactsContract.Contacts.CONTENT_URI, contactId));
@@ -207,8 +207,8 @@ public class ContactAccessor {
 		String[] projection = new String[] {
 				ContactsContract.CommonDataKinds.GroupMembership.GROUP_ROW_ID,
 				ContactsContract.CommonDataKinds.GroupMembership.CONTACT_ID };
-		String selection = ContactsContract.CommonDataKinds.GroupMembership.GROUP_ROW_ID
-				+ "=" + groupID;
+		String selection = new StringBuffer(ContactsContract.CommonDataKinds.GroupMembership.GROUP_ROW_ID)
+				.append("=").append(groupID).toString(); //$NON-NLS-1$
 		String[] selectionArgs = null;
 
 		CursorLoader loader = new CursorLoader(context, uri, projection,
@@ -247,7 +247,7 @@ public class ContactAccessor {
 		String[] projection = new String[] { ContactsContract.Contacts._ID,
 				ContactsContract.Contacts.DISPLAY_NAME,
 				ContactsContract.Contacts.PHOTO_URI, };
-		String selection = Contacts._ID + "=?";
+		String selection = new StringBuffer(Contacts._ID).append("=?").toString(); //$NON-NLS-1$
 		CursorLoader loader = new CursorLoader(context, uri, projection,
 				selection, new String[]{String.valueOf(contactId)}, sortOrder);
 		Cursor cursor = null;
@@ -258,7 +258,7 @@ public class ContactAccessor {
 				String displayName = cursor.getString(1);
 				String photoUri = cursor.getString(2);
 				contact.setContactId(contactId);
-				contact.setDisplayName(displayName);
+				contact.setDisplayName(trimDisplayName(displayName));
 				contact.setPhotoUri(photoUri);
 				if (photoUri != null && photoUri.length() > 0) {
 					contact.setPhoto(loadContactPhoto(contentResolver,
@@ -281,6 +281,18 @@ public class ContactAccessor {
 			return null;
 		}
 		return BitmapFactory.decodeStream(input);
+	}
+	
+	/**
+	 * Trim the display name if it is too long
+	 * @param displayName
+	 * @return
+	 */
+	public static String trimDisplayName(String displayName) {
+		if (displayName != null && displayName.length() > 9) {
+			displayName = new StringBuffer(displayName.substring(0, 8)).append("..").toString(); //$NON-NLS-1$
+		}
+		return displayName;
 	}
 
 }
