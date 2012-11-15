@@ -5,11 +5,12 @@
     android:versionName="1.2.2" >
 
     <uses-sdk
-        android:minSdkVersion="15"
+        android:minSdkVersion="16"
         android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.PICK_CONTACT" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <!-- <uses-permission android:name="android.permission.GET_ACCOUNTS" /> -->
 
     <application

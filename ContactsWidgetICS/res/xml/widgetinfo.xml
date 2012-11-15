@@ -23,7 +23,7 @@
     android:initialLayout="@layout/contact_manager"
     android:initialKeyguardLayout="@layout/contact_manager"
     android:resizeMode="horizontal|vertical" 
-    android:widgetCategory="keyguard|home_screen">
-    <!-- android:minResizeWidth="64dp"
-  	android:minResizeHeight="64dp" -->
+    android:widgetCategory="keyguard|home_screen"
+    android:minResizeWidth="64dp"
+  	android:minResizeHeight="64dp">
 </appwidget-provider>

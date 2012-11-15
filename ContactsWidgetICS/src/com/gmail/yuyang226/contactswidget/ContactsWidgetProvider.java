@@ -3,6 +3,8 @@
  */
 package com.gmail.yuyang226.contactswidget;
 
+import android.app.Activity;
+import android.app.KeyguardManager;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -10,9 +12,11 @@ import android.appwidget.AppWidgetProviderInfo;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.QuickContact;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -35,12 +39,26 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 	}
 	
 	@Override
-    public void onReceive(Context context, Intent intent) {
+    public void onReceive(final Context context, final Intent intent) {
         if (intent.getAction().equals(SHOW_QUICK_CONTACT_ACTION)) {
-            Uri uri = intent.getData();
+            final Uri uri = intent.getData();
             if (uri != null) {
-            	QuickContact.showQuickContact(context, intent.getSourceBounds(), 
-            			uri, ContactsContract.QuickContact.MODE_SMALL, null);
+            	KeyguardManager km = (KeyguardManager)context.getSystemService(Context.KEYGUARD_SERVICE);
+            	if (km.inKeyguardRestrictedInputMode()) {
+            		//FIXME we need to get the lockscreen widget working
+//            		WindowManager wm = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
+//            		new Activity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+//            		KeyguardLock kl = km.newKeyguardLock(TAG);
+//            		kl.disableKeyguard();
+//            		intent.addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+//            		QuickContact.showQuickContact(context, intent.getSourceBounds(), 
+//                			uri, ContactsContract.QuickContact.MODE_SMALL, null);
+//            		kl.reenableKeyguard();
+            	} else {
+            		QuickContact.showQuickContact(context, intent.getSourceBounds(), 
+                			uri, ContactsContract.QuickContact.MODE_SMALL, null);
+            	}
+            	
             }
         }
         super.onReceive(context, intent);
@@ -74,8 +92,15 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 		AppWidgetProviderInfo widgetProviderInfo = appWidgetManager.getAppWidgetInfo(appWidgetId);
 		if (context == null || widgetProviderInfo == null) {
 			Toast.makeText(context, context.getResources().getString(
-					R.string.invalid_provider_info) + widgetProviderInfo, Toast.LENGTH_LONG);
+					R.string.invalid_provider_info) + widgetProviderInfo, Toast.LENGTH_LONG).show();
 			return;
+		}
+		//check if it is running on the lock screen
+		Bundle widgetOptions = appWidgetManager.getAppWidgetOptions(appWidgetId);
+		int category = widgetOptions.getInt(AppWidgetManager.OPTION_APPWIDGET_HOST_CATEGORY, -1);
+		boolean isKeyguard = category == AppWidgetProviderInfo.WIDGET_CATEGORY_KEYGUARD;
+		if (isKeyguard) {
+			Log.d(TAG, "Running on lockscreen. appWidgetId=" + appWidgetId); //$NON-NLS-1$
 		}
 		// Here we setup the intent which points to the StackViewService which will
         // provide the views for this collection.
@@ -86,7 +111,8 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
         // into the data so that the extras will not be ignored.
         intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
         RemoteViews rv = new RemoteViews(context.getPackageName(), widgetProviderInfo.initialLayout);
-        rv.setRemoteAdapter(appWidgetId, R.id.contactList, intent);
+        rv.setRemoteAdapter(R.id.contactList, intent);
+//        rv.setRemoteAdapter(appWidgetId, R.id.contactList, intent);
         
         // The empty view is displayed when the collection has no items. It should be a sibling
         // of the collection view.
@@ -104,7 +130,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
         PendingIntent toastPendingIntent = PendingIntent.getBroadcast(context, 0, toastIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
         rv.setPendingIntentTemplate(R.id.contactList, toastPendingIntent);
-
+        
         appWidgetManager.updateAppWidget(appWidgetId, rv);
         appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.contactList);
 	}
