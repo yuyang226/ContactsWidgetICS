@@ -21,7 +21,8 @@
     android:updatePeriodMillis="180000"
     android:previewImage="@drawable/preview"
     android:initialLayout="@layout/contact_manager"
-    android:resizeMode="horizontal|vertical" >
+    android:resizeMode="horizontal|vertical" 
+    android:widgetCategory="keyguard|home_screen">
     <!-- android:minResizeWidth="64dp"
   	android:minResizeHeight="64dp" -->
 </appwidget-provider>
