@@ -5,8 +5,8 @@
     android:versionName="1.2.2" >
 
     <uses-sdk
-        android:minSdkVersion="13"
-        android:targetSdkVersion="13" />
+        android:minSdkVersion="15"
+        android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.PICK_CONTACT" />
