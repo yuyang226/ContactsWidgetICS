@@ -3,7 +3,6 @@
  */
 package com.gmail.yuyang226.contactswidget;
 
-import android.app.Activity;
 import android.app.KeyguardManager;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -16,7 +15,6 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.QuickContact;
 import android.util.Log;
-import android.view.WindowManager;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -53,7 +51,11 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 //            		intent.addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
 //            		QuickContact.showQuickContact(context, intent.getSourceBounds(), 
 //                			uri, ContactsContract.QuickContact.MODE_SMALL, null);
-//            		kl.reenableKeyguard();
+            		Intent in = new Intent(context, DismissSafeguardActivity.class);
+            		in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            		in.setData(uri);
+            		in.putExtra("sourceBundle", intent.getSourceBounds());
+            		context.startActivity(in);
             	} else {
             		QuickContact.showQuickContact(context, intent.getSourceBounds(), 
                 			uri, ContactsContract.QuickContact.MODE_SMALL, null);
