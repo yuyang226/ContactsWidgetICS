@@ -11,6 +11,7 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.QuickContact;
+import android.view.Window;
 import android.view.WindowManager;
 
 /**
@@ -29,6 +30,7 @@ public class DismissSafeguardActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 	}
 	
 	@Override
