@@ -43,14 +43,6 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
             if (uri != null) {
             	KeyguardManager km = (KeyguardManager)context.getSystemService(Context.KEYGUARD_SERVICE);
             	if (km.inKeyguardRestrictedInputMode()) {
-            		//FIXME we need to get the lockscreen widget working
-//            		WindowManager wm = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
-//            		new Activity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
-//            		KeyguardLock kl = km.newKeyguardLock(TAG);
-//            		kl.disableKeyguard();
-//            		intent.addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
-//            		QuickContact.showQuickContact(context, intent.getSourceBounds(), 
-//                			uri, ContactsContract.QuickContact.MODE_SMALL, null);
             		Intent in = new Intent(context, DismissSafeguardActivity.class);
             		in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             		in.setData(uri);
