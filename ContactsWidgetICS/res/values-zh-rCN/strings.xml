@@ -20,6 +20,7 @@
     <string name="app_name">联系人小部件</string>
     <string name="widget_name">联系人小部件</string>
     <string name="widget_name_stack">联系人小部件(Stack View)</string>
+    <string name="widget_name_large">联系人小部件(大)</string>
     <string name="contactCreationFailure">创建联系人失败，请检查日志。</string>
     <string name="contactEmailLabel">联系人邮箱</string>
     <string name="contactNameLabel">联系人名字</string>
@@ -44,5 +45,7 @@
     <string name="buttonContactDisplayName">按姓名</string>
     
     <string name="invalid_provider_info">无效的小组件信息: </string>
+    <string name="open_the_people_app">打开联系人应用</string>
+    <string name="loading">读取中...</string>
     
 </resources>

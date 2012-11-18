@@ -15,11 +15,15 @@
 -->
 
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:minWidth="110dp"
-    android:minHeight="110dp"
-    android:configure="com.gmail.yuyang226.contactswidget.pro.ContactsWidgetStackConfigurationActivity"
+    android:minWidth="128dp"
+    android:minHeight="128dp"
+    android:configure="com.gmail.yuyang226.contactswidget.pro.ContactsWidgetConfigurationActivity"
     android:updatePeriodMillis="180000"
-    android:previewImage="@drawable/preview_stack"
-    android:initialLayout="@layout/contact_manager_stack"
-    android:resizeMode="none" >
+    android:previewImage="@drawable/preview"
+    android:initialLayout="@layout/contact_manager_keyguard"
+    android:initialKeyguardLayout="@layout/contact_manager_keyguard"
+    android:resizeMode="horizontal|vertical" 
+    android:widgetCategory="keyguard|home_screen"
+    android:minResizeWidth="128dp"
+  	android:minResizeHeight="128dp">
 </appwidget-provider>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.gmail.yuyang226.contactswidget"
-    android:versionCode="8"
-    android:versionName="1.2.2" >
+    package="com.gmail.yuyang226.contactswidget.pro"
+    android:versionCode="1"
+    android:versionName="1.0.0" >
 
     <uses-sdk
-        android:minSdkVersion="16"
+        android:minSdkVersion="17"
         android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -36,6 +36,16 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widgetinfo" />
+        </receiver>
+        
+        <receiver android:name="ContactsWidgetLargeProvider" android:label="@string/widget_name_large">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <!-- This specifies the widget provider info -->
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widgetinfo_large" />
         </receiver>
                 
         <!-- The widget provider stack view -->
