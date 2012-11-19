@@ -29,10 +29,10 @@
 	        android:layout_margin="@dimen/widget_margin"
 	        android:columnWidth="64dp"
 	        android:gravity="center"
-	        android:horizontalSpacing="6dp"
+	        android:horizontalSpacing="5dp"
 	        android:numColumns="auto_fit"
 	        android:stretchMode="columnWidth"
-	        android:verticalSpacing="6dp" />
+	        android:verticalSpacing="5dp" />
 	    
 	    <ImageButton android:id="@+id/buttonPeople"
 	        android:contentDescription="@string/open_the_people_app"
@@ -42,8 +42,8 @@
 	        android:layout_alignParentBottom="true"
 	        android:layout_alignParentRight="true" 
 	        android:background="@android:color/transparent"
-	        android:paddingBottom="10dp"
-	        android:paddingRight="10dp"
+	        android:paddingBottom="5dp"
+	        android:paddingRight="5dp"
 	        />
     </RelativeLayout>
 
