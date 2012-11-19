@@ -10,3 +10,5 @@ bin
 */bin
 */*/bin
 classes
+.DS_Store
+
