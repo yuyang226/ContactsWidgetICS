@@ -18,12 +18,12 @@
         android:theme="@style/Contacts.Widget.Theme" 
         android:allowBackup="true">
         <activity android:name=".DismissSafeguardActivity"></activity>
-        <activity android:name=".ContactsWidgetConfigurationActivity" android:exported="false" >
+        <activity android:name=".ContactsWidgetConfigurationActivity" android:exported="true" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
-        <activity android:name=".ContactsWidgetStackConfigurationActivity" android:exported="false">
+        <activity android:name=".ContactsWidgetStackConfigurationActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
