@@ -19,7 +19,7 @@
     android:minHeight="128dp"
     android:configure="com.gmail.yuyang226.contactswidget.pro.ContactsWidgetConfigurationActivity"
     android:updatePeriodMillis="180000"
-    android:previewImage="@drawable/preview"
+    android:previewImage="@drawable/preview_large"
     android:initialLayout="@layout/contact_manager_keyguard"
     android:initialKeyguardLayout="@layout/contact_manager_keyguard"
     android:resizeMode="horizontal|vertical" 
