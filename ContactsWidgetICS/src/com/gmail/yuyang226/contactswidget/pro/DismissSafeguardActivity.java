@@ -46,13 +46,12 @@ public class DismissSafeguardActivity extends Activity {
 			public void run() {
 				DismissSafeguardActivity.this.finish();
 			}
-		}, 100);
+		}, 200);
 	}
 
 	@Override
 	protected void onStop() {
-		getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED |
-				WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
 		final String action = getIntent().getStringExtra(ContactsWidgetProvider.INTENT_TAG_ACTION);
 		Log.d(TAG, "Action: " + action);
 		//we have to put the finish and launch of the QuickContact dialog in a separate thread
@@ -77,7 +76,7 @@ public class DismissSafeguardActivity extends Activity {
 					DismissSafeguardActivity.this.startActivity(intent);
 				}
 			}
-		}, ContactsWidgetProvider.LAUNCH_PEOPLE_ACTION.equals(action) ? 500 : 300);
+		}, 500);
 		super.onStop();
 	}
 	
