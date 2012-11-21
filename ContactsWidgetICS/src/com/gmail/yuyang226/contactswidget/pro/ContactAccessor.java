@@ -21,6 +21,7 @@ import android.net.Uri;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.Directory;
+import android.util.LruCache;
 
 import com.gmail.yuyang226.contactswidget.pro.models.Contact;
 import com.gmail.yuyang226.contactswidget.pro.models.ContactDirectory;
@@ -32,6 +33,19 @@ import com.gmail.yuyang226.contactswidget.pro.models.ContactGroup;
  */
 public class ContactAccessor {
 	private static final String STARRED_IN_ANDROID = "Starred in Android"; //$NON-NLS-1$
+	
+	private static final LruCache<String, Bitmap> IMAGES_CACHE;
+	private static final int CACHE_SIZE = 8 * 1024 * 1024; // 4MiB
+	
+	static {
+		IMAGES_CACHE = new LruCache<String, Bitmap>(CACHE_SIZE) {
+
+			@Override
+			protected int sizeOf(String key, Bitmap value) {
+				return value.getByteCount();
+			}
+		};
+	}
 
 	/**
 	 * 
@@ -167,6 +181,8 @@ public class ContactAccessor {
 		}
 		String[] selectionArgs = null;
 
+		boolean showHighRes = ContactsWidgetConfigurationActivity
+				.loadShowHighRes(context, appWidgetId);
 		CursorLoader loader = new CursorLoader(context, uri, projection,
 				selection, selectionArgs, sortOrder);
 		Cursor cursor = null;
@@ -187,7 +203,7 @@ public class ContactAccessor {
 				contacts.add(contact);
 				if (photoUri != null && photoUri.length() > 0) {
 					contact.setPhoto(loadContactPhoto(contentResolver,
-							contact.getContactUri()));
+							contact.getContactUri(), showHighRes));
 				}
 				cursor.moveToNext();
 			}
@@ -209,6 +225,8 @@ public class ContactAccessor {
 				ContactsContract.CommonDataKinds.GroupMembership.CONTACT_ID };
 		String selection = new StringBuffer(ContactsContract.CommonDataKinds.GroupMembership.GROUP_ROW_ID)
 				.append("=").append(groupID).toString(); //$NON-NLS-1$
+		boolean showHighRes = ContactsWidgetConfigurationActivity
+				.loadShowHighRes(context, appWidgetId);
 		String[] selectionArgs = null;
 
 		CursorLoader loader = new CursorLoader(context, uri, projection,
@@ -223,7 +241,7 @@ public class ContactAccessor {
 				long contactId = cursor.getLong(1);
 
 				contacts.add(loadContactById(contentResolver, context,
-						contactId, sortOrder));
+						contactId, sortOrder, showHighRes));
 				cursor.moveToNext();
 			}
 		} finally {
@@ -236,7 +254,7 @@ public class ContactAccessor {
 	}
 
 	private Contact loadContactById(ContentResolver contentResolver,
-			Context context, long contactId, String sortOrder) {
+			Context context, long contactId, String sortOrder, boolean showHighRes) {
 		Contact contact = new Contact();
 		contact.setContactId(contactId);
 		Uri contactUri = ContentUris.withAppendedId(
@@ -250,6 +268,7 @@ public class ContactAccessor {
 		String selection = new StringBuffer(Contacts._ID).append("=?").toString(); //$NON-NLS-1$
 		CursorLoader loader = new CursorLoader(context, uri, projection,
 				selection, new String[]{String.valueOf(contactId)}, sortOrder);
+		
 		Cursor cursor = null;
 		try {
 			loader.startLoading();
@@ -262,7 +281,7 @@ public class ContactAccessor {
 				contact.setPhotoUri(photoUri);
 				if (photoUri != null && photoUri.length() > 0) {
 					contact.setPhoto(loadContactPhoto(contentResolver,
-							contact.getContactUri()));
+							contact.getContactUri(), showHighRes));
 				}
 			}
 		} finally {
@@ -274,13 +293,19 @@ public class ContactAccessor {
 		return contact;
 	}
 
-	private Bitmap loadContactPhoto(ContentResolver contentResolver, Uri uri) {
-		InputStream input = ContactsContract.Contacts
-				.openContactPhotoInputStream(contentResolver, uri);
-		if (input == null) {
-			return null;
+	private Bitmap loadContactPhoto(ContentResolver contentResolver, Uri uri, boolean showHighRes) {
+		final String imageKey = uri.toString() + showHighRes;
+		Bitmap pic = IMAGES_CACHE.get(imageKey);
+		if (pic == null) {
+			InputStream input = ContactsContract.Contacts
+					.openContactPhotoInputStream(contentResolver, uri, showHighRes);
+			if (input == null) {
+				return null;
+			}
+			pic = BitmapFactory.decodeStream(input);
+			IMAGES_CACHE.put(imageKey, pic);
 		}
-		return BitmapFactory.decodeStream(input);
+		return pic;
 	}
 	
 	/**

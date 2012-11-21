@@ -48,6 +48,24 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/line1"
         android:prompt="@string/contactGroupPrompt" />
+    
+    <TextView
+        android:id="@+id/line2"
+        style="?android:attr/listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/groupList"
+        android:background="@color/holo_blue_light"
+        android:gravity="center_horizontal"
+        android:paddingTop="5dip" />
+    
+	<CheckBox
+            android:id="@+id/showHighRes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line2"
+            android:text="@string/showHighResText"
+            android:checked="true" />
 
     <!-- Begining of Sorting -->
 
@@ -55,14 +73,14 @@
         android:id="@+id/sortText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/groupList"
+        android:layout_below="@+id/showHighRes"
         android:layout_gravity="left"
         android:text="@string/contactSorting"
         android:textColor="@color/holo_blue_light"
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/line2"
+        android:id="@+id/line3"
         style="?android:attr/listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -76,7 +94,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/line2"
+        android:layout_below="@+id/line3"
         android:orientation="vertical" >
 
         <RadioButton
