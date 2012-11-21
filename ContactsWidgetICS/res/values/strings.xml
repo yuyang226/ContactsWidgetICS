@@ -47,5 +47,6 @@
     <string name="invalid_provider_info">Invalid wiget provider info: </string>
     <string name="open_the_people_app">Open the People app</string>
     <string name="loading">Loading...</string>
+    <string name="showHighResText">Show High Resolution Pictures</string>
     
 </resources>

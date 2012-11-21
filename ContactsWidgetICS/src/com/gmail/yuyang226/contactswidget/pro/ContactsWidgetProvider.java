@@ -100,6 +100,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 		for (int appWidgetId : appWidgetIds) {
 			ContactsWidgetConfigurationActivity.deleteSelectionString(context, appWidgetId);
 			ContactsWidgetConfigurationActivity.deleteSortingString(context, appWidgetId);
+			ContactsWidgetConfigurationActivity.deleteShowHighRes(context, appWidgetId);
 		}
 	}
 	

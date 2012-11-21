@@ -63,5 +63,5 @@ public class ContactsWidgetStackConfigurationActivity extends
     static void deleteLoopContacts(Context context, int appWidgetId) {
         deletePreference(context, appWidgetId, PREF_LOOPCONTACTS_PREFIX);
     }
-
+    
 }

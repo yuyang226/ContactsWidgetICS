@@ -14,6 +14,7 @@ import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
@@ -28,6 +29,8 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	
 	public static final String PREF_GROUP_PREFIX = "group_"; //$NON-NLS-1$
 	public static final String PREF_SORTING_PREFIX = "sorting_"; //$NON-NLS-1$
+	//whether to show high resolution pictures
+	public static final String PREF_HIGH_RES = "highres_"; //$NON-NLS-1$
 	
 	private Spinner groupList;
 	
@@ -146,6 +149,9 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         String selection = groupList.getSelectedItemPosition() == 0 || contactGroups.isEmpty() ? CONTACT_STARRED : 
         	String.valueOf(contactGroups.get(groupList.getSelectedItemPosition()).getGroupId());
         saveSelectionString(context, appWidgetId, selection);
+        
+        CheckBox showHighRes = (CheckBox)findViewById(R.id.showHighRes);
+		saveShowHighRes(context, appWidgetId, showHighRes.isChecked());
 
         // Push widget update to surface with newly set prefix
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
@@ -211,6 +217,23 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     
     static void deleteSelectionString(Context context, int appWidgetId) {
         deletePreference(context, appWidgetId, PREF_GROUP_PREFIX);
+    }
+    
+    //whether to show high resolution pictures
+    static void saveShowHighRes(Context context, int appWidgetId, boolean showHighRes) {
+        SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_HIGH_RES, 0).edit();
+        prefs.putString(PREF_HIGH_RES + appWidgetId, String.valueOf(showHighRes));
+        prefs.commit();
+    }
+
+    static boolean loadShowHighRes(Context context, int appWidgetId) {
+        SharedPreferences prefs = context.getSharedPreferences(PREF_HIGH_RES, 0);
+        String value = prefs.getString(PREF_HIGH_RES + appWidgetId, Boolean.FALSE.toString());
+        return Boolean.valueOf(value);
+    }
+    
+    static void deleteShowHighRes(Context context, int appWidgetId) {
+        deletePreference(context, appWidgetId, PREF_HIGH_RES);
     }
     
 }
