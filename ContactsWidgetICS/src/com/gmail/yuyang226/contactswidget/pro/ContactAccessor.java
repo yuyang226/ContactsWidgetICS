@@ -22,7 +22,9 @@ import android.net.Uri;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.Directory;
+import android.util.Log;
 import android.util.LruCache;
+import android.widget.Toast;
 
 import com.gmail.yuyang226.contactswidget.pro.models.Contact;
 import com.gmail.yuyang226.contactswidget.pro.models.ContactDirectory;
@@ -309,8 +311,13 @@ public class ContactAccessor {
 			pic = BitmapFactory.decodeStream(input);
 			if (showHighRes && size != null) {
 				//performance enhancement
-				pic = Bitmap.createScaledBitmap(
+				Bitmap newPic = Bitmap.createScaledBitmap(
 						pic, size.width(), size.height(), false);
+				if (pic.getByteCount() != newPic.getByteCount()) {
+					//the picture has been downscaled, and the old one should be recycled
+					pic.recycle();
+					pic = newPic;
+				}
 			}
 			
 			IMAGES_CACHE.put(imageKey, pic);
