@@ -4,6 +4,7 @@
 package com.gmail.yuyang226.contactswidget.pro;
 
 import android.content.Context;
+import android.graphics.Rect;
 
 /**
  * @author Toby Yu(yuyang226@gmail.com)
@@ -34,5 +35,12 @@ public class ContactsWidgetStackProvider extends ContactsWidgetProvider {
 			ContactsWidgetStackConfigurationActivity.deleteLoopContacts(context, appWidgetId);
 		}
 	}
+
+	@Override
+	protected Rect getImageSize() {
+		return IMAGE_SIZE_LARGE_RECT;
+	}
+	
+	
 	
 }

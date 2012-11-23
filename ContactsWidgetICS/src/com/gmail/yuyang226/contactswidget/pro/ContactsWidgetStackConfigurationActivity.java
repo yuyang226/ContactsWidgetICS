@@ -5,6 +5,7 @@ package com.gmail.yuyang226.contactswidget.pro;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Rect;
 import android.widget.CheckBox;
 
 /**
@@ -30,6 +31,11 @@ public class ContactsWidgetStackConfigurationActivity extends
 		saveShowName(context, appWidgetId, showName.isChecked());
 		CheckBox loopContacts = (CheckBox)findViewById(R.id.loopContacts);
 		saveLoopContacts(context, appWidgetId, loopContacts.isChecked());
+	}
+	
+	@Override
+	protected Rect getImageSize() {
+		return ContactsWidgetProvider.IMAGE_SIZE_LARGE_RECT;
 	}
 
 	static void saveShowName(Context context, int appWidgetId, boolean showName) {

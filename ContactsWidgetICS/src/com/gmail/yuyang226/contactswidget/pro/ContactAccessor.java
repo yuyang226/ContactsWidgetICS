@@ -17,6 +17,7 @@ import android.content.CursorLoader;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.Contacts;
@@ -159,7 +160,7 @@ public class ContactAccessor {
 	 * @return A cursor for for accessing the contact list.
 	 */
 	public List<Contact> getContacts(ContentResolver contentResolver,
-			Context context, int appWidgetId) {
+			Context context, int appWidgetId, Rect size) {
 		final List<Contact> contacts = new ArrayList<Contact>();
 		// Run query
 		Uri uri = ContactsContract.Contacts.CONTENT_URI;
@@ -177,7 +178,7 @@ public class ContactAccessor {
 			selection = groupId;
 		} else {
 			return getContactsByGroup(contentResolver, context, appWidgetId,
-					groupId, sortOrder);
+					groupId, sortOrder, size);
 		}
 		String[] selectionArgs = null;
 
@@ -203,7 +204,7 @@ public class ContactAccessor {
 				contacts.add(contact);
 				if (photoUri != null && photoUri.length() > 0) {
 					contact.setPhoto(loadContactPhoto(contentResolver,
-							contact.getContactUri(), showHighRes));
+							contact.getContactUri(), showHighRes, size));
 				}
 				cursor.moveToNext();
 			}
@@ -217,7 +218,8 @@ public class ContactAccessor {
 	}
 
 	private List<Contact> getContactsByGroup(ContentResolver contentResolver,
-			Context context, int appWidgetId, String groupID, String sortOrder) {
+			Context context, int appWidgetId, String groupID, String sortOrder, 
+			Rect size) {
 		final List<Contact> contacts = new ArrayList<Contact>();
 		Uri uri = ContactsContract.Data.CONTENT_URI;
 		String[] projection = new String[] {
@@ -241,7 +243,7 @@ public class ContactAccessor {
 				long contactId = cursor.getLong(1);
 
 				contacts.add(loadContactById(contentResolver, context,
-						contactId, sortOrder, showHighRes));
+						contactId, sortOrder, showHighRes, size));
 				cursor.moveToNext();
 			}
 		} finally {
@@ -254,7 +256,8 @@ public class ContactAccessor {
 	}
 
 	private Contact loadContactById(ContentResolver contentResolver,
-			Context context, long contactId, String sortOrder, boolean showHighRes) {
+			Context context, long contactId, String sortOrder, boolean showHighRes, 
+			Rect size) {
 		Contact contact = new Contact();
 		contact.setContactId(contactId);
 		Uri contactUri = ContentUris.withAppendedId(
@@ -281,7 +284,7 @@ public class ContactAccessor {
 				contact.setPhotoUri(photoUri);
 				if (photoUri != null && photoUri.length() > 0) {
 					contact.setPhoto(loadContactPhoto(contentResolver,
-							contact.getContactUri(), showHighRes));
+							contact.getContactUri(), showHighRes, size));
 				}
 			}
 		} finally {
@@ -293,8 +296,9 @@ public class ContactAccessor {
 		return contact;
 	}
 
-	private Bitmap loadContactPhoto(ContentResolver contentResolver, Uri uri, boolean showHighRes) {
-		final String imageKey = uri.toString() + showHighRes;
+	private Bitmap loadContactPhoto(ContentResolver contentResolver, Uri uri, boolean showHighRes, 
+			Rect size) {
+		final String imageKey = uri.toString() + showHighRes + size;
 		Bitmap pic = IMAGES_CACHE.get(imageKey);
 		if (pic == null) {
 			InputStream input = ContactsContract.Contacts
@@ -303,6 +307,12 @@ public class ContactAccessor {
 				return null;
 			}
 			pic = BitmapFactory.decodeStream(input);
+			if (showHighRes && size != null) {
+				//performance enhancement
+				pic = Bitmap.createScaledBitmap(
+						pic, size.width(), size.height(), false);
+			}
+			
 			IMAGES_CACHE.put(imageKey, pic);
 		}
 		return pic;
