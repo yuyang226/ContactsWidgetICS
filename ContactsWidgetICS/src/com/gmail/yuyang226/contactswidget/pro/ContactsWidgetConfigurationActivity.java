@@ -9,6 +9,7 @@ import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
@@ -156,7 +157,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         // Push widget update to surface with newly set prefix
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         ContactsWidgetProvider.updateAppWidget(context, appWidgetManager,
-        		appWidgetId, widgetEntryLayoutId, true);
+        		appWidgetId, widgetEntryLayoutId, true, getImageSize());
     }
     
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
@@ -169,6 +170,10 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         	finish();
         }
     };
+    
+    protected Rect getImageSize() {
+		return ContactsWidgetProvider.IMAGE_SIZE_SMALL_RECT;
+	}
     
  // Write the prefix to the SharedPreferences object for this widget
     static void saveSortingString(Context context, int appWidgetId, String text) {

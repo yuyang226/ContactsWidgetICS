@@ -10,6 +10,7 @@ import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RemoteViews;
@@ -44,6 +45,7 @@ public class ContactsWidgetService extends RemoteViewsService {
 	    private Context mContext;
 	    private int mAppWidgetId;
 	    private int widgetEntryLayoutId;
+	    private Rect imageSize;
 
 	    public GridRemoteViewsFactory(Context context, Intent intent) {
 	    	//Log.d(TAG, String.format("Input Params: %s, %s", String.valueOf(context), String.valueOf(intent))); //$NON-NLS-1$
@@ -53,12 +55,13 @@ public class ContactsWidgetService extends RemoteViewsService {
 	        
 	        widgetEntryLayoutId = intent.getIntExtra(ContactsWidgetProvider.CONTACT_ENTRY_LAYOUT_ID,
 	                R.layout.contact_entry);
+	        this.imageSize = intent.getParcelableExtra(ContactsWidgetProvider.IMAGE_SIZE);
 	    }
 
 	    public void onCreate() {
 	    	mWidgetItems.clear();
 		    mWidgetItems.addAll(new ContactAccessor().getContacts(
-		    		getContentResolver(), this.mContext, this.mAppWidgetId));
+		    		getContentResolver(), this.mContext, this.mAppWidgetId, this.imageSize));
 	    }
 
 	    public void onDestroy() {

@@ -10,6 +10,7 @@ import android.appwidget.AppWidgetProvider;
 import android.appwidget.AppWidgetProviderInfo;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -29,6 +30,11 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 	public static final String CONTACT_URI = "com.gmail.yuyang226.contactswidget.CONTACT_URI"; //$NON-NLS-1$
 	public static final String CONTACTS = "contacts"; //$NON-NLS-1$
 	public static final String CONTACT_ENTRY_LAYOUT_ID = "contact.entry.layout.id"; //$NON-NLS-1$
+	public static final String IMAGE_SIZE = "contact.entry.image.size"; //$NON-NLS-1$
+	private static final int IMAGE_SIZE_SMALL_HEIGHT = 72 * 2;
+	public static final Rect IMAGE_SIZE_SMALL_RECT = new Rect(0, 0, IMAGE_SIZE_SMALL_HEIGHT, IMAGE_SIZE_SMALL_HEIGHT);
+	private static final int IMAGE_SIZE_LARGE_HEIGHT = 128 * 2;
+	public static final Rect IMAGE_SIZE_LARGE_RECT = new Rect(0, 0, IMAGE_SIZE_LARGE_HEIGHT, IMAGE_SIZE_LARGE_HEIGHT);
 	private static final String TAG = ContactsWidgetProvider.class.getName();
 
 	/**
@@ -85,7 +91,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
         // update each of the widgets with the remote adapter
         for (int i = 0; i < appWidgetIds.length; i++) {
         	updateAppWidget(context, appWidgetManager, appWidgetIds[i], getWidgetEntryLayoutId(),
-        			canLaunchPeopleApp());
+        			canLaunchPeopleApp(), getImageSize());
         }
         super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
@@ -105,7 +111,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 	}
 	
 	static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-			int appWidgetId, int widgetEntryLayoutId, boolean canLaunchPeopleApp) {
+			int appWidgetId, int widgetEntryLayoutId, boolean canLaunchPeopleApp, Rect imageSize) {
 		Log.d(TAG, "updateAppWidget appWidgetId=" + appWidgetId); //$NON-NLS-1$
 		AppWidgetProviderInfo widgetProviderInfo = appWidgetManager.getAppWidgetInfo(appWidgetId);
 		if (context == null || widgetProviderInfo == null) {
@@ -125,6 +131,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
         Intent intent = new Intent(context, ContactsWidgetService.class);
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
         intent.putExtra(CONTACT_ENTRY_LAYOUT_ID, widgetEntryLayoutId);
+        intent.putExtra(IMAGE_SIZE, imageSize);
         // When intents are compared, the extras are ignored, so we need to embed the extras
         // into the data so that the extras will not be ignored.
         intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
@@ -166,6 +173,10 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 	
 	protected boolean canLaunchPeopleApp() {
 		return false;
+	}
+	
+	protected Rect getImageSize() {
+		return IMAGE_SIZE_SMALL_RECT;
 	}
 
 }
