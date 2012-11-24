@@ -22,9 +22,7 @@ import android.net.Uri;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.Directory;
-import android.util.Log;
 import android.util.LruCache;
-import android.widget.Toast;
 
 import com.gmail.yuyang226.contactswidget.pro.models.Contact;
 import com.gmail.yuyang226.contactswidget.pro.models.ContactDirectory;
@@ -297,6 +295,23 @@ public class ContactAccessor {
 		}
 		return contact;
 	}
+	
+	public static int calculateInSampleSize(
+			BitmapFactory.Options options, int reqWidth, int reqHeight) {
+		// Raw height and width of image
+		final int height = options.outHeight;
+		final int width = options.outWidth;
+		int inSampleSize = 1;
+
+		if (height > reqHeight || width > reqWidth) {
+			if (width > height) {
+				inSampleSize = Math.round((float)height / (float)reqHeight);
+			} else {
+				inSampleSize = Math.round((float)width / (float)reqWidth);
+			}
+		}
+		return inSampleSize;
+	}
 
 	private Bitmap loadContactPhoto(ContentResolver contentResolver, Uri uri, boolean showHighRes, 
 			Rect size) {
@@ -308,19 +323,29 @@ public class ContactAccessor {
 			if (input == null) {
 				return null;
 			}
-			pic = BitmapFactory.decodeStream(input);
+
 			if (showHighRes && size != null) {
 				//performance enhancement
-				Bitmap newPic = Bitmap.createScaledBitmap(
-						pic, size.width(), size.height(), false);
-				if (pic.getByteCount() != newPic.getByteCount()) {
-					//the picture has been downscaled, and the old one should be recycled
-					pic.recycle();
-					pic = newPic;
+				BitmapFactory.Options options = new BitmapFactory.Options();
+				options.inJustDecodeBounds = true;
+				BitmapFactory.decodeStream(input, null, options);
+				// Calculate inSampleSize
+				options.inSampleSize = calculateInSampleSize(options, size.width(), size.height());
+				// Decode bitmap with inSampleSize set
+				options.inJustDecodeBounds = false;
+				//opening another inputstream because the first one has been auto closed
+				input = ContactsContract.Contacts
+						.openContactPhotoInputStream(contentResolver, uri, showHighRes);
+				if (input == null) {
+					return null;
 				}
+				pic = BitmapFactory.decodeStream(input, null, options);
+			} else {
+				pic = BitmapFactory.decodeStream(input);
 			}
-			
-			IMAGES_CACHE.put(imageKey, pic);
+			if (pic != null) {
+				IMAGES_CACHE.put(imageKey, pic);
+			}
 		}
 		return pic;
 	}

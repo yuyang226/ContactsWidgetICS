@@ -33,6 +33,8 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	//whether to show high resolution pictures
 	public static final String PREF_HIGH_RES = "highres_"; //$NON-NLS-1$
 	
+	public static final String[] PREFS_PREFIX = {PREF_GROUP_PREFIX, PREF_SORTING_PREFIX, PREF_HIGH_RES};
+	
 	private Spinner groupList;
 	
 	private RadioGroup contactsSorting;
@@ -200,10 +202,6 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
          prefs.commit();
     }
     
-    static void deleteSortingString(Context context, int appWidgetId) {
-        deletePreference(context, appWidgetId, PREF_SORTING_PREFIX);
-    }
-    
     static void saveSelectionString(Context context, int appWidgetId, String text) {
         SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_GROUP_PREFIX, 0).edit();
         prefs.putString(PREF_GROUP_PREFIX + appWidgetId, text);
@@ -220,10 +218,6 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         }
     }
     
-    static void deleteSelectionString(Context context, int appWidgetId) {
-        deletePreference(context, appWidgetId, PREF_GROUP_PREFIX);
-    }
-    
     //whether to show high resolution pictures
     static void saveShowHighRes(Context context, int appWidgetId, boolean showHighRes) {
         SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_HIGH_RES, 0).edit();
@@ -233,12 +227,8 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 
     static boolean loadShowHighRes(Context context, int appWidgetId) {
         SharedPreferences prefs = context.getSharedPreferences(PREF_HIGH_RES, 0);
-        String value = prefs.getString(PREF_HIGH_RES + appWidgetId, Boolean.FALSE.toString());
+        String value = prefs.getString(PREF_HIGH_RES + appWidgetId, Boolean.TRUE.toString());
         return Boolean.valueOf(value);
-    }
-    
-    static void deleteShowHighRes(Context context, int appWidgetId) {
-        deletePreference(context, appWidgetId, PREF_HIGH_RES);
     }
     
 }
