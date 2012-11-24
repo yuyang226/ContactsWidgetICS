@@ -88,6 +88,8 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+    	//making sure your friends' new pictures will be loaded
+        ContactAccessor.clearImageCache();
         // update each of the widgets with the remote adapter
         for (int i = 0; i < appWidgetIds.length; i++) {
         	updateAppWidget(context, appWidgetManager, appWidgetIds[i], getWidgetEntryLayoutId(),
