@@ -31,9 +31,9 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 	public static final String CONTACTS = "contacts"; //$NON-NLS-1$
 	public static final String CONTACT_ENTRY_LAYOUT_ID = "contact.entry.layout.id"; //$NON-NLS-1$
 	public static final String IMAGE_SIZE = "contact.entry.image.size"; //$NON-NLS-1$
-	private static final int IMAGE_SIZE_SMALL_HEIGHT = 72 * 2;
+	private static final int IMAGE_SIZE_SMALL_HEIGHT = 72;
 	public static final Rect IMAGE_SIZE_SMALL_RECT = new Rect(0, 0, IMAGE_SIZE_SMALL_HEIGHT, IMAGE_SIZE_SMALL_HEIGHT);
-	private static final int IMAGE_SIZE_LARGE_HEIGHT = 128 * 2;
+	private static final int IMAGE_SIZE_LARGE_HEIGHT = 128;
 	public static final Rect IMAGE_SIZE_LARGE_RECT = new Rect(0, 0, IMAGE_SIZE_LARGE_HEIGHT, IMAGE_SIZE_LARGE_HEIGHT);
 	private static final String TAG = ContactsWidgetProvider.class.getName();
 
@@ -104,9 +104,9 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 		Log.d(TAG, "onDeleted"); //$NON-NLS-1$
 		super.onDeleted(context, appWidgetIds);
 		for (int appWidgetId : appWidgetIds) {
-			ContactsWidgetConfigurationActivity.deleteSelectionString(context, appWidgetId);
-			ContactsWidgetConfigurationActivity.deleteSortingString(context, appWidgetId);
-			ContactsWidgetConfigurationActivity.deleteShowHighRes(context, appWidgetId);
+			for (String prefPrefix : ContactsWidgetConfigurationActivity.PREFS_PREFIX) {
+				ContactsWidgetConfigurationActivity.deletePreference(context, appWidgetId, prefPrefix);
+			}
 		}
 	}
 	
