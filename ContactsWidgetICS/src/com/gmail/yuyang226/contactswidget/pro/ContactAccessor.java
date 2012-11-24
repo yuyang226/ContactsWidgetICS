@@ -54,6 +54,10 @@ public class ContactAccessor {
 	public ContactAccessor() {
 		super();
 	}
+	
+	static void clearImageCache() {
+		IMAGES_CACHE.evictAll();
+	}
 
 	public List<ContactDirectory> getContactDirectories(Context context) {
 		final List<ContactDirectory> directories = new ArrayList<ContactDirectory>();

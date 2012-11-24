@@ -71,6 +71,7 @@ public class ContactsWidgetService extends RemoteViewsService {
 	    		}
 	    	}
 	        mWidgetItems.clear();
+	        ContactAccessor.clearImageCache();
 	    }
 
 	    public int getCount() {
