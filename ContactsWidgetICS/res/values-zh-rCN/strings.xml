@@ -21,6 +21,7 @@
     <string name="widget_name">联系人小部件</string>
     <string name="widget_name_stack">联系人小部件(Stack View)</string>
     <string name="widget_name_large">联系人小部件(大)</string>
+    <string name="widget_name_super">联系人小部件(超大)</string>
     <string name="contactCreationFailure">创建联系人失败，请检查日志。</string>
     <string name="contactEmailLabel">联系人邮箱</string>
     <string name="contactNameLabel">联系人名字</string>

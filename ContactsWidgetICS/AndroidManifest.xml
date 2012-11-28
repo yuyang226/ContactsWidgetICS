@@ -28,6 +28,11 @@
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
+        <activity android:name=".ContactsWidgetSuperConfigurationActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
         <!-- The widget provider -->
         <receiver android:name="ContactsWidgetProvider" android:label="@string/widget_name">
             <intent-filter>
@@ -47,6 +52,16 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widgetinfo_large" />
+        </receiver>
+        
+        <receiver android:name="ContactsWidgetSuperProvider" android:label="@string/widget_name_super">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <!-- This specifies the widget provider info -->
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widgetinfo_super" />
         </receiver>
                 
         <!-- The widget provider stack view -->

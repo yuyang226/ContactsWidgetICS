@@ -138,7 +138,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
         // into the data so that the extras will not be ignored.
         intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
         RemoteViews rv = new RemoteViews(context.getPackageName(), 
-        		isKeyguard ? R.layout.contact_manager_keyguard : widgetProviderInfo.initialLayout);
+        		widgetProviderInfo.initialLayout);
         rv.setRemoteAdapter(R.id.contactList, intent);
         if (isKeyguard || canLaunchPeopleApp) {
         	Intent launchPeopleIntent = new Intent(context, ContactsWidgetProvider.class);
