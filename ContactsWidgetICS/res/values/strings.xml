@@ -21,6 +21,7 @@
     <string name="widget_name">Contacts Widget</string>
     <string name="widget_name_stack">Contacts Widget(Stack View)</string>
     <string name="widget_name_large">Contacts Widget(Large)</string>
+    <string name="widget_name_super">Contacts Widget(Super)</string>
     <string name="contactCreationFailure">Contact creation failed, check logs.</string>
     <string name="contactEmailLabel">Contact Email</string>
     <string name="contactNameLabel">Contact Name</string>
