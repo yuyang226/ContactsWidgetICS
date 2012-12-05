@@ -50,4 +50,8 @@
     <string name="loading">Loading...</string>
     <string name="showHighResText">Show High Resolution Pictures</string>
     
+    <!-- Localization -->
+    <string name="starredContacts">Starred in Android</string>
+    <string name="myContacts">My Contacts</string>
+    
 </resources>

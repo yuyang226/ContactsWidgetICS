@@ -26,6 +26,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 
 	public static final String CONTACT_GROUP
 	= "com.gmail.yuyang226.contactswidget.config.contact_group"; //$NON-NLS-1$
+	public static final long CONTACT_STARRED_GROUP_ID = -999L;
 	public static final String CONTACT_STARRED = ContactsContract.Contacts.STARRED + " = '1'"; //$NON-NLS-1$
 	
 	public static final String PREF_GROUP_PREFIX = "group_"; //$NON-NLS-1$
@@ -79,7 +80,6 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         setContentView(configActivityLayoutId);
 
         //groups list
-        
         this.groupList = (Spinner)findViewById(R.id.groupList);
         Collection<ContactGroup> contactGroups = new ContactAccessor().getContactGroups(getApplicationContext(), 
 				0);
@@ -149,7 +149,10 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         	break;
         }
         saveSortingString(context, appWidgetId, sortString);
-        String selection = groupList.getSelectedItemPosition() == 0 || contactGroups.isEmpty() ? CONTACT_STARRED : 
+        ContactGroup selectedGroup = 
+        		this.contactGroups.get(groupList.getSelectedItemPosition());
+        String selection = selectedGroup.getGroupId() == CONTACT_STARRED_GROUP_ID || contactGroups.isEmpty() 
+        		? CONTACT_STARRED : 
         	String.valueOf(contactGroups.get(groupList.getSelectedItemPosition()).getGroupId());
         saveSelectionString(context, appWidgetId, selection);
         

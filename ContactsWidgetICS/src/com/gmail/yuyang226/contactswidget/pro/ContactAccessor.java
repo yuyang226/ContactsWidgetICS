@@ -33,10 +33,9 @@ import com.gmail.yuyang226.contactswidget.pro.models.ContactGroup;
  * 
  */
 public class ContactAccessor {
-	private static final String STARRED_IN_ANDROID = "Starred in Android"; //$NON-NLS-1$
-	
+	private static final String STARRED_CONTACTS_ENG = "Starred in Android";
 	private static final LruCache<String, Bitmap> IMAGES_CACHE;
-	private static final int CACHE_SIZE = 8 * 1024 * 1024; // 4MiB
+	private static final int CACHE_SIZE = 8 * 1024 * 1024; // 8MiB
 	
 	static {
 		IMAGES_CACHE = new LruCache<String, Bitmap>(CACHE_SIZE) {
@@ -101,13 +100,16 @@ public class ContactAccessor {
 
 	public Collection<ContactGroup> getContactGroups(Context context,
 			long directoryId) {
+		final String starredContacts = context.getString(R.string.starredContacts);
 		Comparator<ContactGroup> comparator = new Comparator<ContactGroup>() {
 
 			@Override
 			public int compare(ContactGroup g1, ContactGroup g2) {
-				if (STARRED_IN_ANDROID.equalsIgnoreCase(g1.getTitle())) {
+				if (starredContacts.equalsIgnoreCase(g1.getTitle())
+						|| STARRED_CONTACTS_ENG.equalsIgnoreCase(g1.getTitle())) {
 					return -1;
-				} else if (STARRED_IN_ANDROID.equalsIgnoreCase(g2.getTitle())) {
+				} else if (starredContacts.equalsIgnoreCase(g2.getTitle())
+						|| STARRED_CONTACTS_ENG.equalsIgnoreCase(g2.getTitle())) {
 					return 1;
 				}
 				return g1.getTitle().compareTo(g2.getTitle());
@@ -130,19 +132,24 @@ public class ContactAccessor {
 		CursorLoader loader = new CursorLoader(context, uri, projection,
 				selection, selectionArgs, sortOrder);
 		Cursor cursor = null;
+		boolean foundStarredGroup = false;
 		try {
 			loader.startLoading();
 			cursor = loader.loadInBackground();
 			cursor.moveToFirst();
+			final String myContacts = context.getString(R.string.myContacts);
 			while (cursor.isAfterLast() == false) {
 				long groupId = cursor.getLong(0);
 				String accountName = cursor.getString(1);
 				String accountType = cursor.getString(2);
 				String title = cursor.getString(3);
-				if (title.equalsIgnoreCase("My Contacts")) { //$NON-NLS-1$
+				if (title.equalsIgnoreCase(myContacts)) { //$NON-NLS-1$
 					// we dont want to handle My Contacts
 					cursor.moveToNext();
 					continue;
+				} else if (title.equalsIgnoreCase(starredContacts)
+						|| STARRED_CONTACTS_ENG.equalsIgnoreCase(title)) {
+					foundStarredGroup = true;
 				}
 				ContactGroup group = new ContactGroup(groupId, accountName,
 						accountType, title);
@@ -154,6 +161,13 @@ public class ContactAccessor {
 			if (cursor != null) {
 				cursor.close();
 			}
+		}
+		if (!foundStarredGroup) {
+			//not containing the starredContacts
+			ContactGroup group = new ContactGroup(
+					ContactsWidgetConfigurationActivity.CONTACT_STARRED_GROUP_ID, starredContacts,
+					null, starredContacts);
+			groups.add(group);
 		}
 		return groups;
 	}
