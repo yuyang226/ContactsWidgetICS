@@ -50,4 +50,8 @@
     <string name="loading">读取中...</string>
     <string name="showHighResText">优先显示高分辨率图片</string>
     
+    <!-- Localization -->
+    <string name="starredContacts">加星好友</string>
+    <string name="myContacts">所有联系人</string>
+    
 </resources>

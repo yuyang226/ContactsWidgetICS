@@ -3,6 +3,7 @@
  */
 package com.gmail.yuyang226.contactswidget.pro;
 
+import android.annotation.TargetApi;
 import android.app.KeyguardManager;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -12,6 +13,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.QuickContact;
@@ -112,6 +114,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 		}
 	}
 	
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 	static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
 			int appWidgetId, int widgetEntryLayoutId, boolean canLaunchPeopleApp, Rect imageSize) {
 		Log.d(TAG, "updateAppWidget appWidgetId=" + appWidgetId); //$NON-NLS-1$
@@ -122,12 +125,17 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 			return;
 		}
 		//check if it is running on the lock screen
-		Bundle widgetOptions = appWidgetManager.getAppWidgetOptions(appWidgetId);
-		int category = widgetOptions.getInt(AppWidgetManager.OPTION_APPWIDGET_HOST_CATEGORY, -1);
-		boolean isKeyguard = category == AppWidgetProviderInfo.WIDGET_CATEGORY_KEYGUARD;
-		if (isKeyguard) {
-			Log.d(TAG, "Running on lockscreen. appWidgetId=" + appWidgetId); //$NON-NLS-1$
+		boolean isKeyguard = false;
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+			//only do the check if it is running Jelly Bean or higher
+			Bundle widgetOptions = appWidgetManager.getAppWidgetOptions(appWidgetId);
+			int category = widgetOptions.getInt(AppWidgetManager.OPTION_APPWIDGET_HOST_CATEGORY, -1);
+			isKeyguard = category == AppWidgetProviderInfo.WIDGET_CATEGORY_KEYGUARD;
+			if (isKeyguard) {
+				Log.d(TAG, "Running on lockscreen. appWidgetId=" + appWidgetId); //$NON-NLS-1$
+			}
 		}
+		
 		// Here we setup the intent which points to the StackViewService which will
         // provide the views for this collection.
         Intent intent = new Intent(context, ContactsWidgetService.class);
