@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+    <string name="accountSpinnerLabel">帐户</string>
+    <string name="allAccounts">所有帐户</string>
+    <string name="app_name">通讯精灵</string>
+    <string name="widget_name">通讯精灵</string>
+    <string name="widget_name_stack">通讯精灵(Stack View)</string>
+    <string name="widget_name_large">通讯精灵(大)</string>
+    <string name="widget_name_super">通讯精灵(超大)</string>
+    <string name="contactCreationFailure">创建联系人失败，请检查日志。</string>
+    <string name="contactEmailLabel">联系人邮箱</string>
+    <string name="contactNameLabel">联系人名字</string>
+    <string name="contactPhoneLabel">联系人电话</string>
+    <string name="selectAccountLabel">选择</string>
+    <string name="selectLabel">选择标签</string>
+    <string name="targetAccountLabel">目标帐户</string>
+    <string name="undefinedTypeLabel">(未定义)</string>
+    <string name="empty_view_text">没有联系人</string>
+    <string name="contactImageDescription">联系人头像</string>
+    <string name="loopContactsText">循环显示联系人</string>
+    <string name="checkShowNameText">显示联系人姓名</string>
+    
+    <!-- Configurations -->
+    <string name="contactGroup">联系人分组</string>
+    <string name="contactGroupPrompt">请选择一个联系人分组</string>
+    <string name="contactSorting">联系人排序</string>
+    <string name="buttonOk">确定</string>
+    <string name="buttonCancel">取消</string>
+    <string name="buttonContactFrequency">按联系次数</string>
+    <string name="buttonContactRecent">按最近联系时间</string>
+    <string name="buttonContactDisplayName">按姓名</string>
+    
+    <string name="invalid_provider_info">无效的小组件信息: </string>
+    <string name="open_the_people_app">打开联系人应用</string>
+    <string name="loading">读取中...</string>
+    <string name="showHighResText">优先显示高分辨率图片</string>
+    
+    <!-- Localization -->
+    <string name="starredContacts">加星好友</string>
+    <string name="myContacts">所有联系人</string>
+    
+</resources>
