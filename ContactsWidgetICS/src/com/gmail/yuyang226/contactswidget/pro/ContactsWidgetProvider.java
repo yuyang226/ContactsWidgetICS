@@ -115,6 +115,21 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 	}
 	
 	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+	static boolean checkIsKeyguard(AppWidgetManager appWidgetManager, int appWidgetId) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+			//only do the check if it is running Jelly Bean or higher
+			Bundle widgetOptions = appWidgetManager.getAppWidgetOptions(appWidgetId);
+			int category = widgetOptions.getInt(AppWidgetManager.OPTION_APPWIDGET_HOST_CATEGORY, -1);
+			boolean isKeyguard = category == AppWidgetProviderInfo.WIDGET_CATEGORY_KEYGUARD;
+			if (isKeyguard) {
+				Log.d(TAG, "Running on lockscreen. appWidgetId=" + appWidgetId); //$NON-NLS-1$
+			}
+			return isKeyguard;
+		}
+		return false;
+	}
+	
+	
 	static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
 			int appWidgetId, int widgetEntryLayoutId, boolean canLaunchPeopleApp, Rect imageSize) {
 		Log.d(TAG, "updateAppWidget appWidgetId=" + appWidgetId); //$NON-NLS-1$
@@ -125,16 +140,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 			return;
 		}
 		//check if it is running on the lock screen
-		boolean isKeyguard = false;
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-			//only do the check if it is running Jelly Bean or higher
-			Bundle widgetOptions = appWidgetManager.getAppWidgetOptions(appWidgetId);
-			int category = widgetOptions.getInt(AppWidgetManager.OPTION_APPWIDGET_HOST_CATEGORY, -1);
-			isKeyguard = category == AppWidgetProviderInfo.WIDGET_CATEGORY_KEYGUARD;
-			if (isKeyguard) {
-				Log.d(TAG, "Running on lockscreen. appWidgetId=" + appWidgetId); //$NON-NLS-1$
-			}
-		}
+		boolean isKeyguard = checkIsKeyguard(appWidgetManager, appWidgetId);
 		
 		// Here we setup the intent which points to the StackViewService which will
         // provide the views for this collection.
