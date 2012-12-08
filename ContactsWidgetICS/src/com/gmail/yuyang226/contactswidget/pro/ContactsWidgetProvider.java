@@ -46,10 +46,18 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 		super();
 	}
 	
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+	public static boolean isRunningKeyguard(final Context context) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+			KeyguardManager km = (KeyguardManager)context.getSystemService(Context.KEYGUARD_SERVICE);
+			return km.inKeyguardRestrictedInputMode() || km.isKeyguardLocked();
+		}
+		return false;
+	}
+	
 	@Override
     public void onReceive(final Context context, final Intent intent) {
-		KeyguardManager km = (KeyguardManager)context.getSystemService(Context.KEYGUARD_SERVICE);
-		boolean isKeyguard = km.inKeyguardRestrictedInputMode();
+		boolean isKeyguard = isRunningKeyguard(context);
         if (intent.getAction().equals(SHOW_QUICK_CONTACT_ACTION)) {
             final Uri uri = intent.getData();
             if (uri != null) {

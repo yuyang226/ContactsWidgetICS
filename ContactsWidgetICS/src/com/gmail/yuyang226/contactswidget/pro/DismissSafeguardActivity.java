@@ -6,9 +6,13 @@ package com.gmail.yuyang226.contactswidget.pro;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.KeyguardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.QuickContact;
@@ -20,6 +24,7 @@ import android.view.WindowManager;
  * @author yayu
  *
  */
+@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 public class DismissSafeguardActivity extends Activity {
 	private static final String TAG = DismissSafeguardActivity.class.getName();
 
@@ -48,12 +53,13 @@ public class DismissSafeguardActivity extends Activity {
 			}
 		}, 200);
 	}
-
+	
 	@Override
 	protected void onStop() {
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
 		final String action = getIntent().getStringExtra(ContactsWidgetProvider.INTENT_TAG_ACTION);
 		Log.d(TAG, "Action: " + action);
+		super.onStop();
 		//we have to put the finish and launch of the QuickContact dialog in a separate thread
 		new Timer().schedule(new TimerTask() {
 
@@ -76,8 +82,7 @@ public class DismissSafeguardActivity extends Activity {
 					DismissSafeguardActivity.this.startActivity(intent);
 				}
 			}
-		}, 500);
-		super.onStop();
+		}, 300);
 	}
 	
 
