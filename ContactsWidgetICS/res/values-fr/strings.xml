@@ -33,10 +33,10 @@
     <string name="buttonCancel">Annuler</string>
     <string name="buttonContactFrequency">Contacté par le Times</string>
     <string name="buttonContactRecent">Par Last Time Contacté</string>
-    <string name="buttonContactDisplayName">Par nom d'affichage</string>
+    <string name="buttonContactDisplayName">Par nom d\'affichage</string>
     
     <string name="invalid_provider_info">Invalid informations sur le fournisseur widget de: </string>
-    <string name="open_the_people_app">Ouvrez l'application Contacts</string>
+    <string name="open_the_people_app">Ouvrez l\'application Contacts</string>
     <string name="loading">Chargement...</string>
     <string name="showHighResText">Afficher les Images à Haute Résolution</string>
     
