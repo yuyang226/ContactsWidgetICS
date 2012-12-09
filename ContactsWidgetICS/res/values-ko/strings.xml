@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+    <string name="app_name">크기 조정 연락처 위젯 프로</string>
+    <string name="widget_name">연락처 위젯</string>
+    <string name="widget_name_stack">연락처 위젯(보기 스택)</string>
+    <string name="widget_name_large">연락처 위젯(큰)</string>
+    <string name="widget_name_super">연락처 위젯(거대한)</string>
+    <string name="empty_view_text">접촉은 없어</string>
+    <string name="contactImageDescription">사진을 연락처</string>
+    <string name="loopContactsText">사이클 연락처</string>
+    <string name="checkShowNameText">연락처 이름 표시</string>
+    
+    <!-- Configurations -->
+    <string name="contactGroup">그룹에 문의</string>
+    <string name="contactGroupPrompt">연락처 그룹을 선택하십시오</string>
+    <string name="contactSorting">정렬 연락처</string>
+    <string name="buttonOk">결정</string>
+    <string name="buttonCancel">취소</string>
+    <string name="buttonContactFrequency">연락처 수</string>
+    <string name="buttonContactRecent">가장 최근의 접촉 시간에 따라</string>
+    <string name="buttonContactDisplayName">지명하여</string>
+    
+    <string name="invalid_provider_info">잘못된 위젯 정보: </string>
+    <string name="open_the_people_app">연락처 응용 프로그램을 엽니 다</string>
+    <string name="loading">에 읽기...</string>
+    <string name="showHighResText">먼저 고해상도 이미지</string>
+    
+    <!-- Localization -->
+    <string name="starredContacts">안드로이드에 출연</string>
+    <string name="myContacts">모든 연락처</string>
+    
+</resources>
