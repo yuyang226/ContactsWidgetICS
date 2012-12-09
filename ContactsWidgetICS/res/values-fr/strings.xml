@@ -17,31 +17,31 @@
 <resources>
     <string name="app_name">Contacts Widget</string>
     <string name="widget_name">Contacts Widget</string>
-    <string name="widget_name_stack">Contacts Widget(Stack View)</string>
-    <string name="widget_name_large">Contacts Widget(Large)</string>
-    <string name="widget_name_super">Contacts Widget(Super)</string>
-    <string name="empty_view_text">No Contacts Loaded</string>
+    <string name="widget_name_stack">Contacts Widget(Empiler Voir)</string>
+    <string name="widget_name_large">Contacts Widget(Grand)</string>
+    <string name="widget_name_super">Contacts Widget(Savoir)</string>
+    <string name="empty_view_text">Pas de Contacts Alimentés</string>
     <string name="contactImageDescription">Contact Image</string>
-    <string name="checkShowNameText">Show Contact Name</string>
+    <string name="checkShowNameText">Montrer Nom du Contact</string>
     <string name="loopContactsText">Loop Through Contacts</string>
     
     <!-- Configurations -->
-    <string name="contactGroup">Group</string>
-    <string name="contactGroupPrompt">Select a contact group to display contacts</string>
-    <string name="contactSorting">Sorting</string>
-    <string name="buttonOk">OK</string>
-    <string name="buttonCancel">Cancel</string>
-    <string name="buttonContactFrequency">By Times Contacted</string>
-    <string name="buttonContactRecent">By Last Time Contacted</string>
-    <string name="buttonContactDisplayName">By Display Name</string>
+    <string name="contactGroup">Groupe</string>
+    <string name="contactGroupPrompt">Sélectionnez un groupe de contact pour afficher les contacts</string>
+    <string name="contactSorting">Tri</string>
+    <string name="buttonOk">Bien</string>
+    <string name="buttonCancel">Annuler</string>
+    <string name="buttonContactFrequency">Contacté par le Times</string>
+    <string name="buttonContactRecent">Par Last Time Contacté</string>
+    <string name="buttonContactDisplayName">Par nom d'affichage</string>
     
-    <string name="invalid_provider_info">Invalid widget provider info: </string>
-    <string name="open_the_people_app">Open the People app</string>
-    <string name="loading">Loading...</string>
-    <string name="showHighResText">Show High Resolution Pictures</string>
+    <string name="invalid_provider_info">Invalid informations sur le fournisseur widget de: </string>
+    <string name="open_the_people_app">Ouvrez l'application Contacts</string>
+    <string name="loading">Chargement...</string>
+    <string name="showHighResText">Afficher les Images à Haute Résolution</string>
     
     <!-- Localization -->
-    <string name="starredContacts">Starred in Android</string>
-    <string name="myContacts">My Contacts</string>
+    <string name="starredContacts">Favoris dans Android</string>
+    <string name="myContacts">Mes Contacts</string>
     
 </resources>
