@@ -15,33 +15,33 @@
 -->
 
 <resources>
-    <string name="app_name">通讯精灵</string>
-    <string name="widget_name">通讯精灵</string>
-    <string name="widget_name_stack">通讯精灵(Stack View)</string>
-    <string name="widget_name_large">通讯精灵(大)</string>
-    <string name="widget_name_super">通讯精灵(超大)</string>
-    <string name="empty_view_text">没有联系人</string>
-    <string name="contactImageDescription">联系人头像</string>
-    <string name="loopContactsText">循环显示联系人</string>
-    <string name="checkShowNameText">显示联系人姓名</string>
+    <string name="app_name">コンタクトウィジェット</string>
+    <string name="widget_name">コンタクトウィジェット</string>
+    <string name="widget_name_stack">コンタクトウィジェット(表示スタック)</string>
+    <string name="widget_name_large">コンタクトウィジェット(大)</string>
+    <string name="widget_name_super">コンタクトウィジェット(巨大な)</string>
+    <string name="empty_view_text">ロードされていません</string>
+    <string name="contactImageDescription">画像お問い合わせ</string>
+    <string name="loopContactsText">サイクルコンタクト</string>
+    <string name="checkShowNameText">連絡先の名前を表示します</string>
     
     <!-- Configurations -->
-    <string name="contactGroup">联系人分组</string>
-    <string name="contactGroupPrompt">请选择一个联系人分组</string>
-    <string name="contactSorting">联系人排序</string>
-    <string name="buttonOk">确定</string>
-    <string name="buttonCancel">取消</string>
-    <string name="buttonContactFrequency">按联系次数</string>
-    <string name="buttonContactRecent">按最近联系时间</string>
-    <string name="buttonContactDisplayName">按姓名</string>
+    <string name="contactGroup">グループまでお問い合わせください</string>
+    <string name="contactGroupPrompt">連絡先のグループを選択してください</string>
+    <string name="contactSorting">連絡先を並べ替える</string>
+    <string name="buttonOk">決定する</string>
+    <string name="buttonCancel">キャンセル</string>
+    <string name="buttonContactFrequency">接触数</string>
+    <string name="buttonContactRecent">最新の接触時間による</string>
+    <string name="buttonContactDisplayName">名前で</string>
     
-    <string name="invalid_provider_info">无效的小组件信息: </string>
-    <string name="open_the_people_app">打开联系人应用</string>
-    <string name="loading">读取中...</string>
-    <string name="showHighResText">优先显示高分辨率图片</string>
+    <string name="invalid_provider_info">無効なウィジェット情報: </string>
+    <string name="open_the_people_app">連絡先アプリケーションを開きます。</string>
+    <string name="loading">積載...</string>
+    <string name="showHighResText">最初の高解像度画像</string>
     
     <!-- Localization -->
-    <string name="starredContacts">加星好友</string>
-    <string name="myContacts">所有联系人</string>
+    <string name="starredContacts">主演友達</string>
+    <string name="myContacts">すべての連絡先</string>
     
 </resources>
