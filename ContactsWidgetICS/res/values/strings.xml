@@ -15,21 +15,11 @@
 -->
 
 <resources>
-    <string name="accountSpinnerLabel">Account</string>
-    <string name="allAccounts">All Accounts</string>
     <string name="app_name">Contacts Widget</string>
     <string name="widget_name">Contacts Widget</string>
     <string name="widget_name_stack">Contacts Widget(Stack View)</string>
     <string name="widget_name_large">Contacts Widget(Large)</string>
     <string name="widget_name_super">Contacts Widget(Super)</string>
-    <string name="contactCreationFailure">Contact creation failed, check logs.</string>
-    <string name="contactEmailLabel">Contact Email</string>
-    <string name="contactNameLabel">Contact Name</string>
-    <string name="contactPhoneLabel">Contact Phone</string>
-    <string name="selectAccountLabel">Select</string>
-    <string name="selectLabel">Select label</string>
-    <string name="targetAccountLabel">Target Account</string>
-    <string name="undefinedTypeLabel">(Undefined)</string>
     <string name="empty_view_text">No Contacts Loaded</string>
     <string name="contactImageDescription">Contact Image</string>
     <string name="checkShowNameText">Show Contact Name</string>
@@ -45,7 +35,7 @@
     <string name="buttonContactRecent">By Last Time Contacted</string>
     <string name="buttonContactDisplayName">By Display Name</string>
     
-    <string name="invalid_provider_info">Invalid wiget provider info: </string>
+    <string name="invalid_provider_info">Invalid widget provider info: </string>
     <string name="open_the_people_app">Open the People app</string>
     <string name="loading">Loading...</string>
     <string name="showHighResText">Show High Resolution Pictures</string>
