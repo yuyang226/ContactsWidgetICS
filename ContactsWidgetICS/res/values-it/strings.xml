@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+    <string name="app_name">Contatti Widget</string>
+    <string name="widget_name">Contatti Widget</string>
+    <string name="widget_name_stack">Contatti Widget(Stack Visualizza)</string>
+    <string name="widget_name_large">Contatti Widget(Grande)</string>
+    <string name="widget_name_super">Contatti Widget(Eccellente)</string>
+    <string name="empty_view_text">Non Caricate</string>
+    <string name="contactImageDescription">Contatti Immagine</string>
+    <string name="checkShowNameText">Mostra Nome del Contatto</string>
+    <string name="loopContactsText">Loop Through Contatti</string>
+    
+    <!-- Configurations -->
+    <string name="contactGroup">Gruppo</string>
+    <string name="contactGroupPrompt">Selezionare un gruppo di contatto per visualizzare i contatti</string>
+    <string name="contactSorting">Ordinamento</string>
+    <string name="buttonOk">Bene</string>
+    <string name="buttonCancel">Annullare</string>
+    <string name="buttonContactFrequency">Contattato da Tempi</string>
+    <string name="buttonContactRecent">Con Last Time Contattati</string>
+    <string name="buttonContactDisplayName">Per Nome Visualizzato</string>
+    
+    <string name="invalid_provider_info">Non valido widget di provider di informazioni: </string>
+    <string name="open_the_people_app">Aprire l'applicazione Contatti</string>
+    <string name="loading">Caricamento...</string>
+    <string name="showHighResText">Mostra Immagini ad Alta Risoluzione</string>
+    
+    <!-- Localization -->
+    <string name="starredContacts">Preferiti in Android</string>
+    <string name="myContacts">I miei contatti</string>
+    
+</resources>

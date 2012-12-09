@@ -41,7 +41,7 @@
     <string name="showHighResText">Zeigen Sie Hochauflösende Bilder</string>
     
     <!-- Localization -->
-    <string name="starredContacts">Starred in Android</string>
+    <string name="starredContacts">Hauptrolle in Android</string>
     <string name="myContacts">Meine Kontakte</string>
     
 </resources>
