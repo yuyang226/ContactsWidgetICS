@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+    <string name="app_name">Kontakte Widget</string>
+    <string name="widget_name">Kontakte Widget</string>
+    <string name="widget_name_stack">Kontakte Widget(Stack Anzeigen)</string>
+    <string name="widget_name_large">Kontakte Widget(Groß)</string>
+    <string name="widget_name_super">Kontakte Widget(Super)</string>
+    <string name="empty_view_text">Keine geladenen Kontakte</string>
+    <string name="contactImageDescription">Kontakt Bild</string>
+    <string name="checkShowNameText">Zeigen Sie Kontakt Name</string>
+    <string name="loopContactsText">Loop Through Kontakte</string>
+    
+    <!-- Configurations -->
+    <string name="contactGroup">Gruppe</string>
+    <string name="contactGroupPrompt">Wählen Sie eine Kontaktgruppe, um Kontakte anzuzeigen</string>
+    <string name="contactSorting">Sortierung</string>
+    <string name="buttonOk">OK</string>
+    <string name="buttonCancel">Kündigen</string>
+    <string name="buttonContactFrequency">Von Times Kontaktierte</string>
+    <string name="buttonContactRecent">Durch Last Time Kontaktierte</string>
+    <string name="buttonContactDisplayName">Mit Display Name</string>
+    
+    <string name="invalid_provider_info">Ungültige widget provider info:</string>
+    <string name="open_the_people_app">Öffnen Sie die Kontakte-App</string>
+    <string name="loading">Laden...</string>
+    <string name="showHighResText">Zeigen Sie Hochauflösende Bilder</string>
+    
+    <!-- Localization -->
+    <string name="starredContacts">Starred in Android</string>
+    <string name="myContacts">Meine Kontakte</string>
+    
+</resources>
