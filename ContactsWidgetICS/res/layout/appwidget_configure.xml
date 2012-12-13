@@ -59,11 +59,19 @@
         android:gravity="center_horizontal"
         android:paddingTop="5dip" />
     
+    <CheckBox
+            android:id="@+id/checkShowName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line2"
+            android:text="@string/checkShowNameText"
+            android:checked="true" />
+    
 	<CheckBox
             android:id="@+id/showHighRes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/line2"
+            android:layout_below="@+id/checkShowName"
             android:text="@string/showHighResText"
             android:checked="true" />
 

@@ -31,8 +31,8 @@ public class ContactsWidgetStackProvider extends ContactsWidgetProvider {
 	public void onDeleted(Context context, int[] appWidgetIds) {
 		super.onDeleted(context, appWidgetIds);
 		for (int appWidgetId : appWidgetIds) {
-			ContactsWidgetStackConfigurationActivity.deleteShowName(context, appWidgetId);
-			ContactsWidgetStackConfigurationActivity.deleteLoopContacts(context, appWidgetId);
+			ContactsWidgetStackConfigurationActivity.deletePreference(context, appWidgetId, 
+					ContactsWidgetStackConfigurationActivity.PREF_LOOPCONTACTS_PREFIX);
 		}
 	}
 

@@ -19,7 +19,6 @@ import android.provider.ContactsContract;
 import android.provider.ContactsContract.QuickContact;
 import android.util.Log;
 import android.widget.RemoteViews;
-import android.widget.Toast;
 
 /**
  * @author Toby Yu(yuyang226@gmail.com)
@@ -143,8 +142,10 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 		Log.d(TAG, "updateAppWidget appWidgetId=" + appWidgetId); //$NON-NLS-1$
 		AppWidgetProviderInfo widgetProviderInfo = appWidgetManager.getAppWidgetInfo(appWidgetId);
 		if (context == null || widgetProviderInfo == null) {
-			Toast.makeText(context, context.getResources().getString(
-					R.string.invalid_provider_info) + widgetProviderInfo, Toast.LENGTH_LONG).show();
+			Log.w(TAG, context.getResources().getString(
+					R.string.invalid_provider_info) + widgetProviderInfo);
+			/*Toast.makeText(context, context.getResources().getString(
+					R.string.invalid_provider_info) + widgetProviderInfo, Toast.LENGTH_LONG).show();*/
 			return;
 		}
 		//check if it is running on the lock screen
