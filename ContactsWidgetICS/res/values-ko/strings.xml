@@ -16,6 +16,8 @@
 
 <resources>
     <string name="app_name">크기 조정 연락처 위젯 프로</string>
+    <string name="activity_title">연락처 위젯 - 사용자 가이드</string>
+    <string name="help_file_name">help_ko.html</string>
     <string name="widget_name">연락처 위젯</string>
     <string name="widget_name_stack">연락처 위젯(보기 스택)</string>
     <string name="widget_name_large">연락처 위젯(큰)</string>

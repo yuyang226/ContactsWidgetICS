@@ -16,6 +16,8 @@
 
 <resources>
     <string name="app_name">通信精霊</string>
+    <string name="activity_title">通信精霊 - ユーザー·ガイド</string>
+    <string name="help_file_name">help_ja.html</string>
     <string name="widget_name">通信精霊</string>
     <string name="widget_name_stack">通信精霊(Stack View)</string>
     <string name="widget_name_large">通信精霊(大きい)</string>
