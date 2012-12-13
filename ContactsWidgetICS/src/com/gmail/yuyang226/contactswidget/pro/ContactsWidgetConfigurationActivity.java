@@ -31,10 +31,11 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	
 	public static final String PREF_GROUP_PREFIX = "group_"; //$NON-NLS-1$
 	public static final String PREF_SORTING_PREFIX = "sorting_"; //$NON-NLS-1$
+	public static final String PREF_SHOWNAME_PREFIX = "showname_"; //$NON-NLS-1$
 	//whether to show high resolution pictures
 	public static final String PREF_HIGH_RES = "highres_"; //$NON-NLS-1$
 	
-	public static final String[] PREFS_PREFIX = {PREF_GROUP_PREFIX, PREF_SORTING_PREFIX, PREF_HIGH_RES};
+	public static final String[] PREFS_PREFIX = {PREF_GROUP_PREFIX, PREF_SORTING_PREFIX, PREF_HIGH_RES, PREF_SHOWNAME_PREFIX};
 	
 	private Spinner groupList;
 	
@@ -156,6 +157,8 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         	String.valueOf(contactGroups.get(groupList.getSelectedItemPosition()).getGroupId());
         saveSelectionString(context, appWidgetId, selection);
         
+        CheckBox showName = (CheckBox)findViewById(R.id.checkShowName);
+		saveShowName(context, appWidgetId, showName.isChecked());
         CheckBox showHighRes = (CheckBox)findViewById(R.id.showHighRes);
 		saveShowHighRes(context, appWidgetId, showHighRes.isChecked());
 
@@ -233,5 +236,21 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         String value = prefs.getString(PREF_HIGH_RES + appWidgetId, Boolean.TRUE.toString());
         return Boolean.valueOf(value);
     }
+    
+    static void saveShowName(Context context, int appWidgetId, boolean showName) {
+        SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_SHOWNAME_PREFIX, 0).edit();
+        prefs.putString(PREF_SHOWNAME_PREFIX + appWidgetId, String.valueOf(showName));
+        prefs.commit();
+    }
+
+    static boolean loadShowName(Context context, int appWidgetId) {
+        SharedPreferences prefs = context.getSharedPreferences(PREF_SHOWNAME_PREFIX, 0);
+        String value = prefs.getString(PREF_SHOWNAME_PREFIX + appWidgetId, Boolean.TRUE.toString());
+        return Boolean.valueOf(value);
+    }
+    
+    /*static void deleteShowName(Context context, int appWidgetId) {
+        deletePreference(context, appWidgetId, PREF_SHOWNAME_PREFIX);
+    }*/
     
 }

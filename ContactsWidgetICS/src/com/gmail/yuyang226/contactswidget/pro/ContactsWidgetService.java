@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
@@ -85,11 +86,11 @@ public class ContactsWidgetService extends RemoteViewsService {
 	        // text based on the position.
 	        RemoteViews rv = new RemoteViews(mContext.getPackageName(), widgetEntryLayoutId);
 	        Contact contact = mWidgetItems.get(position);
-	        if (ContactsWidgetStackConfigurationActivity.loadShowName(this.mContext, this.mAppWidgetId)) {
+	        if (ContactsWidgetConfigurationActivity.loadShowName(this.mContext, this.mAppWidgetId)) {
 	        	rv.setViewVisibility(R.id.contactEntryText, View.VISIBLE);
 	        	rv.setTextViewText(R.id.contactEntryText, contact.getDisplayName());
 	        } else {
-	        	rv.setViewVisibility(R.id.contactEntryText, View.INVISIBLE);
+	        	rv.setViewVisibility(R.id.contactEntryText, View.GONE);
 	        }
 	        
 	        Bitmap photo = contact.getPhoto();
