@@ -19,29 +19,29 @@
     <string name="activity_title">Kontakte Widget - How To</string>
     <string name="help_file_name">help_de.html</string>
     <string name="widget_name">Kontakte Widget</string>
-    <string name="widget_name_stack">Kontakte Widget(Stack Anzeigen)</string>
+    <string name="widget_name_stack">Kontakte Widget(Stabel Anzeige)</string>
     <string name="widget_name_large">Kontakte Widget(Groß)</string>
     <string name="widget_name_super">Kontakte Widget(Super)</string>
     <string name="empty_view_text">Keine geladenen Kontakte</string>
-    <string name="contactImageDescription">Kontakt Bild</string>
-    <string name="checkShowNameText">Zeigen Sie Kontakt Name</string>
-    <string name="loopContactsText">Loop Through Kontakte</string>
+    <string name="contactImageDescription">Kontaktbild</string>
+    <string name="checkShowNameText">Zeigen Sie den Kontaktname</string>
+    <string name="loopContactsText">Durch alle Kontakte iterieren</string>
     
     <!-- Configurations -->
     <string name="contactGroup">Gruppe</string>
-    <string name="contactGroupPrompt">Wählen Sie eine Kontaktgruppe, um Kontakte anzuzeigen</string>
+    <string name="contactGroupPrompt">Wählen Sie eine Kontaktgruppe, um die Kontakte anzuzeigen</string>
     <string name="contactSorting">Sortierung</string>
-    <string name="buttonContactFrequency">Von Times Kontaktierte</string>
-    <string name="buttonContactRecent">Durch Last Time Kontaktierte</string>
-    <string name="buttonContactDisplayName">Mit Display Name</string>
+    <string name="buttonContactFrequency">Häufigkeit des Kontakts</string>
+    <string name="buttonContactRecent">Letztes mal kontaktiert</string>
+    <string name="buttonContactDisplayName">Display Name</string>
     
-    <string name="invalid_provider_info">Ungültige widget provider info:</string>
+    <string name="invalid_provider_info">Ungültige Widget Provider Info:</string>
     <string name="open_the_people_app">Öffnen Sie die Kontakte-App</string>
     <string name="loading">Laden...</string>
-    <string name="showHighResText">Zeigen Sie Hochauflösende Bilder</string>
+    <string name="showHighResText">Zeigen Sie hochauflösende Bilder</string>
     
     <!-- Localization -->
-    <string name="starredContacts">Hauptrolle in Android</string>
+    <string name="starredContacts">Markiert in Android</string>
     <string name="myContacts">Meine Kontakte</string>
     
 </resources>
