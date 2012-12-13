@@ -13,28 +13,37 @@
     <!-- <uses-permission android:name="android.permission.GET_ACCOUNTS" /> -->
 
     <application
+        android:allowBackup="true"
         android:icon="@drawable/app_icon"
         android:label="@string/app_name"
-        android:theme="@style/Contacts.Widget.Theme" 
-        android:allowBackup="true">
-        <activity android:name=".DismissSafeguardActivity"></activity>
-        <activity android:name=".ContactsWidgetConfigurationActivity" android:exported="true" >
+        android:theme="@style/Contacts.Widget.Theme" >
+        <activity android:name="com.gmail.yuyang226.contactswidget.pro.DismissSafeguardActivity" >
+        </activity>
+        <activity
+            android:name="com.gmail.yuyang226.contactswidget.pro.ContactsWidgetConfigurationActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
-        <activity android:name=".ContactsWidgetStackConfigurationActivity" android:exported="true">
+        <activity
+            android:name="com.gmail.yuyang226.contactswidget.pro.ContactsWidgetStackConfigurationActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
-        <activity android:name=".ContactsWidgetSuperConfigurationActivity" android:exported="true">
+        <activity
+            android:name="com.gmail.yuyang226.contactswidget.pro.ContactsWidgetSuperConfigurationActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
         <!-- The widget provider -->
-        <receiver android:name="ContactsWidgetProvider" android:label="@string/widget_name">
+        <receiver
+            android:name="com.gmail.yuyang226.contactswidget.pro.ContactsWidgetProvider"
+            android:label="@string/widget_name" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -43,8 +52,9 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widgetinfo" />
         </receiver>
-        
-        <receiver android:name="ContactsWidgetLargeProvider" android:label="@string/widget_name_large">
+        <receiver
+            android:name="com.gmail.yuyang226.contactswidget.pro.ContactsWidgetLargeProvider"
+            android:label="@string/widget_name_large" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -53,8 +63,9 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widgetinfo_large" />
         </receiver>
-        
-        <receiver android:name="ContactsWidgetSuperProvider" android:label="@string/widget_name_super">
+        <receiver
+            android:name="com.gmail.yuyang226.contactswidget.pro.ContactsWidgetSuperProvider"
+            android:label="@string/widget_name_super" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -63,9 +74,11 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widgetinfo_super" />
         </receiver>
-                
+
         <!-- The widget provider stack view -->
-        <receiver android:name="ContactsWidgetStackProvider" android:label="@string/widget_name_stack">
+        <receiver
+            android:name="com.gmail.yuyang226.contactswidget.pro.ContactsWidgetStackProvider"
+            android:label="@string/widget_name_stack" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -76,9 +89,18 @@
         </receiver>
 
         <service
-            android:name="ContactsWidgetService"
+            android:name="com.gmail.yuyang226.contactswidget.pro.ContactsWidgetService"
             android:exported="false"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <activity
+            android:name="com.gmail.yuyang226.contactswidget.pro.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -16,6 +16,8 @@
 
 <resources>
     <string name="app_name">通讯精灵</string>
+    <string name="activity_title">通讯精灵 - 用户指南</string>
+    <string name="help_file_name">help_zh.html</string>
     <string name="widget_name">通讯精灵</string>
     <string name="widget_name_stack">通讯精灵(Stack View)</string>
     <string name="widget_name_large">通讯精灵(大)</string>
@@ -29,8 +31,6 @@
     <string name="contactGroup">联系人分组</string>
     <string name="contactGroupPrompt">请选择一个联系人分组</string>
     <string name="contactSorting">联系人排序</string>
-    <string name="buttonOk">确定</string>
-    <string name="buttonCancel">取消</string>
     <string name="buttonContactFrequency">按联系次数</string>
     <string name="buttonContactRecent">按最近联系时间</string>
     <string name="buttonContactDisplayName">按姓名</string>

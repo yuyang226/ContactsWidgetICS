@@ -29,8 +29,6 @@
     <string name="contactGroup">Groupe</string>
     <string name="contactGroupPrompt">Sélectionnez un groupe de contact pour afficher les contacts</string>
     <string name="contactSorting">Tri</string>
-    <string name="buttonOk">Bien</string>
-    <string name="buttonCancel">Annuler</string>
     <string name="buttonContactFrequency">Contacté par le Times</string>
     <string name="buttonContactRecent">Par Last Time Contacté</string>
     <string name="buttonContactDisplayName">Par nom d\'affichage</string>

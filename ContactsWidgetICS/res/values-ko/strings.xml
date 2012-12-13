@@ -29,8 +29,6 @@
     <string name="contactGroup">그룹에 문의</string>
     <string name="contactGroupPrompt">연락처 그룹을 선택하십시오</string>
     <string name="contactSorting">정렬 연락처</string>
-    <string name="buttonOk">결정</string>
-    <string name="buttonCancel">취소</string>
     <string name="buttonContactFrequency">연락처 수</string>
     <string name="buttonContactRecent">가장 최근의 접촉 시간에 따라</string>
     <string name="buttonContactDisplayName">지명하여</string>
