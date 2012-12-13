@@ -142,14 +142,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_weight="1"
-            android:text="@string/buttonCancel" />
+            android:text="@android:string/cancel" />
 
         <Button
             android:id="@+id/okButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/buttonOk" />
+            android:text="@android:string/ok" />
     </LinearLayout>
 
 </RelativeLayout>

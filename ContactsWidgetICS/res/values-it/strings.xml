@@ -29,8 +29,6 @@
     <string name="contactGroup">Gruppo</string>
     <string name="contactGroupPrompt">Selezionare un gruppo di contatto per visualizzare i contatti</string>
     <string name="contactSorting">Ordinamento</string>
-    <string name="buttonOk">Bene</string>
-    <string name="buttonCancel">Annullare</string>
     <string name="buttonContactFrequency">Contattato da Tempi</string>
     <string name="buttonContactRecent">Con Last Time Contattati</string>
     <string name="buttonContactDisplayName">Per Nome Visualizzato</string>
