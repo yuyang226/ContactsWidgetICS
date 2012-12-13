@@ -16,6 +16,8 @@
 
 <resources>
     <string name="app_name">Contactos Widget</string>
+    <string name="activity_title">Contactos Widget - Cómo</string>
+    <string name="help_file_name">help_es.html</string>
     <string name="widget_name">Contactos Widget</string>
     <string name="widget_name_stack">Contactos Widget(Stack Ver)</string>
     <string name="widget_name_large">Contactos Widget(Grande)</string>

@@ -16,6 +16,8 @@
 
 <resources>
     <string name="app_name">Kontakte Widget</string>
+    <string name="activity_title">Kontakte Widget - How To</string>
+    <string name="help_file_name">help_de.html</string>
     <string name="widget_name">Kontakte Widget</string>
     <string name="widget_name_stack">Kontakte Widget(Stack Anzeigen)</string>
     <string name="widget_name_large">Kontakte Widget(Groß)</string>

@@ -16,6 +16,8 @@
 
 <resources>
     <string name="app_name">Contatti Widget</string>
+    <string name="activity_title">Contatti Widget - Come</string>
+    <string name="help_file_name">help_it.html</string>
     <string name="widget_name">Contatti Widget</string>
     <string name="widget_name_stack">Contatti Widget(Stack Visualizza)</string>
     <string name="widget_name_large">Contatti Widget(Grande)</string>
