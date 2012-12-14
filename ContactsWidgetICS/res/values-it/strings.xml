@@ -15,30 +15,30 @@
 -->
 
 <resources>
-    <string name="app_name">Contatti Widget</string>
-    <string name="activity_title">Contatti Widget - Come</string>
+    <string name="app_name">Contacts Widget</string>
+    <string name="activity_title">Contacts Widget - Per iniziare</string>
     <string name="help_file_name">help_it.html</string>
-    <string name="widget_name">Contatti Widget</string>
-    <string name="widget_name_stack">Contatti Widget(Stack Visualizza)</string>
-    <string name="widget_name_large">Contatti Widget(Grande)</string>
-    <string name="widget_name_super">Contatti Widget(Eccellente)</string>
-    <string name="empty_view_text">Non Caricate</string>
-    <string name="contactImageDescription">Contatti Immagine</string>
-    <string name="checkShowNameText">Mostra Nome del Contatto</string>
-    <string name="loopContactsText">Loop Through Contatti</string>
+    <string name="widget_name">Contacts Widget</string>
+    <string name="widget_name_stack">Contacts Widget(Pila di contatti)</string>
+    <string name="widget_name_large">Contacts Widget(Grande)</string>
+    <string name="widget_name_super">Contacts Widget(Molto grande)</string>
+    <string name="empty_view_text">Contatto non caricato</string>
+    <string name="contactImageDescription">Immagine del contatto</string>
+    <string name="checkShowNameText">Mostra nome del contatto</string>
+    <string name="loopContactsText">Sfoglia contatti</string>
     
     <!-- Configurations -->
     <string name="contactGroup">Gruppo</string>
-    <string name="contactGroupPrompt">Selezionare un gruppo di contatto per visualizzare i contatti</string>
+    <string name="contactGroupPrompt">Selezionare un gruppo per visualizzare i contatti</string>
     <string name="contactSorting">Ordinamento</string>
-    <string name="buttonContactFrequency">Contattato da Tempi</string>
-    <string name="buttonContactRecent">Con Last Time Contattati</string>
-    <string name="buttonContactDisplayName">Per Nome Visualizzato</string>
+    <string name="buttonContactFrequency">Più contattato</string>
+    <string name="buttonContactRecent">Più recente</string>
+    <string name="buttonContactDisplayName">Nome</string>
     
-    <string name="invalid_provider_info">Non valido widget di provider di informazioni: </string>
+    <string name="invalid_provider_info">Provider non valido, informazioni: </string>
     <string name="open_the_people_app">Aprire l\'applicazione Contatti</string>
     <string name="loading">Caricamento...</string>
-    <string name="showHighResText">Mostra Immagini ad Alta Risoluzione</string>
+    <string name="showHighResText">Mostra immagini ad alta risoluzione</string>
     
     <!-- Localization -->
     <string name="starredContacts">Preferiti in Android</string>

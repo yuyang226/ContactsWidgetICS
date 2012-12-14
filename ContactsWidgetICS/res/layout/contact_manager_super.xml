@@ -29,10 +29,10 @@
 	        android:layout_margin="@dimen/widget_margin"
 	        android:columnWidth="128dp"
 	        android:gravity="center"
-	        android:horizontalSpacing="10dp"
+	        android:horizontalSpacing="@dimen/widget_spacing"
 	        android:numColumns="auto_fit"
 	        android:stretchMode="columnWidth"
-	        android:verticalSpacing="10dp" />
+	        android:verticalSpacing="@dimen/widget_spacing" />
 	    
 	    <ImageButton android:id="@+id/buttonPeople"
 	        android:contentDescription="@string/open_the_people_app"
