@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+    <string name="app_name">Виджет Контакты</string>
+    <string name="activity_title">Виджет Контакты - Yчебник</string>
+    <string name="help_file_name">help_ru.html</string>
+    <string name="widget_name">Виджет Контакты</string>
+    <string name="widget_name_stack">Виджет Контакты(стек смотреть)</string>
+    <string name="widget_name_large">Виджет Контакты(большой)</string>
+    <string name="widget_name_super">Виджет Контакты(Cупер)</string>
+    <string name="empty_view_text">нет Контакты загружено</string>
+    <string name="contactImageDescription">контакт изображение</string>
+    <string name="checkShowNameText">показывать Контакты имя</string>
+    <string name="loopContactsText">делать петлю через Контакты</string>
+
+    <!-- Configurations -->
+    <string name="contactGroup">группа</string>
+    <string name="contactGroupPrompt">Выберите группу контактов для отображения контактов</string>
+    <string name="contactSorting">сортировка</string>
+    <string name="buttonContactFrequency">По таймс обратной связи</string>
+    <string name="buttonContactRecent">В последний раз связался</string>
+    <string name="buttonContactDisplayName">По Display Name</string>
+    <string name="invalid_provider_info">Неверная информация провайдер виджетов: </string>
+    <string name="open_the_people_app">Откройте приложение Контакты</string>
+    <string name="loading">загрузка...</string>
+    <string name="showHighResText">Показать изображений в высоком разрешении</string>
+
+    <!-- Localization -->
+    <string name="starredContacts">Снималась в Android</string>
+    <string name="myContacts">Мои контакты</string>
+
+</resources>
