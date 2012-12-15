@@ -16,13 +16,13 @@
 -->
 
 <resources>
-    <string name="app_name">Contacts Widget</string>
-    <string name="activity_title">Contacts Widget - How To</string>
+    <string name="app_name">Kontakt Widget</string>
+    <string name="activity_title">Kontakt Widget - How To</string>
     <string name="help_file_name">help_pl.html</string>
-    <string name="widget_name">Contacts Widget</string>
-    <string name="widget_name_stack">Contacts Widget(Stack View)</string>
-    <string name="widget_name_large">Contacts Widget(Large)</string>
-    <string name="widget_name_super">Contacts Widget(Super)</string>
+    <string name="widget_name">Kontakt Widget</string>
+    <string name="widget_name_stack">Kontakt Widget(Stack View)</string>
+    <string name="widget_name_large">Kontakt Widget(Large)</string>
+    <string name="widget_name_super">Kontakt Widget(Super)</string>
     <string name="empty_view_text">No Contacts Loaded</string>
     <string name="contactImageDescription">Contact Image</string>
     <string name="checkShowNameText">Show Contact Name</string>
