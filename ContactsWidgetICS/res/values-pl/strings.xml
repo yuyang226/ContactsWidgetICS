@@ -17,31 +17,31 @@
 
 <resources>
     <string name="app_name">Kontakt Widget</string>
-    <string name="activity_title">Kontakt Widget - How To</string>
+    <string name="activity_title">Kontakt Widget - Samouczek</string>
     <string name="help_file_name">help_pl.html</string>
     <string name="widget_name">Kontakt Widget</string>
-    <string name="widget_name_stack">Kontakt Widget(Stack View)</string>
-    <string name="widget_name_large">Kontakt Widget(Large)</string>
-    <string name="widget_name_super">Kontakt Widget(Super)</string>
-    <string name="empty_view_text">No Contacts Loaded</string>
-    <string name="contactImageDescription">Contact Image</string>
-    <string name="checkShowNameText">Show Contact Name</string>
-    <string name="loopContactsText">Loop Through Contacts</string>
+    <string name="widget_name_stack">Kontakt Widget(Stos Zobacz)</string>
+    <string name="widget_name_large">Kontakt Widget(Duży)</string>
+    <string name="widget_name_super">Kontakt Widget(Wspaniały)</string>
+    <string name="empty_view_text">Brak Kontakt Loaded</string>
+    <string name="contactImageDescription">Skontaktuj się obraz</string>
+    <string name="checkShowNameText">Pokaż Nazwa Kontaktowa</string>
+    <string name="loopContactsText">Loop Through Kontakty</string>
 
     <!-- Configurations -->
-    <string name="contactGroup">Group</string>
-    <string name="contactGroupPrompt">Select a contact group to display contacts</string>
-    <string name="contactSorting">Sorting</string>
-    <string name="buttonContactFrequency">By Times Contacted</string>
-    <string name="buttonContactRecent">By Last Time Contacted</string>
-    <string name="buttonContactDisplayName">By Display Name</string>
-    <string name="invalid_provider_info">Invalid widget provider info: </string>
-    <string name="open_the_people_app">Open the People app</string>
-    <string name="loading">Loading...</string>
-    <string name="showHighResText">Show High Resolution Pictures</string>
+    <string name="contactGroup">Grupa</string>
+    <string name="contactGroupPrompt">Wybierz grupę kontaktów, aby wyświetlić kontakty</string>
+    <string name="contactSorting">Sortowanie</string>
+    <string name="buttonContactFrequency">Przez Times Kontaktujesz</string>
+    <string name="buttonContactRecent">Przez ostatni raz Skontaktowałem</string>
+    <string name="buttonContactDisplayName">By Name reklamowej</string>
+    <string name="invalid_provider_info">Nieprawidłowy informacji dostawca widget: </string>
+    <string name="open_the_people_app">Otworzyć aplikacji Ludzie</string>
+    <string name="loading">Załadunek...</string>
+    <string name="showHighResText">Pokaż hi-res</string>
 
     <!-- Localization -->
-    <string name="starredContacts">Starred in Android</string>
-    <string name="myContacts">My Contacts</string>
+    <string name="starredContacts">Ulubione w Android</string>
+    <string name="myContacts">Moje Kontakty</string>
 
 </resources>
