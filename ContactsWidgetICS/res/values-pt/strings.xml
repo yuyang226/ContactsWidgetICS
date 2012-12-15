@@ -19,6 +19,7 @@
     <string name="app_name">Contactos Widget</string>
     <string name="activity_title">Contactos Widget - Tutorial</string>
     <string name="help_file_name">help_pt.html</string>
+    <string name="help_file_encoding">iso-8859-1</string>
     <string name="widget_name">Contactos Widget</string>
     <string name="widget_name_stack">Contactos Widget(Pilha Ver)</string>
     <string name="widget_name_large">Contactos Widget(Grande)</string>

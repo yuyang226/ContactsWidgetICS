@@ -19,13 +19,13 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		this.setTitle(R.string.activity_title);
 		mWebView = (WebView)this.findViewById(R.id.help_page);
-		mWebView.getSettings().setDefaultTextEncodingName(ENCODING_UTF8);
 	}
 
 	@Override
 	public void onStart() {
 		super.onStart();
 		String htmlFile = getString(R.string.help_file_name);;
+		mWebView.getSettings().setDefaultTextEncodingName(getString(R.string.help_file_encoding));
 		mWebView.loadUrl(ASSET_FOLDER + htmlFile);
 	}
 

@@ -18,6 +18,7 @@
     <string name="app_name">Contacts Widget</string>
     <string name="activity_title">Contacts Widget - Comment</string>
     <string name="help_file_name">help_fr.html</string>
+    <string name="help_file_encoding">windows-1252</string>
     <string name="widget_name">Contacts Widget</string>
     <string name="widget_name_stack">Contacts Widget(Empiler Voir)</string>
     <string name="widget_name_large">Contacts Widget(Grand)</string>
