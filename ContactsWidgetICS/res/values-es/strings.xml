@@ -32,13 +32,13 @@
     <string name="contactGroup">Grupo</string>
     <string name="contactGroupPrompt">Seleccione un grupo de contacto para mostrar los contactos</string>
     <string name="contactSorting">Clasificación</string>
-    <string name="buttonContactFrequency">Por Veces Contactado</string>
+    <string name="buttonContactFrequency">Por veces Contactatdo</string>
     <string name="buttonContactRecent">Contactado por última vez</string>
-    <string name="buttonContactDisplayName">En Nombre para Mostrar</string>
+    <string name="buttonContactDisplayName">Por Nombre para Mostrar</string>
     
     <string name="invalid_provider_info">Widget inválido info proveedor:</string>
-    <string name="open_the_people_app">Abra la aplicación Contactos</string>
-    <string name="loading">Carga...</string>
+    <string name="open_the_people_app">Abrir aplicación Contactos</string>
+    <string name="loading">Cargando...</string>
     <string name="showHighResText">Mostrar Imágenes de alta Resolución</string>
     
     <!-- Localization -->
