@@ -143,8 +143,8 @@ public class ContactAccessor {
 				String accountName = cursor.getString(1);
 				String accountType = cursor.getString(2);
 				String title = cursor.getString(3);
-				if (title.equalsIgnoreCase(myContacts)) { //$NON-NLS-1$
-					// we dont want to handle My Contacts
+				if (title == null || title.equalsIgnoreCase(myContacts)) { //$NON-NLS-1$
+					// the title is null and we don't want to handle My Contacts
 					cursor.moveToNext();
 					continue;
 				} else if (title.equalsIgnoreCase(starredContacts)
@@ -259,9 +259,11 @@ public class ContactAccessor {
 			while (cursor.isAfterLast() == false) {
 //				long groupRowId = cursor.getLong(0);
 				long contactId = cursor.getLong(1);
-
-				contacts.add(loadContactById(contentResolver, context,
-						contactId, sortOrder, showHighRes, size));
+				Contact contact = loadContactById(contentResolver, context,
+						contactId, sortOrder, showHighRes, size);
+				if (contact != null) {
+					contacts.add(contact);
+				}
 				cursor.moveToNext();
 			}
 		} finally {
@@ -294,7 +296,10 @@ public class ContactAccessor {
 		try {
 			loader.startLoading();
 			cursor = loader.loadInBackground();
-			if (cursor.moveToFirst()) {
+			if (cursor == null) {
+				//did not find the contact
+				return null;
+			} else if (cursor.moveToFirst()) {
 				String displayName = cursor.getString(1);
 				String photoUri = cursor.getString(2);
 				contact.setContactId(contactId);
