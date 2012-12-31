@@ -31,15 +31,17 @@
     <string name="contactGroup">連絡先をグループに分けします</string>
     <string name="contactGroupPrompt">連絡先のグループ一つを選択して下さい。</string>
     <string name="contactSorting">連絡先の順番を変更します</string>
-    <string name="buttonContactFrequency">連絡の回数に基づきます</string>
-    <string name="buttonContactRecent">最後の連絡時間に基づきます</string>
-    <string name="buttonContactDisplayName">名前に基づきます</string>
     
     <string name="invalid_provider_info">無効なウィジェットの情報: </string>
     <string name="open_the_people_app">連絡先の応用をオープンします。</string>
     <string name="loading">読込む中...</string>
     <string name="showHighResText">高解像度の画像を優先にディスプレーします。</string>
     <string name="setMaxNumberTitle">連絡先の最大数</string>
+    <string-array name="sortingOptions">
+        <item>連絡の回数に基づきます</item>
+        <item>最後の連絡時間に基づきます</item>
+        <item>名前に基づきます</item>
+    </string-array>
     
     <!-- Localization -->
     <string name="starredContacts">星付けの友達</string>

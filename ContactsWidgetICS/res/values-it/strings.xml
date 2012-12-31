@@ -31,15 +31,20 @@
     <string name="contactGroup">Gruppo</string>
     <string name="contactGroupPrompt">Selezionare un gruppo per visualizzare i contatti</string>
     <string name="contactSorting">Ordinamento</string>
-    <string name="buttonContactFrequency">Più contattato</string>
-    <string name="buttonContactRecent">Più recente</string>
-    <string name="buttonContactDisplayName">Nome</string>
+    <string name="buttonContactFrequency"></string>
+    <string name="buttonContactRecent"></string>
+    <string name="buttonContactDisplayName"></string>
     
     <string name="invalid_provider_info">Provider non valido, informazioni: </string>
     <string name="open_the_people_app">Aprire l\'applicazione Contatti</string>
     <string name="loading">Caricamento...</string>
     <string name="showHighResText">Mostra immagini ad alta risoluzione</string>
     <string name="setMaxNumberTitle">Numero Massimo di Contatti</string>
+    <string-array name="sortingOptions">
+        <item>Più contattato</item>
+        <item>Più recente</item>
+        <item>Nome</item>
+    </string-array>
     
     <!-- Localization -->
     <string name="starredContacts">Preferiti in Android</string>

@@ -32,15 +32,19 @@
     <string name="contactGroup">Gruppe</string>
     <string name="contactGroupPrompt">Wählen Sie eine Kontaktgruppe, um die Kontakte anzuzeigen</string>
     <string name="contactSorting">Sortierung</string>
-    <string name="buttonContactFrequency">Häufigkeit des Kontakts</string>
-    <string name="buttonContactRecent">Letztes mal kontaktiert</string>
-    <string name="buttonContactDisplayName">Display Name</string>
-    
+    <string name="buttonContactFrequency"></string>
+    <string name="buttonContactRecent"></string>
+    <string name="buttonContactDisplayName"></string>
     <string name="invalid_provider_info">Ungültige Widget Provider Info:</string>
     <string name="open_the_people_app">Öffnen Sie die Kontakte-App</string>
     <string name="loading">Laden...</string>
     <string name="showHighResText">Zeigen Sie hochauflösende Bilder</string>
     <string name="setMaxNumberTitle">Maximale Anzahl der Kontakte</string>
+    <string-array name="sortingOptions">
+        <item>Häufigkeit des Kontakts</item>
+        <item>Letztes mal kontaktiert</item>
+        <item>Display Name</item>
+    </string-array>
     
     <!-- Localization -->
     <string name="starredContacts">Markiert in Android</string>

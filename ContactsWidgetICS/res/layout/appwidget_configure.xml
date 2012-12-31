@@ -96,34 +96,13 @@
         android:background="@color/holo_blue_light"
         android:gravity="center_horizontal"
         android:paddingTop="5dip" />
-
-    <RadioGroup
+    
+    <Spinner
         android:id="@+id/contactSorting"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_below="@+id/line3"
-        android:orientation="vertical" >
-
-        <RadioButton
-            android:id="@+id/radioContactFrequency"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/buttonContactFrequency" />
-
-        <RadioButton
-            android:id="@+id/radioContactRecent"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/buttonContactRecent" />
-
-        <RadioButton
-            android:id="@+id/radioContactDisplayName"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/buttonContactDisplayName" />
-    </RadioGroup>
+        android:prompt="@string/contactSorting" />
     <!-- End of Sorting -->
     
     <!-- Begining of Set Max Number -->
@@ -151,9 +130,11 @@
         android:id="@+id/numberPicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/ButtonLayout"
+        android:layout_below="@+id/line4"
         android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/line4"
         />
+    <!-- End of Set Max Number -->
 
     <LinearLayout
         android:id="@+id/ButtonLayout"

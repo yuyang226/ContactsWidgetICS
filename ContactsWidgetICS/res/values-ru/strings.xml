@@ -32,13 +32,19 @@
     <string name="contactGroup">группа</string>
     <string name="contactGroupPrompt">Выберите группу контактов для отображения </string>
     <string name="contactSorting">сортировка</string>
-    <string name="buttonContactFrequency">часто набираемый контакт</string>
-    <string name="buttonContactRecent">последний набранный контакт</string>
-    <string name="buttonContactDisplayName">по имени</string>
+    <string name="buttonContactFrequency"></string>
+    <string name="buttonContactRecent"></string>
+    <string name="buttonContactDisplayName"></string>
     <string name="invalid_provider_info">Неверная информация провайдер виджетов: </string>
     <string name="open_the_people_app">Откройте приложение Контакты</string>
     <string name="loading">загрузка...</string>
     <string name="showHighResText">Показать изображений в высоком разрешении</string>
+    <string name="setMaxNumberTitle">Максимальное число контактов</string>
+    <string-array name="sortingOptions">
+        <item>часто набираемый контакт</item>
+        <item>последний набранный контакт</item>
+        <item>по имени</item>
+    </string-array>
 
     <!-- Localization -->
     <string name="starredContacts">Снималась в Android</string>

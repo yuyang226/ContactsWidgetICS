@@ -31,15 +31,17 @@
     <string name="contactGroup">联系人分组</string>
     <string name="contactGroupPrompt">请选择一个联系人分组</string>
     <string name="contactSorting">联系人排序</string>
-    <string name="buttonContactFrequency">按联系次数</string>
-    <string name="buttonContactRecent">按最近联系时间</string>
-    <string name="buttonContactDisplayName">按姓名</string>
     
     <string name="invalid_provider_info">无效的小组件信息: </string>
     <string name="open_the_people_app">打开联系人应用</string>
     <string name="loading">读取中...</string>
     <string name="showHighResText">优先显示高分辨率图片</string>
     <string name="setMaxNumberTitle">最大联系人数</string>
+    <string-array name="sortingOptions">
+        <item>按联系次数</item>
+        <item>按最近联系时间</item>
+        <item>按姓名</item>
+    </string-array>
     
     <!-- Localization -->
     <string name="starredContacts">加星好友</string>

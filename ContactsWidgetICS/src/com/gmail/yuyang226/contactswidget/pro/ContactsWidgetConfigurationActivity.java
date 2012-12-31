@@ -17,7 +17,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.NumberPicker;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import com.gmail.yuyang226.contactswidget.pro.models.ContactGroup;
@@ -36,7 +35,8 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	public static final String PREF_SHOWNAME_PREFIX = "showname_"; //$NON-NLS-1$
 	public static final String PREF_MAXNUMBER_PREFIX = "maxnumber_"; //$NON-NLS-1$
 	
-	public static final int PREF_MAXNUMBER_DEFAULT = 30;
+	public static final int PREF_MAXNUMBER_DEFAULT = 20;
+	public static final int PREF_MAXNUMBER_DEFAULT_HIGH = 50;
 	public static final int PREF_MAXNUMBER_MIN = 1;
 	public static final int PREF_MAXNUMBER_MAX = 100;
 	//whether to show high resolution pictures
@@ -46,8 +46,8 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 		PREF_SHOWNAME_PREFIX, PREF_MAXNUMBER_PREFIX};
 	
 	private Spinner groupList;
+	private Spinner contactsSorting;
 	
-	private RadioGroup contactsSorting;
 	private NumberPicker maxNumberPicker;
 	
 	private int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
@@ -88,22 +88,15 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         setContentView(configActivityLayoutId);
 
         //groups list
-        this.groupList = (Spinner)findViewById(R.id.groupList);
-        Collection<ContactGroup> contactGroups = new ContactAccessor().getContactGroups(getApplicationContext(), 
-				0);
-		ContactsWidgetConfigurationActivity.this.contactGroups = new ArrayList<ContactGroup>(contactGroups.size());
-		List<String> groupNames = new ArrayList<String>(contactGroups.size());
-        for (ContactGroup group : contactGroups) {
-        	if (group.getTitle() != null) {
-        		groupNames.add(group.getTitle());
-        		ContactsWidgetConfigurationActivity.this.contactGroups.add(group);
-        	}
-        }
+        createGroupListSpinner();
+        
+        this.contactsSorting = (Spinner)findViewById(R.id.contactSorting);
+        String[] sortingOptions = getResources().getStringArray(R.array.sortingOptions);
         ArrayAdapter<String> adapter = 
-        	new ArrayAdapter<String> (ContactsWidgetConfigurationActivity.this, 
-        			android.R.layout.simple_spinner_item, groupNames.toArray(new String[groupNames.size()]));
+        		new ArrayAdapter<String> (this, 
+        				android.R.layout.simple_spinner_item, sortingOptions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        ContactsWidgetConfigurationActivity.this.groupList.setAdapter(adapter);
+        this.contactsSorting.setAdapter(adapter);
         
         maxNumberPicker = (NumberPicker)findViewById(R.id.numberPicker);
         maxNumberPicker.setMinValue(PREF_MAXNUMBER_MIN);
@@ -128,10 +121,26 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         setupButtons();
     }
     
+    private void createGroupListSpinner() {
+    	this.groupList = (Spinner)findViewById(R.id.groupList);
+        Collection<ContactGroup> contactGroups = new ContactAccessor().getContactGroups(getApplicationContext(), 
+				0);
+		ContactsWidgetConfigurationActivity.this.contactGroups = new ArrayList<ContactGroup>(contactGroups.size());
+		List<String> groupNames = new ArrayList<String>(contactGroups.size());
+        for (ContactGroup group : contactGroups) {
+        	if (group.getTitle() != null) {
+        		groupNames.add(group.getTitle());
+        		ContactsWidgetConfigurationActivity.this.contactGroups.add(group);
+        	}
+        }
+        ArrayAdapter<String> adapter = 
+        	new ArrayAdapter<String> (ContactsWidgetConfigurationActivity.this, 
+        			android.R.layout.simple_spinner_item, groupNames.toArray(new String[groupNames.size()]));
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        this.groupList.setAdapter(adapter);
+    }
+    
     private void setupButtons() {
-    	this.contactsSorting = (RadioGroup)findViewById(R.id.contactSorting);
-    	this.contactsSorting.getCheckedRadioButtonId();
-    	
     	Button okButton = (Button)findViewById(R.id.okButton);
     	okButton.setOnClickListener(mOnClickListener);
     	
@@ -148,14 +157,14 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     
     protected void savePreferences(Context context, int appWidgetId) {
         String sortString = null;
-        switch(contactsSorting.getCheckedRadioButtonId()) {
-        case R.id.radioContactDisplayName:
+        switch(contactsSorting.getSelectedItemPosition()) {
+        case 2:
         	sortString = ContactsContract.Contacts.DISPLAY_NAME + " COLLATE LOCALIZED ASC"; //$NON-NLS-1$
         	break;
-        case R.id.radioContactRecent:
+        case 1:
         	sortString = ContactsContract.Contacts.LAST_TIME_CONTACTED + " DESC"; //$NON-NLS-1$
         	break;
-        case R.id.radioContactFrequency:
+        case 0:
         
         default:
         	sortString = ContactsContract.Contacts.TIMES_CONTACTED + " DESC"; //$NON-NLS-1$
@@ -264,7 +273,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 
     static int loadMaxNumbers(Context context, int appWidgetId) {
         SharedPreferences prefs = context.getSharedPreferences(PREF_MAXNUMBER_PREFIX, 0);
-        int value = prefs.getInt(PREF_MAXNUMBER_PREFIX + appWidgetId, PREF_MAXNUMBER_DEFAULT);
+        int value = prefs.getInt(PREF_MAXNUMBER_PREFIX + appWidgetId, PREF_MAXNUMBER_DEFAULT_HIGH);
         return value;
     }
     

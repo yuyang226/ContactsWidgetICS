@@ -33,13 +33,19 @@
     <string name="contactGroup">Grupo</string>
     <string name="contactGroupPrompt">Selecione um grupo de contatos para exibir contatos</string>
     <string name="contactSorting">Seqüência</string>
-    <string name="buttonContactFrequency">Por vezes Contactada</string>
-    <string name="buttonContactRecent">Por última vez Contactado</string>
-    <string name="buttonContactDisplayName">Por Nome</string>
+    <string name="buttonContactFrequency"></string>
+    <string name="buttonContactRecent"></string>
+    <string name="buttonContactDisplayName"></string>
     <string name="invalid_provider_info">Informações provedor inválido widget: </string>
     <string name="open_the_people_app">Open the People Application</string>
     <string name="loading">Carregamento...</string>
     <string name="showHighResText">Mostrar Imagens de alta Resolução</string>
+    <string name="setMaxNumberTitle">Número Máximo de Contatos</string>
+    <string-array name="sortingOptions">
+        <item>Por vezes Contactada</item>
+        <item>Por última vez Contactado</item>
+        <item>Por Nome</item>
+    </string-array>
 
     <!-- Localization -->
     <string name="starredContacts">Favoritos no Android</string>

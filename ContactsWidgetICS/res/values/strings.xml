@@ -33,14 +33,16 @@
     <string name="contactGroup">Group</string>
     <string name="contactGroupPrompt">Select a contact group to display contacts</string>
     <string name="contactSorting">Sorting</string>
-    <string name="buttonContactFrequency">By Times Contacted</string>
-    <string name="buttonContactRecent">By Last Time Contacted</string>
-    <string name="buttonContactDisplayName">By Display Name</string>
     <string name="invalid_provider_info">Invalid widget provider info: </string>
     <string name="open_the_people_app">Open the People app</string>
     <string name="loading">Loading...</string>
     <string name="showHighResText">Show High Resolution Pictures</string>
     <string name="setMaxNumberTitle">Maximum Number of Contacts</string>
+    <string-array name="sortingOptions">
+        <item>By Times Contacted</item>
+        <item>By Last Time Contacted</item>
+        <item>By Display Name</item>
+    </string-array>
 
     <!-- Localization -->
     <string name="starredContacts">Starred in Android</string>

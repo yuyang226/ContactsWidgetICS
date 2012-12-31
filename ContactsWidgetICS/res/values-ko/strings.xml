@@ -31,15 +31,17 @@
     <string name="contactGroup">그룹에 문의</string>
     <string name="contactGroupPrompt">연락처 그룹을 선택하십시오</string>
     <string name="contactSorting">정렬 연락처</string>
-    <string name="buttonContactFrequency">연락처 수</string>
-    <string name="buttonContactRecent">가장 최근의 접촉 시간에 따라</string>
-    <string name="buttonContactDisplayName">지명하여</string>
     
     <string name="invalid_provider_info">잘못된 위젯 정보: </string>
     <string name="open_the_people_app">연락처 응용 프로그램을 엽니 다</string>
     <string name="loading">에 읽기...</string>
     <string name="showHighResText">먼저 고해상도 이미지</string>
     <string name="setMaxNumberTitle">연락처의 최대 수</string>
+    <string-array name="sortingOptions">
+        <item>연락처 수</item>
+        <item>가장 최근의 접촉 시간에 따라</item>
+        <item>지명하여</item>
+    </string-array>
     
     <!-- Localization -->
     <string name="starredContacts">안드로이드에 출연</string>
