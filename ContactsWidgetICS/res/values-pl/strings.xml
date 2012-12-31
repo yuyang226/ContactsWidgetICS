@@ -39,6 +39,7 @@
     <string name="open_the_people_app">Otworzyć aplikacji Ludzie</string>
     <string name="loading">Załadunek...</string>
     <string name="showHighResText">Pokaż hi-res</string>
+    <string name="setMaxNumberTitle">Maksymalna Liczba Kontaktów</string>
 
     <!-- Localization -->
     <string name="starredContacts">Ulubione w Android</string>

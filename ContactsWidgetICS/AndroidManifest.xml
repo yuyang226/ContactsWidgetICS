@@ -21,14 +21,16 @@
         </activity>
         <activity
             android:name="com.gmail.yuyang226.contactswidget.pro.ContactsWidgetConfigurationActivity"
-            android:exported="true" >
+            android:exported="true" 
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.gmail.yuyang226.contactswidget.pro.ContactsWidgetStackConfigurationActivity"
-            android:exported="true" >
+            android:exported="true"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>

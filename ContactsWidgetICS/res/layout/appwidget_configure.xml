@@ -125,6 +125,35 @@
             android:text="@string/buttonContactDisplayName" />
     </RadioGroup>
     <!-- End of Sorting -->
+    
+    <!-- Begining of Set Max Number -->
+    <TextView
+        android:id="@+id/setNumberText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contactSorting"
+        android:layout_gravity="left"
+        android:text="@string/setMaxNumberTitle"
+        android:textColor="@color/holo_blue_light"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/line4"
+        style="?android:attr/listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/setNumberText"
+        android:background="@color/holo_blue_light"
+        android:gravity="center_horizontal"
+        android:paddingTop="5dip" />
+    
+    <NumberPicker
+        android:id="@+id/numberPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ButtonLayout"
+        android:layout_centerHorizontal="true"
+        />
 
     <LinearLayout
         android:id="@+id/ButtonLayout"

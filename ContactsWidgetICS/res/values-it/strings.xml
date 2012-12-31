@@ -39,6 +39,7 @@
     <string name="open_the_people_app">Aprire l\'applicazione Contatti</string>
     <string name="loading">Caricamento...</string>
     <string name="showHighResText">Mostra immagini ad alta risoluzione</string>
+    <string name="setMaxNumberTitle">Numero Massimo di Contatti</string>
     
     <!-- Localization -->
     <string name="starredContacts">Preferiti in Android</string>

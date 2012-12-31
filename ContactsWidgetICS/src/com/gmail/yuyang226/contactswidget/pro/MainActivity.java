@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
 	public void onStart() {
 		super.onStart();
 		String htmlFile = getString(R.string.help_file_name);;
-		mWebView.getSettings().setDefaultTextEncodingName(getString(R.string.help_file_encoding));
+		mWebView.getSettings().setDefaultTextEncodingName(getString(R.string.help_file_encoding, ENCODING_UTF8));
 		mWebView.loadUrl(ASSET_FOLDER + htmlFile);
 	}
 

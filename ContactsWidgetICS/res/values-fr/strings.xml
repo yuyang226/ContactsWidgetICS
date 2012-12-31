@@ -40,6 +40,7 @@
     <string name="open_the_people_app">Ouvrez l\'application Contacts</string>
     <string name="loading">Chargement...</string>
     <string name="showHighResText">Afficher les Images à Haute Résolution</string>
+    <string name="setMaxNumberTitle">Nombre Maximal de Contacts</string>
     
     <!-- Localization -->
     <string name="starredContacts">Favoris dans Android</string>

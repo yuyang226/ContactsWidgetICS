@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.NumberPicker;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
@@ -27,19 +28,27 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	public static final String CONTACT_GROUP
 	= "com.gmail.yuyang226.contactswidget.config.contact_group"; //$NON-NLS-1$
 	public static final long CONTACT_STARRED_GROUP_ID = -999L;
+	public static final long CONTACT_MY_CONTACTS_GROUP_ID = -888L;
 	public static final String CONTACT_STARRED = ContactsContract.Contacts.STARRED + " = '1'"; //$NON-NLS-1$
 	
 	public static final String PREF_GROUP_PREFIX = "group_"; //$NON-NLS-1$
 	public static final String PREF_SORTING_PREFIX = "sorting_"; //$NON-NLS-1$
 	public static final String PREF_SHOWNAME_PREFIX = "showname_"; //$NON-NLS-1$
+	public static final String PREF_MAXNUMBER_PREFIX = "maxnumber_"; //$NON-NLS-1$
+	
+	public static final int PREF_MAXNUMBER_DEFAULT = 30;
+	public static final int PREF_MAXNUMBER_MIN = 1;
+	public static final int PREF_MAXNUMBER_MAX = 100;
 	//whether to show high resolution pictures
 	public static final String PREF_HIGH_RES = "highres_"; //$NON-NLS-1$
 	
-	public static final String[] PREFS_PREFIX = {PREF_GROUP_PREFIX, PREF_SORTING_PREFIX, PREF_HIGH_RES, PREF_SHOWNAME_PREFIX};
+	public static final String[] PREFS_PREFIX = {PREF_GROUP_PREFIX, PREF_SORTING_PREFIX, PREF_HIGH_RES, 
+		PREF_SHOWNAME_PREFIX, PREF_MAXNUMBER_PREFIX};
 	
 	private Spinner groupList;
 	
 	private RadioGroup contactsSorting;
+	private NumberPicker maxNumberPicker;
 	
 	private int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
 	
@@ -65,8 +74,6 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 		this.configActivityLayoutId = configActivityLayoutId;
 		this.widgetEntryLayoutId = widgetEntryLayoutId;
 	}
-
-
 
 	/** Called when the activity is first created. */
     @Override
@@ -97,6 +104,11 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         			android.R.layout.simple_spinner_item, groupNames.toArray(new String[groupNames.size()]));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ContactsWidgetConfigurationActivity.this.groupList.setAdapter(adapter);
+        
+        maxNumberPicker = (NumberPicker)findViewById(R.id.numberPicker);
+        maxNumberPicker.setMinValue(PREF_MAXNUMBER_MIN);
+        maxNumberPicker.setMaxValue(PREF_MAXNUMBER_MAX);
+        maxNumberPicker.setValue(PREF_MAXNUMBER_DEFAULT);
         
         setupButtons();
 
@@ -152,15 +164,21 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         saveSortingString(context, appWidgetId, sortString);
         ContactGroup selectedGroup = 
         		this.contactGroups.get(groupList.getSelectedItemPosition());
-        String selection = selectedGroup.getGroupId() == CONTACT_STARRED_GROUP_ID || contactGroups.isEmpty() 
-        		? CONTACT_STARRED : 
-        	String.valueOf(contactGroups.get(groupList.getSelectedItemPosition()).getGroupId());
+        String selection = "";
+        if (selectedGroup.getGroupId() == CONTACT_STARRED_GROUP_ID || contactGroups.isEmpty()) {
+        	selection = CONTACT_STARRED;
+        } else if (selectedGroup.getGroupId() == CONTACT_MY_CONTACTS_GROUP_ID) {
+        	//all contacts
+        } else {
+        	selection = String.valueOf(contactGroups.get(groupList.getSelectedItemPosition()).getGroupId());
+        }
         saveSelectionString(context, appWidgetId, selection);
         
         CheckBox showName = (CheckBox)findViewById(R.id.checkShowName);
 		saveShowName(context, appWidgetId, showName.isChecked());
         CheckBox showHighRes = (CheckBox)findViewById(R.id.showHighRes);
 		saveShowHighRes(context, appWidgetId, showHighRes.isChecked());
+		saveMaxNumber(context, appWidgetId, this.maxNumberPicker.getValue());
 
         // Push widget update to surface with newly set prefix
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
@@ -235,6 +253,19 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         SharedPreferences prefs = context.getSharedPreferences(PREF_HIGH_RES, 0);
         String value = prefs.getString(PREF_HIGH_RES + appWidgetId, Boolean.TRUE.toString());
         return Boolean.valueOf(value);
+    }
+    
+    //maximum number of contacts to be shown
+    static void saveMaxNumber(Context context, int appWidgetId, int maxNumber) {
+        SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_MAXNUMBER_PREFIX, 0).edit();
+        prefs.putInt(PREF_MAXNUMBER_PREFIX + appWidgetId, maxNumber);
+        prefs.commit();
+    }
+
+    static int loadMaxNumbers(Context context, int appWidgetId) {
+        SharedPreferences prefs = context.getSharedPreferences(PREF_MAXNUMBER_PREFIX, 0);
+        int value = prefs.getInt(PREF_MAXNUMBER_PREFIX + appWidgetId, PREF_MAXNUMBER_DEFAULT);
+        return value;
     }
     
     static void saveShowName(Context context, int appWidgetId, boolean showName) {

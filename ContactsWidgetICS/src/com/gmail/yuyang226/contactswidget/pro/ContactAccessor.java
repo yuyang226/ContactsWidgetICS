@@ -33,7 +33,7 @@ import com.gmail.yuyang226.contactswidget.pro.models.ContactGroup;
  * 
  */
 public class ContactAccessor {
-	private static final String STARRED_CONTACTS_ENG = "Starred in Android";
+	private static final String STARRED_CONTACTS_ENG = "Starred in Android"; //$NON-NLS-1$
 	private static final LruCache<String, Bitmap> IMAGES_CACHE;
 	private static final int CACHE_SIZE = 8 * 1024 * 1024; // 8MiB
 	
@@ -101,11 +101,16 @@ public class ContactAccessor {
 	public Collection<ContactGroup> getContactGroups(Context context,
 			long directoryId) {
 		final String starredContacts = context.getString(R.string.starredContacts);
+		final String myContacts = context.getString(R.string.myContacts);
 		Comparator<ContactGroup> comparator = new Comparator<ContactGroup>() {
 
 			@Override
 			public int compare(ContactGroup g1, ContactGroup g2) {
-				if (starredContacts.equalsIgnoreCase(g1.getTitle())
+				if (myContacts.equalsIgnoreCase(g1.getTitle())) {
+					return -1;
+				} else if (myContacts.equalsIgnoreCase(g2.getTitle())) {
+					return 1;
+				} else if (starredContacts.equalsIgnoreCase(g1.getTitle())
 						|| STARRED_CONTACTS_ENG.equalsIgnoreCase(g1.getTitle())) {
 					return -1;
 				} else if (starredContacts.equalsIgnoreCase(g2.getTitle())
@@ -133,11 +138,12 @@ public class ContactAccessor {
 				selection, selectionArgs, sortOrder);
 		Cursor cursor = null;
 		boolean foundStarredGroup = false;
+		boolean foundMyContacts = false;
+		
 		try {
 			loader.startLoading();
 			cursor = loader.loadInBackground();
 			cursor.moveToFirst();
-			final String myContacts = context.getString(R.string.myContacts);
 			while (cursor.isAfterLast() == false) {
 				long groupId = cursor.getLong(0);
 				String accountName = cursor.getString(1);
@@ -145,11 +151,12 @@ public class ContactAccessor {
 				String title = cursor.getString(3);
 				if (title == null || title.equalsIgnoreCase(myContacts)) { //$NON-NLS-1$
 					// the title is null and we don't want to handle My Contacts
-					cursor.moveToNext();
-					continue;
+					foundMyContacts = true;
+					groupId = ContactsWidgetConfigurationActivity.CONTACT_MY_CONTACTS_GROUP_ID;
 				} else if (title.equalsIgnoreCase(starredContacts)
 						|| STARRED_CONTACTS_ENG.equalsIgnoreCase(title)) {
 					foundStarredGroup = true;
+					groupId = ContactsWidgetConfigurationActivity.CONTACT_STARRED_GROUP_ID;
 				}
 				ContactGroup group = new ContactGroup(groupId, accountName,
 						accountType, title);
@@ -167,6 +174,13 @@ public class ContactAccessor {
 			ContactGroup group = new ContactGroup(
 					ContactsWidgetConfigurationActivity.CONTACT_STARRED_GROUP_ID, starredContacts,
 					null, starredContacts);
+			groups.add(group);
+		}
+		if (!foundMyContacts) {
+			//not containing the my contacts group
+			ContactGroup group = new ContactGroup(
+					ContactsWidgetConfigurationActivity.CONTACT_MY_CONTACTS_GROUP_ID, myContacts,
+					null, myContacts);
 			groups.add(group);
 		}
 		return groups;
@@ -192,11 +206,15 @@ public class ContactAccessor {
 				.loadSelectionString(context, appWidgetId);
 		String sortOrder = ContactsWidgetConfigurationActivity
 				.loadSortingString(context, appWidgetId);
+		int maxNumber = ContactsWidgetConfigurationActivity.loadMaxNumbers(context, appWidgetId);
 		if (ContactsWidgetConfigurationActivity.CONTACT_STARRED.equals(groupId)) {
+			selection = groupId;
+		} else  if (groupId == "") { //$NON-NLS-1$
+			//all contacts;
 			selection = groupId;
 		} else {
 			return getContactsByGroup(contentResolver, context, appWidgetId,
-					groupId, sortOrder, size);
+					groupId, sortOrder, size, maxNumber);
 		}
 		String[] selectionArgs = null;
 
@@ -209,7 +227,8 @@ public class ContactAccessor {
 			loader.startLoading();
 			cursor = loader.loadInBackground();
 			cursor.moveToFirst();
-			while (cursor.isAfterLast() == false) {
+			int count = 0;
+			while (cursor.isAfterLast() == false && count++ < maxNumber) {
 				long contactId = cursor.getLong(0);
 				String displayName = cursor.getString(1);
 				String photoUri = cursor.getString(2);
@@ -237,7 +256,7 @@ public class ContactAccessor {
 
 	private List<Contact> getContactsByGroup(ContentResolver contentResolver,
 			Context context, int appWidgetId, String groupID, String sortOrder, 
-			Rect size) {
+			Rect size, int maxNumber) {
 		final List<Contact> contacts = new ArrayList<Contact>();
 		Uri uri = ContactsContract.Data.CONTENT_URI;
 		String[] projection = new String[] {
@@ -256,7 +275,9 @@ public class ContactAccessor {
 			loader.startLoading();
 			cursor = loader.loadInBackground();
 			cursor.moveToFirst();
-			while (cursor.isAfterLast() == false) {
+			int count = 0;
+			while (cursor.isAfterLast() == false
+					&& count++ < maxNumber) {
 //				long groupRowId = cursor.getLong(0);
 				long contactId = cursor.getLong(1);
 				Contact contact = loadContactById(contentResolver, context,
