@@ -15,13 +15,13 @@
 -->
 
 <resources>
-    <string name="app_name">크기 조정 연락처 위젯 프로</string>
-    <string name="activity_title">연락처 위젯 - 사용자 가이드</string>
+    <string name="app_name">통신 마법사</string>
+    <string name="activity_title">통신 마법사 - 사용자 가이드</string>
     <string name="help_file_name">help_ko.html</string>
-    <string name="widget_name">연락처 위젯</string>
-    <string name="widget_name_stack">연락처 위젯(보기 스택)</string>
-    <string name="widget_name_large">연락처 위젯(큰)</string>
-    <string name="widget_name_super">연락처 위젯(거대한)</string>
+    <string name="widget_name">통신 마법사</string>
+    <string name="widget_name_stack">통신 마법사(보기 스택)</string>
+    <string name="widget_name_large">통신 마법사(큰)</string>
+    <string name="widget_name_super">통신 마법사(거대한)</string>
     <string name="empty_view_text">접촉은 없어</string>
     <string name="contactImageDescription">사진을 연락처</string>
     <string name="loopContactsText">사이클 연락처</string>
