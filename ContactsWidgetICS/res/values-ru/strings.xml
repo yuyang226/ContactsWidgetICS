@@ -37,7 +37,7 @@
     <string name="buttonContactDisplayName"></string>
     <string name="invalid_provider_info">Неверная информация провайдер виджетов: </string>
     <string name="open_the_people_app">Откройте приложение Контакты</string>
-    <string name="loading">загрузка...</string>
+    <string name="loading">загрузка&#8230;</string>
     <string name="showHighResText">Показать изображений в высоком разрешении</string>
     <string name="setMaxNumberTitle">Максимальное число контактов</string>
     <string-array name="sortingOptions">

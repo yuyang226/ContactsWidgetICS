@@ -34,7 +34,7 @@
     
     <string name="invalid_provider_info">无效的小组件信息: </string>
     <string name="open_the_people_app">打开联系人应用</string>
-    <string name="loading">读取中...</string>
+    <string name="loading">读取中&#8230;</string>
     <string name="showHighResText">优先显示高分辨率图片</string>
     <string name="setMaxNumberTitle">最大联系人数</string>
     <string-array name="sortingOptions">

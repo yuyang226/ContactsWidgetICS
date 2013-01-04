@@ -18,7 +18,7 @@
     <string name="app_name">Kontakte Widget</string>
     <string name="activity_title">Kontakte Widget - How To</string>
     <string name="help_file_name">help_de.html</string>
-    <string name="help_file_encoding">iso-8859-1</string>
+    <string name="help_file_encoding">iso&#8211;8859&#8211;1</string>
     <string name="widget_name">Kontakte Widget</string>
     <string name="widget_name_stack">Kontakte Widget(Stabel Anzeige)</string>
     <string name="widget_name_large">Kontakte Widget(Groß)</string>
@@ -37,7 +37,7 @@
     <string name="buttonContactDisplayName"></string>
     <string name="invalid_provider_info">Ungültige Widget Provider Info:</string>
     <string name="open_the_people_app">Öffnen Sie die Kontakte-App</string>
-    <string name="loading">Laden...</string>
+    <string name="loading">Laden&#8230;</string>
     <string name="showHighResText">Zeigen Sie hochauflösende Bilder</string>
     <string name="setMaxNumberTitle">Maximale Anzahl der Kontakte</string>
     <string-array name="sortingOptions">

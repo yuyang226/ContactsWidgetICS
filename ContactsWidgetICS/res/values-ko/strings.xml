@@ -34,7 +34,7 @@
     
     <string name="invalid_provider_info">잘못된 위젯 정보: </string>
     <string name="open_the_people_app">연락처 응용 프로그램을 엽니 다</string>
-    <string name="loading">에 읽기...</string>
+    <string name="loading">에 읽기&#8230;</string>
     <string name="showHighResText">먼저 고해상도 이미지</string>
     <string name="setMaxNumberTitle">연락처의 최대 수</string>
     <string-array name="sortingOptions">

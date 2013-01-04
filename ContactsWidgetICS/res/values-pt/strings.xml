@@ -19,7 +19,7 @@
     <string name="app_name">Contactos Widget</string>
     <string name="activity_title">Contactos Widget - Tutorial</string>
     <string name="help_file_name">help_pt.html</string>
-    <string name="help_file_encoding">iso-8859-1</string>
+    <string name="help_file_encoding">iso&#8211;8859&#8211;1</string>
     <string name="widget_name">Contactos Widget</string>
     <string name="widget_name_stack">Contactos Widget(Pilha Ver)</string>
     <string name="widget_name_large">Contactos Widget(Grande)</string>
@@ -38,7 +38,7 @@
     <string name="buttonContactDisplayName"></string>
     <string name="invalid_provider_info">Informações provedor inválido widget: </string>
     <string name="open_the_people_app">Open the People Application</string>
-    <string name="loading">Carregamento...</string>
+    <string name="loading">Carregamento&#8230;</string>
     <string name="showHighResText">Mostrar Imagens de alta Resolução</string>
     <string name="setMaxNumberTitle">Número Máximo de Contatos</string>
     <string-array name="sortingOptions">

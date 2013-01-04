@@ -18,7 +18,7 @@
     <string name="app_name">Contactos Widget</string>
     <string name="activity_title">Contactos Widget - Cómo</string>
     <string name="help_file_name">help_es.html</string>
-    <string name="help_file_encoding">iso-8859-1</string>
+    <string name="help_file_encoding">iso&#8211;8859&#8211;1</string>
     <string name="widget_name">Contactos Widget</string>
     <string name="widget_name_stack">Contactos Widget(Stack Ver)</string>
     <string name="widget_name_large">Contactos Widget(Grande)</string>
@@ -34,7 +34,7 @@
     <string name="contactSorting">Clasificación</string>
     <string name="invalid_provider_info">Widget inválido info proveedor:</string>
     <string name="open_the_people_app">Abrir aplicación Contactos</string>
-    <string name="loading">Cargando...</string>
+    <string name="loading">Cargando&#8230;</string>
     <string name="showHighResText">Mostrar Imágenes de alta Resolución</string>
     <string name="setMaxNumberTitle">Número Máximo de Contactos</string>
 

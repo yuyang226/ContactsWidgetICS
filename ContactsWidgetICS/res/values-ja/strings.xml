@@ -34,7 +34,7 @@
     
     <string name="invalid_provider_info">無効なウィジェットの情報: </string>
     <string name="open_the_people_app">連絡先の応用をオープンします。</string>
-    <string name="loading">読込む中...</string>
+    <string name="loading">読込む中&#8230;</string>
     <string name="showHighResText">高解像度の画像を優先にディスプレーします。</string>
     <string name="setMaxNumberTitle">連絡先の最大数</string>
     <string-array name="sortingOptions">

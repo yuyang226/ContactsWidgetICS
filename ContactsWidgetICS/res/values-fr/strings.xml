@@ -18,7 +18,7 @@
     <string name="app_name">Contacts Widget</string>
     <string name="activity_title">Contacts Widget - Comment</string>
     <string name="help_file_name">help_fr.html</string>
-    <string name="help_file_encoding">windows-1252</string>
+    <string name="help_file_encoding">windows&#8211;1252</string>
     <string name="widget_name">Contacts Widget</string>
     <string name="widget_name_stack">Contacts Widget(Empiler Voir)</string>
     <string name="widget_name_large">Contacts Widget(Grand)</string>
@@ -35,7 +35,7 @@
     
     <string name="invalid_provider_info">Invalid informations sur le fournisseur widget de: </string>
     <string name="open_the_people_app">Ouvrez l\'application Contacts</string>
-    <string name="loading">Chargement...</string>
+    <string name="loading">Chargement&#8230;</string>
     <string name="showHighResText">Afficher les Images à Haute Résolution</string>
     <string name="setMaxNumberTitle">Nombre Maximal de Contacts</string>
     <string-array name="sortingOptions">
