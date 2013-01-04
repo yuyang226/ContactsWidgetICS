@@ -277,6 +277,9 @@ public class ContactAccessor {
 		try {
 			loader.startLoading();
 			cursor = loader.loadInBackground();
+			if (cursor == null) {
+				return contacts;
+			}
 			cursor.moveToFirst();
 			int count = 0;
 			while (cursor.isAfterLast() == false
