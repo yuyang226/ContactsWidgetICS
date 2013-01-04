@@ -15,13 +15,13 @@
 -->
 
 <resources>
-    <string name="app_name">Contacts Widget</string>
-    <string name="activity_title">Contacts Widget - Per iniziare</string>
+    <string name="app_name">Contatti Widget</string>
+    <string name="activity_title">Contatti Widget - Per iniziare</string>
     <string name="help_file_name">help_it.html</string>
-    <string name="widget_name">Contacts Widget</string>
-    <string name="widget_name_stack">Contacts Widget(Pila di contatti)</string>
-    <string name="widget_name_large">Contacts Widget(Grande)</string>
-    <string name="widget_name_super">Contacts Widget(Molto grande)</string>
+    <string name="widget_name">Contatti Widget</string>
+    <string name="widget_name_stack">Contatti Widget(Pila di contatti)</string>
+    <string name="widget_name_large">Contatti Widget(Grande)</string>
+    <string name="widget_name_super">Contatti Widget(Molto grande)</string>
     <string name="empty_view_text">Contatto non caricato</string>
     <string name="contactImageDescription">Immagine del contatto</string>
     <string name="checkShowNameText">Mostra nome del contatto</string>
