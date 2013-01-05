@@ -31,7 +31,7 @@
     <!-- Configurations -->
     <string name="contactGroup">Groupe</string>
     <string name="contactGroupPrompt">Sélectionnez un groupe de contact pour afficher les contacts</string>
-    <string name="contactSorting">Tri</string>
+    <string name="contactSorting">Sorte</string>
     
     <string name="invalid_provider_info">Invalid informations sur le fournisseur widget de: </string>
     <string name="open_the_people_app">Ouvrez l\'application Contacts</string>
