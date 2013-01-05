@@ -40,6 +40,12 @@
     <string name="open_the_people_app">Open the People app</string>
     <string name="loading">Loading&#8230;</string>
     <string name="showHighResText">Show High Resolution Pictures</string>
+    <string name="setMaxNumberTitle">Maximum Number of Contacts</string>
+    <string-array name="sortingOptions">
+        <item>By Times Contacted</item>
+        <item>By Last Time Contacted</item>
+        <item>By Display Name</item>
+    </string-array>
 
     <!-- Localization -->
     <string name="starredContacts">Starred in Android</string>
