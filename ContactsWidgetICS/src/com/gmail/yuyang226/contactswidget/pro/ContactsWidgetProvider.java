@@ -20,13 +20,17 @@ import android.provider.ContactsContract.QuickContact;
 import android.util.Log;
 import android.widget.RemoteViews;
 
+import com.gmail.yuyang226.contactswidget.pro.ui.ContactsWidgetConfigurationActivity;
+import com.gmail.yuyang226.contactswidget.pro.ui.DismissSafeguardActivity;
+
 /**
  * @author Toby Yu(yuyang226@gmail.com)
  *
  */
 public class ContactsWidgetProvider extends AppWidgetProvider {
-	static final String INTENT_TAG_ACTION = "action";
+	public static final String INTENT_TAG_ACTION = "action";
 	public static final String SHOW_QUICK_CONTACT_ACTION = "com.gmail.yuyang226.contactswidget.SHOW_QUICK_CONTACT_ACTION"; //$NON-NLS-1$
+	public static final String DIRECT_DIAL_ACTION = "com.gmail.yuyang226.contactswidget.DIRECT_DIAL_ACTION"; //$NON-NLS-1$
 	public static final String LAUNCH_PEOPLE_ACTION = "com.gmail.yuyang226.contactswidget.LAUNCH_PEOPLE_ACTION"; //$NON-NLS-1$
 	public static final String CONTACT_URI = "com.gmail.yuyang226.contactswidget.CONTACT_URI"; //$NON-NLS-1$
 	public static final String CONTACTS = "contacts"; //$NON-NLS-1$
@@ -60,18 +64,27 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
         if (intent.getAction().equals(SHOW_QUICK_CONTACT_ACTION)) {
             final Uri uri = intent.getData();
             if (uri != null) {
-            	if (isKeyguard) {
-            		Intent in = new Intent(context, DismissSafeguardActivity.class);
-            		in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            		in.setData(uri);
-            		in.putExtra("sourceBundle", intent.getSourceBounds());
-            		in.putExtra(INTENT_TAG_ACTION, SHOW_QUICK_CONTACT_ACTION);
-            		context.startActivity(in);
+            	if (intent.hasExtra(INTENT_TAG_ACTION)
+            			&& DIRECT_DIAL_ACTION.equals(intent.getStringExtra(INTENT_TAG_ACTION))) {
+            		//direct dial
+            		Intent dialIntent = new Intent(Intent.ACTION_CALL);
+            		dialIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                	dialIntent.setData(uri);
+                	context.startActivity(dialIntent);
             	} else {
-            		QuickContact.showQuickContact(context, intent.getSourceBounds(), 
-                			uri, ContactsContract.QuickContact.MODE_SMALL, null);
+            		//show quick contacts
+            		if (isKeyguard) {
+                		Intent in = new Intent(context, DismissSafeguardActivity.class);
+                		in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                		in.setData(uri);
+                		in.putExtra("sourceBundle", intent.getSourceBounds());
+                		in.putExtra(INTENT_TAG_ACTION, SHOW_QUICK_CONTACT_ACTION);
+                		context.startActivity(in);
+                	} else {
+                		QuickContact.showQuickContact(context, intent.getSourceBounds(), 
+                    			uri, ContactsContract.QuickContact.MODE_SMALL, null);
+                	}
             	}
-            	
             }
         } else if (intent.getAction().equals(LAUNCH_PEOPLE_ACTION)) {
         	if (isKeyguard) {
@@ -136,8 +149,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 		return false;
 	}
 	
-	
-	static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
+	public static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
 			int appWidgetId, int widgetEntryLayoutId, boolean canLaunchPeopleApp, Rect imageSize) {
 		Log.d(TAG, "updateAppWidget appWidgetId=" + appWidgetId); //$NON-NLS-1$
 		AppWidgetProviderInfo widgetProviderInfo = appWidgetManager.getAppWidgetInfo(appWidgetId);
@@ -168,7 +180,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
         	launchPeopleIntent.setAction(ContactsWidgetProvider.LAUNCH_PEOPLE_ACTION);
             PendingIntent pi = PendingIntent.getBroadcast(context, 0, launchPeopleIntent,
                     PendingIntent.FLAG_UPDATE_CURRENT);
-        	rv.setOnClickPendingIntent(R.id.buttonPeople, pi);	
+        	rv.setOnClickPendingIntent(R.id.buttonPeople, pi);
         }
         
         // The empty view is displayed when the collection has no items. It should be a sibling
@@ -202,6 +214,13 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 	
 	protected Rect getImageSize() {
 		return IMAGE_SIZE_SMALL_RECT;
+	}
+	
+	/**
+	 * @return True if support direct dial or false otherwise
+	 */
+	protected boolean supportDirectDial() {
+		return false;
 	}
 
 }

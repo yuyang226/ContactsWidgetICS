@@ -3,6 +3,8 @@
  */
 package com.gmail.yuyang226.contactswidget.pro;
 
+import com.gmail.yuyang226.contactswidget.pro.ui.ContactsWidgetStackConfigurationActivity;
+
 import android.content.Context;
 import android.graphics.Rect;
 

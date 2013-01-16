@@ -17,7 +17,7 @@
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:minWidth="64dp"
     android:minHeight="64dp"
-    android:configure="com.gmail.yuyang226.contactswidget.pro.ContactsWidgetConfigurationActivity"
+    android:configure="com.gmail.yuyang226.contactswidget.pro.ui.ContactsWidgetConfigurationActivity"
     android:updatePeriodMillis="180000"
     android:previewImage="@drawable/preview"
     android:initialLayout="@layout/contact_manager"

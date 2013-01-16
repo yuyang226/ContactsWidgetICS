@@ -13,17 +13,6 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-
-<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:minWidth="128dp"
-    android:minHeight="128dp"
-    android:configure="com.gmail.yuyang226.contactswidget.pro.ui.ContactsWidgetSuperConfigurationActivity"
-    android:updatePeriodMillis="180000"
-    android:previewImage="@drawable/preview_super"
-    android:initialLayout="@layout/contact_manager_super"
-    android:initialKeyguardLayout="@layout/contact_manager_super"
-    android:resizeMode="horizontal|vertical" 
-    android:widgetCategory="keyguard|home_screen"
-    android:minResizeWidth="128dp"
-  	android:minResizeHeight="128dp">
-</appwidget-provider>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <gradient android:startColor="#29001000" android:endColor="#29001000" android:angle="270" />
+</shape>

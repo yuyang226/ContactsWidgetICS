@@ -1,4 +1,9 @@
-package com.gmail.yuyang226.contactswidget.pro;
+package com.gmail.yuyang226.contactswidget.pro.ui;
+
+import com.gmail.yuyang226.contactswidget.pro.R;
+import com.gmail.yuyang226.contactswidget.pro.R.id;
+import com.gmail.yuyang226.contactswidget.pro.R.layout;
+import com.gmail.yuyang226.contactswidget.pro.R.string;
 
 import android.app.Activity;
 import android.os.Bundle;

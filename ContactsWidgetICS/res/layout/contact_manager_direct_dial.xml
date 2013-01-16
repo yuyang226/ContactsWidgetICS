@@ -16,25 +16,30 @@
 -->
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="128dp"
-    android:layout_height="128dp">
-    
-    <ImageView
-        android:id="@+id/contactPhoto"
-        android:adjustViewBounds="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <GridView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/contactList"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:contentDescription="@+string/contactImageDescription"
-        android:scaleType="fitXY"
-        android:src="@drawable/icon" >
-    </ImageView>
+        android:layout_margin="@dimen/widget_margin"
+        android:columnWidth="128dp"
+        android:gravity="center"
+        android:horizontalSpacing="@dimen/widget_spacing"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="@dimen/widget_spacing" />
+
     <TextView
-        android:id="@+id/contactEntryText"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/empty_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|bottom"
-        android:textColor="@color/white" 
-        android:padding="3dip"
-        android:background="@drawable/widget_item_background"/>
-    
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/empty_view_text"
+        android:textColor="@color/highlighted_text_holo_dark"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 </FrameLayout>

@@ -21,6 +21,9 @@ public class ContactsWidgetLargeProvider extends ContactsWidgetProvider {
 		return true;
 	}
 	
-	
+	@Override
+	protected boolean supportDirectDial() {
+		return true;
+	}
 
 }

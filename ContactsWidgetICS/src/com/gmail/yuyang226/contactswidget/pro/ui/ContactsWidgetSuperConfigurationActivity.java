@@ -1,9 +1,12 @@
 /**
  * 
  */
-package com.gmail.yuyang226.contactswidget.pro;
+package com.gmail.yuyang226.contactswidget.pro.ui;
 
 import android.graphics.Rect;
+
+import com.gmail.yuyang226.contactswidget.pro.ContactsWidgetProvider;
+import com.gmail.yuyang226.contactswidget.pro.R;
 
 /**
  * @author yayu

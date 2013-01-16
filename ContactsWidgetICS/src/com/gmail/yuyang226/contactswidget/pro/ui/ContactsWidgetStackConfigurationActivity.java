@@ -1,12 +1,15 @@
 /**
  * 
  */
-package com.gmail.yuyang226.contactswidget.pro;
+package com.gmail.yuyang226.contactswidget.pro.ui;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.widget.CheckBox;
+
+import com.gmail.yuyang226.contactswidget.pro.ContactsWidgetProvider;
+import com.gmail.yuyang226.contactswidget.pro.R;
 
 /**
  * @author Toby Yu(yuyang226@gmail.com)

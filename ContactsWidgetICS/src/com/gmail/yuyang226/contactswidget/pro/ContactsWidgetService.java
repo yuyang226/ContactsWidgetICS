@@ -11,12 +11,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
 import com.gmail.yuyang226.contactswidget.pro.models.Contact;
+import com.gmail.yuyang226.contactswidget.pro.ui.ContactsWidgetConfigurationActivity;
 
 /**
  * @author Toby Yu(yuyang226@gmail.com)
@@ -100,13 +102,24 @@ public class ContactsWidgetService extends RemoteViewsService {
 	        	rv.setImageViewResource(R.id.contactPhoto, R.drawable.icon);
 	        }
 	        
-	        Bundle extras = new Bundle();
             Intent fillInIntent = new Intent();
-            fillInIntent.putExtras(extras);
+            fillInIntent.putExtras(new Bundle());
             fillInIntent.setData(contact.getContactUri());
             // Make it possible to distinguish the individual on-click
             // action of a given item
             rv.setOnClickFillInIntent(R.id.contactPhoto, fillInIntent);
+            
+            if (contact.getPhoneNumbers() != null && !contact.getPhoneNumbers().isEmpty()) {
+	        	//support direct dial
+            	fillInIntent = new Intent();
+                fillInIntent.putExtras(new Bundle());
+                fillInIntent.putExtra(ContactsWidgetProvider.INTENT_TAG_ACTION, 
+                		ContactsWidgetProvider.DIRECT_DIAL_ACTION);
+                String phoneNumber = contact.getPhoneNumbers().get(0).getNumber();
+                fillInIntent.setData(Uri.parse("tel:" + phoneNumber));
+	        	rv.setTextViewText(R.id.contactPhoneNumberText, phoneNumber);
+	        	rv.setOnClickFillInIntent(R.id.dialerButton, fillInIntent);
+	        }
 
 	        return rv;
 	    }

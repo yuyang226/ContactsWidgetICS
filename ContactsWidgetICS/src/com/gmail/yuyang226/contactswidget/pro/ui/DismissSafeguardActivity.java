@@ -1,10 +1,14 @@
 /**
  * 
  */
-package com.gmail.yuyang226.contactswidget.pro;
+package com.gmail.yuyang226.contactswidget.pro.ui;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import com.gmail.yuyang226.contactswidget.pro.ContactsWidgetProvider;
+import com.gmail.yuyang226.contactswidget.pro.R;
+import com.gmail.yuyang226.contactswidget.pro.R.layout;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

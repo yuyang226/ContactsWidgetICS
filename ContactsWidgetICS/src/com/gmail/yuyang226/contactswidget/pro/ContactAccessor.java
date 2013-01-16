@@ -27,6 +27,8 @@ import android.util.LruCache;
 import com.gmail.yuyang226.contactswidget.pro.models.Contact;
 import com.gmail.yuyang226.contactswidget.pro.models.ContactDirectory;
 import com.gmail.yuyang226.contactswidget.pro.models.ContactGroup;
+import com.gmail.yuyang226.contactswidget.pro.models.PhoneNumber;
+import com.gmail.yuyang226.contactswidget.pro.ui.ContactsWidgetConfigurationActivity;
 
 /**
  * @author Toby Yu(yuyang226@gmail.com)
@@ -198,8 +200,9 @@ public class ContactAccessor {
 		Uri uri = ContactsContract.Contacts.CONTENT_URI;
 		String[] projection = new String[] { ContactsContract.Contacts._ID,
 				ContactsContract.Contacts.DISPLAY_NAME,
-				ContactsContract.Contacts.PHOTO_URI, };
-
+				ContactsContract.Contacts.PHOTO_URI,
+				ContactsContract.Contacts.HAS_PHONE_NUMBER};
+		
 		String selection = null;
 
 		String groupId = ContactsWidgetConfigurationActivity
@@ -217,6 +220,13 @@ public class ContactAccessor {
 					groupId, sortOrder, size, maxNumber);
 		}
 		String[] selectionArgs = null;
+		
+		String[] phoneProjection = new String[] { 
+				ContactsContract.CommonDataKinds.Phone._ID,
+				ContactsContract.CommonDataKinds.Phone.TYPE,
+				ContactsContract.CommonDataKinds.Phone.NUMBER };
+		boolean supportDirectDial = ContactsWidgetConfigurationActivity
+				.loadSupportDirectDial(context, appWidgetId);
 
 		boolean showHighRes = ContactsWidgetConfigurationActivity
 				.loadShowHighRes(context, appWidgetId);
@@ -246,6 +256,28 @@ public class ContactAccessor {
 					contact.setPhoto(loadContactPhoto(contentResolver,
 							contact.getContactUri(), showHighRes, size));
 				}
+				
+				int hasPhoneNumber = cursor.getInt(3);
+				if (supportDirectDial && hasPhoneNumber > 0) {
+					Cursor pCur = null;
+					try {
+						pCur = contentResolver.query(
+								ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+								phoneProjection,
+								ContactsContract.CommonDataKinds.Phone.CONTACT_ID
+								+ " = ?", new String[] { String.valueOf(contactId) }, null);
+						while (pCur.moveToNext()) {
+							String type = pCur.getString(1);
+							String phone = pCur.getString(2);
+							contact.getPhoneNumbers().add(new PhoneNumber(type, phone));
+						}
+					} finally {
+	                	if (pCur != null) {
+	                		pCur.close();
+	                	}
+	                }
+				}
+				
 				cursor.moveToNext();
 			}
 		} finally {

@@ -1,4 +1,4 @@
-package com.gmail.yuyang226.contactswidget.pro;
+package com.gmail.yuyang226.contactswidget.pro.ui;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,6 +19,12 @@ import android.widget.CheckBox;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
 
+import com.gmail.yuyang226.contactswidget.pro.ContactAccessor;
+import com.gmail.yuyang226.contactswidget.pro.ContactsWidgetProvider;
+import com.gmail.yuyang226.contactswidget.pro.R;
+import com.gmail.yuyang226.contactswidget.pro.R.array;
+import com.gmail.yuyang226.contactswidget.pro.R.id;
+import com.gmail.yuyang226.contactswidget.pro.R.layout;
 import com.gmail.yuyang226.contactswidget.pro.models.ContactGroup;
 
 public class ContactsWidgetConfigurationActivity extends Activity  {
@@ -34,6 +40,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	public static final String PREF_SORTING_PREFIX = "sorting_"; //$NON-NLS-1$
 	public static final String PREF_SHOWNAME_PREFIX = "showname_"; //$NON-NLS-1$
 	public static final String PREF_MAXNUMBER_PREFIX = "maxnumber_"; //$NON-NLS-1$
+	public static final String PREF_DIRECTDIAL_PREFIX = "directdial_"; //$NON-NLS-1$
 	
 	public static final int PREF_MAXNUMBER_DEFAULT = 20;
 	public static final int PREF_MAXNUMBER_DEFAULT_HIGH = 50;
@@ -211,7 +218,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	}
     
  // Write the prefix to the SharedPreferences object for this widget
-    static void saveSortingString(Context context, int appWidgetId, String text) {
+    public static void saveSortingString(Context context, int appWidgetId, String text) {
         SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_SORTING_PREFIX, 0).edit();
         prefs.putString(PREF_SORTING_PREFIX + appWidgetId, text);
         prefs.commit();
@@ -219,7 +226,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 
     // Read the prefix from the SharedPreferences object for this widget.
     // If there is no preference saved, get the default from a resource
-    static String loadSortingString(Context context, int appWidgetId) {
+    public static String loadSortingString(Context context, int appWidgetId) {
         SharedPreferences prefs = context.getSharedPreferences(PREF_SORTING_PREFIX, 0);
         String prefix = prefs.getString(PREF_SORTING_PREFIX + appWidgetId, null);
         if (prefix != null) {
@@ -229,19 +236,19 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         }
     }
     
-    static void deletePreference(Context context, int appWidgetId, String prefix) {
+    public static void deletePreference(Context context, int appWidgetId, String prefix) {
     	 SharedPreferences.Editor prefs = context.getSharedPreferences(prefix, 0).edit();
          prefs.remove(prefix + appWidgetId);
          prefs.commit();
     }
     
-    static void saveSelectionString(Context context, int appWidgetId, String text) {
+    public static void saveSelectionString(Context context, int appWidgetId, String text) {
         SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_GROUP_PREFIX, 0).edit();
         prefs.putString(PREF_GROUP_PREFIX + appWidgetId, text);
         prefs.commit();
     }
 
-    static String loadSelectionString(Context context, int appWidgetId) {
+    public static String loadSelectionString(Context context, int appWidgetId) {
         SharedPreferences prefs = context.getSharedPreferences(PREF_GROUP_PREFIX, 0);
         String prefix = prefs.getString(PREF_GROUP_PREFIX + appWidgetId, null);
         if (prefix != null) {
@@ -252,45 +259,53 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     }
     
     //whether to show high resolution pictures
-    static void saveShowHighRes(Context context, int appWidgetId, boolean showHighRes) {
+    public static void saveShowHighRes(Context context, int appWidgetId, boolean showHighRes) {
         SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_HIGH_RES, 0).edit();
         prefs.putString(PREF_HIGH_RES + appWidgetId, String.valueOf(showHighRes));
         prefs.commit();
     }
 
-    static boolean loadShowHighRes(Context context, int appWidgetId) {
+    public static boolean loadShowHighRes(Context context, int appWidgetId) {
         SharedPreferences prefs = context.getSharedPreferences(PREF_HIGH_RES, 0);
         String value = prefs.getString(PREF_HIGH_RES + appWidgetId, Boolean.TRUE.toString());
         return Boolean.valueOf(value);
     }
     
     //maximum number of contacts to be shown
-    static void saveMaxNumber(Context context, int appWidgetId, int maxNumber) {
+    public static void saveMaxNumber(Context context, int appWidgetId, int maxNumber) {
         SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_MAXNUMBER_PREFIX, 0).edit();
         prefs.putInt(PREF_MAXNUMBER_PREFIX + appWidgetId, maxNumber);
         prefs.commit();
     }
 
-    static int loadMaxNumbers(Context context, int appWidgetId) {
+    public static int loadMaxNumbers(Context context, int appWidgetId) {
         SharedPreferences prefs = context.getSharedPreferences(PREF_MAXNUMBER_PREFIX, 0);
         int value = prefs.getInt(PREF_MAXNUMBER_PREFIX + appWidgetId, PREF_MAXNUMBER_DEFAULT_HIGH);
         return value;
     }
     
-    static void saveShowName(Context context, int appWidgetId, boolean showName) {
+    public static void saveShowName(Context context, int appWidgetId, boolean showName) {
         SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_SHOWNAME_PREFIX, 0).edit();
         prefs.putString(PREF_SHOWNAME_PREFIX + appWidgetId, String.valueOf(showName));
         prefs.commit();
     }
-
-    static boolean loadShowName(Context context, int appWidgetId) {
+    
+    public static boolean loadShowName(Context context, int appWidgetId) {
         SharedPreferences prefs = context.getSharedPreferences(PREF_SHOWNAME_PREFIX, 0);
         String value = prefs.getString(PREF_SHOWNAME_PREFIX + appWidgetId, Boolean.TRUE.toString());
         return Boolean.valueOf(value);
     }
     
-    /*static void deleteShowName(Context context, int appWidgetId) {
-        deletePreference(context, appWidgetId, PREF_SHOWNAME_PREFIX);
-    }*/
+    public static void saveSupportDirectDial(Context context, int appWidgetId, boolean showName) {
+        SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_DIRECTDIAL_PREFIX, 0).edit();
+        prefs.putString(PREF_DIRECTDIAL_PREFIX + appWidgetId, String.valueOf(showName));
+        prefs.commit();
+    }
+    
+    public static boolean loadSupportDirectDial(Context context, int appWidgetId) {
+        SharedPreferences prefs = context.getSharedPreferences(PREF_DIRECTDIAL_PREFIX, 0);
+        String value = prefs.getString(PREF_DIRECTDIAL_PREFIX + appWidgetId, Boolean.FALSE.toString());
+        return Boolean.valueOf(value);
+    }
     
 }

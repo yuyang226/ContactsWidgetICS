@@ -3,6 +3,9 @@
  */
 package com.gmail.yuyang226.contactswidget.pro.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.graphics.Bitmap;
 import android.net.Uri;
 
@@ -17,6 +20,7 @@ public class Contact {
 	private String photoUri;
 	private boolean isFavourite;
 	private Bitmap photo;
+	private List<PhoneNumber> phoneNumbers = new ArrayList<PhoneNumber>();
 
 	/**
 	 * 
@@ -110,7 +114,20 @@ public class Contact {
 	public void setPhoto(Bitmap photo) {
 		this.photo = photo;
 	}
-	
+
+	/**
+	 * @return the phoneNumbers
+	 */
+	public List<PhoneNumber> getPhoneNumbers() {
+		return phoneNumbers;
+	}
+
+	/**
+	 * @param phoneNumbers the phoneNumbers to set
+	 */
+	public void setPhoneNumbers(List<PhoneNumber> phoneNumbers) {
+		this.phoneNumbers = phoneNumbers;
+	}
 	
 
 }
