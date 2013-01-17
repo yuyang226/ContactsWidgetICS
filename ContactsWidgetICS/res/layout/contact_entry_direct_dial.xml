@@ -52,38 +52,4 @@
         android:layout_below="@+id/contactIconPanel"
         android:textColor="@color/white" />
 
-    <!-- <ImageView
-        android:id="@+id/contactPhoto"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:layout_alignParentTop="true"
-        android:contentDescription="@+string/contactImageDescription"
-        android:src="@drawable/icon" >
-    </ImageView>
-
-    <ImageView
-        android:id="@+id/dialer"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:contentDescription="@+string/contactImageDescription"
-        android:src="@drawable/dialer" >
-    </ImageView>
-
-    <TextView
-        android:id="@+id/contactEntryText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:textColor="@color/white" />
-
-    <TextView
-        android:id="@+id/contactPhoneNumberText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/contactEntryText"
-        android:textColor="@color/white" /> -->
-
 </RelativeLayout>
