@@ -114,6 +114,16 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         	view.setVisibility(canShowPeopleApp() ? View.VISIBLE : View.GONE);
         }
         
+        view = findViewById(R.id.checkDirectDial);
+        if (view != null) {
+        	view.setVisibility(canDirectDial() ? View.VISIBLE : View.GONE);
+        }
+        
+        view = findViewById(R.id.loopContacts);
+        if (view != null) {
+        	view.setVisibility(isStackView() ? View.VISIBLE : View.GONE);
+        }
+        
         setupButtons();
 
         // Find the widget id from the intent. 
@@ -222,6 +232,20 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
      * @return True if can show People app shortcut or false otherwise
      */
     protected boolean canShowPeopleApp() {
+    	return false;
+    }
+    
+    /**
+     * @return True if the widget could support direct dial or false otherwise
+     */
+    protected boolean canDirectDial() {
+    	return false;
+    }
+    
+    /**
+     * @return True if is stack view or false otherwise
+     */
+    protected boolean isStackView() {
     	return false;
     }
     

@@ -22,6 +22,7 @@
     android:previewImage="@drawable/preview_directdial"
     android:initialLayout="@layout/contact_manager_direct_dial"
     android:resizeMode="horizontal|vertical" 
+    android:widgetCategory="keyguard|home_screen"
     android:minResizeWidth="128dp"
   	android:minResizeHeight="64dp">
 </appwidget-provider>

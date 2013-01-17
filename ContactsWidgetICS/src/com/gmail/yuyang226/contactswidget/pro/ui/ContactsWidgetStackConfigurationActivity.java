@@ -20,7 +20,7 @@ ContactsWidgetDirectDialConfigurationActivity {
 	public static final String PREF_LOOPCONTACTS_PREFIX = "loopcontacts_"; //$NON-NLS-1$
 
 	public ContactsWidgetStackConfigurationActivity() {
-		super(R.layout.appwidget_configure_stack, R.layout.contact_entry_large);
+		super(R.layout.appwidget_configure, R.layout.contact_entry_large);
 	}
 	
 	/* (non-Javadoc)
@@ -30,15 +30,25 @@ ContactsWidgetDirectDialConfigurationActivity {
 	protected void savePreferences(Context context, int appWidgetId) {
 		super.savePreferences(context, appWidgetId);
 		CheckBox loopContacts = (CheckBox)findViewById(R.id.loopContacts);
-		saveLoopContacts(context, appWidgetId, loopContacts.isChecked());
+		if (loopContacts != null) {
+			saveLoopContacts(context, appWidgetId, loopContacts.isChecked());
+		}
 	}
 	
 	@Override
 	protected Rect getImageSize() {
 		return ContactsWidgetProvider.IMAGE_SIZE_LARGE_RECT;
 	}
+	
+    /* (non-Javadoc)
+	 * @see com.gmail.yuyang226.contactswidget.pro.ui.ContactsWidgetConfigurationActivity#isStackView()
+	 */
+	@Override
+	protected boolean isStackView() {
+		return true;
+	}
 
-    static void saveLoopContacts(Context context, int appWidgetId, boolean loopContacts) {
+	static void saveLoopContacts(Context context, int appWidgetId, boolean loopContacts) {
         SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_LOOPCONTACTS_PREFIX, 0).edit();
         prefs.putString(PREF_LOOPCONTACTS_PREFIX + appWidgetId, String.valueOf(loopContacts));
         prefs.commit();

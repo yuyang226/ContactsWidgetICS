@@ -62,12 +62,22 @@
             android:layout_below="@+id/line2"
             android:checked="true"
             android:text="@string/checkShowNameText" />
+        
+        <CheckBox
+            android:id="@+id/loopContacts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkShowName"
+            android:checked="true"
+            android:enabled="false"
+            android:visibility="gone"
+            android:text="@string/loopContactsText" />
 
         <CheckBox
             android:id="@+id/showHighRes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/checkShowName"
+            android:layout_below="@+id/loopContacts"
             android:checked="true"
             android:text="@string/showHighResText" />
 
@@ -78,6 +88,14 @@
             android:layout_below="@+id/showHighRes"
             android:checked="true"
             android:text="@string/showPeopleAppShortcut" />
+        
+        <CheckBox
+            android:id="@+id/checkDirectDial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/showPeopleApp"
+            android:checked="true"
+            android:text="@string/directDialText" />
 
         <!-- Begining of Sorting -->
 
@@ -85,7 +103,7 @@
             android:id="@+id/sortText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/showPeopleApp"
+            android:layout_below="@+id/checkDirectDial"
             android:layout_gravity="left"
             android:text="@string/contactSorting"
             android:textColor="@color/holo_blue_light"
