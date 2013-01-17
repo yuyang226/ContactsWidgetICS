@@ -25,6 +25,7 @@
     <string name="widget_name_direct_dial">通讯精灵(直拨)</string>
     <string name="empty_view_text">没有联系人</string>
     <string name="contactImageDescription">联系人头像</string>
+    <string name="showPeopleAppShortcut">通讯录快捷方式</string>
     <string name="loopContactsText">循环显示联系人</string>
     <string name="checkShowNameText">显示联系人姓名</string>
     

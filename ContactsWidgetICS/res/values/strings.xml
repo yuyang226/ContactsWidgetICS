@@ -28,6 +28,7 @@
     <string name="empty_view_text">No Contacts Loaded</string>
     <string name="contactImageDescription">Contact Image</string>
     <string name="checkShowNameText">Show Contact Name</string>
+    <string name="showPeopleAppShortcut">People App Shortcut</string>
     <string name="loopContactsText">Loop Through Contacts</string>
 
     <!-- Configurations -->
