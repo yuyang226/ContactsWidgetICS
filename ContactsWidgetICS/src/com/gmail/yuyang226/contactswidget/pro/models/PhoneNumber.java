@@ -8,8 +8,9 @@ package com.gmail.yuyang226.contactswidget.pro.models;
  *
  */
 public class PhoneNumber {
-	private String type;
+	private int type;
 	private String number;
+	private boolean primary = false;
 
 	/**
 	 * 
@@ -22,23 +23,30 @@ public class PhoneNumber {
 	 * @param type
 	 * @param number
 	 */
-	public PhoneNumber(String type, String number) {
+	public PhoneNumber(int type, String number) {
 		super();
 		this.type = type;
 		this.number = number;
+	}
+	
+	public PhoneNumber(int type, String number, boolean primary) {
+		super();
+		this.type = type;
+		this.number = number;
+		this.primary = primary;
 	}
 
 	/**
 	 * @return the type
 	 */
-	public String getType() {
+	public int getType() {
 		return type;
 	}
 
 	/**
 	 * @param type the type to set
 	 */
-	public void setType(String type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 
@@ -55,6 +63,14 @@ public class PhoneNumber {
 	public void setNumber(String number) {
 		this.number = number;
 	}
+	
+	public boolean isPrimary() {
+		return primary;
+	}
+
+	public void setPrimary(boolean primary) {
+		this.primary = primary;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -64,7 +80,7 @@ public class PhoneNumber {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((number == null) ? 0 : number.hashCode());
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		result = prime * result + type;
 		return result;
 	}
 
@@ -85,10 +101,7 @@ public class PhoneNumber {
 				return false;
 		} else if (!number.equals(other.number))
 			return false;
-		if (type == null) {
-			if (other.type != null)
-				return false;
-		} else if (!type.equals(other.type))
+		if (type != other.type)
 			return false;
 		return true;
 	}
@@ -98,7 +111,8 @@ public class PhoneNumber {
 	 */
 	@Override
 	public String toString() {
-		return "PhoneNumber [type=" + type + ", number=" + number + "]";
+		return "PhoneNumber [type=" + type + ", number=" + number
+				+ ", primary=" + primary + "]";
 	}
-	
+
 }

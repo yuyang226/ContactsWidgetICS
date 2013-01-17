@@ -19,9 +19,10 @@
     <string name="activity_title">通讯精灵 - 用户指南</string>
     <string name="help_file_name">help_zh.html</string>
     <string name="widget_name">通讯精灵</string>
-    <string name="widget_name_stack">通讯精灵(Stack View)</string>
+    <string name="widget_name_stack">通讯精灵(层叠)</string>
     <string name="widget_name_large">通讯精灵(大)</string>
     <string name="widget_name_super">通讯精灵(超大)</string>
+    <string name="widget_name_direct_dial">通讯精灵(直拨)</string>
     <string name="empty_view_text">没有联系人</string>
     <string name="contactImageDescription">联系人头像</string>
     <string name="loopContactsText">循环显示联系人</string>

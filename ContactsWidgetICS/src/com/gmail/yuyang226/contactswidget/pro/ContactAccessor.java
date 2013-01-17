@@ -6,6 +6,7 @@ package com.gmail.yuyang226.contactswidget.pro;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.TreeSet;
@@ -38,6 +39,43 @@ public class ContactAccessor {
 	private static final String STARRED_CONTACTS_ENG = "Starred in Android"; //$NON-NLS-1$
 	private static final LruCache<String, Bitmap> IMAGES_CACHE;
 	private static final int CACHE_SIZE = 8 * 1024 * 1024; // 8MiB
+	
+	private static final String[] CONTACT_PROJECTION = { 
+			ContactsContract.Contacts._ID,
+			ContactsContract.Contacts.DISPLAY_NAME,
+			ContactsContract.Contacts.PHOTO_URI,
+			ContactsContract.Contacts.HAS_PHONE_NUMBER};
+	
+	private static final String CONTACT_SELECTION = Contacts._ID + "=?"; //$NON-NLS-1$
+	
+	private static final String[] PHONENUNBER_PROJECTION = { 
+			ContactsContract.CommonDataKinds.Phone._ID,
+			ContactsContract.CommonDataKinds.Phone.TYPE,
+			ContactsContract.CommonDataKinds.Phone.NUMBER,
+			ContactsContract.CommonDataKinds.Phone.IS_PRIMARY};
+	
+	private static final String PHONENUMBER_SELECTION = 
+			ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?"; //$NON-NLS-1$
+	
+	private static final Comparator<PhoneNumber> PHONENUMBER_COMPARATOR = new Comparator<PhoneNumber>() {
+		@Override
+		public int compare(PhoneNumber n1, PhoneNumber n2) {
+			if (n1.isPrimary()) {
+				return -1;
+			} else if (n2.isPrimary()) {
+				return 1;
+			} else if (ContactsContract.CommonDataKinds.Phone.TYPE_MAIN == n1.getType()) {
+				return -1;
+			} else if (ContactsContract.CommonDataKinds.Phone.TYPE_MAIN == n2.getType()) {
+				return 1;
+			} else if (ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE == n1.getType()) {
+				return -1;
+			} else if (ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE == n2.getType()) {
+				return 1;
+			}
+			return 0;
+		}
+	};
 	
 	static {
 		IMAGES_CACHE = new LruCache<String, Bitmap>(CACHE_SIZE) {
@@ -145,6 +183,9 @@ public class ContactAccessor {
 		try {
 			loader.startLoading();
 			cursor = loader.loadInBackground();
+			if (cursor == null) {
+				return groups;
+			}
 			cursor.moveToFirst();
 			while (cursor.isAfterLast() == false) {
 				long groupId = cursor.getLong(0);
@@ -153,6 +194,11 @@ public class ContactAccessor {
 				String title = cursor.getString(3);
 				if (title == null || title.equalsIgnoreCase(myContacts)) { //$NON-NLS-1$
 					// the title is null and we don't want to handle My Contacts
+					if (foundMyContacts) {
+						//two my contacts appear
+						cursor.moveToNext();
+						continue;
+					}
 					foundMyContacts = true;
 					groupId = ContactsWidgetConfigurationActivity.CONTACT_MY_CONTACTS_GROUP_ID;
 				} else if (title.equalsIgnoreCase(starredContacts)
@@ -198,11 +244,6 @@ public class ContactAccessor {
 		final List<Contact> contacts = new ArrayList<Contact>();
 		// Run query
 		Uri uri = ContactsContract.Contacts.CONTENT_URI;
-		String[] projection = new String[] { ContactsContract.Contacts._ID,
-				ContactsContract.Contacts.DISPLAY_NAME,
-				ContactsContract.Contacts.PHOTO_URI,
-				ContactsContract.Contacts.HAS_PHONE_NUMBER};
-		
 		String selection = null;
 
 		String groupId = ContactsWidgetConfigurationActivity
@@ -221,16 +262,13 @@ public class ContactAccessor {
 		}
 		String[] selectionArgs = null;
 		
-		String[] phoneProjection = new String[] { 
-				ContactsContract.CommonDataKinds.Phone._ID,
-				ContactsContract.CommonDataKinds.Phone.TYPE,
-				ContactsContract.CommonDataKinds.Phone.NUMBER };
+		
 		boolean supportDirectDial = ContactsWidgetConfigurationActivity
 				.loadSupportDirectDial(context, appWidgetId);
 
 		boolean showHighRes = ContactsWidgetConfigurationActivity
 				.loadShowHighRes(context, appWidgetId);
-		CursorLoader loader = new CursorLoader(context, uri, projection,
+		CursorLoader loader = new CursorLoader(context, uri, CONTACT_PROJECTION,
 				selection, selectionArgs, sortOrder);
 		Cursor cursor = null;
 		try {
@@ -251,7 +289,6 @@ public class ContactAccessor {
 				contact.setPhotoUri(photoUri);
 				contact.setContactUri(ContentUris.withAppendedId(
 						ContactsContract.Contacts.CONTENT_URI, contactId));
-				contacts.add(contact);
 				if (photoUri != null && photoUri.length() > 0) {
 					contact.setPhoto(loadContactPhoto(contentResolver,
 							contact.getContactUri(), showHighRes, size));
@@ -259,25 +296,14 @@ public class ContactAccessor {
 				
 				int hasPhoneNumber = cursor.getInt(3);
 				if (supportDirectDial && hasPhoneNumber > 0) {
-					Cursor pCur = null;
-					try {
-						pCur = contentResolver.query(
-								ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-								phoneProjection,
-								ContactsContract.CommonDataKinds.Phone.CONTACT_ID
-								+ " = ?", new String[] { String.valueOf(contactId) }, null);
-						while (pCur.moveToNext()) {
-							String type = pCur.getString(1);
-							String phone = pCur.getString(2);
-							contact.getPhoneNumbers().add(new PhoneNumber(type, phone));
-						}
-					} finally {
-	                	if (pCur != null) {
-	                		pCur.close();
-	                	}
-	                }
+					contact.setPhoneNumbers(loadPhoneNumbers(
+							contentResolver, context, contactId));
 				}
 				
+				if (!supportDirectDial || hasPhoneNumber > 0) {
+					//either not support direct dial, or has phone number
+					contacts.add(contact);
+				}
 				cursor.moveToNext();
 			}
 		} finally {
@@ -287,6 +313,36 @@ public class ContactAccessor {
 			}
 		}
 		return contacts;
+	}
+	
+	private List<PhoneNumber> loadPhoneNumbers(ContentResolver contentResolver, 
+			Context context, long contactId) {
+		Cursor pCur = null;
+		List<PhoneNumber> phoneNumbers = new ArrayList<PhoneNumber>();
+		try {
+			pCur = contentResolver.query(
+					ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+					PHONENUNBER_PROJECTION,
+					PHONENUMBER_SELECTION, new String[] { String.valueOf(contactId) }, null);
+			while (pCur != null && pCur.moveToNext()) {
+				int type = pCur.getInt(1);
+				String phone = pCur.getString(2);
+				int primary = pCur.getInt(3);
+				if (primary > 0) {
+					//primary number will be used first
+					phoneNumbers.add(0, new PhoneNumber(type, phone, true));
+				} else {
+					phoneNumbers.add(new PhoneNumber(type, phone, false));
+				}
+			}
+		} finally {
+        	if (pCur != null) {
+        		pCur.close();
+        	}
+        }
+		
+		Collections.sort(phoneNumbers, PHONENUMBER_COMPARATOR);
+		return phoneNumbers;
 	}
 
 	private List<Contact> getContactsByGroup(ContentResolver contentResolver,
@@ -301,6 +357,8 @@ public class ContactAccessor {
 				.append("=").append(groupID).toString(); //$NON-NLS-1$
 		boolean showHighRes = ContactsWidgetConfigurationActivity
 				.loadShowHighRes(context, appWidgetId);
+		boolean supportDirectDial = ContactsWidgetConfigurationActivity
+				.loadSupportDirectDial(context, appWidgetId);
 		String[] selectionArgs = null;
 
 		CursorLoader loader = new CursorLoader(context, uri, projection,
@@ -319,7 +377,7 @@ public class ContactAccessor {
 //				long groupRowId = cursor.getLong(0);
 				long contactId = cursor.getLong(1);
 				Contact contact = loadContactById(contentResolver, context,
-						contactId, sortOrder, showHighRes, size);
+						contactId, sortOrder, showHighRes, supportDirectDial, size);
 				if (contact != null) {
 					contacts.add(contact);
 				}
@@ -336,7 +394,7 @@ public class ContactAccessor {
 
 	private Contact loadContactById(ContentResolver contentResolver,
 			Context context, long contactId, String sortOrder, boolean showHighRes, 
-			Rect size) {
+			boolean supportDirectDial, Rect size) {
 		Contact contact = new Contact();
 		contact.setContactId(contactId);
 		Uri contactUri = ContentUris.withAppendedId(
@@ -344,12 +402,8 @@ public class ContactAccessor {
 		contact.setContactUri(contactUri);
 
 		Uri uri = ContactsContract.Contacts.CONTENT_URI;
-		String[] projection = new String[] { ContactsContract.Contacts._ID,
-				ContactsContract.Contacts.DISPLAY_NAME,
-				ContactsContract.Contacts.PHOTO_URI, };
-		String selection = new StringBuffer(Contacts._ID).append("=?").toString(); //$NON-NLS-1$
-		CursorLoader loader = new CursorLoader(context, uri, projection,
-				selection, new String[]{String.valueOf(contactId)}, sortOrder);
+		CursorLoader loader = new CursorLoader(context, uri, CONTACT_PROJECTION,
+				CONTACT_SELECTION, new String[]{String.valueOf(contactId)}, sortOrder);
 		
 		Cursor cursor = null;
 		try {
@@ -367,6 +421,16 @@ public class ContactAccessor {
 				if (photoUri != null && photoUri.length() > 0) {
 					contact.setPhoto(loadContactPhoto(contentResolver,
 							contact.getContactUri(), showHighRes, size));
+				}
+				int hasPhoneNumber = cursor.getInt(3);
+				if (supportDirectDial) {
+					if (hasPhoneNumber > 0) {
+						contact.setPhoneNumbers(loadPhoneNumbers(
+								contentResolver, context, contactId));
+					} else {
+						//users want direct dial but this contact has no phone number
+						return null;
+					}
 				}
 			}
 		} finally {
