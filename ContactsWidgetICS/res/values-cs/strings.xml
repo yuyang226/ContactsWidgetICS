@@ -27,6 +27,9 @@
     <string name="contactImageDescription">Kontaktujte obrázek</string>
     <string name="checkShowNameText">Zobrazit Kontakt Jméno</string>
     <string name="loopContactsText">Loop Through Kontakty</string>
+    <string name="showPeopleAppShortcut">Kontakty aplikace Shortcut</string>
+    <string name="directDialText">Direct Dial</string>
+    <string name="save">Uložit</string>
 
     <!-- Configurations -->
     <string name="contactGroup">Skupina</string>

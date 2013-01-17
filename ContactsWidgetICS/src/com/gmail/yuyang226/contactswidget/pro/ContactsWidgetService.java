@@ -25,7 +25,7 @@ import com.gmail.yuyang226.contactswidget.pro.ui.ContactsWidgetConfigurationActi
  *
  */
 public class ContactsWidgetService extends RemoteViewsService {
-	private static final String TAG = ContactsWidgetService.class.getName();
+//	private static final String TAG = ContactsWidgetService.class.getName();
 
 	/**
 	 * 

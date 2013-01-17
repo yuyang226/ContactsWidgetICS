@@ -26,6 +26,9 @@
     <string name="contactImageDescription">連絡先の画像</string>
     <string name="loopContactsText">連絡先を循環的にディスプレーします</string>
     <string name="checkShowNameText">連絡先の名前をにディスプレーします</string>
+    <string name="showPeopleAppShortcut">連絡先アプリケーションのショートカット</string>
+    <string name="directDialText">直通</string>
+    <string name="save">保存</string>
     
     <!-- Configurations -->
     <string name="contactGroup">連絡先をグループに分けします</string>

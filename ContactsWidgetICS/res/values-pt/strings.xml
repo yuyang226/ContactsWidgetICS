@@ -28,6 +28,9 @@
     <string name="contactImageDescription">Fale Imagem</string>
     <string name="checkShowNameText">Mostrar Nome de Contato</string>
     <string name="loopContactsText">Loop Através de Contatos</string>
+    <string name="showPeopleAppShortcut">Contatos atalho do Aplicativo</string>
+    <string name="directDialText">Discagem Direta</string>
+    <string name="save">Guardar</string>
 
     <!-- Configurations -->
     <string name="contactGroup">Grupo</string>

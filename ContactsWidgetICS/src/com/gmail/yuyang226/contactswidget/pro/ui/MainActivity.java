@@ -1,13 +1,10 @@
 package com.gmail.yuyang226.contactswidget.pro.ui;
 
-import com.gmail.yuyang226.contactswidget.pro.R;
-import com.gmail.yuyang226.contactswidget.pro.R.id;
-import com.gmail.yuyang226.contactswidget.pro.R.layout;
-import com.gmail.yuyang226.contactswidget.pro.R.string;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.webkit.WebView;
+
+import com.gmail.yuyang226.contactswidget.pro.R;
 
 public class MainActivity extends Activity {
 	private static final String ENCODING_UTF8 = "utf-8"; //$NON-NLS-1$

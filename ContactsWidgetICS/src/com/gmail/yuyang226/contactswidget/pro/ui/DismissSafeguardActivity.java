@@ -6,10 +6,6 @@ package com.gmail.yuyang226.contactswidget.pro.ui;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.gmail.yuyang226.contactswidget.pro.ContactsWidgetProvider;
-import com.gmail.yuyang226.contactswidget.pro.R;
-import com.gmail.yuyang226.contactswidget.pro.R.layout;
-
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -21,6 +17,9 @@ import android.provider.ContactsContract.QuickContact;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.gmail.yuyang226.contactswidget.pro.ContactsWidgetProvider;
+import com.gmail.yuyang226.contactswidget.pro.R;
 
 /**
  * @author yayu

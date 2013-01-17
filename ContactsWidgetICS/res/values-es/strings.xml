@@ -27,6 +27,9 @@
     <string name="contactImageDescription">Contacto Imagen</string>
     <string name="checkShowNameText">Mostrar Nombre de contacto</string>
     <string name="loopContactsText">Recorrer los Contactos</string>
+    <string name="showPeopleAppShortcut">Contactos acceso directo a aplicación</string>
+    <string name="directDialText">línea directa</string>
+    <string name="save">Ahorrar</string>
     
     <!-- Configurations -->
     <string name="contactGroup">Grupo</string>
