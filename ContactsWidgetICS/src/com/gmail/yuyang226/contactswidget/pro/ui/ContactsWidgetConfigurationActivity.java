@@ -13,7 +13,6 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -39,6 +38,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	public static final String PREF_SHOWNAME_PREFIX = "showname_"; //$NON-NLS-1$
 	public static final String PREF_MAXNUMBER_PREFIX = "maxnumber_"; //$NON-NLS-1$
 	public static final String PREF_DIRECTDIAL_PREFIX = "directdial_"; //$NON-NLS-1$
+	public static final String PREF_SHOWPEOPLE_PREFIX = "showpeope_"; //$NON-NLS-1$
 	
 	public static final int PREF_MAXNUMBER_DEFAULT = 20;
 	public static final int PREF_MAXNUMBER_DEFAULT_HIGH = 50;
@@ -48,7 +48,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	public static final String PREF_HIGH_RES = "highres_"; //$NON-NLS-1$
 	
 	public static final String[] PREFS_PREFIX = {PREF_GROUP_PREFIX, PREF_SORTING_PREFIX, PREF_HIGH_RES, 
-		PREF_SHOWNAME_PREFIX, PREF_MAXNUMBER_PREFIX};
+		PREF_SHOWNAME_PREFIX, PREF_MAXNUMBER_PREFIX, PREF_SHOWPEOPLE_PREFIX};
 	
 	private Spinner groupList;
 	private Spinner contactsSorting;
@@ -181,11 +181,18 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         CheckBox showHighRes = (CheckBox)findViewById(R.id.showHighRes);
 		saveShowHighRes(context, appWidgetId, showHighRes.isChecked());
 		saveMaxNumber(context, appWidgetId, this.maxNumberPicker.getValue());
-
+		
+		View view = findViewById(R.id.showPeopleApp);
+		boolean showPeopleApp = false;
+		if (view instanceof CheckBox) {
+			showPeopleApp = ((CheckBox)view).isChecked();
+			saveShowPeopleApp(context, appWidgetId, showPeopleApp);
+		}
+		
         // Push widget update to surface with newly set prefix
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         ContactsWidgetProvider.updateAppWidget(context, appWidgetManager,
-        		appWidgetId, widgetEntryLayoutId, true, getImageSize());
+        		appWidgetId, widgetEntryLayoutId, showPeopleApp, getImageSize());
     }
     
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
@@ -291,6 +298,18 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     public static boolean loadSupportDirectDial(Context context, int appWidgetId) {
         SharedPreferences prefs = context.getSharedPreferences(PREF_DIRECTDIAL_PREFIX, 0);
         String value = prefs.getString(PREF_DIRECTDIAL_PREFIX + appWidgetId, Boolean.FALSE.toString());
+        return Boolean.valueOf(value);
+    }
+    
+    public static void saveShowPeopleApp(Context context, int appWidgetId, boolean showPeopleApp) {
+        SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_SHOWPEOPLE_PREFIX, 0).edit();
+        prefs.putString(PREF_SHOWPEOPLE_PREFIX + appWidgetId, String.valueOf(showPeopleApp));
+        prefs.commit();
+    }
+    
+    public static boolean loadShowPeopleApp(Context context, int appWidgetId) {
+        SharedPreferences prefs = context.getSharedPreferences(PREF_SHOWPEOPLE_PREFIX, 0);
+        String value = prefs.getString(PREF_SHOWPEOPLE_PREFIX + appWidgetId, Boolean.TRUE.toString());
         return Boolean.valueOf(value);
     }
     

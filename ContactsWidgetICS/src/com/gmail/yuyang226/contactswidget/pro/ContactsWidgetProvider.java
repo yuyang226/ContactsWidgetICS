@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.QuickContact;
 import android.util.Log;
+import android.view.View;
 import android.widget.RemoteViews;
 
 import com.gmail.yuyang226.contactswidget.pro.ui.ContactsWidgetConfigurationActivity;
@@ -115,7 +116,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
         // update each of the widgets with the remote adapter
         for (int i = 0; i < appWidgetIds.length; i++) {
         	updateAppWidget(context, appWidgetManager, appWidgetIds[i], getWidgetEntryLayoutId(),
-        			canLaunchPeopleApp(), getImageSize());
+        			ContactsWidgetConfigurationActivity.loadShowPeopleApp(context, i), getImageSize());
         }
         super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
@@ -182,6 +183,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
                     PendingIntent.FLAG_UPDATE_CURRENT);
         	rv.setOnClickPendingIntent(R.id.buttonPeople, pi);
         }
+        rv.setViewVisibility(R.id.buttonPeople, canLaunchPeopleApp ? View.VISIBLE : View.GONE);
         
         // The empty view is displayed when the collection has no items. It should be a sibling
         // of the collection view.
@@ -206,10 +208,6 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 	
 	protected int getWidgetEntryLayoutId() {
 		return R.layout.contact_entry;
-	}
-	
-	protected boolean canLaunchPeopleApp() {
-		return false;
 	}
 	
 	protected Rect getImageSize() {

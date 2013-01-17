@@ -48,6 +48,7 @@
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/contactIconPanel"
         android:textColor="@color/grey"
+        android:background="@drawable/widget_item_background"
         android:visibility="gone" />
 
 </RelativeLayout>

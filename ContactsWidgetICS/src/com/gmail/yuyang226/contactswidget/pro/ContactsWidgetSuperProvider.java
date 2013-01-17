@@ -18,11 +18,6 @@ public class ContactsWidgetSuperProvider extends ContactsWidgetDirectDialProvide
 		super();
 	}
 	
-	@Override
-	protected boolean canLaunchPeopleApp() {
-		return true;
-	}
-	
 	/* (non-Javadoc)
 	 * @see com.gmail.yuyang226.contactswidget.ContactsWidgetProvider#getWidgetEntryLayoutId()
 	 */

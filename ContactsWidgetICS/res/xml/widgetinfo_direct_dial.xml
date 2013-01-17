@@ -19,7 +19,7 @@
     android:minHeight="64dp"
     android:configure="com.gmail.yuyang226.contactswidget.pro.ui.ContactsWidgetDirectDialConfigurationActivity"
     android:updatePeriodMillis="180000"
-    android:previewImage="@drawable/preview"
+    android:previewImage="@drawable/preview_directdial"
     android:initialLayout="@layout/contact_manager_direct_dial"
     android:resizeMode="horizontal|vertical" 
     android:minResizeWidth="128dp"

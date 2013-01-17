@@ -40,7 +40,6 @@
     <string name="buttonContactDisplayName">By Display Name</string>
     <string name="invalid_provider_info">Invalid widget provider info: </string>
     <string name="open_the_people_app">Open the People app</string>
-    <string name="directDialText">Direct Dial</string>
     <string name="loading">Loading&#8230;</string>
     <string name="showHighResText">Show High Resolution Pictures</string>
     <string name="setMaxNumberTitle">Maximum Number of Contacts</string>

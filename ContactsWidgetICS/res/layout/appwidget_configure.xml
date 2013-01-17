@@ -79,21 +79,13 @@
             android:checked="true"
             android:text="@string/showPeopleAppShortcut" />
 
-        <CheckBox
-            android:id="@+id/supportDirectDial"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/showPeopleApp"
-            android:checked="true"
-            android:text="@string/directDialText" />
-
         <!-- Begining of Sorting -->
 
         <TextView
             android:id="@+id/sortText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/supportDirectDial"
+            android:layout_below="@+id/showPeopleApp"
             android:layout_gravity="left"
             android:text="@string/contactSorting"
             android:textColor="@color/holo_blue_light"

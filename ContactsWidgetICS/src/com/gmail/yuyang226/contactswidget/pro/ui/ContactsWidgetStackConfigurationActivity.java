@@ -16,7 +16,7 @@ import com.gmail.yuyang226.contactswidget.pro.R;
  *
  */
 public class ContactsWidgetStackConfigurationActivity extends
-		ContactsWidgetConfigurationActivity {
+ContactsWidgetDirectDialConfigurationActivity {
 	public static final String PREF_LOOPCONTACTS_PREFIX = "loopcontacts_"; //$NON-NLS-1$
 
 	public ContactsWidgetStackConfigurationActivity() {

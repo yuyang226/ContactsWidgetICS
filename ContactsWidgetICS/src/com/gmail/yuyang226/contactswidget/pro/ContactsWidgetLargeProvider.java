@@ -17,11 +17,6 @@ public class ContactsWidgetLargeProvider extends ContactsWidgetProvider {
 	}
 
 	@Override
-	protected boolean canLaunchPeopleApp() {
-		return true;
-	}
-	
-	@Override
 	protected boolean supportDirectDial() {
 		return true;
 	}
