@@ -35,6 +35,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.gmail.yuyang226.contactswidget.pro.ui.ContactsWidgetLargeConfigurationActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="com.gmail.yuyang226.contactswidget.pro.ui.ContactsWidgetSuperConfigurationActivity"
             android:exported="true" >
             <intent-filter>

@@ -108,6 +108,12 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         maxNumberPicker.setMaxValue(PREF_MAXNUMBER_MAX);
         maxNumberPicker.setValue(PREF_MAXNUMBER_DEFAULT);
         maxNumberPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        
+        View view = findViewById(R.id.showPeopleApp);
+        if (view != null) {
+        	view.setVisibility(canShowPeopleApp() ? View.VISIBLE : View.GONE);
+        }
+        
         setupButtons();
 
         // Find the widget id from the intent. 
@@ -182,11 +188,13 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 		saveShowHighRes(context, appWidgetId, showHighRes.isChecked());
 		saveMaxNumber(context, appWidgetId, this.maxNumberPicker.getValue());
 		
-		View view = findViewById(R.id.showPeopleApp);
 		boolean showPeopleApp = false;
-		if (view instanceof CheckBox) {
-			showPeopleApp = ((CheckBox)view).isChecked();
-			saveShowPeopleApp(context, appWidgetId, showPeopleApp);
+		if (canShowPeopleApp()) {
+			View view = findViewById(R.id.showPeopleApp);
+			if (view instanceof CheckBox) {
+				showPeopleApp = ((CheckBox)view).isChecked();
+				saveShowPeopleApp(context, appWidgetId, showPeopleApp);
+			}
 		}
 		
         // Push widget update to surface with newly set prefix
@@ -209,6 +217,13 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     protected Rect getImageSize() {
 		return ContactsWidgetProvider.IMAGE_SIZE_SMALL_RECT;
 	}
+    
+    /**
+     * @return True if can show People app shortcut or false otherwise
+     */
+    protected boolean canShowPeopleApp() {
+    	return false;
+    }
     
  // Write the prefix to the SharedPreferences object for this widget
     public static void saveSortingString(Context context, int appWidgetId, String text) {

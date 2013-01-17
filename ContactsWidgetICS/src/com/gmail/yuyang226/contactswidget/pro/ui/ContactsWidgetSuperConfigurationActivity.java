@@ -26,5 +26,12 @@ ContactsWidgetDirectDialConfigurationActivity {
 		return ContactsWidgetProvider.IMAGE_SIZE_LARGE_RECT;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.gmail.yuyang226.contactswidget.pro.ui.ContactsWidgetConfigurationActivity#canShowPeopleApp()
+	 */
+	@Override
+	protected boolean canShowPeopleApp() {
+		return true;
+	}
 
 }
