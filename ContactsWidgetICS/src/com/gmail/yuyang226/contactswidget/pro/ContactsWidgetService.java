@@ -109,8 +109,10 @@ public class ContactsWidgetService extends RemoteViewsService {
             // action of a given item
             rv.setOnClickFillInIntent(R.id.contactPhoto, fillInIntent);
             
+            boolean supportDirectDial = false;
             if (contact.getPhoneNumbers() != null && !contact.getPhoneNumbers().isEmpty()) {
 	        	//support direct dial
+            	supportDirectDial = true;
             	fillInIntent = new Intent();
                 fillInIntent.putExtras(new Bundle());
                 fillInIntent.putExtra(ContactsWidgetProvider.INTENT_TAG_ACTION, 
@@ -120,6 +122,9 @@ public class ContactsWidgetService extends RemoteViewsService {
 	        	rv.setTextViewText(R.id.contactPhoneNumberText, phoneNumber);
 	        	rv.setOnClickFillInIntent(R.id.dialerButton, fillInIntent);
 	        }
+            
+            rv.setViewVisibility(R.id.dialerButton, supportDirectDial ? View.VISIBLE : View.GONE);
+            rv.setViewVisibility(R.id.contactPhoneNumberText, supportDirectDial ? View.VISIBLE : View.GONE);
 
 	        return rv;
 	    }

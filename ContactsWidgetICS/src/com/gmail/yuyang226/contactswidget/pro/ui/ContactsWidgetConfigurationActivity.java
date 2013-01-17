@@ -11,22 +11,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.ContactsContract;
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.NumberPicker;
-import android.widget.ScrollView;
 import android.widget.Spinner;
 
 import com.gmail.yuyang226.contactswidget.pro.ContactAccessor;
 import com.gmail.yuyang226.contactswidget.pro.ContactsWidgetProvider;
 import com.gmail.yuyang226.contactswidget.pro.R;
-import com.gmail.yuyang226.contactswidget.pro.R.array;
-import com.gmail.yuyang226.contactswidget.pro.R.id;
-import com.gmail.yuyang226.contactswidget.pro.R.layout;
 import com.gmail.yuyang226.contactswidget.pro.models.ContactGroup;
 
 public class ContactsWidgetConfigurationActivity extends Activity  {
@@ -111,7 +107,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         maxNumberPicker.setMinValue(PREF_MAXNUMBER_MIN);
         maxNumberPicker.setMaxValue(PREF_MAXNUMBER_MAX);
         maxNumberPicker.setValue(PREF_MAXNUMBER_DEFAULT);
-        
+        maxNumberPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         setupButtons();
 
         // Find the widget id from the intent. 
@@ -126,8 +122,6 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         if (mAppWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID) {
             finish();
         }
-        
-        setupButtons();
     }
     
     private void createGroupListSpinner() {
@@ -150,18 +144,8 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     }
     
     private void setupButtons() {
-    	Button okButton = (Button)findViewById(R.id.okButton);
+    	Button okButton = (Button)findViewById(R.id.saveButton);
     	okButton.setOnClickListener(mOnClickListener);
-    	
-    	Button cancelButton = (Button)findViewById(R.id.cancelButton);
-    	cancelButton.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				finish();
-			}
-    		
-    	});
     }
     
     protected void savePreferences(Context context, int appWidgetId) {

@@ -1,40 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-     Copyright (C) 2009 The Android Open Source Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
-
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="128dp"
-    android:layout_height="128dp">
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/contactIconPanel"
+        android:layout_width="match_parent"
+        android:layout_height="128dp" >
+
+        <ImageView
+            android:id="@+id/contactPhoto"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:adjustViewBounds="true"
+            android:contentDescription="@+string/contactImageDescription"
+            android:scaleType="fitXY"
+            android:src="@drawable/icon" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/contactEntryText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:background="@drawable/widget_item_background"
+            android:padding="3dip"
+            android:textColor="@color/white" />
+    </FrameLayout>
     
     <ImageView
-        android:id="@+id/contactPhoto"
-        android:adjustViewBounds="true"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:contentDescription="@+string/contactImageDescription"
-        android:scaleType="fitXY"
-        android:src="@drawable/icon" >
+        android:id="@+id/dialerButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:clickable="true"
+        android:contentDescription="@+string/directDialText"
+        android:src="@drawable/dialer"
+        android:visibility="gone" >
     </ImageView>
-    <TextView
-        android:id="@+id/contactEntryText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|bottom"
-        android:textColor="@color/white" 
-        android:padding="3dip"
-        android:background="@drawable/widget_item_background"/>
     
-</FrameLayout>
+    <TextView
+        android:id="@+id/contactPhoneNumberText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/contactIconPanel"
+        android:textColor="@color/grey"
+        android:visibility="gone" />
+
+</RelativeLayout>

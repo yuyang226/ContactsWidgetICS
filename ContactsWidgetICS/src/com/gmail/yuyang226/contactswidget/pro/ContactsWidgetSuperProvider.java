@@ -9,7 +9,7 @@ import android.graphics.Rect;
  * @author yayu
  *
  */
-public class ContactsWidgetSuperProvider extends ContactsWidgetProvider {
+public class ContactsWidgetSuperProvider extends ContactsWidgetDirectDialProvider {
 
 	/**
 	 * 
