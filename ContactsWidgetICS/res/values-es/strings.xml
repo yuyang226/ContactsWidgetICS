@@ -23,6 +23,7 @@
     <string name="widget_name_stack">Contactos Widget(Stack Ver)</string>
     <string name="widget_name_large">Contactos Widget(Grande)</string>
     <string name="widget_name_super">Contactos Widget(Súper)</string>
+    <string name="widget_name_direct_dial">Contactos Widget(línea directa)</string>
     <string name="empty_view_text">No hay contactos cargados</string>
     <string name="contactImageDescription">Contacto Imagen</string>
     <string name="checkShowNameText">Mostrar Nombre de contacto</string>

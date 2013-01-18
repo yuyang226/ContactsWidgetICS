@@ -23,6 +23,7 @@
     <string name="widget_name_stack">Kontakt Widget(Stos Zobacz)</string>
     <string name="widget_name_large">Kontakt Widget(Duży)</string>
     <string name="widget_name_super">Kontakt Widget(Wspaniały)</string>
+    <string name="widget_name_direct_dial">Kontakt Widget(Bezpośredni Dial)</string>
     <string name="empty_view_text">Brak Kontakt Loaded</string>
     <string name="contactImageDescription">Skontaktuj się obraz</string>
     <string name="checkShowNameText">Pokaż Nazwa Kontaktowa</string>

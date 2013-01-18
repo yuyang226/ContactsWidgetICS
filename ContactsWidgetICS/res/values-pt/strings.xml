@@ -24,6 +24,7 @@
     <string name="widget_name_stack">Contactos Widget(Pilha Ver)</string>
     <string name="widget_name_large">Contactos Widget(Grande)</string>
     <string name="widget_name_super">Contactos Widget(Super)</string>
+    <string name="widget_name_direct_dial">Contactos Widget(Discagem Direta)</string>
     <string name="empty_view_text">Não Contactos Carregado</string>
     <string name="contactImageDescription">Fale Imagem</string>
     <string name="checkShowNameText">Mostrar Nome de Contato</string>

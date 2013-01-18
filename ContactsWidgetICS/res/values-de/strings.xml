@@ -23,6 +23,7 @@
     <string name="widget_name_stack">Kontakte Widget(Stabel Anzeige)</string>
     <string name="widget_name_large">Kontakte Widget(Groß)</string>
     <string name="widget_name_super">Kontakte Widget(Super)</string>
+    <string name="widget_name_direct_dial">Kontakte Widget(Direktwahl)</string>
     <string name="empty_view_text">Keine geladenen Kontakte</string>
     <string name="contactImageDescription">Kontaktbild</string>
     <string name="checkShowNameText">Zeigen Sie den Kontaktname</string>

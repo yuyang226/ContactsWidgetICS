@@ -23,6 +23,7 @@
     <string name="widget_name_stack">Kontakty Widget(Stack Zobrazit)</string>
     <string name="widget_name_large">Kontakty Widget(Velký)</string>
     <string name="widget_name_super">Kontakty Widget(Obrovský)</string>
+    <string name="widget_name_direct_dial">Kontakty Widget(Direct Dial)</string>
     <string name="empty_view_text">Žádné Kontakty Loaded</string>
     <string name="contactImageDescription">Kontaktujte obrázek</string>
     <string name="checkShowNameText">Zobrazit Kontakt Jméno</string>

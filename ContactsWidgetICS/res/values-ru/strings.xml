@@ -23,6 +23,7 @@
     <string name="widget_name_stack">Виджет Контакты(листать смотреть)</string>
     <string name="widget_name_large">Виджет Контакты(большой)</string>
     <string name="widget_name_super">Виджет Контакты(Cупер большой)</string>
+    <string name="widget_name_direct_dial">Виджет Контакты(Прямой)</string>
     <string name="empty_view_text">невозможно загрузить контакты</string>
     <string name="contactImageDescription">изображение контакта</string>
     <string name="checkShowNameText">показать имя контактов</string>

@@ -23,6 +23,7 @@
     <string name="widget_name_stack">Contacts Widget(Empiler Voir)</string>
     <string name="widget_name_large">Contacts Widget(Grand)</string>
     <string name="widget_name_super">Contacts Widget(Savoir)</string>
+    <string name="widget_name_direct_dial">Contacts Widget(Direct Dial)</string>
     <string name="empty_view_text">Pas de Contacts Alimentés</string>
     <string name="contactImageDescription">Contact Image</string>
     <string name="checkShowNameText">Montrer Nom du Contact</string>
