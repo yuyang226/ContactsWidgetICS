@@ -32,14 +32,14 @@
     </FrameLayout>
 
     <TextView
-        android:id="@+id/line1"
+        android:id="@+id/lineDialer"
         style="?android:attr/listSeparatorTextViewStyle"
         android:layout_width="1dp"
         android:layout_height="30dp"
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/dialerButton"
         android:layout_marginRight="7dp"
-        android:background="@color/darker_white"
+        android:background="@color/grey"
         android:gravity="center_vertical" />
     
     <ImageView
