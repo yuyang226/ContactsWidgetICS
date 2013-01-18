@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/contactIconPanel"
-        android:textColor="@color/grey"
+        android:textColor="@color/darker_white"
         android:background="@drawable/widget_item_background"
         android:visibility="gone" />
 
