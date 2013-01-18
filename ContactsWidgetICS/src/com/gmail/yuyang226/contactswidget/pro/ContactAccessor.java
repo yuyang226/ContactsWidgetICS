@@ -64,13 +64,13 @@ public class ContactAccessor {
 				return -1;
 			} else if (n2.isPrimary()) {
 				return 1;
-			} else if (ContactsContract.CommonDataKinds.Phone.TYPE_MAIN == n1.getType()) {
-				return -1;
-			} else if (ContactsContract.CommonDataKinds.Phone.TYPE_MAIN == n2.getType()) {
-				return 1;
 			} else if (ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE == n1.getType()) {
 				return -1;
 			} else if (ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE == n2.getType()) {
+				return 1;
+			} else if (ContactsContract.CommonDataKinds.Phone.TYPE_MAIN == n1.getType()) {
+				return -1;
+			} else if (ContactsContract.CommonDataKinds.Phone.TYPE_MAIN == n2.getType()) {
 				return 1;
 			}
 			return 0;
