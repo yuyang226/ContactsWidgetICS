@@ -30,7 +30,6 @@
     <color name="darker_white">#f5fcf5</color>
     <color name="black">#ff000000</color>
     <color name="grey">#888888</color>
-    <color name="light_grey_background">#29000000</color>
-    
-    <color name="lighter_gray_background">#80808080</color>
+    <color name="lighter_gray_background">#29000000</color>
+    <color name="light_gray_background">#60808080</color>
 </resources>
