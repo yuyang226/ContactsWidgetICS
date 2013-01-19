@@ -4,8 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:layout_margin="@dimen/widget_margin"
-    android:layout_marginBottom="@dimen/widget_margin_bottom"
-    android:layout_marginTop="@dimen/widget_margin_top"
     android:padding="10dp" >
 
     <RelativeLayout
@@ -62,7 +60,7 @@
             android:layout_below="@+id/line2"
             android:checked="true"
             android:text="@string/checkShowNameText" />
-        
+
         <CheckBox
             android:id="@+id/loopContacts"
             android:layout_width="match_parent"
@@ -70,8 +68,8 @@
             android:layout_below="@+id/checkShowName"
             android:checked="true"
             android:enabled="false"
-            android:visibility="gone"
-            android:text="@string/loopContactsText" />
+            android:text="@string/loopContactsText"
+            android:visibility="gone" />
 
         <CheckBox
             android:id="@+id/showHighRes"
@@ -88,7 +86,7 @@
             android:layout_below="@+id/showHighRes"
             android:checked="true"
             android:text="@string/showPeopleAppShortcut" />
-        
+
         <CheckBox
             android:id="@+id/checkDirectDial"
             android:layout_width="match_parent"
@@ -96,7 +94,7 @@
             android:layout_below="@+id/showPeopleApp"
             android:checked="true"
             android:text="@string/directDialText" />
-        
+
         <CheckBox
             android:id="@+id/checkShowPhoneNumber"
             android:layout_width="match_parent"
@@ -169,24 +167,47 @@
         <!-- End of Set Max Number -->
 
         <LinearLayout
-            android:id="@+id/ButtonLayout"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/numberPicker"
-            android:layout_centerHorizontal="true"
-            android:baselineAligned="false"
-            android:orientation="horizontal" >
-
-            <Button
-                android:id="@+id/saveButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/save"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp" />
-        </LinearLayout>
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="vertical"
+		        android:divider="?android:attr/dividerHorizontal"
+		        android:showDividers="beginning"
+		        android:layout_below="@+id/numberPicker"
+		        android:paddingTop="20dip">
+		
+		    <LinearLayout
+		            style="?android:attr/buttonBarStyle"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:orientation="horizontal"
+		            android:measureWithLargestChild="true">
+		
+		        <LinearLayout android:id="@+id/leftSpacer"
+		                android:layout_weight="0.25"
+		                android:layout_width="0dip"
+		                android:layout_height="wrap_content"
+		                android:orientation="horizontal"
+		                android:visibility="gone" />
+		
+		        <Button android:id="@+id/saveButton"
+		                android:layout_width="0dip"
+		                android:layout_height="wrap_content"
+		                android:layout_gravity="right"
+		                android:layout_weight="1"
+		                android:text="@string/save"
+		                android:maxLines="2"
+		                android:filterTouchesWhenObscured="true"
+		                style="?android:attr/buttonBarButtonStyle" />
+		
+		        <LinearLayout android:id="@+id/rightSpacer"
+		                android:layout_width="0dip"
+		                android:layout_weight="0.25"
+		                android:layout_height="wrap_content"
+		                android:orientation="horizontal"
+		                android:visibility="gone" />
+		
+		    </LinearLayout>
+		</LinearLayout>
     </RelativeLayout>
 
 </ScrollView>

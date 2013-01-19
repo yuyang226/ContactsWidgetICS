@@ -13,7 +13,7 @@
             android:id="@+id/contactList"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_margin="@dimen/widget_margin"
+	        android:layout_margin="@dimen/widget_margin"
             android:columnWidth="128dp"
             android:gravity="center"
             android:horizontalSpacing="@dimen/widget_spacing"

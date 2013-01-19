@@ -30,6 +30,7 @@
     <string name="loopContactsText">Loop Through Contacts</string>
     <string name="showPeopleAppShortcut">Raccourci vers l\'application Contacts</string>
     <string name="directDialText">Direct Dial</string>
+    <string name="showPhoneNumberText">Afficher le numéro de téléphone</string>
     <string name="save">Sauver</string>
     
     <!-- Configurations -->

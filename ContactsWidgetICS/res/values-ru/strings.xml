@@ -30,6 +30,7 @@
     <string name="loopContactsText">просмотреть контакты сначала</string>
     <string name="showPeopleAppShortcut">контакты ярлык приложения</string>
     <string name="directDialText">Прямой</string>
+    <string name="showPhoneNumberText">Показать номер телефона</string>
     <string name="save">экономить</string>
 
     <!-- Configurations -->

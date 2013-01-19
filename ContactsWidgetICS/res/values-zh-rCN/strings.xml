@@ -17,7 +17,7 @@
 <resources>
     <string name="app_name">通讯精灵</string>
     <string name="activity_title">通讯精灵 - 用户指南</string>
-    <string name="help_file_name">help_zh.html</string>
+    <string name="help_file_name">help_zhs.html</string>
     <string name="widget_name">通讯精灵</string>
     <string name="widget_name_stack">通讯精灵(层叠)</string>
     <string name="widget_name_large">通讯精灵(大)</string>
@@ -29,6 +29,7 @@
     <string name="checkShowNameText">显示联系人姓名</string>
     <string name="showPeopleAppShortcut">通讯录快捷方式</string>
     <string name="directDialText">直接拨打</string>
+    <string name="showPhoneNumberText">显示电话号码</string>
     <string name="save">保存</string>
     
     <!-- Configurations -->

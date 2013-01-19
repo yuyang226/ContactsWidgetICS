@@ -29,6 +29,7 @@
     <string name="loopContactsText">Sfoglia contatti</string>
     <string name="showPeopleAppShortcut">Contatti Applicazione di scelta rapida</string>
     <string name="directDialText">linea esterna diretta</string>
+    <string name="showPhoneNumberText">Mostra numero telefonico</string>
     <string name="save">Salvare</string>
     
     <!-- Configurations -->

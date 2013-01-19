@@ -28,7 +28,7 @@
 	        android:background="@android:color/transparent"
 	        android:paddingBottom="5dp"
 	        android:paddingRight="5dp"
-	        />
+	        android:visibility="gone" />
     </RelativeLayout>
 
     <TextView
