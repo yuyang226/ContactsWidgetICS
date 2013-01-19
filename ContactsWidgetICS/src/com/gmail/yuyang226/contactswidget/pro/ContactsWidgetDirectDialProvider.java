@@ -27,16 +27,13 @@ public class ContactsWidgetDirectDialProvider extends ContactsWidgetProvider {
 	}
 	
 	@Override
-	protected boolean supportDirectDial() {
-		return true;
-	}
-	
-	@Override
 	public void onDeleted(Context context, int[] appWidgetIds) {
 		super.onDeleted(context, appWidgetIds);
 		for (int appWidgetId : appWidgetIds) {
 			ContactsWidgetStackConfigurationActivity.deletePreference(context, appWidgetId, 
 					ContactsWidgetConfigurationActivity.PREF_DIRECTDIAL_PREFIX);
+			ContactsWidgetStackConfigurationActivity.deletePreference(context, appWidgetId, 
+					ContactsWidgetConfigurationActivity.PREF_SHOWPHONENUMBER_PREFIX);
 		}
 	}
 

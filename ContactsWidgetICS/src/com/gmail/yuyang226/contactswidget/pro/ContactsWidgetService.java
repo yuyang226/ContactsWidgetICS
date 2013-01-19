@@ -48,12 +48,17 @@ public class ContactsWidgetService extends RemoteViewsService {
 	    private int mAppWidgetId;
 	    private int widgetEntryLayoutId;
 	    private Rect imageSize;
+	    private boolean canDirectDial;
+	    private boolean showPhoneNumber;
 
 	    public GridRemoteViewsFactory(Context context, Intent intent) {
 	    	//Log.d(TAG, String.format("Input Params: %s, %s", String.valueOf(context), String.valueOf(intent))); //$NON-NLS-1$
 	        mContext = context;
 	        mAppWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
 	                AppWidgetManager.INVALID_APPWIDGET_ID);
+	        
+	        this.canDirectDial = ContactsWidgetConfigurationActivity.loadSupportDirectDial(context, mAppWidgetId);
+	        this.showPhoneNumber = ContactsWidgetConfigurationActivity.loadShowPhoneNumber(context, mAppWidgetId);
 	        
 	        widgetEntryLayoutId = intent.getIntExtra(ContactsWidgetProvider.CONTACT_ENTRY_LAYOUT_ID,
 	                R.layout.contact_entry);
@@ -110,7 +115,7 @@ public class ContactsWidgetService extends RemoteViewsService {
             rv.setOnClickFillInIntent(R.id.contactPhoto, fillInIntent);
             
             boolean supportDirectDial = false;
-            if (contact.getPhoneNumbers() != null && !contact.getPhoneNumbers().isEmpty()) {
+            if (this.canDirectDial && contact.getPhoneNumbers() != null && !contact.getPhoneNumbers().isEmpty()) {
 	        	//support direct dial
             	supportDirectDial = true;
             	fillInIntent = new Intent();
@@ -126,7 +131,8 @@ public class ContactsWidgetService extends RemoteViewsService {
             rv.setViewVisibility(R.id.dialerButton, supportDirectDial ? View.VISIBLE : View.GONE);
             rv.setViewVisibility(R.id.contactPhoneNumberText, supportDirectDial ? View.VISIBLE : View.GONE);
             rv.setViewVisibility(R.id.lineDialer, supportDirectDial ? View.VISIBLE : View.GONE);
-
+            rv.setViewVisibility(R.id.contactPhoneNumberText, this.showPhoneNumber ? View.VISIBLE : View.GONE);
+            
 	        return rv;
 	    }
 

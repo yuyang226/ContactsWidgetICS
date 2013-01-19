@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
 
@@ -38,6 +40,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	public static final String PREF_SHOWNAME_PREFIX = "showname_"; //$NON-NLS-1$
 	public static final String PREF_MAXNUMBER_PREFIX = "maxnumber_"; //$NON-NLS-1$
 	public static final String PREF_DIRECTDIAL_PREFIX = "directdial_"; //$NON-NLS-1$
+	public static final String PREF_SHOWPHONENUMBER_PREFIX = "showphonenumber_"; //$NON-NLS-1$
 	public static final String PREF_SHOWPEOPLE_PREFIX = "showpeope_"; //$NON-NLS-1$
 	
 	public static final int PREF_MAXNUMBER_DEFAULT = 20;
@@ -111,13 +114,26 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         
         View view = findViewById(R.id.showPeopleApp);
         if (view != null) {
-//        	view.setVisibility(canShowPeopleApp() ? View.VISIBLE : View.GONE);
         	((CheckBox)view).setChecked(canShowPeopleApp());
         }
         
-        view = findViewById(R.id.checkDirectDial);
-        if (view != null) {
-        	view.setVisibility(canDirectDial() ? View.VISIBLE : View.GONE);
+        final View directDialView = findViewById(R.id.checkDirectDial);
+        if (directDialView instanceof CheckBox) {
+        	directDialView.setVisibility(canDirectDial() ? View.VISIBLE : View.GONE);
+        	final View phoneNumberView = findViewById(R.id.checkShowPhoneNumber);
+            if (phoneNumberView != null) {
+            	phoneNumberView.setVisibility(canDirectDial() ? View.VISIBLE : View.GONE);
+            	phoneNumberView.setEnabled(canDirectDial());
+            	((CheckBox)directDialView).setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+					@Override
+					public void onCheckedChanged(CompoundButton buttonView,
+							boolean isChecked) {
+						phoneNumberView.setEnabled(((CheckBox)directDialView).isChecked());
+						((CheckBox)phoneNumberView).setChecked(phoneNumberView.isEnabled());
+					}
+            	});
+            }
         }
         
         view = findViewById(R.id.loopContacts);
@@ -328,15 +344,27 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         return Boolean.valueOf(value);
     }
     
-    public static void saveSupportDirectDial(Context context, int appWidgetId, boolean showName) {
+    public static void saveSupportDirectDial(Context context, int appWidgetId, boolean supportDirectDial) {
         SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_DIRECTDIAL_PREFIX, 0).edit();
-        prefs.putString(PREF_DIRECTDIAL_PREFIX + appWidgetId, String.valueOf(showName));
+        prefs.putString(PREF_DIRECTDIAL_PREFIX + appWidgetId, String.valueOf(supportDirectDial));
         prefs.commit();
     }
     
     public static boolean loadSupportDirectDial(Context context, int appWidgetId) {
         SharedPreferences prefs = context.getSharedPreferences(PREF_DIRECTDIAL_PREFIX, 0);
         String value = prefs.getString(PREF_DIRECTDIAL_PREFIX + appWidgetId, Boolean.FALSE.toString());
+        return Boolean.valueOf(value);
+    }
+    
+    public static void saveShowPhoneNumber(Context context, int appWidgetId, boolean showPhoneNumber) {
+        SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_SHOWPHONENUMBER_PREFIX, 0).edit();
+        prefs.putString(PREF_SHOWPHONENUMBER_PREFIX + appWidgetId, String.valueOf(showPhoneNumber));
+        prefs.commit();
+    }
+    
+    public static boolean loadShowPhoneNumber(Context context, int appWidgetId) {
+        SharedPreferences prefs = context.getSharedPreferences(PREF_SHOWPHONENUMBER_PREFIX, 0);
+        String value = prefs.getString(PREF_SHOWPHONENUMBER_PREFIX + appWidgetId, Boolean.TRUE.toString());
         return Boolean.valueOf(value);
     }
     
@@ -348,7 +376,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     
     public static boolean loadShowPeopleApp(Context context, int appWidgetId) {
         SharedPreferences prefs = context.getSharedPreferences(PREF_SHOWPEOPLE_PREFIX, 0);
-        String value = prefs.getString(PREF_SHOWPEOPLE_PREFIX + appWidgetId, Boolean.TRUE.toString());
+        String value = prefs.getString(PREF_SHOWPEOPLE_PREFIX + appWidgetId, Boolean.FALSE.toString());
         return Boolean.valueOf(value);
     }
     

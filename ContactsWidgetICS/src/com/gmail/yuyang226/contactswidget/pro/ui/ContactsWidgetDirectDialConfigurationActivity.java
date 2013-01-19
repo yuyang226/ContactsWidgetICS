@@ -46,6 +46,11 @@ public class ContactsWidgetDirectDialConfigurationActivity extends
 		if (canDirectDial != null) {
 			saveSupportDirectDial(context, appWidgetId, canDirectDial.isChecked());
 		}
+		
+		CheckBox showPhoneNumber = (CheckBox)findViewById(R.id.checkShowPhoneNumber);
+		if (showPhoneNumber != null) {
+			saveShowPhoneNumber(context, appWidgetId, showPhoneNumber.isChecked());
+		}
 	}
 
 }

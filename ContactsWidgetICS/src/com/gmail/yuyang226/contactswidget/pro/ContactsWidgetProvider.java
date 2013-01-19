@@ -214,11 +214,4 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 		return IMAGE_SIZE_SMALL_RECT;
 	}
 	
-	/**
-	 * @return True if support direct dial or false otherwise
-	 */
-	protected boolean supportDirectDial() {
-		return false;
-	}
-
 }
