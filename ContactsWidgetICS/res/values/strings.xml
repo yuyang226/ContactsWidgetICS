@@ -17,6 +17,7 @@
     <string name="showPeopleAppShortcut">People App Shortcut</string>
     <string name="directDialText">Direct Dial</string>
     <string name="loopContactsText">Loop Through Contacts</string>
+    <string name="showPhoneNumberText">Show Phone Number</string>
     <string name="save">Save</string>
     <string name="contactGroup">Group</string>
     <string name="contactGroupPrompt">Select a contact group to display contacts</string>

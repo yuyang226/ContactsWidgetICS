@@ -111,7 +111,8 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         
         View view = findViewById(R.id.showPeopleApp);
         if (view != null) {
-        	view.setVisibility(canShowPeopleApp() ? View.VISIBLE : View.GONE);
+//        	view.setVisibility(canShowPeopleApp() ? View.VISIBLE : View.GONE);
+        	((CheckBox)view).setChecked(canShowPeopleApp());
         }
         
         view = findViewById(R.id.checkDirectDial);
@@ -199,12 +200,10 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 		saveMaxNumber(context, appWidgetId, this.maxNumberPicker.getValue());
 		
 		boolean showPeopleApp = false;
-		if (canShowPeopleApp()) {
-			View view = findViewById(R.id.showPeopleApp);
-			if (view instanceof CheckBox) {
-				showPeopleApp = ((CheckBox)view).isChecked();
-				saveShowPeopleApp(context, appWidgetId, showPeopleApp);
-			}
+		View view = findViewById(R.id.showPeopleApp);
+		if (view instanceof CheckBox) {
+			showPeopleApp = ((CheckBox)view).isChecked();
+			saveShowPeopleApp(context, appWidgetId, showPeopleApp);
 		}
 		
         // Push widget update to surface with newly set prefix
@@ -248,6 +247,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     protected boolean isStackView() {
     	return false;
     }
+    
     
  // Write the prefix to the SharedPreferences object for this widget
     public static void saveSortingString(Context context, int appWidgetId, String text) {

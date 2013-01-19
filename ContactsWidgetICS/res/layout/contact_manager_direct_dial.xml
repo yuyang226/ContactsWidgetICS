@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-     Copyright (C) 2009 The Android Open Source Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <GridView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/contactList"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_margin="@dimen/widget_margin"
-        android:columnWidth="128dp"
-        android:gravity="center"
-        android:horizontalSpacing="@dimen/widget_spacing"
-        android:numColumns="auto_fit"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="@dimen/widget_spacing" />
+    <RelativeLayout
+        android:id="@+id/superLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <GridView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/contactList"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="@dimen/widget_margin"
+            android:columnWidth="128dp"
+            android:gravity="center"
+            android:horizontalSpacing="@dimen/widget_spacing"
+            android:numColumns="auto_fit"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="@dimen/widget_spacing" />
+
+        <ImageButton
+            android:id="@+id/buttonPeople"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/open_the_people_app"
+            android:paddingBottom="5dp"
+            android:paddingRight="5dp"
+            android:src="@drawable/people_app" />
+    </RelativeLayout>
 
     <TextView
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -42,4 +44,5 @@
         android:textColor="@color/highlighted_text_holo_dark"
         android:textSize="20sp"
         android:textStyle="bold" />
+
 </FrameLayout>
