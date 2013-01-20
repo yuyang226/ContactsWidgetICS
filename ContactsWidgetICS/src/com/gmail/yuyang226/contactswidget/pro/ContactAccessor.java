@@ -46,6 +46,10 @@ public class ContactAccessor {
 			ContactsContract.Contacts.PHOTO_URI,
 			ContactsContract.Contacts.HAS_PHONE_NUMBER};
 	
+	private static final String[] CONTACTS_BY_GROUP_PROJECTION = {
+		ContactsContract.CommonDataKinds.GroupMembership.GROUP_ROW_ID,
+		ContactsContract.CommonDataKinds.GroupMembership.CONTACT_ID };
+	
 	private static final String CONTACT_SELECTION = Contacts._ID + "=?"; //$NON-NLS-1$
 	
 	private static final String[] PHONENUNBER_PROJECTION = { 
@@ -352,9 +356,6 @@ public class ContactAccessor {
 			Rect size, int maxNumber) {
 		final List<Contact> contacts = new ArrayList<Contact>();
 		Uri uri = ContactsContract.Data.CONTENT_URI;
-		String[] projection = new String[] {
-				ContactsContract.CommonDataKinds.GroupMembership.GROUP_ROW_ID,
-				ContactsContract.CommonDataKinds.GroupMembership.CONTACT_ID };
 		String selection = new StringBuffer(ContactsContract.CommonDataKinds.GroupMembership.GROUP_ROW_ID)
 				.append("=").append(groupID).toString(); //$NON-NLS-1$
 		boolean showHighRes = ContactsWidgetConfigurationActivity
@@ -363,7 +364,7 @@ public class ContactAccessor {
 				.loadSupportDirectDial(context, appWidgetId);
 		String[] selectionArgs = null;
 
-		CursorLoader loader = new CursorLoader(context, uri, projection,
+		CursorLoader loader = new CursorLoader(context, uri, CONTACTS_BY_GROUP_PROJECTION,
 				selection, selectionArgs, sortOrder);
 		Cursor cursor = null;
 		try {
@@ -375,13 +376,14 @@ public class ContactAccessor {
 			cursor.moveToFirst();
 			int count = 0;
 			while (cursor.isAfterLast() == false
-					&& count++ < maxNumber) {
+					&& count < maxNumber) {
 //				long groupRowId = cursor.getLong(0);
 				long contactId = cursor.getLong(1);
 				Contact contact = loadContactById(contentResolver, context,
 						contactId, sortOrder, showHighRes, supportDirectDial, size);
 				if (contact != null) {
 					contacts.add(contact);
+					count++;
 				}
 				cursor.moveToNext();
 			}
