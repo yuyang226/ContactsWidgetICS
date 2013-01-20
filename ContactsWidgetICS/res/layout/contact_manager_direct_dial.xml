@@ -31,7 +31,8 @@
             android:contentDescription="@string/open_the_people_app"
             android:paddingBottom="5dp"
             android:paddingRight="5dp"
-            android:src="@drawable/people_app" />
+            android:src="@drawable/people_app"
+            android:visibility="gone" />
     </RelativeLayout>
 
     <TextView

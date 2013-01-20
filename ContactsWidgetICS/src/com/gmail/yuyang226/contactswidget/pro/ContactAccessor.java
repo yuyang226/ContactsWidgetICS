@@ -56,6 +56,7 @@ public class ContactAccessor {
 	
 	private static final String PHONENUMBER_SELECTION = 
 			ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?"; //$NON-NLS-1$
+	private static final String PHONENUMBER_SORTSTRING = ContactsContract.CommonDataKinds.Phone.TIMES_CONTACTED + " DESC"; //$NON-NLS-1$
 	
 	private static final Comparator<PhoneNumber> PHONENUMBER_COMPARATOR = new Comparator<PhoneNumber>() {
 		@Override
@@ -279,7 +280,7 @@ public class ContactAccessor {
 			}
 			cursor.moveToFirst();
 			int count = 0;
-			while (cursor.isAfterLast() == false && count++ < maxNumber) {
+			while (cursor.isAfterLast() == false && count < maxNumber) {
 				long contactId = cursor.getLong(0);
 				String displayName = cursor.getString(1);
 				String photoUri = cursor.getString(2);
@@ -303,6 +304,7 @@ public class ContactAccessor {
 				if (!supportDirectDial || hasPhoneNumber > 0) {
 					//either not support direct dial, or has phone number
 					contacts.add(contact);
+					count++;
 				}
 				cursor.moveToNext();
 			}
@@ -323,7 +325,7 @@ public class ContactAccessor {
 			pCur = contentResolver.query(
 					ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
 					PHONENUNBER_PROJECTION,
-					PHONENUMBER_SELECTION, new String[] { String.valueOf(contactId) }, null);
+					PHONENUMBER_SELECTION, new String[] { String.valueOf(contactId) }, PHONENUMBER_SORTSTRING);
 			while (pCur != null && pCur.moveToNext()) {
 				int type = pCur.getInt(1);
 				String phone = pCur.getString(2);
