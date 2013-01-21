@@ -40,5 +40,10 @@
     <!-- Localization -->
     <string name="starredContacts">Starred in Android</string>
     <string name="myContacts">My Contacts</string>
+    
+    <string name="menu_item_rate">Rate</string>
+    <string name="thanks_rating">Thank you for rating</string>
+    <string name="menu_item_about">About</string>
+    <string name="about_content">Developer: Toby Yu \nVersion: %s</string>
 
 </resources>

@@ -53,4 +53,9 @@
     <string name="starredContacts">Favoritos en Android</string>
     <string name="myContacts">Mis Amigos</string>
     
+    <string name="menu_item_rate">Votar</string>
+    <string name="thanks_rating">Gracias por tu puntuación</string>
+    <string name="menu_item_about">Sobre</string>
+    <string name="about_content">Revelador: Toby Yu \nVersión: %s</string>
+    
 </resources>

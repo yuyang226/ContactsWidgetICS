@@ -53,4 +53,9 @@
     <string name="starredContacts">Favoris dans Android</string>
     <string name="myContacts">Mes Contacts</string>
     
+    <string name="menu_item_rate">Vote</string>
+    <string name="thanks_rating">Merci pour voter</string>
+    <string name="menu_item_about">au sujet de</string>
+    <string name="about_content">Développateur: Toby Yu \nVersion: %s</string>
+    
 </resources>

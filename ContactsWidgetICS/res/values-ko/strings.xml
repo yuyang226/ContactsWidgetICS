@@ -52,4 +52,8 @@
     <string name="starredContacts">안드로이드에 출연</string>
     <string name="myContacts">모든 연락처</string>
     
+    <string name="menu_item_rate">등급</string>
+    <string name="thanks_rating">등급 주셔서 감사합니다</string>
+    <string name="menu_item_about">약</string>
+    <string name="about_content">개발자: Toby Yu \n버전: %s</string>
 </resources>

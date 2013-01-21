@@ -51,5 +51,10 @@
     <!-- Localization -->
     <string name="starredContacts">Ulubione w Android</string>
     <string name="myContacts">Moje Kontakty</string>
+    
+    <string name="menu_item_rate">Oceniać</string>
+    <string name="thanks_rating">Dziękujemy za ranking</string>
+    <string name="menu_item_about">Około</string>
+    <string name="about_content">Wywoływacz: Toby Yu \nWersja: %s</string>
 
 </resources>

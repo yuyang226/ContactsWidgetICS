@@ -55,5 +55,10 @@
     <!-- Localization -->
     <string name="starredContacts">Favoritos no Android</string>
     <string name="myContacts">Meus Contatos</string>
+    
+    <string name="menu_item_rate">Avaliar</string>
+    <string name="thanks_rating">Obrigado por classificação</string>
+    <string name="menu_item_about">Sobre</string>
+    <string name="about_content">Revelador: Toby Yu \nVersão: %s</string>
 
 </resources>
