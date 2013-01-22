@@ -8,7 +8,7 @@ This is a Contact Widget built for Android ICS(Ice Cream Sandwich) 4.0+ devices.
 
 You can either build it by yourself or purchase/donate via the Google Play Store.
 
-<a href="https://play.google.com/store/apps/details?id=com.gmail.yuyang226.contactswidget.pro">![http://goo.gl/zQSej](http://developer.android.com/images/brand/en_generic_rgb_wo_60.png)</a>
+<a href="https://play.google.com/store/apps/details?id=com.gmail.yuyang226.contactswidget.pro">![Play Store Link](http://developer.android.com/images/brand/en_generic_rgb_wo_60.png)</a>
 
 
 ## Major Features
