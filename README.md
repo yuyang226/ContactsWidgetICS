@@ -3,11 +3,13 @@
 This is a Contact Widget built for Android ICS(Ice Cream Sandwich) 4.0+ devices.
 
 ![High Res image](http://farm9.staticflickr.com/8331/8403009487_0d39319580_m.jpg)
-![Featured image](http://farm9.staticflickr.com/8198/8207641911_8efb99806c_z.jpg)
 
 ## Download
 
-If you like the app please purchase a copy from http://goo.gl/zQSej.
+You can either build it by yourself or purchase/donate via the Google Play Store.
+
+<a href="https://play.google.com/store/apps/details?id=com.gmail.yuyang226.contactswidget.pro">![http://goo.gl/zQSej](http://developer.android.com/images/brand/en_generic_rgb_wo_60.png)</a>
+
 
 ## Major Features
 
