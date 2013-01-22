@@ -39,7 +39,7 @@ The How To document is available at http://goo.gl/CkivN.
 
 * German: Sebastian Graf - <sebastian.graf@uni-konstanz.de>
 * Italian: Luca Vettoretto - <lvettoretto@gmail.com>
-* French: Jingjing Liu
+* French: Jingjing Liu - <https://github.com/babayetu>
 * Spanish: Unknown student from Shanghai University
-* Japanese: 
+* Japanese: Yeye, Xiaoqi Huang
 * Russian: fabrikant - <https://github.com/fabrikant>
