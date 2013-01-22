@@ -15,47 +15,50 @@
 -->
 
 <resources>
-    <string name="app_name">Contactos Widget</string>
-    <string name="activity_title">Contactos Widget - Cómo</string>
+    <string name="app_name">Widget de Contactos</string>
+    <string name="activity_title">Cómo - Widget de Contactos</string>
     <string name="help_file_name">help_es.html</string>
     <string name="help_file_encoding">iso&#8211;8859&#8211;1</string>
-    <string name="widget_name">Contactos Widget</string>
-    <string name="widget_name_stack">Contactos Widget(Stack Ver)</string>
-    <string name="widget_name_large">Contactos Widget(Grande)</string>
-    <string name="widget_name_super">Contactos Widget(Súper)</string>
-    <string name="widget_name_direct_dial">Contactos Widget(línea directa)</string>
+    <string name="widget_name">Widget de Contactos</string>
+    <string name="widget_name_stack">Widget de Contactos (Pila)</string>
+    <string name="widget_name_large">Widget de Contactos (Grande)</string>
+    <string name="widget_name_super">Widget de Contactos (Súper)</string>
+    <string name="widget_name_direct_dial">Widget de Contactos (llamada directa)</string>
     <string name="empty_view_text">No hay contactos cargados</string>
-    <string name="contactImageDescription">Contacto Imagen</string>
-    <string name="checkShowNameText">Mostrar Nombre de contacto</string>
-    <string name="loopContactsText">Recorrer los Contactos</string>
-    <string name="showPeopleAppShortcut">Contactos acceso directo a aplicación</string>
-    <string name="directDialText">línea directa</string>
+
+    <!-- Configurations -->
+    <string name="contactImageDescription">Imagen de contacto</string>
+    <string name="checkShowNameText">Mostrar nombre de contacto</string>
+    <string name="showPeopleAppShortcut">Acceso a aplicación de Contactos</string>
+    <string name="directDialText">llamada directa</string>
     <string name="showPhoneNumberText">Mostrar el número de teléfono</string>
-    <string name="save">Ahorrar</string>
-    
-    <!-- Configurations -->
+    <string name="loopContactsText">Bucle con los contactos</string>
+    <string name="save">Guardar</string>
     <string name="contactGroup">Grupo</string>
-    <string name="contactGroupPrompt">Seleccione un grupo de contacto para mostrar los contactos</string>
-    <string name="contactSorting">Clasificación</string>
-    <string name="invalid_provider_info">Widget inválido info proveedor:</string>
+    <string name="contactGroupPrompt">Selecciona un grupo de contactos para mostrar los contactos</string>
+    <string name="contactSorting">Ordenación</string>
+    <string name="buttonContactFrequency">Por veces contactado</string>
+    <string name="buttonContactRecent">Por última vez contactado</string>
+    <string name="buttonContactDisplayName">Por nombre a mostrar</string>
+    <string name="invalid_provider_info">Proveedor de información de Widget inválido:</string>
     <string name="open_the_people_app">Abrir aplicación Contactos</string>
     <string name="loading">Cargando&#8230;</string>
-    <string name="showHighResText">Mostrar Imágenes de alta Resolución</string>
-    <string name="setMaxNumberTitle">Número Máximo de Contactos</string>
+    <string name="showHighResText">Mostrar imágenes de alta resolución</string>
+    <string name="setMaxNumberTitle">Número máximo de contactos</string>
 
     <string-array name="sortingOptions">
-        <item>Por veces Contactatdo</item>
-        <item>Contactado por última vez</item>
-        <item>Por Nombre para Mostrar</item>
+        <item>Por veces contactado</item>
+        <item>Por última vez contactado</item>
+        <item>Por nombre a mostrar</item>
     </string-array>
     
     <!-- Localization -->
     <string name="starredContacts">Favoritos en Android</string>
-    <string name="myContacts">Mis Amigos</string>
+    <string name="myContacts">Mis Contactos</string>
     
     <string name="menu_item_rate">Votar</string>
     <string name="thanks_rating">Gracias por tu puntuación</string>
-    <string name="menu_item_about">Sobre</string>
-    <string name="about_content">Revelador: Toby Yu \nVersión: %s</string>
+    <string name="menu_item_about">Acerca</string>
+    <string name="about_content">Desarrollador: Toby Yu \nVersión: %s</string>
     
 </resources>
