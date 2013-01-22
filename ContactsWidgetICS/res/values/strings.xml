@@ -22,9 +22,6 @@
     <string name="contactGroup">Group</string>
     <string name="contactGroupPrompt">Select a contact group to display contacts</string>
     <string name="contactSorting">Sorting</string>
-    <string name="buttonContactFrequency">By Times Contacted</string>
-    <string name="buttonContactRecent">By Last Time Contacted</string>
-    <string name="buttonContactDisplayName">By Display Name</string>
     <string name="invalid_provider_info">Invalid widget provider info: </string>
     <string name="open_the_people_app">Open the People app</string>
     <string name="loading">Loading&#8230;</string>
