@@ -40,6 +40,6 @@ The How To document is available at http://goo.gl/CkivN.
 * German: Sebastian Graf - <sebastian.graf@uni-konstanz.de>
 * Italian: Luca Vettoretto - <lvettoretto@gmail.com>
 * French: Jingjing Liu - <https://github.com/babayetu>
-* Spanish: Unknown student from Shanghai University
+* Spanish: Unknown student from Shanghai University, Shawe <https://github.com/shawe>
 * Japanese: Yeye, Xiaoqi Huang
 * Russian: fabrikant - <https://github.com/fabrikant>
