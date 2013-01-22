@@ -58,6 +58,6 @@
     <string name="menu_item_rate">Rate</string>
     <string name="thanks_rating">Danke für Ihre Bewertung</string>
     <string name="menu_item_about">über</string>
-    <string name="about_content">Entwickler: Toby Yu \nVersion: %s</string>
+    <string name="about_content">Entwickler: Toby Yu \n\nVersion: %s</string>
     
 </resources>
