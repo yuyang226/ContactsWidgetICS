@@ -15,16 +15,13 @@
     <string name="contactImageDescription">Imagen de contacto</string>
     <string name="checkShowNameText">Mostrar nombre de contacto</string>
     <string name="showPeopleAppShortcut">Acceso a aplicación de Contactos</string>
-    <string name="directDialText">llamada directa</string>
+    <string name="directDialText">Marque directamente</string>
     <string name="showPhoneNumberText">Mostrar el número de teléfono</string>
     <string name="loopContactsText">Bucle con los contactos</string>
     <string name="save">Guardar</string>
     <string name="contactGroup">Grupo</string>
     <string name="contactGroupPrompt">Selecciona un grupo de contactos para mostrar los contactos</string>
     <string name="contactSorting">Ordenación</string>
-	<string name="buttonContactFrequency">Por veces contactado</string>
-	<string name="buttonContactRecent">Por última vez contactado</string>
-	<string name="buttonContactDisplayName">Por nombre a mostrar</string>
     <string name="invalid_provider_info">Proveedor de información de Widget inválido:</string>
     <string name="open_the_people_app">Abrir aplicación Contactos</string>
     <string name="loading">Cargando&#8230;</string>
