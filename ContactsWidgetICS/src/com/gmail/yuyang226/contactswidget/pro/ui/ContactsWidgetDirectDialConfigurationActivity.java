@@ -4,6 +4,7 @@
 package com.gmail.yuyang226.contactswidget.pro.ui;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.CheckBox;
 
 import com.gmail.yuyang226.contactswidget.pro.R;
@@ -44,12 +45,14 @@ public class ContactsWidgetDirectDialConfigurationActivity extends
 		super.savePreferences(context, appWidgetId);
 		CheckBox canDirectDial = (CheckBox)findViewById(R.id.checkDirectDial);
 		if (canDirectDial != null) {
-			saveSupportDirectDial(context, appWidgetId, canDirectDial.isChecked());
+			saveSupportDirectDial(context, appWidgetId, 
+					canDirectDial.isChecked() && canDirectDial.getVisibility() == View.VISIBLE);
 		}
 		
 		CheckBox showPhoneNumber = (CheckBox)findViewById(R.id.checkShowPhoneNumber);
 		if (showPhoneNumber != null) {
-			saveShowPhoneNumber(context, appWidgetId, showPhoneNumber.isChecked());
+			saveShowPhoneNumber(context, appWidgetId, 
+					showPhoneNumber.isChecked() && showPhoneNumber.getVisibility() == View.VISIBLE);
 		}
 	}
 

@@ -9,6 +9,7 @@ import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -117,22 +118,26 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         	((CheckBox)view).setChecked(canShowPeopleApp());
         }
         
+        final boolean hasPhoneCapability = hasPhoneCapability();
+        
         final View directDialView = findViewById(R.id.checkDirectDial);
         if (directDialView instanceof CheckBox) {
-        	directDialView.setVisibility(canDirectDial() ? View.VISIBLE : View.GONE);
+        	directDialView.setVisibility(canDirectDial() && hasPhoneCapability ? View.VISIBLE : View.GONE);
         	final View phoneNumberView = findViewById(R.id.checkShowPhoneNumber);
             if (phoneNumberView != null) {
-            	phoneNumberView.setVisibility(canDirectDial() ? View.VISIBLE : View.GONE);
+            	phoneNumberView.setVisibility(canDirectDial() && hasPhoneCapability ? View.VISIBLE : View.GONE);
             	phoneNumberView.setEnabled(canDirectDial());
-            	((CheckBox)directDialView).setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            	if (directDialView.getVisibility() == View.VISIBLE) {
+            		((CheckBox)directDialView).setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
-					@Override
-					public void onCheckedChanged(CompoundButton buttonView,
-							boolean isChecked) {
-						phoneNumberView.setEnabled(((CheckBox)directDialView).isChecked());
-						((CheckBox)phoneNumberView).setChecked(phoneNumberView.isEnabled());
-					}
-            	});
+            			@Override
+            			public void onCheckedChanged(CompoundButton buttonView,
+            					boolean isChecked) {
+            				phoneNumberView.setEnabled(((CheckBox)directDialView).isChecked());
+            				((CheckBox)phoneNumberView).setChecked(phoneNumberView.isEnabled());
+            			}
+            		});
+            	}
             }
         }
         
@@ -262,6 +267,15 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
      */
     protected boolean isStackView() {
     	return false;
+    }
+    
+    private boolean hasPhoneCapability() {
+    	final PackageManager pkgManager = getPackageManager();
+    	return pkgManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)
+    			|| pkgManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_CDMA)
+    			|| pkgManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_GSM)
+    			|| pkgManager.hasSystemFeature(PackageManager.FEATURE_SIP)
+    			|| pkgManager.hasSystemFeature(PackageManager.FEATURE_SIP_VOIP);
     }
     
     

@@ -324,13 +324,18 @@ public class ContactAccessor {
 	private List<PhoneNumber> loadPhoneNumbers(ContentResolver contentResolver, 
 			Context context, long contactId) {
 		Cursor pCur = null;
+		CursorLoader loader = new CursorLoader(context, ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+				PHONENUNBER_PROJECTION,
+				PHONENUMBER_SELECTION, new String[] { String.valueOf(contactId) }, PHONENUMBER_SORTSTRING);
 		List<PhoneNumber> phoneNumbers = new ArrayList<PhoneNumber>();
 		try {
-			pCur = contentResolver.query(
-					ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-					PHONENUNBER_PROJECTION,
-					PHONENUMBER_SELECTION, new String[] { String.valueOf(contactId) }, PHONENUMBER_SORTSTRING);
-			while (pCur != null && pCur.moveToNext()) {
+			loader.startLoading();
+			pCur = loader.loadInBackground();
+			if (pCur == null) {
+				return phoneNumbers;
+			}
+			pCur.moveToFirst();
+			while (pCur.isAfterLast() == false) {
 				int type = pCur.getInt(1);
 				String phone = pCur.getString(2);
 				int primary = pCur.getInt(3);
@@ -340,8 +345,10 @@ public class ContactAccessor {
 				} else {
 					phoneNumbers.add(new PhoneNumber(type, phone, false));
 				}
+				pCur.moveToNext();
 			}
 		} finally {
+			loader.stopLoading();
         	if (pCur != null) {
         		pCur.close();
         	}
