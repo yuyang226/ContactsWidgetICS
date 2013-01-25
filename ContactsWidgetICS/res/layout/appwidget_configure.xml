@@ -173,6 +173,7 @@
 		        android:divider="?android:attr/dividerHorizontal"
 		        android:showDividers="beginning"
 		        android:layout_below="@+id/numberPicker"
+		        android:layout_alignParentBottom="true"
 		        android:paddingTop="20dip">
 		
 		    <LinearLayout

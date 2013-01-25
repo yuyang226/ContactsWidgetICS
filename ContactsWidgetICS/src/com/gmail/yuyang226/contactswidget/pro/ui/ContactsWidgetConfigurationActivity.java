@@ -273,9 +273,9 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     	final PackageManager pkgManager = getPackageManager();
     	return pkgManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)
     			|| pkgManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_CDMA)
-    			|| pkgManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_GSM)
-    			|| pkgManager.hasSystemFeature(PackageManager.FEATURE_SIP)
-    			|| pkgManager.hasSystemFeature(PackageManager.FEATURE_SIP_VOIP);
+    			|| pkgManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_GSM);
+//    			|| pkgManager.hasSystemFeature(PackageManager.FEATURE_SIP)
+//    			|| pkgManager.hasSystemFeature(PackageManager.FEATURE_SIP_VOIP);
     }
     
     
