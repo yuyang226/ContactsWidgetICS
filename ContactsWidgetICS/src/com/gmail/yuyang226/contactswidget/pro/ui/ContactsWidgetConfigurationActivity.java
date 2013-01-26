@@ -223,7 +223,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 		boolean showPeopleApp = false;
 		View view = findViewById(R.id.showPeopleApp);
 		if (view instanceof CheckBox) {
-			showPeopleApp = ((CheckBox)view).isChecked();
+			showPeopleApp = view.getVisibility() == View.VISIBLE && ((CheckBox)view).isChecked();
 			saveShowPeopleApp(context, appWidgetId, showPeopleApp);
 		}
 		

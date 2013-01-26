@@ -115,8 +115,9 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
         ContactAccessor.clearImageCache();
         // update each of the widgets with the remote adapter
         for (int i = 0; i < appWidgetIds.length; i++) {
-        	updateAppWidget(context, appWidgetManager, appWidgetIds[i], getWidgetEntryLayoutId(),
-        			ContactsWidgetConfigurationActivity.loadShowPeopleApp(context, i), getImageSize());
+        	int appWidgetId = appWidgetIds[i];
+        	updateAppWidget(context, appWidgetManager, appWidgetId, getWidgetEntryLayoutId(),
+        			ContactsWidgetConfigurationActivity.loadShowPeopleApp(context, appWidgetId), getImageSize());
         }
         super.onUpdate(context, appWidgetManager, appWidgetIds);
     }

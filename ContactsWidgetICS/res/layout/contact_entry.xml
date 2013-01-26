@@ -7,8 +7,8 @@
     
     <ImageView
         android:id="@+id/contactPhoto"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
+        android:layout_width="@dimen/size_width_small"
+        android:layout_height="@dimen/size_height_small"
         android:layout_alignParentTop="true"
         android:contentDescription="@+string/contactImageDescription"
         android:src="@drawable/icon" >
@@ -18,6 +18,8 @@
         android:id="@+id/contactEntryText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
         android:layout_below="@+id/contactPhoto"
         android:textColor="@color/white" />
 
