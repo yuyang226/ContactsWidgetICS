@@ -43,6 +43,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	public static final String PREF_DIRECTDIAL_PREFIX = "directdial_"; //$NON-NLS-1$
 	public static final String PREF_SHOWPHONENUMBER_PREFIX = "showphonenumber_"; //$NON-NLS-1$
 	public static final String PREF_SHOWPEOPLE_PREFIX = "showpeope_"; //$NON-NLS-1$
+	public static final String PREF_IMAGESIZE_PREFIX = "imagesize_"; //$NON-NLS-1$
 	
 	public static final int PREF_MAXNUMBER_DEFAULT = 20;
 	public static final int PREF_MAXNUMBER_DEFAULT_HIGH = 50;
@@ -52,7 +53,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	public static final String PREF_HIGH_RES = "highres_"; //$NON-NLS-1$
 	
 	public static final String[] PREFS_PREFIX = {PREF_GROUP_PREFIX, PREF_SORTING_PREFIX, PREF_HIGH_RES, 
-		PREF_SHOWNAME_PREFIX, PREF_MAXNUMBER_PREFIX, PREF_SHOWPEOPLE_PREFIX};
+		PREF_SHOWNAME_PREFIX, PREF_MAXNUMBER_PREFIX, PREF_SHOWPEOPLE_PREFIX, PREF_IMAGESIZE_PREFIX};
 	
 	private Spinner groupList;
 	private Spinner contactsSorting;
@@ -227,10 +228,13 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 			saveShowPeopleApp(context, appWidgetId, showPeopleApp);
 		}
 		
+		int imageSize = getResources().getDimensionPixelSize(getImageSizeId());
+		saveImageSize(context, appWidgetId, imageSize);
+		
         // Push widget update to surface with newly set prefix
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         ContactsWidgetProvider.updateAppWidget(context, appWidgetManager,
-        		appWidgetId, widgetEntryLayoutId, showPeopleApp, getImageSize());
+        		appWidgetId, widgetEntryLayoutId, showPeopleApp, new Rect(0, 0, imageSize, imageSize));
     }
     
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
@@ -244,8 +248,8 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         }
     };
     
-    protected Rect getImageSize() {
-		return ContactsWidgetProvider.IMAGE_SIZE_SMALL_RECT;
+    protected int getImageSizeId() {
+		return R.dimen.size_small;
 	}
     
     /**
@@ -392,6 +396,17 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         SharedPreferences prefs = context.getSharedPreferences(PREF_SHOWPEOPLE_PREFIX, 0);
         String value = prefs.getString(PREF_SHOWPEOPLE_PREFIX + appWidgetId, Boolean.FALSE.toString());
         return Boolean.valueOf(value);
+    }
+    
+    public static void saveImageSize(Context context, int appWidgetId, int imageSize) {
+        SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_IMAGESIZE_PREFIX, 0).edit();
+        prefs.putInt(PREF_IMAGESIZE_PREFIX + appWidgetId, imageSize);
+        prefs.commit();
+    }
+    
+    public static int loadImageSize(Context context, int appWidgetId, int defaultValue) {
+        SharedPreferences prefs = context.getSharedPreferences(PREF_IMAGESIZE_PREFIX, 0);
+        return prefs.getInt(PREF_IMAGESIZE_PREFIX + appWidgetId, defaultValue);
     }
     
 }

@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/contactPhoto"
-            android:layout_width="@dimen/size_width_small"
-            android:layout_height="@dimen/size_height_small"
+            android:layout_width="@dimen/size_small"
+            android:layout_height="@dimen/size_small"
             android:adjustViewBounds="true"
             android:contentDescription="@+string/contactImageDescription"
             android:scaleType="fitXY"
@@ -23,7 +23,7 @@
 
         <TextView
             android:id="@+id/contactEntryText"
-            android:layout_width="@dimen/size_width_small"
+            android:layout_width="@dimen/size_small"
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:ellipsize="end"
@@ -46,8 +46,8 @@
     
     <ImageView
         android:id="@+id/dialerButton"
-        android:layout_width="@dimen/dialer_size_width_small"
-        android:layout_height="@dimen/dialer_size_height_small"
+        android:layout_width="@dimen/dialer_size_small"
+        android:layout_height="@dimen/dialer_size_small"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:gravity="center_vertical"

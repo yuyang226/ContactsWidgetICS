@@ -7,8 +7,8 @@
     
     <ImageView
         android:id="@+id/contactPhoto"
-        android:layout_width="@dimen/size_width_small"
-        android:layout_height="@dimen/size_height_small"
+        android:layout_width="@dimen/size_small"
+        android:layout_height="@dimen/size_small"
         android:layout_alignParentTop="true"
         android:contentDescription="@+string/contactImageDescription"
         android:src="@drawable/icon" >

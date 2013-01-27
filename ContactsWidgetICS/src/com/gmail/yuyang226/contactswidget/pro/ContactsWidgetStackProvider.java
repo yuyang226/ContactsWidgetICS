@@ -4,7 +4,6 @@
 package com.gmail.yuyang226.contactswidget.pro;
 
 import android.content.Context;
-import android.graphics.Rect;
 
 import com.gmail.yuyang226.contactswidget.pro.ui.ContactsWidgetStackConfigurationActivity;
 
@@ -37,12 +36,9 @@ public class ContactsWidgetStackProvider extends ContactsWidgetDirectDialProvide
 					ContactsWidgetStackConfigurationActivity.PREF_LOOPCONTACTS_PREFIX);
 		}
 	}
-
-	@Override
-	protected Rect getImageSize() {
-		return IMAGE_SIZE_LARGE_RECT;
+	
+	protected int getDefaultImageSize(Context context) {
+		return context.getResources().getDimensionPixelSize(R.dimen.size_large);
 	}
-	
-	
-	
+
 }
