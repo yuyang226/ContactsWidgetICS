@@ -8,13 +8,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
+        <!-- android:columnWidth="128dp" -->
         <GridView
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/contactList"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
 	        android:layout_margin="@dimen/widget_margin"
-            android:columnWidth="128dp"
+            android:columnWidth="@dimen/size_large"
             android:gravity="center"
             android:horizontalSpacing="@dimen/widget_spacing"
             android:numColumns="auto_fit"

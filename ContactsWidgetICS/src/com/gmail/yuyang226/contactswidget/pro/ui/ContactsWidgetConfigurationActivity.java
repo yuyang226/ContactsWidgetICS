@@ -71,7 +71,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	 * 
 	 */
 	public ContactsWidgetConfigurationActivity() {
-		this(R.layout.appwidget_configure, R.layout.contact_entry);
+		this(R.layout.appwidget_configure, R.layout.contact_entry_name_overlay);
 	}
 	
 	/**
@@ -237,7 +237,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         		appWidgetId, widgetEntryLayoutId, showPeopleApp, new Rect(0, 0, imageSize, imageSize));
     }
     
-    View.OnClickListener mOnClickListener = new View.OnClickListener() {
+	View.OnClickListener mOnClickListener = new View.OnClickListener() {
         public void onClick(View v) {
         	savePreferences(ContactsWidgetConfigurationActivity.this, mAppWidgetId);
         	 // Make sure we pass back the original appWidgetId

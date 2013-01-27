@@ -42,11 +42,14 @@ public class ContactsWidgetDirectDialConfigurationActivity extends
 
 	@Override
 	protected void savePreferences(Context context, int appWidgetId) {
-		super.savePreferences(context, appWidgetId);
 		CheckBox canDirectDial = (CheckBox)findViewById(R.id.checkDirectDial);
 		if (canDirectDial != null) {
+			boolean supportDirectDial = canDirectDial.isChecked() && canDirectDial.getVisibility() == View.VISIBLE;
 			saveSupportDirectDial(context, appWidgetId, 
-					canDirectDial.isChecked() && canDirectDial.getVisibility() == View.VISIBLE);
+					supportDirectDial);
+			if (!supportDirectDial) {
+				
+			}
 		}
 		
 		CheckBox showPhoneNumber = (CheckBox)findViewById(R.id.checkShowPhoneNumber);
@@ -54,6 +57,8 @@ public class ContactsWidgetDirectDialConfigurationActivity extends
 			saveShowPhoneNumber(context, appWidgetId, 
 					showPhoneNumber.isChecked() && showPhoneNumber.getVisibility() == View.VISIBLE);
 		}
+		
+		super.savePreferences(context, appWidgetId);
 	}
 
 }

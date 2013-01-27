@@ -131,6 +131,7 @@ public class ContactsWidgetService extends RemoteViewsService {
             rv.setViewVisibility(R.id.dialerButton, supportDirectDial ? View.VISIBLE : View.GONE);
             rv.setViewVisibility(R.id.contactPhoneNumberText, supportDirectDial ? View.VISIBLE : View.GONE);
             rv.setViewVisibility(R.id.lineDialer, supportDirectDial ? View.VISIBLE : View.GONE);
+            rv.setViewVisibility(R.id.directDialPanel, supportDirectDial ? View.VISIBLE : View.GONE);
             rv.setViewVisibility(R.id.contactPhoneNumberText, this.showPhoneNumber ? View.VISIBLE : View.GONE);
             
 	        return rv;

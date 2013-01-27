@@ -206,7 +206,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 	}
 	
 	protected int getWidgetEntryLayoutId() {
-		return R.layout.contact_entry;
+		return R.layout.contact_entry_name_overlay;
 	}
 	
 	protected int getDefaultImageSize(Context context) {
