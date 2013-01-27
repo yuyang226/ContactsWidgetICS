@@ -211,6 +211,15 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     private void setupButtons() {
     	Button okButton = (Button)findViewById(R.id.saveButton);
     	okButton.setOnClickListener(mOnClickListener);
+    	
+    	Button cancelButton = (Button)findViewById(R.id.cancelButton);
+    	cancelButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+    	});
     }
     
     protected void savePreferences(Context context, int appWidgetId) {
