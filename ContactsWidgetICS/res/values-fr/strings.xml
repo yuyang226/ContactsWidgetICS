@@ -27,6 +27,7 @@
     <string name="empty_view_text">Pas de Contacts Alimentés</string>
     <string name="contactImageDescription">Contact Image</string>
     <string name="checkShowNameText">Montrer Nom du Contact</string>
+    <string name="showNameOverlayText">Au cours Contact Icon</string>
     <string name="loopContactsText">Loop Through Contacts</string>
     <string name="showPeopleAppShortcut">Raccourci vers l\'application Contacts</string>
     <string name="directDialText">Composez directement</string>

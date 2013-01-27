@@ -39,6 +39,11 @@ public class ContactsWidgetDirectDialConfigurationActivity extends
 	protected boolean canDirectDial() {
 		return true;
 	}
+	
+	@Override
+	protected boolean supportContactNameBottom() {
+    	return false;
+    }
 
 	@Override
 	protected void savePreferences(Context context, int appWidgetId) {

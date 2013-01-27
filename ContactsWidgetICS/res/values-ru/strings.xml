@@ -28,6 +28,7 @@
     <string name="empty_view_text">невозможно загрузить контакты</string>
     <string name="contactImageDescription">изображение контакта</string>
     <string name="checkShowNameText">показывать имена</string>
+    <string name="showNameOverlayText">За Связаться с Иконка</string>
     <string name="loopContactsText">бесконечная прокрутка</string>
     <string name="showPeopleAppShortcut">кнопка Контакты</string>
     <string name="directDialText">Кнопка вызова</string>

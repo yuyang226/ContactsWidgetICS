@@ -44,6 +44,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	public static final String PREF_SHOWPHONENUMBER_PREFIX = "showphonenumber_"; //$NON-NLS-1$
 	public static final String PREF_SHOWPEOPLE_PREFIX = "showpeope_"; //$NON-NLS-1$
 	public static final String PREF_IMAGESIZE_PREFIX = "imagesize_"; //$NON-NLS-1$
+	public static final String PREF_ENTRYLAYOUT_PREFIX = "entrylayoutid_"; //$NON-NLS-1$
 	
 	public static final int PREF_MAXNUMBER_DEFAULT = 20;
 	public static final int PREF_MAXNUMBER_DEFAULT_HIGH = 50;
@@ -53,7 +54,8 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	public static final String PREF_HIGH_RES = "highres_"; //$NON-NLS-1$
 	
 	public static final String[] PREFS_PREFIX = {PREF_GROUP_PREFIX, PREF_SORTING_PREFIX, PREF_HIGH_RES, 
-		PREF_SHOWNAME_PREFIX, PREF_MAXNUMBER_PREFIX, PREF_SHOWPEOPLE_PREFIX, PREF_IMAGESIZE_PREFIX};
+		PREF_SHOWNAME_PREFIX, PREF_MAXNUMBER_PREFIX, PREF_SHOWPEOPLE_PREFIX, PREF_IMAGESIZE_PREFIX,
+		PREF_ENTRYLAYOUT_PREFIX};
 	
 	private Spinner groupList;
 	private Spinner contactsSorting;
@@ -71,7 +73,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	 * 
 	 */
 	public ContactsWidgetConfigurationActivity() {
-		this(R.layout.appwidget_configure, R.layout.contact_entry_name_overlay);
+		this(R.layout.appwidget_configure, R.layout.contact_entry);
 	}
 	
 	/**
@@ -117,6 +119,22 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         View view = findViewById(R.id.showPeopleApp);
         if (view != null) {
         	((CheckBox)view).setChecked(canShowPeopleApp());
+        }
+        
+        final CheckBox checkShowName = (CheckBox)findViewById(R.id.checkShowName);
+        final CheckBox checkNameOverlay = (CheckBox)findViewById(R.id.checkNameOverlay);
+        boolean supportNameAtBottom = supportContactNameBottom();
+    	checkNameOverlay.setVisibility(supportNameAtBottom ? View.VISIBLE : View.GONE);
+        if (checkNameOverlay != null && supportNameAtBottom) {
+        	checkShowName.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+        		@Override
+        		public void onCheckedChanged(CompoundButton buttonView,
+        				boolean isChecked) {
+        			checkNameOverlay.setEnabled(checkShowName.isChecked());
+        			checkNameOverlay.setChecked(checkShowName.isChecked());
+        		}
+        	});
         }
         
         final boolean hasPhoneCapability = hasPhoneCapability();
@@ -231,6 +249,12 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 		int imageSize = getResources().getDimensionPixelSize(getImageSizeId());
 		saveImageSize(context, appWidgetId, imageSize);
 		
+		final CheckBox checkNameOverlay = (CheckBox)findViewById(R.id.checkNameOverlay);
+		if (checkNameOverlay != null && checkNameOverlay.isChecked()) {
+			this.widgetEntryLayoutId = R.layout.contact_entry_name_overlay;
+		}
+		saveEntryLayoutId(context, appWidgetId, this.widgetEntryLayoutId);
+		
         // Push widget update to surface with newly set prefix
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         ContactsWidgetProvider.updateAppWidget(context, appWidgetManager,
@@ -271,6 +295,10 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
      */
     protected boolean isStackView() {
     	return false;
+    }
+    
+    protected boolean supportContactNameBottom() {
+    	return true;
     }
     
     private boolean hasPhoneCapability() {
@@ -407,6 +435,17 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     public static int loadImageSize(Context context, int appWidgetId, int defaultValue) {
         SharedPreferences prefs = context.getSharedPreferences(PREF_IMAGESIZE_PREFIX, 0);
         return prefs.getInt(PREF_IMAGESIZE_PREFIX + appWidgetId, defaultValue);
+    }
+    
+    public static void saveEntryLayoutId(Context context, int appWidgetId, int layoutId) {
+        SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_ENTRYLAYOUT_PREFIX, 0).edit();
+        prefs.putInt(PREF_ENTRYLAYOUT_PREFIX + appWidgetId, layoutId);
+        prefs.commit();
+    }
+    
+    public static int loadEntryLayoutId(Context context, int appWidgetId, int defaultValue) {
+        SharedPreferences prefs = context.getSharedPreferences(PREF_ENTRYLAYOUT_PREFIX, 0);
+        return prefs.getInt(PREF_ENTRYLAYOUT_PREFIX + appWidgetId, defaultValue);
     }
     
 }

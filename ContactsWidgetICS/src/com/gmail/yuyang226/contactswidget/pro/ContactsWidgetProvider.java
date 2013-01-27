@@ -112,8 +112,10 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
         // update each of the widgets with the remote adapter
         for (int i = 0; i < appWidgetIds.length; i++) {
         	int appWidgetId = appWidgetIds[i];
+        	int entryLayoutId = ContactsWidgetConfigurationActivity.loadEntryLayoutId(context, appWidgetId, 
+        			getWidgetEntryLayoutId());
         	int imageSize = ContactsWidgetConfigurationActivity.loadImageSize(context, appWidgetId, getDefaultImageSize(context));
-        	updateAppWidget(context, appWidgetManager, appWidgetId, getWidgetEntryLayoutId(),
+        	updateAppWidget(context, appWidgetManager, appWidgetId, entryLayoutId,
         			ContactsWidgetConfigurationActivity.loadShowPeopleApp(context, appWidgetId), 
         			new Rect(0, 0, imageSize, imageSize));
         }
@@ -206,7 +208,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 	}
 	
 	protected int getWidgetEntryLayoutId() {
-		return R.layout.contact_entry_name_overlay;
+		return R.layout.contact_entry;
 	}
 	
 	protected int getDefaultImageSize(Context context) {

@@ -27,6 +27,7 @@
     <string name="empty_view_text">Keine geladenen Kontakte</string>
     <string name="contactImageDescription">Kontaktbild</string>
     <string name="checkShowNameText">Zeigen Sie den Kontaktname</string>
+    <string name="showNameOverlayText">Über Kontakt Icon</string>
     <string name="loopContactsText">Durch alle Kontakte iterieren</string>
     <string name="showPeopleAppShortcut">Kontakte Anwendung Shortcut</string>
     <string name="directDialText">Direkt Dial</string>

@@ -27,6 +27,7 @@
     <string name="contactImageDescription">사진을 연락처</string>
     <string name="loopContactsText">사이클 연락처</string>
     <string name="checkShowNameText">연락처 이름 표시</string>
+    <string name="showNameOverlayText">연락처 사진을 포함</string>
     <string name="showPeopleAppShortcut">연락처 응용 프로그램 바로 가기</string>
     <string name="directDialText">직접 전화 걸기</string>
     <string name="showPhoneNumberText">전화 번호 표시</string>

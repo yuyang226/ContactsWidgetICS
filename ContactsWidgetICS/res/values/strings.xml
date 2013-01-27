@@ -14,6 +14,7 @@
     <!-- Configurations -->
     <string name="contactImageDescription">Contact Image</string>
     <string name="checkShowNameText">Show Contact Name</string>
+    <string name="showNameOverlayText">Over Contact Icon</string>
     <string name="showPeopleAppShortcut">People App Shortcut</string>
     <string name="directDialText">Direct Dial</string>
     <string name="showPhoneNumberText">Show Phone Number</string>

@@ -60,12 +60,21 @@
             android:layout_below="@+id/line2"
             android:checked="true"
             android:text="@string/checkShowNameText" />
+        
+        <CheckBox
+            android:id="@+id/checkNameOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkShowName"
+            android:layout_marginLeft="@dimen/margin_indentation"
+            android:checked="false"
+            android:text="@string/showNameOverlayText" />
 
         <CheckBox
             android:id="@+id/loopContacts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/checkShowName"
+            android:layout_below="@+id/checkNameOverlay"
             android:checked="true"
             android:enabled="false"
             android:text="@string/loopContactsText"
@@ -100,7 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkDirectDial"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="@dimen/margin_indentation"
             android:checked="true"
             android:text="@string/showPhoneNumberText" />
 

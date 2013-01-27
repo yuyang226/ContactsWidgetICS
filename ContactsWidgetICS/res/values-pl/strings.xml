@@ -28,6 +28,7 @@
     <string name="empty_view_text">Brak Kontakt Loaded</string>
     <string name="contactImageDescription">Skontaktuj się obraz</string>
     <string name="checkShowNameText">Pokaż Nazwa Kontaktowa</string>
+    <string name="showNameOverlayText">Ponad Kontaktowy Ikona</string>
     <string name="loopContactsText">Loop Through Kontakty</string>
     <string name="showPeopleAppShortcut">Skrót do aplikacji Kontakty</string>
     <string name="directDialText">Bezpośrednio Dial</string>
