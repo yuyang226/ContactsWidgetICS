@@ -1,12 +1,19 @@
 package com.gmail.yuyang226.contactswidget.pro.ui;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.appwidget.AppWidgetManager;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -21,6 +28,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.gmail.yuyang226.contactswidget.pro.ContactAccessor;
 import com.gmail.yuyang226.contactswidget.pro.ContactsWidgetProvider;
@@ -263,12 +271,38 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     
 	View.OnClickListener mOnClickListener = new View.OnClickListener() {
         public void onClick(View v) {
-        	savePreferences(ContactsWidgetConfigurationActivity.this, mAppWidgetId);
-        	 // Make sure we pass back the original appWidgetId
-            Intent resultValue = new Intent();
-            resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
-        	setResult(RESULT_OK, resultValue);
-        	finish();
+        	try {
+        		savePreferences(ContactsWidgetConfigurationActivity.this, mAppWidgetId);
+        		// Make sure we pass back the original appWidgetId
+        		Intent resultValue = new Intent();
+        		resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
+        		setResult(RESULT_OK, resultValue);
+        		finish();
+        	} catch (Exception e) {
+        		StringWriter w = new StringWriter();
+        		e.printStackTrace(new PrintWriter(w));
+        		final String error = w.toString();
+        		
+        		new AlertDialog.Builder(ContactsWidgetConfigurationActivity.this)
+				.setTitle("Error")
+				.setMessage(error)
+				.setPositiveButton("Copy to Clipboard",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,
+									int which) {
+								ClipboardManager clipboard = (ClipboardManager)
+								        getSystemService(Context.CLIPBOARD_SERVICE);
+								ClipData clip = ClipData.newPlainText("Error Stack Trace",error);
+								clipboard.setPrimaryClip(clip);
+								Toast.makeText(getApplicationContext(), "Copied stack trace to clipboard, please send it to: yuyang226+contactswidgetpro@gmail.com", 
+										Toast.LENGTH_SHORT).show();
+							}
+						}).create().show();
+        		try {
+					w.close();
+				} catch (IOException e1) {
+				}
+        	}
         }
     };
     

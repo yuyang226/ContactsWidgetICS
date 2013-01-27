@@ -2,8 +2,9 @@
 <resources>
     <dimen name="widget_margin">0dp</dimen>
     <dimen name="widget_spacing">5dp</dimen>
-    <dimen name="size_small">64dp</dimen>
+    <dimen name="size_small">72dp</dimen>
     <dimen name="size_large">128dp</dimen>
+    <dimen name="grid_size_small">64dp</dimen>
     <dimen name="margin_indentation">40dp</dimen>
     <dimen name="dialer_size_small">36dp</dimen>
     <dimen name="dialer_size_large">48dp</dimen>

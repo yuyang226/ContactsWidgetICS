@@ -11,7 +11,7 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="fill_parent"
 	        android:layout_margin="@dimen/widget_margin"
-	        android:columnWidth="@dimen/size_small"
+	        android:columnWidth="@dimen/grid_size_small"
 	        android:gravity="center"
 	        android:horizontalSpacing="@dimen/widget_spacing"
 	        android:numColumns="auto_fit"
