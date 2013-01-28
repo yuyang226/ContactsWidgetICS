@@ -54,8 +54,6 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	//whether to show high resolution pictures
 	public static final String PREF_HIGH_RES = "highres_"; //$NON-NLS-1$
 	
-	private static Handler handler;
-	
 	public static final String[] PREFS_PREFIX = {PREF_GROUP_PREFIX, PREF_SORTING_PREFIX, PREF_HIGH_RES, 
 		PREF_SHOWNAME_PREFIX, PREF_MAXNUMBER_PREFIX, PREF_SHOWPEOPLE_PREFIX, PREF_IMAGESIZE_PREFIX,
 		PREF_ENTRYLAYOUT_PREFIX};
@@ -268,12 +266,8 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 		saveEntryLayoutId(context, appWidgetId, this.widgetEntryLayoutId);
 		
         // Push widget update to surface with newly set prefix
-		if (handler == null) {
-			handler = new Handler();
-		}
-		
 		final boolean showPepopleApplication = showPeopleApp;
-		handler.post(new Runnable() {
+		new Handler().post(new Runnable() {
 			@Override
 			public void run() {
 				AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
@@ -281,9 +275,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 		        		appWidgetId, widgetEntryLayoutId, showPepopleApplication, new Rect(0, 0, imageSize, imageSize));
 		        
 			}
-			
 		});
-        
     }
     
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
