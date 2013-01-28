@@ -16,7 +16,7 @@
     <string name="checkShowNameText">Mostrar nombre de contacto</string>
     <string name="showNameOverlayText">Durante Contacto Icono</string>
     <string name="showPeopleAppShortcut">Acceso a aplicación de Contactos</string>
-    <string name="directDialText">Marque directamente</string>
+    <string name="directDialText">Llamar directamente</string>
     <string name="showPhoneNumberText">Mostrar el número de teléfono</string>
     <string name="loopContactsText">Bucle con los contactos</string>
     <string name="save">Guardar</string>
