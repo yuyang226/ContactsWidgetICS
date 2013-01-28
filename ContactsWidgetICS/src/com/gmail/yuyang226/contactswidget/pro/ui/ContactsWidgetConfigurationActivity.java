@@ -1,24 +1,18 @@
 package com.gmail.yuyang226.contactswidget.pro.ui;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.appwidget.AppWidgetManager;
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -28,7 +22,6 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.gmail.yuyang226.contactswidget.pro.ContactAccessor;
 import com.gmail.yuyang226.contactswidget.pro.ContactsWidgetProvider;
@@ -60,6 +53,8 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	public static final int PREF_MAXNUMBER_MAX = 100;
 	//whether to show high resolution pictures
 	public static final String PREF_HIGH_RES = "highres_"; //$NON-NLS-1$
+	
+	private static Handler handler;
 	
 	public static final String[] PREFS_PREFIX = {PREF_GROUP_PREFIX, PREF_SORTING_PREFIX, PREF_HIGH_RES, 
 		PREF_SHOWNAME_PREFIX, PREF_MAXNUMBER_PREFIX, PREF_SHOWPEOPLE_PREFIX, PREF_IMAGESIZE_PREFIX,
@@ -222,7 +217,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     	});
     }
     
-    protected void savePreferences(Context context, int appWidgetId) {
+    protected void savePreferences(final Context context, final int appWidgetId) {
         String sortString = null;
         switch(contactsSorting.getSelectedItemPosition()) {
         case 2:
@@ -263,7 +258,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 			saveShowPeopleApp(context, appWidgetId, showPeopleApp);
 		}
 		
-		int imageSize = getResources().getDimensionPixelSize(getImageSizeId());
+		final int imageSize = getResources().getDimensionPixelSize(getImageSizeId());
 		saveImageSize(context, appWidgetId, imageSize);
 		
 		final CheckBox checkNameOverlay = (CheckBox)findViewById(R.id.checkNameOverlay);
@@ -273,46 +268,33 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 		saveEntryLayoutId(context, appWidgetId, this.widgetEntryLayoutId);
 		
         // Push widget update to surface with newly set prefix
-        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-        ContactsWidgetProvider.updateAppWidget(context, appWidgetManager,
-        		appWidgetId, widgetEntryLayoutId, showPeopleApp, new Rect(0, 0, imageSize, imageSize));
+		if (handler == null) {
+			handler = new Handler();
+		}
+		
+		final boolean showPepopleApplication = showPeopleApp;
+		handler.post(new Runnable() {
+			@Override
+			public void run() {
+				AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+		        ContactsWidgetProvider.updateAppWidget(context, appWidgetManager,
+		        		appWidgetId, widgetEntryLayoutId, showPepopleApplication, new Rect(0, 0, imageSize, imageSize));
+		        
+			}
+			
+		});
+        
     }
     
-	View.OnClickListener mOnClickListener = new View.OnClickListener() {
-        public void onClick(View v) {
-        	try {
-        		savePreferences(ContactsWidgetConfigurationActivity.this, mAppWidgetId);
-        		// Make sure we pass back the original appWidgetId
-        		Intent resultValue = new Intent();
-        		resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
-        		setResult(RESULT_OK, resultValue);
-        		finish();
-        	} catch (Exception e) {
-        		StringWriter w = new StringWriter();
-        		e.printStackTrace(new PrintWriter(w));
-        		final String error = w.toString();
-        		
-        		new AlertDialog.Builder(ContactsWidgetConfigurationActivity.this)
-				.setTitle("Error")
-				.setMessage(error)
-				.setPositiveButton("Copy to Clipboard",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int which) {
-								ClipboardManager clipboard = (ClipboardManager)
-								        getSystemService(Context.CLIPBOARD_SERVICE);
-								ClipData clip = ClipData.newPlainText("Error Stack Trace",error);
-								clipboard.setPrimaryClip(clip);
-								Toast.makeText(getApplicationContext(), "Copied stack trace to clipboard, please send it to: yuyang226+contactswidgetpro@gmail.com", 
-										Toast.LENGTH_SHORT).show();
-							}
-						}).create().show();
-        		try {
-					w.close();
-				} catch (IOException e1) {
-				}
-        	}
-        }
+    View.OnClickListener mOnClickListener = new View.OnClickListener() {
+    	public void onClick(View v) {
+    		savePreferences(ContactsWidgetConfigurationActivity.this, mAppWidgetId);
+    		// Make sure we pass back the original appWidgetId
+    		Intent resultValue = new Intent();
+    		resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
+    		setResult(RESULT_OK, resultValue);
+    		finish();
+    	}
     };
     
     protected int getImageSizeId() {
