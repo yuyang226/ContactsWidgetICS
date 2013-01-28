@@ -20,43 +20,44 @@
     <string name="help_file_name">help_de.html</string>
     <string name="help_file_encoding">iso&#8211;8859&#8211;1</string>
     <string name="widget_name">Kontakte Widget</string>
-    <string name="widget_name_stack">Kontakte Widget(Stabel Anzeige)</string>
+    <string name="widget_name_stack">Kontakte Widget(Stabel View)</string>
     <string name="widget_name_large">Kontakte Widget(Groß)</string>
     <string name="widget_name_super">Kontakte Widget(Super)</string>
     <string name="widget_name_direct_dial">Kontakte Widget(Direktwahl)</string>
     <string name="empty_view_text">Keine geladenen Kontakte</string>
-    <string name="contactImageDescription">Kontaktbild</string>
-    <string name="checkShowNameText">Zeigen Sie den Kontaktname</string>
-    <string name="showNameOverlayText">Über Kontakt Icon</string>
-    <string name="loopContactsText">Durch alle Kontakte iterieren</string>
-    <string name="showPeopleAppShortcut">Kontakte Anwendung Shortcut</string>
-    <string name="directDialText">Direkt Dial</string>
-    <string name="showPhoneNumberText">Telefonnummer anzeigen</string>
-    <string name="save">Sparen</string>
-    
+
     <!-- Configurations -->
+    <string name="contactImageDescription">Kontaktbild</string>
+    <string name="checkShowNameText">Zeigen Sie den Kontaktnamen</string>
+    <string name="showNameOverlayText">Über Kontakte Icon</string>
+    <string name="showPeopleAppShortcut">Kontakte Shortcut</string>
+    <string name="directDialText">Direktwahl</string>
+    <string name="showPhoneNumberText">Telefonnummer anzeigen</string>
+    <string name="loopContactsText">Durch alle Kontakte iterieren</string>
+    <string name="save">Speichern</string>
     <string name="contactGroup">Gruppe</string>
     <string name="contactGroupPrompt">Wählen Sie eine Kontaktgruppe, um die Kontakte anzuzeigen</string>
     <string name="contactSorting">Sortierung</string>
-    <string name="buttonContactFrequency"></string>
-    <string name="buttonContactRecent"></string>
-    <string name="buttonContactDisplayName"></string>
+    <string name="buttonContactFrequency">nach Anzahl</string>
+    <string name="buttonContactRecent">zuletzt</string>
+    <string name="buttonContactDisplayName">nach Namen</string>
     <string name="invalid_provider_info">Ungültige Widget Provider Info:</string>
     <string name="open_the_people_app">Öffnen Sie die Kontakte-App</string>
-    <string name="loading">Laden&#8230;</string>
-    <string name="showHighResText">Zeigen Sie hochauflösende Bilder</string>
+    <string name="loading">Wird geladen&#8230;</string>
+    <string name="showHighResText">Hochauflösende Bilder</string>
     <string name="setMaxNumberTitle">Maximale Anzahl der Kontakte</string>
+
     <string-array name="sortingOptions">
-        <item>Häufigkeit des Kontakts</item>
+        <item>Nach Anzahl der Kontakte</item>
         <item>Letztes mal kontaktiert</item>
-        <item>Display Name</item>
+        <item>Nach Namen</item>
     </string-array>
     
     <!-- Localization -->
-    <string name="starredContacts">Markiert in Android</string>
+    <string name="starredContacts">Starred in Android</string>
     <string name="myContacts">Meine Kontakte</string>
     
-    <string name="menu_item_rate">Rate</string>
+    <string name="menu_item_rate">Bewertungen</string>
     <string name="thanks_rating">Danke für Ihre Bewertung</string>
     <string name="menu_item_about">über</string>
     <string name="about_content">Entwickler: Toby Yu \n\nVersion: %s</string>
