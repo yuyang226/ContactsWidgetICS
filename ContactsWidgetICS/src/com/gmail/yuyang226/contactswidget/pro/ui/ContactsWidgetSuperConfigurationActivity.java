@@ -3,9 +3,6 @@
  */
 package com.gmail.yuyang226.contactswidget.pro.ui;
 
-import android.graphics.Rect;
-
-import com.gmail.yuyang226.contactswidget.pro.ContactsWidgetProvider;
 import com.gmail.yuyang226.contactswidget.pro.R;
 
 /**
@@ -22,8 +19,8 @@ ContactsWidgetDirectDialConfigurationActivity {
 		super(R.layout.appwidget_configure, R.layout.contact_entry_large);
 	}
 
-	protected Rect getImageSize() {
-		return ContactsWidgetProvider.IMAGE_SIZE_LARGE_RECT;
+	protected int getImageSizeId() {
+		return R.dimen.size_large;
 	}
 
 	/* (non-Javadoc)

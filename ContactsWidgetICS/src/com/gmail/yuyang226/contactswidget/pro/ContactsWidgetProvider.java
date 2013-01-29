@@ -37,10 +37,6 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 	public static final String CONTACTS = "contacts"; //$NON-NLS-1$
 	public static final String CONTACT_ENTRY_LAYOUT_ID = "contact.entry.layout.id"; //$NON-NLS-1$
 	public static final String IMAGE_SIZE = "contact.entry.image.size"; //$NON-NLS-1$
-	private static final int IMAGE_SIZE_SMALL_HEIGHT = 72;
-	public static final Rect IMAGE_SIZE_SMALL_RECT = new Rect(0, 0, IMAGE_SIZE_SMALL_HEIGHT, IMAGE_SIZE_SMALL_HEIGHT);
-	private static final int IMAGE_SIZE_LARGE_HEIGHT = 128;
-	public static final Rect IMAGE_SIZE_LARGE_RECT = new Rect(0, 0, IMAGE_SIZE_LARGE_HEIGHT, IMAGE_SIZE_LARGE_HEIGHT);
 	private static final String TAG = ContactsWidgetProvider.class.getName();
 
 	/**
@@ -115,8 +111,13 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
         ContactAccessor.clearImageCache();
         // update each of the widgets with the remote adapter
         for (int i = 0; i < appWidgetIds.length; i++) {
-        	updateAppWidget(context, appWidgetManager, appWidgetIds[i], getWidgetEntryLayoutId(),
-        			ContactsWidgetConfigurationActivity.loadShowPeopleApp(context, i), getImageSize());
+        	int appWidgetId = appWidgetIds[i];
+        	int entryLayoutId = ContactsWidgetConfigurationActivity.loadEntryLayoutId(context, appWidgetId, 
+        			getWidgetEntryLayoutId());
+        	int imageSize = ContactsWidgetConfigurationActivity.loadImageSize(context, appWidgetId, getDefaultImageSize(context));
+        	updateAppWidget(context, appWidgetManager, appWidgetId, entryLayoutId,
+        			ContactsWidgetConfigurationActivity.loadShowPeopleApp(context, appWidgetId), 
+        			new Rect(0, 0, imageSize, imageSize));
         }
         super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
@@ -210,8 +211,8 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 		return R.layout.contact_entry;
 	}
 	
-	protected Rect getImageSize() {
-		return IMAGE_SIZE_SMALL_RECT;
+	protected int getDefaultImageSize(Context context) {
+		return context.getResources().getDimensionPixelSize(R.dimen.size_small);
 	}
 	
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="144dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
@@ -13,51 +13,62 @@
 
         <ImageView
             android:id="@+id/contactPhoto"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
+            android:layout_width="@dimen/size_small"
+            android:layout_height="@dimen/size_small"
             android:adjustViewBounds="true"
             android:contentDescription="@+string/contactImageDescription"
-            android:scaleType="fitXY"
+            android:scaleType="fitCenter"
             android:src="@drawable/icon" >
         </ImageView>
 
         <TextView
             android:id="@+id/contactEntryText"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/size_small"
             android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:layout_gravity="center_horizontal|bottom"
             android:background="@drawable/widget_item_background"
             android:padding="3dip"
             android:textColor="@color/white" />
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/lineDialer"
-        style="?android:attr/listSeparatorTextViewStyle"
-        android:layout_width="1dp"
-        android:layout_height="30dp"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/dialerButton"
-        android:layout_marginRight="7dp"
-        android:background="@color/grey"
-        android:gravity="center_vertical" />
-    
-    <ImageView
-        android:id="@+id/dialerButton"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:gravity="center_vertical"
-        android:clickable="true"
-        android:contentDescription="@+string/directDialText"
-        android:src="@drawable/dialer" >
-    </ImageView>
+    <RelativeLayout
+        android:id="@+id/directDialPanel"
+        android:layout_width="@dimen/size_small"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/contactIconPanel" >
+
+        <TextView
+            android:id="@+id/lineDialer"
+            style="?android:attr/listSeparatorTextViewStyle"
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="7dp"
+            android:layout_toLeftOf="@+id/dialerButton"
+            android:background="@color/grey"
+            android:gravity="center_vertical" />
+
+        <ImageView
+            android:id="@+id/dialerButton"
+            android:layout_width="@dimen/dialer_size_small"
+            android:layout_height="@dimen/dialer_size_small"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:contentDescription="@+string/directDialText"
+            android:gravity="center_vertical"
+            android:src="@drawable/dialer" >
+        </ImageView>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/contactPhoneNumberText"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:ellipsize="end"
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/contactIconPanel"
         android:textColor="@color/darker_white" />

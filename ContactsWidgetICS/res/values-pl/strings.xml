@@ -12,7 +12,8 @@
      distributed under the License is distributed on an "AS IS" BASIS,
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
-     limitations under the License.
+     limitations under the License.
+
 -->
 
 <resources>
@@ -27,9 +28,10 @@
     <string name="empty_view_text">Brak Kontakt Loaded</string>
     <string name="contactImageDescription">Skontaktuj się obraz</string>
     <string name="checkShowNameText">Pokaż Nazwa Kontaktowa</string>
+    <string name="showNameOverlayText">Ponad Kontaktowy Ikona</string>
     <string name="loopContactsText">Loop Through Kontakty</string>
     <string name="showPeopleAppShortcut">Skrót do aplikacji Kontakty</string>
-    <string name="directDialText">Bezpośredni Dial</string>
+    <string name="directDialText">Bezpośrednio Dial</string>
     <string name="showPhoneNumberText">Wyświetl numer telefonu</string>
     <string name="save">uratować</string>
 
@@ -55,6 +57,6 @@
     <string name="menu_item_rate">Oceniać</string>
     <string name="thanks_rating">Dziękujemy za ranking</string>
     <string name="menu_item_about">Około</string>
-    <string name="about_content">Wywoływacz: Toby Yu \nWersja: %s</string>
+    <string name="about_content">Wywoływacz: Toby Yu \n\nWersja: %s</string>
 
 </resources>

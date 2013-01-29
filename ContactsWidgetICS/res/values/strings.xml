@@ -14,6 +14,7 @@
     <!-- Configurations -->
     <string name="contactImageDescription">Contact Image</string>
     <string name="checkShowNameText">Show Contact Name</string>
+    <string name="showNameOverlayText">Over Contact Icon</string>
     <string name="showPeopleAppShortcut">People App Shortcut</string>
     <string name="directDialText">Direct Dial</string>
     <string name="showPhoneNumberText">Show Phone Number</string>
@@ -41,6 +42,6 @@
     <string name="menu_item_rate">Rate</string>
     <string name="thanks_rating">Thank you for rating</string>
     <string name="menu_item_about">About</string>
-    <string name="about_content">Developer: Toby Yu \nVersion: %s</string>
+    <string name="about_content">Developer: Toby Yu \n\nVersion: %s</string>
 
 </resources>

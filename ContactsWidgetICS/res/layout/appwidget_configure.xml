@@ -60,12 +60,21 @@
             android:layout_below="@+id/line2"
             android:checked="true"
             android:text="@string/checkShowNameText" />
+        
+        <CheckBox
+            android:id="@+id/checkNameOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkShowName"
+            android:layout_marginLeft="@dimen/margin_indentation"
+            android:checked="false"
+            android:text="@string/showNameOverlayText" />
 
         <CheckBox
             android:id="@+id/loopContacts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/checkShowName"
+            android:layout_below="@+id/checkNameOverlay"
             android:checked="true"
             android:enabled="false"
             android:text="@string/loopContactsText"
@@ -100,7 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkDirectDial"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="@dimen/margin_indentation"
             android:checked="true"
             android:text="@string/showPhoneNumberText" />
 
@@ -173,6 +182,7 @@
 		        android:divider="?android:attr/dividerHorizontal"
 		        android:showDividers="beginning"
 		        android:layout_below="@+id/numberPicker"
+		        android:layout_alignParentBottom="true"
 		        android:paddingTop="20dip">
 		
 		    <LinearLayout
@@ -188,13 +198,23 @@
 		                android:layout_height="wrap_content"
 		                android:orientation="horizontal"
 		                android:visibility="gone" />
+		        
+		        <Button android:id="@+id/cancelButton"
+		                android:layout_width="0dip"
+		                android:layout_height="wrap_content"
+		                android:layout_gravity="left"
+		                android:layout_weight="1"
+		                android:text="@android:string/cancel"
+		                android:maxLines="2"
+		                android:filterTouchesWhenObscured="true"
+		                style="?android:attr/buttonBarButtonStyle" />
 		
 		        <Button android:id="@+id/saveButton"
 		                android:layout_width="0dip"
 		                android:layout_height="wrap_content"
 		                android:layout_gravity="right"
 		                android:layout_weight="1"
-		                android:text="@string/save"
+		                android:text="@android:string/ok"
 		                android:maxLines="2"
 		                android:filterTouchesWhenObscured="true"
 		                style="?android:attr/buttonBarButtonStyle" />

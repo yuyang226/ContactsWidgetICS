@@ -3,7 +3,8 @@
  */
 package com.gmail.yuyang226.contactswidget.pro;
 
-import android.graphics.Rect;
+import android.content.Context;
+
 
 /**
  * @author yayu
@@ -26,9 +27,8 @@ public class ContactsWidgetSuperProvider extends ContactsWidgetDirectDialProvide
 		return R.layout.contact_entry_large;
 	}
 	
-	@Override
-	protected Rect getImageSize() {
-		return IMAGE_SIZE_LARGE_RECT;
+	protected int getDefaultImageSize(Context context) {
+		return context.getResources().getDimensionPixelSize(R.dimen.size_large);
 	}
 
 }

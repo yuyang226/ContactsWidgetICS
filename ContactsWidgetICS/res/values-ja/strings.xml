@@ -27,6 +27,7 @@
     <string name="contactImageDescription">連絡先の画像</string>
     <string name="loopContactsText">連絡先を循環的にディスプレーします</string>
     <string name="checkShowNameText">連絡先の名前をにディスプレーします</string>
+    <string name="showNameOverlayText">連絡先の写真をカバー</string>
     <string name="showPeopleAppShortcut">連絡先アプリケーションのショートカット</string>
     <string name="directDialText">直通</string>
     <string name="showPhoneNumberText">電話番号を表示</string>
@@ -55,5 +56,5 @@
     <string name="menu_item_rate">スコア</string>
     <string name="thanks_rating">評価していただきありがとうございます</string>
     <string name="menu_item_about">約</string>
-    <string name="about_content">開発者: Toby Yu \nバージョン: %s</string>
+    <string name="about_content">開発者: Toby Yu \n\nバージョン: %s</string>
 </resources>

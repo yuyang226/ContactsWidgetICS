@@ -27,9 +27,10 @@
     <string name="empty_view_text">Pas de Contacts Alimentés</string>
     <string name="contactImageDescription">Contact Image</string>
     <string name="checkShowNameText">Montrer Nom du Contact</string>
+    <string name="showNameOverlayText">Au cours Contact Icon</string>
     <string name="loopContactsText">Loop Through Contacts</string>
     <string name="showPeopleAppShortcut">Raccourci vers l\'application Contacts</string>
-    <string name="directDialText">Direct Dial</string>
+    <string name="directDialText">Composez directement</string>
     <string name="showPhoneNumberText">Afficher le numéro de téléphone</string>
     <string name="save">Sauver</string>
     
@@ -56,6 +57,6 @@
     <string name="menu_item_rate">Vote</string>
     <string name="thanks_rating">Merci pour voter</string>
     <string name="menu_item_about">au sujet de</string>
-    <string name="about_content">Développateur: Toby Yu \nVersion: %s</string>
+    <string name="about_content">Développateur: Toby Yu \n\nVersion: %s</string>
     
 </resources>

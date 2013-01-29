@@ -9,8 +9,10 @@ import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -42,6 +44,8 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	public static final String PREF_DIRECTDIAL_PREFIX = "directdial_"; //$NON-NLS-1$
 	public static final String PREF_SHOWPHONENUMBER_PREFIX = "showphonenumber_"; //$NON-NLS-1$
 	public static final String PREF_SHOWPEOPLE_PREFIX = "showpeope_"; //$NON-NLS-1$
+	public static final String PREF_IMAGESIZE_PREFIX = "imagesize_"; //$NON-NLS-1$
+	public static final String PREF_ENTRYLAYOUT_PREFIX = "entrylayoutid_"; //$NON-NLS-1$
 	
 	public static final int PREF_MAXNUMBER_DEFAULT = 20;
 	public static final int PREF_MAXNUMBER_DEFAULT_HIGH = 50;
@@ -51,7 +55,8 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	public static final String PREF_HIGH_RES = "highres_"; //$NON-NLS-1$
 	
 	public static final String[] PREFS_PREFIX = {PREF_GROUP_PREFIX, PREF_SORTING_PREFIX, PREF_HIGH_RES, 
-		PREF_SHOWNAME_PREFIX, PREF_MAXNUMBER_PREFIX, PREF_SHOWPEOPLE_PREFIX};
+		PREF_SHOWNAME_PREFIX, PREF_MAXNUMBER_PREFIX, PREF_SHOWPEOPLE_PREFIX, PREF_IMAGESIZE_PREFIX,
+		PREF_ENTRYLAYOUT_PREFIX};
 	
 	private Spinner groupList;
 	private Spinner contactsSorting;
@@ -117,22 +122,42 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         	((CheckBox)view).setChecked(canShowPeopleApp());
         }
         
+        final CheckBox checkShowName = (CheckBox)findViewById(R.id.checkShowName);
+        final CheckBox checkNameOverlay = (CheckBox)findViewById(R.id.checkNameOverlay);
+        boolean supportNameAtBottom = supportContactNameBottom();
+    	checkNameOverlay.setVisibility(supportNameAtBottom ? View.VISIBLE : View.GONE);
+        if (checkNameOverlay != null && supportNameAtBottom) {
+        	checkShowName.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+        		@Override
+        		public void onCheckedChanged(CompoundButton buttonView,
+        				boolean isChecked) {
+        			checkNameOverlay.setEnabled(checkShowName.isChecked());
+        			checkNameOverlay.setChecked(checkShowName.isChecked());
+        		}
+        	});
+        }
+        
+        final boolean hasPhoneCapability = hasPhoneCapability();
+        
         final View directDialView = findViewById(R.id.checkDirectDial);
         if (directDialView instanceof CheckBox) {
-        	directDialView.setVisibility(canDirectDial() ? View.VISIBLE : View.GONE);
+        	directDialView.setVisibility(canDirectDial() && hasPhoneCapability ? View.VISIBLE : View.GONE);
         	final View phoneNumberView = findViewById(R.id.checkShowPhoneNumber);
             if (phoneNumberView != null) {
-            	phoneNumberView.setVisibility(canDirectDial() ? View.VISIBLE : View.GONE);
+            	phoneNumberView.setVisibility(canDirectDial() && hasPhoneCapability ? View.VISIBLE : View.GONE);
             	phoneNumberView.setEnabled(canDirectDial());
-            	((CheckBox)directDialView).setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            	if (directDialView.getVisibility() == View.VISIBLE) {
+            		((CheckBox)directDialView).setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
-					@Override
-					public void onCheckedChanged(CompoundButton buttonView,
-							boolean isChecked) {
-						phoneNumberView.setEnabled(((CheckBox)directDialView).isChecked());
-						((CheckBox)phoneNumberView).setChecked(phoneNumberView.isEnabled());
-					}
-            	});
+            			@Override
+            			public void onCheckedChanged(CompoundButton buttonView,
+            					boolean isChecked) {
+            				phoneNumberView.setEnabled(((CheckBox)directDialView).isChecked());
+            				((CheckBox)phoneNumberView).setChecked(phoneNumberView.isEnabled());
+            			}
+            		});
+            	}
             }
         }
         
@@ -179,9 +204,18 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     private void setupButtons() {
     	Button okButton = (Button)findViewById(R.id.saveButton);
     	okButton.setOnClickListener(mOnClickListener);
+    	
+    	Button cancelButton = (Button)findViewById(R.id.cancelButton);
+    	cancelButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+    	});
     }
     
-    protected void savePreferences(Context context, int appWidgetId) {
+    protected void savePreferences(final Context context, final int appWidgetId) {
         String sortString = null;
         switch(contactsSorting.getSelectedItemPosition()) {
         case 2:
@@ -218,29 +252,45 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 		boolean showPeopleApp = false;
 		View view = findViewById(R.id.showPeopleApp);
 		if (view instanceof CheckBox) {
-			showPeopleApp = ((CheckBox)view).isChecked();
+			showPeopleApp = view.getVisibility() == View.VISIBLE && ((CheckBox)view).isChecked();
 			saveShowPeopleApp(context, appWidgetId, showPeopleApp);
 		}
 		
+		final int imageSize = getResources().getDimensionPixelSize(getImageSizeId());
+		saveImageSize(context, appWidgetId, imageSize);
+		
+		final CheckBox checkNameOverlay = (CheckBox)findViewById(R.id.checkNameOverlay);
+		if (checkNameOverlay != null && checkNameOverlay.isChecked()) {
+			this.widgetEntryLayoutId = R.layout.contact_entry_name_overlay;
+		}
+		saveEntryLayoutId(context, appWidgetId, this.widgetEntryLayoutId);
+		
         // Push widget update to surface with newly set prefix
-        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-        ContactsWidgetProvider.updateAppWidget(context, appWidgetManager,
-        		appWidgetId, widgetEntryLayoutId, showPeopleApp, getImageSize());
+		final boolean showPepopleApplication = showPeopleApp;
+		new Handler().post(new Runnable() {
+			@Override
+			public void run() {
+				AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+		        ContactsWidgetProvider.updateAppWidget(context, appWidgetManager,
+		        		appWidgetId, widgetEntryLayoutId, showPepopleApplication, new Rect(0, 0, imageSize, imageSize));
+		        
+			}
+		});
     }
     
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
-        public void onClick(View v) {
-        	savePreferences(ContactsWidgetConfigurationActivity.this, mAppWidgetId);
-        	 // Make sure we pass back the original appWidgetId
-            Intent resultValue = new Intent();
-            resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
-        	setResult(RESULT_OK, resultValue);
-        	finish();
-        }
+    	public void onClick(View v) {
+    		savePreferences(ContactsWidgetConfigurationActivity.this, mAppWidgetId);
+    		// Make sure we pass back the original appWidgetId
+    		Intent resultValue = new Intent();
+    		resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
+    		setResult(RESULT_OK, resultValue);
+    		finish();
+    	}
     };
     
-    protected Rect getImageSize() {
-		return ContactsWidgetProvider.IMAGE_SIZE_SMALL_RECT;
+    protected int getImageSizeId() {
+		return R.dimen.size_small;
 	}
     
     /**
@@ -262,6 +312,19 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
      */
     protected boolean isStackView() {
     	return false;
+    }
+    
+    protected boolean supportContactNameBottom() {
+    	return true;
+    }
+    
+    private boolean hasPhoneCapability() {
+    	final PackageManager pkgManager = getPackageManager();
+    	return pkgManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)
+    			|| pkgManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_CDMA)
+    			|| pkgManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_GSM);
+//    			|| pkgManager.hasSystemFeature(PackageManager.FEATURE_SIP)
+//    			|| pkgManager.hasSystemFeature(PackageManager.FEATURE_SIP_VOIP);
     }
     
     
@@ -378,6 +441,28 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         SharedPreferences prefs = context.getSharedPreferences(PREF_SHOWPEOPLE_PREFIX, 0);
         String value = prefs.getString(PREF_SHOWPEOPLE_PREFIX + appWidgetId, Boolean.FALSE.toString());
         return Boolean.valueOf(value);
+    }
+    
+    public static void saveImageSize(Context context, int appWidgetId, int imageSize) {
+        SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_IMAGESIZE_PREFIX, 0).edit();
+        prefs.putInt(PREF_IMAGESIZE_PREFIX + appWidgetId, imageSize);
+        prefs.commit();
+    }
+    
+    public static int loadImageSize(Context context, int appWidgetId, int defaultValue) {
+        SharedPreferences prefs = context.getSharedPreferences(PREF_IMAGESIZE_PREFIX, 0);
+        return prefs.getInt(PREF_IMAGESIZE_PREFIX + appWidgetId, defaultValue);
+    }
+    
+    public static void saveEntryLayoutId(Context context, int appWidgetId, int layoutId) {
+        SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_ENTRYLAYOUT_PREFIX, 0).edit();
+        prefs.putInt(PREF_ENTRYLAYOUT_PREFIX + appWidgetId, layoutId);
+        prefs.commit();
+    }
+    
+    public static int loadEntryLayoutId(Context context, int appWidgetId, int defaultValue) {
+        SharedPreferences prefs = context.getSharedPreferences(PREF_ENTRYLAYOUT_PREFIX, 0);
+        return prefs.getInt(PREF_ENTRYLAYOUT_PREFIX + appWidgetId, defaultValue);
     }
     
 }

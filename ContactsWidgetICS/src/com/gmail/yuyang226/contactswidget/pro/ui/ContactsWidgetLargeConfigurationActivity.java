@@ -24,5 +24,5 @@ public class ContactsWidgetLargeConfigurationActivity extends
 	protected boolean canShowPeopleApp() {
 		return true;
 	}
-
+	
 }

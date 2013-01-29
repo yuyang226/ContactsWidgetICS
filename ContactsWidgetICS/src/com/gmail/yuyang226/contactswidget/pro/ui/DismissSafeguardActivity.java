@@ -3,15 +3,13 @@
  */
 package com.gmail.yuyang226.contactswidget.pro.ui;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.QuickContact;
 import android.util.Log;
@@ -29,6 +27,7 @@ import com.gmail.yuyang226.contactswidget.pro.R;
 public class DismissSafeguardActivity extends Activity {
 	private static final String TAG = DismissSafeguardActivity.class.getName();
 	private String action = null;
+	private Handler handler;
 
 	/**
 	 * 
@@ -44,13 +43,14 @@ public class DismissSafeguardActivity extends Activity {
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
 		setContentView(R.layout.dismiss_activity);
 		this.action = getIntent().getStringExtra(ContactsWidgetProvider.INTENT_TAG_ACTION);
+		this.handler = new Handler();
 		Log.d(TAG, "Action: " + action);
 	}
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
-		new Timer().schedule(new TimerTask() {
+		this.handler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
 				DismissSafeguardActivity.this.setResult(RESULT_OK);
@@ -63,7 +63,7 @@ public class DismissSafeguardActivity extends Activity {
 	protected void onDestroy() {
 		super.onDestroy();
 		//we have to put the finish and launch of the QuickContact dialog in a separate thread
-		new Timer().schedule(new TimerTask() {
+		this.handler.post(new Runnable() {
 
 			@Override
 			public void run() {
@@ -84,7 +84,8 @@ public class DismissSafeguardActivity extends Activity {
 					DismissSafeguardActivity.this.startActivity(intent);
 				}
 			}
-		}, 10);
+			
+		});
 	}
 	
 	

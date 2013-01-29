@@ -22,7 +22,7 @@ You can either build it by yourself or purchase/donate via the Google Play Store
     * Times Contacted, the most frequently contacted appear at the top
     * Last Time Contacted, the most recently contacted appear at the top
     * Display Name
-* A stack view based wiget(fixed size 2*2) can show your contacts with larger images
+* A stack view based wiget(2*2) can show your contacts with larger images
 * Option to customize how many contacts to be shown
 
 ## How To
@@ -40,6 +40,6 @@ The How To document is available at http://goo.gl/CkivN.
 * German: Sebastian Graf - <sebastian.graf@uni-konstanz.de>
 * Italian: Luca Vettoretto - <lvettoretto@gmail.com>
 * French: Jingjing Liu - <https://github.com/babayetu>
-* Spanish: Unknown student from Shanghai University
+* Spanish: Unknown student from Shanghai University, Shawe <https://github.com/shawe>
 * Japanese: Yeye, Xiaoqi Huang
 * Russian: fabrikant - <https://github.com/fabrikant>

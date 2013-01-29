@@ -290,7 +290,7 @@ public class ContactAccessor {
 				String photoUri = cursor.getString(2);
 				Contact contact = new Contact();
 				contact.setContactId(contactId);
-				contact.setDisplayName(trimDisplayName(displayName));
+				contact.setDisplayName(displayName);
 				contact.setPhotoUri(photoUri);
 				contact.setContactUri(ContentUris.withAppendedId(
 						ContactsContract.Contacts.CONTENT_URI, contactId));
@@ -324,13 +324,18 @@ public class ContactAccessor {
 	private List<PhoneNumber> loadPhoneNumbers(ContentResolver contentResolver, 
 			Context context, long contactId) {
 		Cursor pCur = null;
+		CursorLoader loader = new CursorLoader(context, ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+				PHONENUNBER_PROJECTION,
+				PHONENUMBER_SELECTION, new String[] { String.valueOf(contactId) }, PHONENUMBER_SORTSTRING);
 		List<PhoneNumber> phoneNumbers = new ArrayList<PhoneNumber>();
 		try {
-			pCur = contentResolver.query(
-					ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-					PHONENUNBER_PROJECTION,
-					PHONENUMBER_SELECTION, new String[] { String.valueOf(contactId) }, PHONENUMBER_SORTSTRING);
-			while (pCur != null && pCur.moveToNext()) {
+			loader.startLoading();
+			pCur = loader.loadInBackground();
+			if (pCur == null) {
+				return phoneNumbers;
+			}
+			pCur.moveToFirst();
+			while (pCur.isAfterLast() == false) {
 				int type = pCur.getInt(1);
 				String phone = pCur.getString(2);
 				int primary = pCur.getInt(3);
@@ -340,8 +345,10 @@ public class ContactAccessor {
 				} else {
 					phoneNumbers.add(new PhoneNumber(type, phone, false));
 				}
+				pCur.moveToNext();
 			}
 		} finally {
+			loader.stopLoading();
         	if (pCur != null) {
         		pCur.close();
         	}
@@ -420,7 +427,7 @@ public class ContactAccessor {
 				String displayName = cursor.getString(1);
 				String photoUri = cursor.getString(2);
 				contact.setContactId(contactId);
-				contact.setDisplayName(trimDisplayName(displayName));
+				contact.setDisplayName(displayName);
 				contact.setPhotoUri(photoUri);
 				if (photoUri != null && photoUri.length() > 0) {
 					contact.setPhoto(loadContactPhoto(contentResolver,
@@ -500,16 +507,4 @@ public class ContactAccessor {
 		return pic;
 	}
 	
-	/**
-	 * Trim the display name if it is too long
-	 * @param displayName
-	 * @return
-	 */
-	public static String trimDisplayName(String displayName) {
-		if (displayName != null && displayName.length() > 9) {
-			displayName = new StringBuffer(displayName.substring(0, 8)).append("..").toString(); //$NON-NLS-1$
-		}
-		return displayName;
-	}
-
 }
