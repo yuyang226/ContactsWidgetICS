@@ -4,6 +4,7 @@
     <dimen name="widget_spacing">5dp</dimen>
     <dimen name="size_small">72dp</dimen>
     <dimen name="size_large">144dp</dimen>
+    <dimen name="size_stack">128dp</dimen>
     <dimen name="grid_size_large">128dp</dimen>
     <dimen name="grid_size_small">64dp</dimen>
     <dimen name="margin_indentation">40dp</dimen>
