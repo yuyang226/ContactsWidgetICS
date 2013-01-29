@@ -1,233 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/mainPanel"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:layout_margin="@dimen/widget_margin"
-    android:padding="10dp" >
+    android:layout_margin="0dp" >
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="fill_parent"
+        android:layout_margin="@dimen/widget_margin"
+     android:padding="10dp" >
 
-        <TextView
-            android:id="@+id/groupListText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:paddingTop="10dip"
-            android:text="@string/contactGroup"
-            android:textColor="@color/holo_blue_light"
-            android:textSize="16sp" >
-        </TextView>
-
-        <TextView
-            android:id="@+id/line1"
-            style="?android:attr/listSeparatorTextViewStyle"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/groupListText"
-            android:background="@color/holo_blue_light"
-            android:gravity="center_horizontal"
-            android:paddingTop="5dip" />
+            android:layout_height="wrap_content" >
 
-        <Spinner
-            android:id="@+id/groupList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/line1"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:prompt="@string/contactGroupPrompt" >
+            <TextView
+                android:id="@+id/groupListText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:paddingTop="10dip"
+                android:text="@string/contactGroup"
+                android:textColor="@color/holo_blue_light"
+                android:textSize="16sp" >
+            </TextView>
 
-            <requestFocus />
-        </Spinner>
+            <TextView
+                android:id="@+id/line1"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/groupListText"
+                android:background="@color/holo_blue_light"
+                android:gravity="center_horizontal"
+                android:paddingTop="5dip" />
 
-        <TextView
-            android:id="@+id/line2"
-            style="?android:attr/listSeparatorTextViewStyle"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/groupList"
-            android:background="@color/holo_blue_light"
-            android:gravity="center_horizontal"
-            android:paddingTop="5dip" />
+            <Spinner
+                android:id="@+id/groupList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line1"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:prompt="@string/contactGroupPrompt" >
 
-        <CheckBox
-            android:id="@+id/checkShowName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/line2"
-            android:checked="true"
-            android:text="@string/checkShowNameText" />
-        
-        <CheckBox
-            android:id="@+id/checkNameOverlay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/checkShowName"
-            android:layout_marginLeft="@dimen/margin_indentation"
-            android:checked="false"
-            android:text="@string/showNameOverlayText" />
+                <requestFocus />
+            </Spinner>
 
-        <CheckBox
-            android:id="@+id/loopContacts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/checkNameOverlay"
-            android:checked="true"
-            android:enabled="false"
-            android:text="@string/loopContactsText"
-            android:visibility="gone" />
+            <TextView
+                android:id="@+id/line2"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/groupList"
+                android:background="@color/holo_blue_light"
+                android:gravity="center_horizontal"
+                android:paddingTop="5dip" />
 
-        <CheckBox
-            android:id="@+id/showHighRes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/loopContacts"
-            android:checked="true"
-            android:text="@string/showHighResText" />
+            <CheckBox
+                android:id="@+id/checkShowName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line2"
+                android:checked="true"
+                android:text="@string/checkShowNameText" />
 
-        <CheckBox
-            android:id="@+id/showPeopleApp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/showHighRes"
-            android:checked="true"
-            android:text="@string/showPeopleAppShortcut" />
+            <CheckBox
+                android:id="@+id/checkNameOverlay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/checkShowName"
+                android:layout_marginLeft="@dimen/margin_indentation"
+                android:checked="false"
+                android:text="@string/showNameOverlayText" />
 
-        <CheckBox
-            android:id="@+id/checkDirectDial"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/showPeopleApp"
-            android:checked="true"
-            android:text="@string/directDialText" />
+            <CheckBox
+                android:id="@+id/loopContacts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/checkNameOverlay"
+                android:checked="true"
+                android:enabled="false"
+                android:text="@string/loopContactsText"
+                android:visibility="gone" />
 
-        <CheckBox
-            android:id="@+id/checkShowPhoneNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/checkDirectDial"
-            android:layout_marginLeft="@dimen/margin_indentation"
-            android:checked="true"
-            android:text="@string/showPhoneNumberText" />
+            <CheckBox
+                android:id="@+id/showHighRes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/loopContacts"
+                android:checked="true"
+                android:text="@string/showHighResText" />
 
-        <!-- Begining of Sorting -->
+            <CheckBox
+                android:id="@+id/showPeopleApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/showHighRes"
+                android:checked="true"
+                android:text="@string/showPeopleAppShortcut" />
 
-        <TextView
-            android:id="@+id/sortText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/checkShowPhoneNumber"
-            android:layout_gravity="left"
-            android:text="@string/contactSorting"
-            android:textColor="@color/holo_blue_light"
-            android:textSize="16sp" />
+            <CheckBox
+                android:id="@+id/checkDirectDial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/showPeopleApp"
+                android:checked="true"
+                android:text="@string/directDialText" />
 
-        <TextView
-            android:id="@+id/line3"
-            style="?android:attr/listSeparatorTextViewStyle"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/sortText"
-            android:background="@color/holo_blue_light"
-            android:gravity="center_horizontal"
-            android:paddingTop="5dip" />
+            <CheckBox
+                android:id="@+id/checkShowPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/checkDirectDial"
+                android:layout_marginLeft="@dimen/margin_indentation"
+                android:checked="true"
+                android:text="@string/showPhoneNumberText" />
 
-        <Spinner
-            android:id="@+id/contactSorting"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/line3"
-            android:prompt="@string/contactSorting" />
-        <!-- End of Sorting -->
+            <!-- Begining of Sorting -->
+
+            <TextView
+                android:id="@+id/sortText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/checkShowPhoneNumber"
+                android:layout_gravity="left"
+                android:text="@string/contactSorting"
+                android:textColor="@color/holo_blue_light"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/line3"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/sortText"
+                android:background="@color/holo_blue_light"
+                android:gravity="center_horizontal"
+                android:paddingTop="5dip" />
+
+            <Spinner
+                android:id="@+id/contactSorting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line3"
+                android:prompt="@string/contactSorting" />
+            <!-- End of Sorting -->
 
 
-        <!-- Begining of Set Max Number -->
+            <!-- Begining of Set Max Number -->
 
-        <TextView
-            android:id="@+id/setNumberText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/contactSorting"
-            android:layout_gravity="left"
-            android:text="@string/setMaxNumberTitle"
-            android:textColor="@color/holo_blue_light"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/setNumberText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/contactSorting"
+                android:layout_gravity="left"
+                android:text="@string/setMaxNumberTitle"
+                android:textColor="@color/holo_blue_light"
+                android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/line4"
-            style="?android:attr/listSeparatorTextViewStyle"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/setNumberText"
-            android:background="@color/holo_blue_light"
-            android:gravity="center_horizontal"
-            android:paddingTop="5dip" />
+            <TextView
+                android:id="@+id/line4"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/setNumberText"
+                android:background="@color/holo_blue_light"
+                android:gravity="center_horizontal"
+                android:paddingTop="5dip" />
 
-        <NumberPicker
-            android:id="@+id/numberPicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/line4"
-            android:layout_below="@+id/line4"
-            android:layout_centerHorizontal="true" />
-        <!-- End of Set Max Number -->
+            <NumberPicker
+                android:id="@+id/numberPicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/line4"
+                android:layout_below="@+id/line4"
+                android:layout_centerHorizontal="true" />
+            <!-- End of Set Max Number -->
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:divider="?android:attr/dividerHorizontal"
+        android:orientation="vertical"
+        android:paddingTop="20dip"
+        android:showDividers="beginning" >
 
         <LinearLayout
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content"
-		        android:orientation="vertical"
-		        android:divider="?android:attr/dividerHorizontal"
-		        android:showDividers="beginning"
-		        android:layout_below="@+id/numberPicker"
-		        android:layout_alignParentBottom="true"
-		        android:paddingTop="20dip">
-		
-		    <LinearLayout
-		            style="?android:attr/buttonBarStyle"
-		            android:layout_width="match_parent"
-		            android:layout_height="wrap_content"
-		            android:orientation="horizontal"
-		            android:measureWithLargestChild="true">
-		
-		        <LinearLayout android:id="@+id/leftSpacer"
-		                android:layout_weight="0.25"
-		                android:layout_width="0dip"
-		                android:layout_height="wrap_content"
-		                android:orientation="horizontal"
-		                android:visibility="gone" />
-		        
-		        <Button android:id="@+id/cancelButton"
-		                android:layout_width="0dip"
-		                android:layout_height="wrap_content"
-		                android:layout_gravity="left"
-		                android:layout_weight="1"
-		                android:text="@android:string/cancel"
-		                android:maxLines="2"
-		                android:filterTouchesWhenObscured="true"
-		                style="?android:attr/buttonBarButtonStyle" />
-		
-		        <Button android:id="@+id/saveButton"
-		                android:layout_width="0dip"
-		                android:layout_height="wrap_content"
-		                android:layout_gravity="right"
-		                android:layout_weight="1"
-		                android:text="@android:string/ok"
-		                android:maxLines="2"
-		                android:filterTouchesWhenObscured="true"
-		                style="?android:attr/buttonBarButtonStyle" />
-		
-		        <LinearLayout android:id="@+id/rightSpacer"
-		                android:layout_width="0dip"
-		                android:layout_weight="0.25"
-		                android:layout_height="wrap_content"
-		                android:orientation="horizontal"
-		                android:visibility="gone" />
-		
-		    </LinearLayout>
-		</LinearLayout>
-    </RelativeLayout>
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_gray_background"
+            android:measureWithLargestChild="true"
+            android:orientation="horizontal" >
 
-</ScrollView>
+            <LinearLayout
+                android:id="@+id/leftSpacer"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:orientation="horizontal"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/cancelButton"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="1"
+                android:filterTouchesWhenObscured="true"
+                android:maxLines="2"
+                android:text="@android:string/cancel" />
+
+            <Button
+                android:id="@+id/saveButton"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:filterTouchesWhenObscured="true"
+                android:maxLines="2"
+                android:text="@android:string/ok" />
+
+            <LinearLayout
+                android:id="@+id/rightSpacer"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:orientation="horizontal"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
