@@ -27,7 +27,7 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="fill_parent"
 	        android:layout_margin="@dimen/widget_margin"
-	        android:columnWidth="@dimen/size_large"
+	        android:columnWidth="@dimen/grid_size_large"
 	        android:gravity="center"
 	        android:horizontalSpacing="@dimen/widget_spacing"
 	        android:numColumns="auto_fit"

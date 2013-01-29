@@ -18,7 +18,7 @@ ContactsWidgetDirectDialConfigurationActivity {
 	public static final String PREF_LOOPCONTACTS_PREFIX = "loopcontacts_"; //$NON-NLS-1$
 
 	public ContactsWidgetStackConfigurationActivity() {
-		super(R.layout.appwidget_configure, R.layout.contact_entry_large);
+		super(R.layout.appwidget_configure, R.layout.contact_entry_large_stack);
 	}
 	
 	/* (non-Javadoc)
@@ -45,7 +45,7 @@ ContactsWidgetDirectDialConfigurationActivity {
 	protected boolean isStackView() {
 		return true;
 	}
-
+	
 	static void saveLoopContacts(Context context, int appWidgetId, boolean loopContacts) {
         SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_LOOPCONTACTS_PREFIX, 0).edit();
         prefs.putString(PREF_LOOPCONTACTS_PREFIX + appWidgetId, String.valueOf(loopContacts));

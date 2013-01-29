@@ -15,14 +15,14 @@
 -->
 
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:minWidth="128dp"
-    android:minHeight="64dp"
+    android:minWidth="@dimen/grid_size_large"
+    android:minHeight="@dimen/grid_size_small"
     android:configure="com.gmail.yuyang226.contactswidget.pro.ui.ContactsWidgetDirectDialConfigurationActivity"
     android:updatePeriodMillis="180000"
     android:previewImage="@drawable/preview_directdial"
     android:initialLayout="@layout/contact_manager_direct_dial"
     android:resizeMode="horizontal|vertical" 
     android:widgetCategory="keyguard|home_screen"
-    android:minResizeWidth="128dp"
-  	android:minResizeHeight="64dp">
+    android:minResizeWidth="@dimen/grid_size_large"
+  	android:minResizeHeight="@dimen/grid_size_small">
 </appwidget-provider>

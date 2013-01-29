@@ -25,7 +25,7 @@ public class ContactsWidgetStackProvider extends ContactsWidgetDirectDialProvide
 	 */
 	@Override
 	protected int getWidgetEntryLayoutId() {
-		return R.layout.contact_entry_large;
+		return R.layout.contact_entry_large_stack;
 	}
 	
 	@Override

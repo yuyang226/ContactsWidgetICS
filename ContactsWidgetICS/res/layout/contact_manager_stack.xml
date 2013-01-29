@@ -1,28 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-	
-    <RelativeLayout android:layout_width="match_parent" 
-        android:id="@+id/superLayout" android:layout_height="wrap_content">
-	    <StackView 
-        android:id="@+id/contactList"
+    android:layout_height="wrap_content"
+    android:layout_margin="0dp"
+    android:padding="0dp" >
+
+    <RelativeLayout
+        android:id="@+id/superLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:loopViews="true" />
-	    
-	    <ImageButton android:id="@+id/buttonPeople"
-	        android:contentDescription="@string/open_the_people_app"
-	        android:src="@drawable/people_app"
-	       	android:layout_height="wrap_content" 
-	        android:layout_width="wrap_content" 
-	        android:layout_alignParentBottom="true"
-	        android:layout_alignParentRight="true" 
-	        android:background="@android:color/transparent"
-	        android:paddingBottom="5dp"
-	        android:paddingRight="5dp"
-	        android:visibility="gone" />
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+     	android:padding="0dp" >
+
+        <StackView
+            android:id="@+id/contactList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:loopViews="true" />
+
+        <ImageButton
+            android:id="@+id/buttonPeople"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/open_the_people_app"
+            android:paddingBottom="5dp"
+            android:paddingRight="5dp"
+            android:src="@drawable/people_app"
+            android:visibility="gone" />
     </RelativeLayout>
 
     <TextView
@@ -35,4 +43,5 @@
         android:textColor="@color/highlighted_text_holo_dark"
         android:textSize="20sp"
         android:textStyle="bold" />
+
 </FrameLayout>

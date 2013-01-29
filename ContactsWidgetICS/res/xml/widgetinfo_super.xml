@@ -15,8 +15,8 @@
 -->
 
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:minWidth="128dp"
-    android:minHeight="128dp"
+    android:minWidth="@dimen/grid_size_large"
+    android:minHeight="@dimen/grid_size_large"
     android:configure="com.gmail.yuyang226.contactswidget.pro.ui.ContactsWidgetSuperConfigurationActivity"
     android:updatePeriodMillis="180000"
     android:previewImage="@drawable/preview_super"
@@ -24,6 +24,6 @@
     android:initialKeyguardLayout="@layout/contact_manager_super"
     android:resizeMode="horizontal|vertical" 
     android:widgetCategory="keyguard|home_screen"
-    android:minResizeWidth="128dp"
-  	android:minResizeHeight="128dp">
+    android:minResizeWidth="@dimen/grid_size_large"
+  	android:minResizeHeight="@dimen/grid_size_large">
 </appwidget-provider>
