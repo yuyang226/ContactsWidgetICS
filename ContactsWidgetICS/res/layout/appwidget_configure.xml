@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_margin="@dimen/widget_margin"
-     android:padding="10dp" >
+     	android:padding="10dp" >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -179,8 +179,15 @@
                 android:layout_below="@+id/line4"
                 android:layout_centerHorizontal="true" />
             <!-- End of Set Max Number -->
-
+            
+            <Space
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_below="@+id/numberPicker"
+                android:orientation="vertical"
+                android:paddingTop="20dip" />
         </RelativeLayout>
+
     </ScrollView>
 
     <LinearLayout
@@ -191,6 +198,7 @@
         android:orientation="vertical"
         android:paddingTop="20dip"
         android:showDividers="beginning" >
+        
 
         <LinearLayout
             style="?android:attr/buttonBarStyle"
