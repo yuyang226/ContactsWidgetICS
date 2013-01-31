@@ -3,9 +3,10 @@
     android:id="@+id/mainPanel"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:layout_margin="0dp" >
+    android:layout_margin="@dimen/widget_margin"
+    android:padding="10dp" >
 
-    <ScrollView
+    <!-- <ScrollView
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_margin="@dimen/widget_margin"
@@ -13,7 +14,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content" > -->
 
             <TextView
                 android:id="@+id/groupListText"
@@ -76,20 +77,10 @@
                 android:text="@string/showNameOverlayText" />
 
             <CheckBox
-                android:id="@+id/loopContacts"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/checkNameOverlay"
-                android:checked="true"
-                android:enabled="false"
-                android:text="@string/loopContactsText"
-                android:visibility="gone" />
-
-            <CheckBox
                 android:id="@+id/showHighRes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/loopContacts"
+                android:layout_below="@+id/checkNameOverlay"
                 android:checked="true"
                 android:text="@string/showHighResText" />
 
@@ -170,25 +161,18 @@
                 android:background="@color/holo_blue_light"
                 android:gravity="center_horizontal"
                 android:paddingTop="5dip" />
-
-            <NumberPicker
-                android:id="@+id/numberPicker"
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/maxNumber"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/line4"
                 android:layout_below="@+id/line4"
-                android:layout_centerHorizontal="true" />
-            <!-- End of Set Max Number -->
-            
-            <Space
-                android:layout_width="fill_parent"
-                android:layout_height="60dp"
-                android:layout_below="@+id/numberPicker"
-                android:orientation="vertical"
-                android:paddingTop="20dip" />
-        </RelativeLayout>
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:prompt="@string/contactGroupPrompt" >
+            </Spinner>
+        <!-- </RelativeLayout>
 
-    </ScrollView>
+    </ScrollView> -->
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -198,13 +182,11 @@
         android:orientation="vertical"
         android:paddingTop="20dip"
         android:showDividers="beginning" >
-        
 
         <LinearLayout
             style="?android:attr/buttonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/light_gray_background"
             android:measureWithLargestChild="true"
             android:orientation="horizontal" >
 

@@ -5,8 +5,6 @@ package com.gmail.yuyang226.contactswidget.pro;
 
 import android.content.Context;
 
-import com.gmail.yuyang226.contactswidget.pro.ui.ContactsWidgetStackConfigurationActivity;
-
 /**
  * @author Toby Yu(yuyang226@gmail.com)
  *
@@ -26,15 +24,6 @@ public class ContactsWidgetStackProvider extends ContactsWidgetDirectDialProvide
 	@Override
 	protected int getWidgetEntryLayoutId() {
 		return R.layout.contact_entry_large_stack;
-	}
-	
-	@Override
-	public void onDeleted(Context context, int[] appWidgetIds) {
-		super.onDeleted(context, appWidgetIds);
-		for (int appWidgetId : appWidgetIds) {
-			ContactsWidgetStackConfigurationActivity.deletePreference(context, appWidgetId, 
-					ContactsWidgetStackConfigurationActivity.PREF_LOOPCONTACTS_PREFIX);
-		}
 	}
 	
 	protected int getDefaultImageSize(Context context) {

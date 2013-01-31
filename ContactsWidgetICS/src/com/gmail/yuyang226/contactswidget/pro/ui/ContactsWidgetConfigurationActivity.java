@@ -13,16 +13,15 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.ContactsContract;
-import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.NumberPicker;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.gmail.yuyang226.contactswidget.pro.ContactAccessor;
 import com.gmail.yuyang226.contactswidget.pro.ContactsWidgetProvider;
@@ -62,7 +61,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	private Spinner groupList;
 	private Spinner contactsSorting;
 	
-	private NumberPicker maxNumberPicker;
+//	private NumberPicker maxNumberPicker;
 	
 	private int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
 	
@@ -70,6 +69,9 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	
 	private int configActivityLayoutId;
 	private int widgetEntryLayoutId;
+	
+	private List<String> numberValues = new ArrayList<String>(1);
+	private ArrayAdapter<String> numberAdapter;
 	
     /**
 	 * 
@@ -112,11 +114,46 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         this.contactsSorting.setAdapter(adapter);
         
-        maxNumberPicker = (NumberPicker)findViewById(R.id.numberPicker);
-        maxNumberPicker.setMinValue(PREF_MAXNUMBER_MIN);
-        maxNumberPicker.setMaxValue(PREF_MAXNUMBER_MAX);
-        maxNumberPicker.setValue(PREF_MAXNUMBER_DEFAULT);
-        maxNumberPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        numberValues.add(String.valueOf(PREF_MAXNUMBER_DEFAULT));
+        numberAdapter = new ArrayAdapter<String> (ContactsWidgetConfigurationActivity.this, 
+            			android.R.layout.simple_spinner_item, numberValues);
+        numberAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ((Spinner)findViewById(R.id.maxNumber)).setAdapter(numberAdapter);
+        
+        final NumberPickerDialog.OnNumberSetListener numSetListener = new NumberPickerDialog.OnNumberSetListener() {
+
+			@Override
+			public void onNumberSet(int number) {
+				if (number > 0 && !numberValues.contains(number)) {
+					//a valid number and number really changed
+					numberValues.clear();
+					numberValues.add(String.valueOf(number));
+					numberAdapter.notifyDataSetChanged();
+				}
+			}
+        };
+       
+        ((Spinner)findViewById(R.id.maxNumber)).setOnTouchListener(new OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_UP) {
+					NumberPickerDialog newFragment = new NumberPickerDialog(ContactsWidgetConfigurationActivity.this,
+							R.string.setMaxNumberTitle,
+							PREF_MAXNUMBER_MIN, PREF_MAXNUMBER_MAX, Integer.parseInt(numberValues.get(0)),
+							numSetListener);
+					newFragment.show();
+				}
+				return true;
+			}
+        	
+        });
+        
+//        maxNumberPicker = (NumberPicker)findViewById(R.id.numberPicker);
+//        maxNumberPicker.setMinValue(PREF_MAXNUMBER_MIN);
+//        maxNumberPicker.setMaxValue(PREF_MAXNUMBER_MAX);
+//        maxNumberPicker.setValue(PREF_MAXNUMBER_DEFAULT);
+//        maxNumberPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         
         View view = findViewById(R.id.showPeopleApp);
         if (view != null) {
@@ -160,11 +197,6 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
             		});
             	}
             }
-        }
-        
-        view = findViewById(R.id.loopContacts);
-        if (view != null) {
-        	view.setVisibility(isStackView() ? View.VISIBLE : View.GONE);
         }
         
         setupButtons();
@@ -248,7 +280,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 		saveShowName(context, appWidgetId, showName.isChecked());
         CheckBox showHighRes = (CheckBox)findViewById(R.id.showHighRes);
 		saveShowHighRes(context, appWidgetId, showHighRes.isChecked());
-		saveMaxNumber(context, appWidgetId, this.maxNumberPicker.getValue());
+		saveMaxNumber(context, appWidgetId, Integer.parseInt(this.numberValues.get(0)));
 		
 		boolean showPeopleApp = false;
 		View view = findViewById(R.id.showPeopleApp);
