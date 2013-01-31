@@ -13,6 +13,7 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.ContactsContract;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,6 +22,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.gmail.yuyang226.contactswidget.pro.ContactAccessor;
 import com.gmail.yuyang226.contactswidget.pro.ContactsWidgetProvider;
@@ -255,7 +257,10 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 			saveShowPeopleApp(context, appWidgetId, showPeopleApp);
 		}
 		
-		final int imageSize = getResources().getDimensionPixelSize(getImageSizeId());
+		//calculate the most appropriate image size based on the pixel density
+		final int imageSize = (int)(getResources().getDimension(getImageSizeId())
+				/ getResources().getDisplayMetrics().density);
+//		Toast.makeText(context, "getDimension " + imageSize, Toast.LENGTH_LONG).show();
 		saveImageSize(context, appWidgetId, imageSize);
 		
 		final CheckBox checkNameOverlay = (CheckBox)findViewById(R.id.checkNameOverlay);
