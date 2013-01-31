@@ -173,8 +173,39 @@
         <!-- </RelativeLayout>
 
     </ScrollView> -->
-
+    
     <LinearLayout
+        android:id="@+id/ButtonLayout"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:divider="?android:attr/dividerHorizontal"
+        android:showDividers="middle"
+        android:baselineAligned="false" >
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="@android:string/cancel" />
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="@android:string/ok" />
+    </LinearLayout>
+
+    <!-- <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -228,6 +259,6 @@
                 android:orientation="horizontal"
                 android:visibility="gone" />
         </LinearLayout>
-    </LinearLayout>
+    </LinearLayout> -->
 
 </RelativeLayout>
