@@ -3,10 +3,9 @@
     android:id="@+id/mainPanel"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:layout_margin="@dimen/widget_margin"
-    android:padding="10dp" >
+    android:layout_margin="@dimen/widget_margin" >
 
-    <!-- <ScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_margin="@dimen/widget_margin"
@@ -14,7 +13,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" > -->
+            android:layout_height="wrap_content" >
 
             <TextView
                 android:id="@+id/groupListText"
@@ -42,12 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/line1"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:prompt="@string/contactGroupPrompt" >
-
-                <requestFocus />
-            </Spinner>
+                android:prompt="@string/contactGroupPrompt" />
 
             <TextView
                 android:id="@+id/line2"
@@ -166,13 +160,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/line4"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
                 android:prompt="@string/contactGroupPrompt" >
             </Spinner>
-        <!-- </RelativeLayout>
+            
+            <Space android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_below="@+id/maxNumber"/>
+        </RelativeLayout>
 
-    </ScrollView> -->
+    </ScrollView>
     
     <LinearLayout
         android:id="@+id/ButtonLayout"
@@ -182,6 +178,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_centerHorizontal="true"
+        android:background="@color/dark_gray_background"
         android:divider="?android:attr/dividerHorizontal"
         android:showDividers="middle"
         android:baselineAligned="false" >
