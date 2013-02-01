@@ -4,12 +4,12 @@
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
     android:orientation="vertical" >
-<NumberPicker 
-    android:id="@+id/numberPicker"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
-     >
-    
-</NumberPicker>
+
+    <NumberPicker
+        android:id="@+id/numberPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" >
+    </NumberPicker>
+
 </LinearLayout>
