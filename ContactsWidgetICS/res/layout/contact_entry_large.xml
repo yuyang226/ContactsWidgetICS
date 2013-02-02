@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="@dimen/size_large"
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
     <FrameLayout
         android:id="@+id/contactIconPanel"
-        android:layout_width="@dimen/size_large"
+        android:layout_width="fill_parent"
         android:layout_height="@dimen/size_large" >
 
         <ImageView

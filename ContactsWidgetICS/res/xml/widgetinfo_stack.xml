@@ -21,7 +21,7 @@
     android:updatePeriodMillis="180000"
     android:previewImage="@drawable/preview_stack"
     android:initialLayout="@layout/contact_manager_stack"
-    android:resizeMode="horizontal"
+    android:resizeMode="vertical|horizontal"
     android:minResizeWidth="@dimen/grid_size_large"
   	android:minResizeHeight="@dimen/grid_size_large" >
 </appwidget-provider>
