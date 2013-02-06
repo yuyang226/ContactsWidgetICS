@@ -61,8 +61,6 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	private Spinner groupList;
 	private Spinner contactsSorting;
 	
-//	private NumberPicker maxNumberPicker;
-	
 	private int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
 	
 	private List<ContactGroup> contactGroups;
@@ -148,12 +146,6 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 			}
         	
         });
-        
-//        maxNumberPicker = (NumberPicker)findViewById(R.id.numberPicker);
-//        maxNumberPicker.setMinValue(PREF_MAXNUMBER_MIN);
-//        maxNumberPicker.setMaxValue(PREF_MAXNUMBER_MAX);
-//        maxNumberPicker.setValue(PREF_MAXNUMBER_DEFAULT);
-//        maxNumberPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         
         View view = findViewById(R.id.showPeopleApp);
         if (view != null) {
@@ -290,9 +282,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 		}
 		
 		//calculate the most appropriate image size based on the pixel density
-		final int imageSize = (int)(getResources().getDimension(getImageSizeId())
-				/ getResources().getDisplayMetrics().density);
-//		Toast.makeText(context, "getDimension " + imageSize, Toast.LENGTH_LONG).show();
+		final int imageSize = calculateImageSize();
 		saveImageSize(context, appWidgetId, imageSize);
 		
 		final CheckBox checkNameOverlay = (CheckBox)findViewById(R.id.checkNameOverlay);
@@ -362,6 +352,11 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     			|| pkgManager.hasSystemFeature(PackageManager.FEATURE_SIP)
     			|| pkgManager.hasSystemFeature(PackageManager.FEATURE_SIP_VOIP);*/
     	return true;
+    }
+    
+    private int calculateImageSize() {
+    	return (int)(getResources().getDimension(getImageSizeId())
+				/ getResources().getDisplayMetrics().density);
     }
     
     
