@@ -264,8 +264,11 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         	break;
         }
         saveSortingString(context, appWidgetId, sortString);
-        ContactGroup selectedGroup = 
-        		this.contactGroups.get(groupList.getSelectedItemPosition());
+        final String myContacts = context.getString(R.string.myContacts);
+        ContactGroup selectedGroup = this.contactGroups.size() > 0 ? 
+        		this.contactGroups.get(groupList.getSelectedItemPosition()) : new ContactGroup(
+    					ContactsWidgetConfigurationActivity.CONTACT_MY_CONTACTS_GROUP_ID, myContacts,
+    					null, myContacts);
         String selection = "";
         if (selectedGroup.getGroupId() == CONTACT_STARRED_GROUP_ID || contactGroups.isEmpty()) {
         	selection = CONTACT_STARRED;
