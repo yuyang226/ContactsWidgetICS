@@ -206,7 +206,9 @@ public class ContactAccessor {
 					}
 					foundMyContacts = true;
 					groupId = ContactsWidgetConfigurationActivity.CONTACT_MY_CONTACTS_GROUP_ID;
-					title = myContacts;
+					if (title == null) {
+						title = myContacts;
+					}
 				} else if (title.equalsIgnoreCase(starredContacts)
 						|| STARRED_CONTACTS_ENG.equalsIgnoreCase(title)) {
 					foundStarredGroup = true;
