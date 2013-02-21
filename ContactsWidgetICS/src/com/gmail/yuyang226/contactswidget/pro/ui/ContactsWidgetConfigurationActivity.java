@@ -5,14 +5,22 @@ import java.util.Collection;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.ContactsContract;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -20,6 +28,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Spinner;
 
@@ -60,8 +69,6 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	
 	private Spinner groupList;
 	private Spinner contactsSorting;
-	
-//	private NumberPicker maxNumberPicker;
 	
 	private int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
 	
@@ -148,12 +155,6 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 			}
         	
         });
-        
-//        maxNumberPicker = (NumberPicker)findViewById(R.id.numberPicker);
-//        maxNumberPicker.setMinValue(PREF_MAXNUMBER_MIN);
-//        maxNumberPicker.setMaxValue(PREF_MAXNUMBER_MAX);
-//        maxNumberPicker.setValue(PREF_MAXNUMBER_DEFAULT);
-//        maxNumberPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         
         View view = findViewById(R.id.showPeopleApp);
         if (view != null) {
@@ -270,7 +271,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     					ContactsWidgetConfigurationActivity.CONTACT_MY_CONTACTS_GROUP_ID, myContacts,
     					null, myContacts);
         String selection = "";
-        if (selectedGroup.getGroupId() == CONTACT_STARRED_GROUP_ID || contactGroups.isEmpty()) {
+        if (selectedGroup.getGroupId() == CONTACT_STARRED_GROUP_ID) {
         	selection = CONTACT_STARRED;
         } else if (selectedGroup.getGroupId() == CONTACT_MY_CONTACTS_GROUP_ID) {
         	//all contacts
@@ -293,9 +294,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 		}
 		
 		//calculate the most appropriate image size based on the pixel density
-		final int imageSize = (int)(getResources().getDimension(getImageSizeId())
-				/ getResources().getDisplayMetrics().density);
-//		Toast.makeText(context, "getDimension " + imageSize, Toast.LENGTH_LONG).show();
+		final int imageSize = calculateImageSize();
 		saveImageSize(context, appWidgetId, imageSize);
 		
 		final CheckBox checkNameOverlay = (CheckBox)findViewById(R.id.checkNameOverlay);
@@ -327,6 +326,18 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     		finish();
     	}
     };
+    
+    @Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.ic_menus, menu);
+	    return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		return MainActivity.onOptionsItemSelected(getApplicationContext(), this, item);
+	}
     
     protected int getImageSizeId() {
 		return R.dimen.size_small;
@@ -365,6 +376,11 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     			|| pkgManager.hasSystemFeature(PackageManager.FEATURE_SIP)
     			|| pkgManager.hasSystemFeature(PackageManager.FEATURE_SIP_VOIP);*/
     	return true;
+    }
+    
+    private int calculateImageSize() {
+    	return (int)(getResources().getDimension(getImageSizeId())
+				/ getResources().getDisplayMetrics().density);
     }
     
     

@@ -168,6 +168,12 @@ public class ContactAccessor {
 		};
 		final Collection<ContactGroup> groups = new TreeSet<ContactGroup>(
 				comparator);
+		groups.add(new ContactGroup(
+					ContactsWidgetConfigurationActivity.CONTACT_MY_CONTACTS_GROUP_ID, myContacts,
+					null, myContacts));
+		groups.add(new ContactGroup(
+					ContactsWidgetConfigurationActivity.CONTACT_STARRED_GROUP_ID, starredContacts,
+					null, starredContacts));
 		// Run query
 		Uri uri = ContactsContract.Groups.CONTENT_URI;
 		String[] projection = new String[] { ContactsContract.Groups._ID,
@@ -182,8 +188,6 @@ public class ContactAccessor {
 		CursorLoader loader = new CursorLoader(context, uri, projection,
 				selection, selectionArgs, sortOrder);
 		Cursor cursor = null;
-		boolean foundStarredGroup = false;
-		boolean foundMyContacts = false;
 		
 		try {
 			loader.startLoading();
@@ -197,23 +201,13 @@ public class ContactAccessor {
 				String accountName = cursor.getString(1);
 				String accountType = cursor.getString(2);
 				String title = cursor.getString(3);
-				if (title == null || title.equalsIgnoreCase(myContacts)) { //$NON-NLS-1$
-					// the title is null and we don't want to handle My Contacts
-					if (foundMyContacts) {
-						//two my contacts appear
-						cursor.moveToNext();
-						continue;
-					}
-					foundMyContacts = true;
-					groupId = ContactsWidgetConfigurationActivity.CONTACT_MY_CONTACTS_GROUP_ID;
-				} else if (title.equalsIgnoreCase(starredContacts)
-						|| STARRED_CONTACTS_ENG.equalsIgnoreCase(title)) {
-					foundStarredGroup = true;
-					groupId = ContactsWidgetConfigurationActivity.CONTACT_STARRED_GROUP_ID;
+				if (title != null && !title.equalsIgnoreCase(myContacts)
+						&& !title.equalsIgnoreCase(starredContacts)
+						&& !STARRED_CONTACTS_ENG.equalsIgnoreCase(title)) {
+					ContactGroup group = new ContactGroup(groupId, accountName,
+							accountType, title);
+					groups.add(group);
 				}
-				ContactGroup group = new ContactGroup(groupId, accountName,
-						accountType, title);
-				groups.add(group);
 				cursor.moveToNext();
 			}
 		} finally {
@@ -221,20 +215,6 @@ public class ContactAccessor {
 			if (cursor != null) {
 				cursor.close();
 			}
-		}
-		if (!foundStarredGroup) {
-			//not containing the starredContacts
-			ContactGroup group = new ContactGroup(
-					ContactsWidgetConfigurationActivity.CONTACT_STARRED_GROUP_ID, starredContacts,
-					null, starredContacts);
-			groups.add(group);
-		}
-		if (!foundMyContacts) {
-			//not containing the my contacts group
-			ContactGroup group = new ContactGroup(
-					ContactsWidgetConfigurationActivity.CONTACT_MY_CONTACTS_GROUP_ID, myContacts,
-					null, myContacts);
-			groups.add(group);
 		}
 		return groups;
 	}

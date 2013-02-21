@@ -2,6 +2,7 @@ package com.gmail.yuyang226.contactswidget.pro.ui;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -21,7 +22,7 @@ public class MainActivity extends Activity {
 	private static final String ENCODING_UTF8 = "utf-8"; //$NON-NLS-1$
 	private static final String ASSET_FOLDER = "file:///android_asset/"; //$NON-NLS-1$
 	private static final String APP_LINK = "https://play.google.com/store/apps/details?id=" + R.class.getPackage().getName();
-	private static final Uri URI_APP_LINK = Uri.parse(APP_LINK);
+	public static final Uri URI_APP_LINK = Uri.parse(APP_LINK);
 	
 	/**
 	 * The webview to show the help html content.
@@ -53,19 +54,23 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		return onOptionsItemSelected(getApplicationContext(), this, item);
+	}
+	
+	public static boolean onOptionsItemSelected(Context context, Activity activity, MenuItem item) {
 		switch(item.getItemId()) {
 		case R.id.menu_item_about:
-			PackageManager manager = getApplicationContext().getPackageManager();
+			PackageManager manager = context.getPackageManager();
 			String version = "N/A";
 			try {
 				PackageInfo info = manager.getPackageInfo(
-						getApplicationContext().getPackageName(), 0);
+						context.getPackageName(), 0);
 				version = info.versionName;
 			} catch (NameNotFoundException e) {
 				//ignore
 			}
-			String aboutContent = getApplicationContext().getString(R.string.about_content, version);
-			new AlertDialog.Builder(MainActivity.this)
+			String aboutContent = context.getString(R.string.about_content, version);
+			new AlertDialog.Builder(activity)
 			.setTitle(R.string.menu_item_about)
 			.setMessage(aboutContent)
 			.setPositiveButton(android.R.string.ok,
@@ -80,10 +85,10 @@ public class MainActivity extends Activity {
 		case R.id.menu_item_rate:
 			Intent marketIntent = new Intent(
 					Intent.ACTION_VIEW, URI_APP_LINK);
-			startActivity(marketIntent);
-			Toast.makeText(getApplicationContext(), R.string.thanks_rating, Toast.LENGTH_LONG).show();
+			activity.startActivity(marketIntent);
+			Toast.makeText(context, R.string.thanks_rating, Toast.LENGTH_LONG).show();
 			return true;
 		}
-		return super.onOptionsItemSelected(item);
+		return activity.onOptionsItemSelected(item);
 	}
 }
