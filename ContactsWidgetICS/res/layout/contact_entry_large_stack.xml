@@ -28,7 +28,8 @@
             android:layout_gravity="center_horizontal|bottom"
             android:background="@drawable/widget_item_background"
             android:padding="3dip"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textIsSelectable="false" />
     </FrameLayout>
     
     <ImageView

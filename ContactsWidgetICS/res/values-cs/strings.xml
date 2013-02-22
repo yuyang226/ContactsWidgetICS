@@ -38,9 +38,6 @@
     <string name="contactGroup">Skupina</string>
     <string name="contactGroupPrompt">Vyberte skupinu kontaktů pro zobrazení kontaktů</string>
     <string name="contactSorting">Sorta</string>
-    <string name="buttonContactFrequency">Podle kontaktoval doba</string>
-    <string name="buttonContactRecent">Podle poslední čas kontaktovaní</string>
-    <string name="buttonContactDisplayName">Podle zobrazovaného jména</string>
     <string name="invalid_provider_info">Neplatné widgetu poskytovatel informací: </string>
     <string name="open_the_people_app">Otevřete aplikaci Lidé</string>
     <string name="loading">Nakládání&#8230;</string>

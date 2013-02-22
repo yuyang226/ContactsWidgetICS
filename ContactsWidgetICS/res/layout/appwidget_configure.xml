@@ -34,7 +34,8 @@
                 android:layout_below="@+id/groupListText"
                 android:background="@color/holo_blue_light"
                 android:gravity="center_horizontal"
-                android:paddingTop="5dip" />
+                android:paddingTop="5dip"
+                android:textIsSelectable="false" />
 
             <Spinner
                 android:id="@+id/groupList"
@@ -51,7 +52,8 @@
                 android:layout_below="@+id/groupList"
                 android:background="@color/holo_blue_light"
                 android:gravity="center_horizontal"
-                android:paddingTop="5dip" />
+                android:paddingTop="5dip"
+                android:textIsSelectable="false" />
 
             <CheckBox
                 android:id="@+id/checkShowName"
@@ -123,7 +125,8 @@
                 android:layout_below="@+id/sortText"
                 android:background="@color/holo_blue_light"
                 android:gravity="center_horizontal"
-                android:paddingTop="5dip" />
+                android:paddingTop="5dip"
+                android:textIsSelectable="false" />
 
             <Spinner
                 android:id="@+id/contactSorting"
@@ -153,7 +156,8 @@
                 android:layout_below="@+id/setNumberText"
                 android:background="@color/holo_blue_light"
                 android:gravity="center_horizontal"
-                android:paddingTop="5dip" />
+                android:paddingTop="5dip"
+                android:textIsSelectable="false" />
             <Spinner
                 android:id="@+id/maxNumber"
                 android:layout_width="match_parent"
