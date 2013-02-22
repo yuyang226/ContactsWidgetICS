@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/size_large"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:layout_margin="@dimen/widget_margin"
+    android:padding="0dp" >
 
     <FrameLayout
         android:id="@+id/contactIconPanel"

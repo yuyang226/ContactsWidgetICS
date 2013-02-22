@@ -2,14 +2,16 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="0dp"
+    android:layout_margin="@dimen/widget_margin"
     android:padding="0dp" >
 
     <RelativeLayout
         android:id="@+id/superLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="0dp"
+        android:layout_margin="@dimen/widget_margin"
+        android:horizontalSpacing="@dimen/widget_spacing"
+        android:verticalSpacing="@dimen/widget_spacing"
      	android:padding="0dp" >
 
         <StackView
