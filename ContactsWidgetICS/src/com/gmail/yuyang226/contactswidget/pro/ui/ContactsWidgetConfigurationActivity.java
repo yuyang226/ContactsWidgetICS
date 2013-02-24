@@ -5,15 +5,10 @@ import java.util.Collection;
 import java.util.List;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,7 +23,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Spinner;
 
@@ -265,11 +259,10 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         	break;
         }
         saveSortingString(context, appWidgetId, sortString);
-        final String myContacts = context.getString(R.string.myContacts);
         ContactGroup selectedGroup = this.contactGroups.size() > 0 ? 
         		this.contactGroups.get(groupList.getSelectedItemPosition()) : new ContactGroup(
-    					ContactsWidgetConfigurationActivity.CONTACT_MY_CONTACTS_GROUP_ID, myContacts,
-    					null, myContacts);
+    					ContactsWidgetConfigurationActivity.CONTACT_MY_CONTACTS_GROUP_ID, 
+    					null, context.getString(R.string.myContacts));
         String selection = "";
         if (selectedGroup.getGroupId() == CONTACT_STARRED_GROUP_ID) {
         	selection = CONTACT_STARRED;

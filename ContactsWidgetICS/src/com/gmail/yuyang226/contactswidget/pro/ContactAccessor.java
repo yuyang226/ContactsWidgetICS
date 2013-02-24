@@ -169,15 +169,14 @@ public class ContactAccessor {
 		final Collection<ContactGroup> groups = new TreeSet<ContactGroup>(
 				comparator);
 		groups.add(new ContactGroup(
-					ContactsWidgetConfigurationActivity.CONTACT_MY_CONTACTS_GROUP_ID, myContacts,
+					ContactsWidgetConfigurationActivity.CONTACT_MY_CONTACTS_GROUP_ID, 
 					null, myContacts));
 		groups.add(new ContactGroup(
-					ContactsWidgetConfigurationActivity.CONTACT_STARRED_GROUP_ID, starredContacts,
+					ContactsWidgetConfigurationActivity.CONTACT_STARRED_GROUP_ID, 
 					null, starredContacts));
 		// Run query
 		Uri uri = ContactsContract.Groups.CONTENT_URI;
 		String[] projection = new String[] { ContactsContract.Groups._ID,
-				ContactsContract.Groups.ACCOUNT_NAME,
 				ContactsContract.Groups.ACCOUNT_TYPE,
 				ContactsContract.Groups.TITLE, };
 		String selection = null;
@@ -198,13 +197,12 @@ public class ContactAccessor {
 			cursor.moveToFirst();
 			while (cursor.isAfterLast() == false) {
 				long groupId = cursor.getLong(0);
-				String accountName = cursor.getString(1);
-				String accountType = cursor.getString(2);
-				String title = cursor.getString(3);
+				String accountType = cursor.getString(1);
+				String title = cursor.getString(2);
 				if (title != null && !title.equalsIgnoreCase(myContacts)
 						&& !title.equalsIgnoreCase(starredContacts)
 						&& !STARRED_CONTACTS_ENG.equalsIgnoreCase(title)) {
-					ContactGroup group = new ContactGroup(groupId, accountName,
+					ContactGroup group = new ContactGroup(groupId, 
 							accountType, title);
 					groups.add(group);
 				}
