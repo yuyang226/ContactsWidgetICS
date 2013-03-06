@@ -104,6 +104,15 @@
                 android:layout_marginLeft="@dimen/margin_indentation"
                 android:checked="true"
                 android:text="@string/showPhoneNumberText" />
+            
+            <CheckBox
+                android:id="@+id/checkViaContactPic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/checkShowPhoneNumber"
+                android:layout_marginLeft="@dimen/margin_indentation"
+                android:checked="false"
+                android:text="@string/viaContactIcon" />
 
             <!-- Begining of Sorting -->
 
@@ -111,7 +120,7 @@
                 android:id="@+id/sortText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/checkShowPhoneNumber"
+                android:layout_below="@+id/checkViaContactPic"
                 android:layout_gravity="left"
                 android:text="@string/contactSorting"
                 android:textColor="@color/holo_blue_light"

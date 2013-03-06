@@ -50,6 +50,7 @@ public class ContactsWidgetService extends RemoteViewsService {
 	    private Rect imageSize;
 	    private boolean canDirectDial;
 	    private boolean showPhoneNumber;
+	    private boolean viaContactIcon = false;
 
 	    public GridRemoteViewsFactory(Context context, Intent intent) {
 	    	//Log.d(TAG, String.format("Input Params: %s, %s", String.valueOf(context), String.valueOf(intent))); //$NON-NLS-1$
@@ -59,6 +60,7 @@ public class ContactsWidgetService extends RemoteViewsService {
 	        
 	        this.canDirectDial = ContactsWidgetConfigurationActivity.loadSupportDirectDial(context, mAppWidgetId);
 	        this.showPhoneNumber = ContactsWidgetConfigurationActivity.loadShowPhoneNumber(context, mAppWidgetId);
+	        this.viaContactIcon = ContactsWidgetConfigurationActivity.loadViaContactIcon(context, mAppWidgetId);
 	        
 	        widgetEntryLayoutId = intent.getIntExtra(ContactsWidgetProvider.CONTACT_ENTRY_LAYOUT_ID,
 	                R.layout.contact_entry);
@@ -125,13 +127,13 @@ public class ContactsWidgetService extends RemoteViewsService {
                 String phoneNumber = contact.getPhoneNumbers().get(0).getNumber();
                 fillInIntent.setData(Uri.parse("tel:" + phoneNumber));
 	        	rv.setTextViewText(R.id.contactPhoneNumberText, phoneNumber);
-	        	rv.setOnClickFillInIntent(R.id.dialerButton, fillInIntent);
+	        	rv.setOnClickFillInIntent(this.viaContactIcon ? R.id.contactPhoto : R.id.dialerButton, fillInIntent);
 	        }
             
-            rv.setViewVisibility(R.id.dialerButton, supportDirectDial ? View.VISIBLE : View.GONE);
+            rv.setViewVisibility(R.id.dialerButton, supportDirectDial && !viaContactIcon ? View.VISIBLE : View.GONE);
             rv.setViewVisibility(R.id.contactPhoneNumberText, supportDirectDial ? View.VISIBLE : View.GONE);
-            rv.setViewVisibility(R.id.lineDialer, supportDirectDial ? View.VISIBLE : View.GONE);
-            rv.setViewVisibility(R.id.directDialPanel, supportDirectDial ? View.VISIBLE : View.GONE);
+            rv.setViewVisibility(R.id.lineDialer, supportDirectDial && !viaContactIcon ? View.VISIBLE : View.GONE);
+            rv.setViewVisibility(R.id.directDialPanel, supportDirectDial && !viaContactIcon ? View.VISIBLE : View.GONE);
             rv.setViewVisibility(R.id.contactPhoneNumberText, this.showPhoneNumber ? View.VISIBLE : View.GONE);
             
 	        return rv;

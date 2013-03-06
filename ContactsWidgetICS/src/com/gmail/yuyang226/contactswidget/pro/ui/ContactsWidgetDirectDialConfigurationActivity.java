@@ -63,6 +63,12 @@ public class ContactsWidgetDirectDialConfigurationActivity extends
 					showPhoneNumber.isChecked() && showPhoneNumber.getVisibility() == View.VISIBLE);
 		}
 		
+		CheckBox viaContactIcon = (CheckBox)findViewById(R.id.checkViaContactPic);
+		if (viaContactIcon != null) {
+			saveViaContactIcon(context, appWidgetId, 
+					viaContactIcon.isChecked() && viaContactIcon.getVisibility() == View.VISIBLE);
+		}
+		
 		super.savePreferences(context, appWidgetId);
 	}
 
