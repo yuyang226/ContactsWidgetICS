@@ -33,6 +33,7 @@
     <string name="showPeopleAppShortcut">Contatos atalho do Aplicativo</string>
     <string name="directDialText">Discagem Direta</string>
     <string name="showPhoneNumberText">Mostrar telefone</string>
+    <string name="viaContactIcon">Contato através do ícone</string>
     <string name="save">Guardar</string>
 
     <!-- Configurations -->

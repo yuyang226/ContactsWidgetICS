@@ -31,6 +31,7 @@
     <string name="showPeopleAppShortcut">연락처 응용 프로그램 바로 가기</string>
     <string name="directDialText">직접 전화 걸기</string>
     <string name="showPhoneNumberText">전화 번호 표시</string>
+    <string name="viaContactIcon">직접 사진을 클릭</string>
     <string name="save">저장</string>
     
     <!-- Configurations -->

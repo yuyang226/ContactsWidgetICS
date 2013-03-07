@@ -32,6 +32,7 @@
     <string name="showPeopleAppShortcut">Raccourci vers l\'application Contacts</string>
     <string name="directDialText">Composez directement</string>
     <string name="showPhoneNumberText">Afficher le numéro de téléphone</string>
+    <string name="viaContactIcon">via Contact Icon</string>
     <string name="save">Sauver</string>
     
     <!-- Configurations -->

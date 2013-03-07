@@ -26,6 +26,7 @@
     <string name="empty_view_text">Contatto non caricato</string>
     <string name="contactImageDescription">Immagine del contatto</string>
     <string name="checkShowNameText">Mostra nome del contatto</string>
+    <string name="viaContactIcon">tramite contatto Icona</string>
     <string name="showNameOverlayText">Oltre Contatto Icon</string>
     <string name="loopContactsText">Sfoglia contatti</string>
     <string name="showPeopleAppShortcut">Contatti Applicazione di scelta rapida</string>

@@ -33,6 +33,7 @@
     <string name="showPeopleAppShortcut">Kontakte Shortcut</string>
     <string name="directDialText">Direktwahl</string>
     <string name="showPhoneNumberText">Telefonnummer anzeigen</string>
+    <string name="viaContactIcon">über Kontakt Icon</string>
     <string name="loopContactsText">Durch alle Kontakte iterieren</string>
     <string name="save">Speichern</string>
     <string name="contactGroup">Gruppe</string>

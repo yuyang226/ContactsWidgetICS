@@ -18,6 +18,7 @@
     <string name="showPeopleAppShortcut">Acceso a aplicación de Contactos</string>
     <string name="directDialText">Llamar directamente</string>
     <string name="showPhoneNumberText">Mostrar el número de teléfono</string>
+    <string name="viaContactIcon">Contacto a través del icono</string>
     <string name="loopContactsText">Bucle con los contactos</string>
     <string name="save">Guardar</string>
     <string name="contactGroup">Grupo</string>

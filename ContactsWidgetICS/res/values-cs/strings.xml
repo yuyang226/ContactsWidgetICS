@@ -27,6 +27,7 @@
     <string name="empty_view_text">Žádné Kontakty Loaded</string>
     <string name="contactImageDescription">Kontaktujte obrázek</string>
     <string name="checkShowNameText">Zobrazit Kontakt Jméno</string>
+    <string name="viaContactIcon">přes ikonu kontaktu</string>
     <string name="showNameOverlayText">Přes ikonu Kontaktu</string>
     <string name="loopContactsText">Loop Through Kontakty</string>
     <string name="showPeopleAppShortcut">Kontakty aplikace Shortcut</string>

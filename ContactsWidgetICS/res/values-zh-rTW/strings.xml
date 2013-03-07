@@ -31,6 +31,7 @@
     <string name="showPeopleAppShortcut">通訊錄快捷方式</string>
     <string name="directDialText">直接撥打</string>
     <string name="showPhoneNumberText">顯示電話號碼</string>
+    <string name="viaContactIcon">直接點擊圖片</string>
     <string name="save">保存</string>
     
     <!-- Configurations -->
