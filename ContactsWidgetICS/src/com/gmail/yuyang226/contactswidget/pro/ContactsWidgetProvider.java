@@ -19,6 +19,7 @@ import android.provider.ContactsContract;
 import android.provider.ContactsContract.QuickContact;
 import android.util.Log;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.RemoteViews;
 
 import com.gmail.yuyang226.contactswidget.pro.ui.ContactsWidgetConfigurationActivity;
@@ -174,8 +175,16 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
         // When intents are compared, the extras are ignored, so we need to embed the extras
         // into the data so that the extras will not be ignored.
         intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
+        
+        int layoutId = widgetProviderInfo.initialLayout;
+        if (widgetEntryLayoutId == R.layout.contact_entry_direct_dial
+        		&& (!ContactsWidgetConfigurationActivity.loadSupportDirectDial(context, appWidgetId)
+        		|| ContactsWidgetConfigurationActivity.loadViaContactIcon(context, appWidgetId))) {
+        	//This is the small direct dial, the user has choose not to use direct dial or want to direct dial via contact icon
+        	layoutId = R.layout.contact_manager;
+        }
         RemoteViews rv = new RemoteViews(context.getPackageName(), 
-        		widgetProviderInfo.initialLayout);
+        		layoutId);
         rv.setRemoteAdapter(R.id.contactList, intent);
         if (isKeyguard || canLaunchPeopleApp) {
         	Intent launchPeopleIntent = new Intent(context, ContactsWidgetProvider.class);
