@@ -2,6 +2,7 @@
 <resources>
     <dimen name="widget_margin">0dp</dimen>
     <dimen name="widget_spacing">0dp</dimen>
+    <dimen name="widget_spacing_small">3dp</dimen>
     <dimen name="size_small">72dp</dimen>
     <dimen name="size_large">144dp</dimen>
     <dimen name="size_stack">120dp</dimen>
