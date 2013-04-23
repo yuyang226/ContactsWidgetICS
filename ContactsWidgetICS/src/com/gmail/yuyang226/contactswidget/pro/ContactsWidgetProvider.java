@@ -19,7 +19,6 @@ import android.provider.ContactsContract;
 import android.provider.ContactsContract.QuickContact;
 import android.util.Log;
 import android.view.View;
-import android.widget.GridView;
 import android.widget.RemoteViews;
 
 import com.gmail.yuyang226.contactswidget.pro.ui.ContactsWidgetConfigurationActivity;
