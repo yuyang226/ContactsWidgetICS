@@ -270,8 +270,11 @@ public class ContactAccessor {
 				contact.setContactId(contactId);
 				contact.setDisplayName(displayName);
 				contact.setPhotoUri(photoUri);
-				contact.setContactUri(ContentUris.withAppendedId(
-						ContactsContract.Contacts.CONTENT_URI, contactId));
+				
+//				contact.setContactUri(ContentUris.withAppendedId(
+//						ContactsContract.Contacts.CONTENT_URI, contactId));
+				contact.setContactUri(ContactsContract.Contacts.getLookupUri(context.getContentResolver(), 
+						ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, contactId)));
 				if (photoUri != null && photoUri.length() > 0) {
 					contact.setPhoto(loadContactPhoto(contentResolver,
 							contact.getContactUri(), showHighRes, size));
@@ -386,8 +389,10 @@ public class ContactAccessor {
 			boolean supportDirectDial, Rect size) {
 		Contact contact = new Contact();
 		contact.setContactId(contactId);
-		Uri contactUri = ContentUris.withAppendedId(
-				ContactsContract.Contacts.CONTENT_URI, contactId);
+		Uri contactUri = ContactsContract.Contacts.getLookupUri(context.getContentResolver(), 
+				ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, contactId)); 
+//				ContentUris.withAppendedId(
+//				ContactsContract.Contacts.CONTENT_URI, contactId);
 		contact.setContactUri(contactUri);
 
 		Uri uri = ContactsContract.Contacts.CONTENT_URI;
