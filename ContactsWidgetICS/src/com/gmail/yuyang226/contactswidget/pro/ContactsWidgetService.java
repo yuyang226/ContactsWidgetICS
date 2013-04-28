@@ -93,6 +93,9 @@ public class ContactsWidgetService extends RemoteViewsService {
 	        // We construct a remote views item based on our widget item xml file, and set the
 	        // text based on the position.
 	        RemoteViews rv = new RemoteViews(mContext.getPackageName(), widgetEntryLayoutId);
+	        if (mWidgetItems == null || mWidgetItems.isEmpty()) {
+	        	return rv;
+	        }
 	        Contact contact = mWidgetItems.get(position);
 	        if (ContactsWidgetConfigurationActivity.loadShowName(this.mContext, this.mAppWidgetId)) {
 	        	rv.setViewVisibility(R.id.contactEntryText, View.VISIBLE);
