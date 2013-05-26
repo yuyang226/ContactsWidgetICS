@@ -30,6 +30,7 @@
     <string name="showNameOverlayText">連絡先の写真をカバー</string>
     <string name="showPeopleAppShortcut">連絡先アプリケーションのショートカット</string>
     <string name="directDialText">直通</string>
+    <string name="directSmsText">直接SMS</string>
     <string name="showPhoneNumberText">電話番号を表示</string>
     <string name="viaContactIcon">直接写真をクリック</string>
     <string name="save">保存</string>

@@ -32,6 +32,7 @@
     <string name="loopContactsText">Loop Through Kontakty</string>
     <string name="showPeopleAppShortcut">Skrót do aplikacji Kontakty</string>
     <string name="directDialText">Bezpośrednio Dial</string>
+    <string name="directSmsText">Bezpośrednio SMS</string>
     <string name="showPhoneNumberText">Wyświetl numer telefonu</string>
     <string name="viaContactIcon">poprzez kontakt Ikona</string>
     <string name="save">uratować</string>

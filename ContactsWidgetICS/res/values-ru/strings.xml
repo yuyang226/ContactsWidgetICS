@@ -32,6 +32,7 @@
     <string name="loopContactsText">бесконечная прокрутка</string>
     <string name="showPeopleAppShortcut">кнопка Контакты</string>
     <string name="directDialText">Кнопка вызова</string>
+    <string name="directSmsText">непосредственно SMS</string>
     <string name="showPhoneNumberText">Показывать номер</string>
     <string name="viaContactIcon">Контакт через иконку</string>
     <string name="save">Сохранить</string>

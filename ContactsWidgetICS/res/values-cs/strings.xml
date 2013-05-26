@@ -32,6 +32,7 @@
     <string name="loopContactsText">Loop Through Kontakty</string>
     <string name="showPeopleAppShortcut">Kontakty aplikace Shortcut</string>
     <string name="directDialText">Direct Dial</string>
+    <string name="directSmsText">Direct SMS</string>
     <string name="showPhoneNumberText">Zobrazit Telefonní číslo</string>
     <string name="save">Uložit</string>
 
