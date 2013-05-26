@@ -49,6 +49,7 @@ public class ContactsWidgetService extends RemoteViewsService {
 	    private int widgetEntryLayoutId;
 	    private Rect imageSize;
 	    private boolean canDirectDial;
+	    private boolean directSms;
 	    private boolean showPhoneNumber;
 	    private boolean viaContactIcon = false;
 
@@ -61,6 +62,7 @@ public class ContactsWidgetService extends RemoteViewsService {
 	        this.canDirectDial = ContactsWidgetConfigurationActivity.loadSupportDirectDial(context, mAppWidgetId);
 	        this.showPhoneNumber = ContactsWidgetConfigurationActivity.loadShowPhoneNumber(context, mAppWidgetId);
 	        this.viaContactIcon = ContactsWidgetConfigurationActivity.loadViaContactIcon(context, mAppWidgetId);
+	        this.directSms = ContactsWidgetConfigurationActivity.loadDirectSms(context, mAppWidgetId);
 	        
 	        widgetEntryLayoutId = intent.getIntExtra(ContactsWidgetProvider.CONTACT_ENTRY_LAYOUT_ID,
 	                R.layout.contact_entry);
@@ -120,6 +122,7 @@ public class ContactsWidgetService extends RemoteViewsService {
             rv.setOnClickFillInIntent(R.id.contactPhoto, fillInIntent);
             
             boolean supportDirectDial = false;
+            boolean supportDirectSms = false;
             if (this.canDirectDial && contact.getPhoneNumbers() != null && !contact.getPhoneNumbers().isEmpty()) {
 	        	//support direct dial
             	supportDirectDial = true;
@@ -131,9 +134,20 @@ public class ContactsWidgetService extends RemoteViewsService {
                 fillInIntent.setData(Uri.parse("tel:" + phoneNumber));
 	        	rv.setTextViewText(R.id.contactPhoneNumberText, phoneNumber);
 	        	rv.setOnClickFillInIntent(this.viaContactIcon ? R.id.contactPhoto : R.id.dialerButton, fillInIntent);
+	        	
+	        	if (directSms) {
+	        		supportDirectSms = true;
+	        		fillInIntent = new Intent();
+	                fillInIntent.putExtras(new Bundle());
+	                fillInIntent.putExtra(ContactsWidgetProvider.INTENT_TAG_ACTION, 
+	                		ContactsWidgetProvider.DIRECT_SMS_ACTION);
+	                fillInIntent.setData(Uri.parse("smsto:" + phoneNumber));
+		        	rv.setOnClickFillInIntent(R.id.smsButton, fillInIntent);
+	        	}
 	        }
             
             rv.setViewVisibility(R.id.dialerButton, supportDirectDial && !viaContactIcon ? View.VISIBLE : View.GONE);
+            rv.setViewVisibility(R.id.smsButton, supportDirectSms ? View.VISIBLE : View.GONE);
             rv.setViewVisibility(R.id.contactPhoneNumberText, supportDirectDial ? View.VISIBLE : View.GONE);
             rv.setViewVisibility(R.id.lineDialer, supportDirectDial && !viaContactIcon ? View.VISIBLE : View.GONE);
             rv.setViewVisibility(R.id.directDialPanel, supportDirectDial && !viaContactIcon ? View.VISIBLE : View.GONE);

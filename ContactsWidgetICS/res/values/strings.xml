@@ -17,6 +17,7 @@
     <string name="showNameOverlayText">Over Contact Icon</string>
     <string name="showPeopleAppShortcut">People App Shortcut</string>
     <string name="directDialText">Direct Dial</string>
+    <string name="directSmsText">Direct SMS</string>
     <string name="showPhoneNumberText">Show Phone Number</string>
     <string name="viaContactIcon">Via Contact Icon</string>
     <string name="loopContactsText">Loop Through Contacts</string>

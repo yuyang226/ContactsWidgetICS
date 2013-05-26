@@ -113,6 +113,15 @@
                 android:layout_marginLeft="@dimen/margin_indentation"
                 android:checked="false"
                 android:text="@string/viaContactIcon" />
+            
+            <CheckBox
+                android:id="@+id/checkDirectSms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/checkViaContactPic"
+                android:layout_marginLeft="@dimen/margin_indentation"
+                android:checked="false"
+                android:text="@string/directSmsText" />
 
             <!-- Begining of Sorting -->
 
@@ -120,7 +129,7 @@
                 android:id="@+id/sortText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/checkViaContactPic"
+                android:layout_below="@+id/checkDirectSms"
                 android:layout_gravity="left"
                 android:text="@string/contactSorting"
                 android:textColor="@color/holo_blue_light"

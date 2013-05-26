@@ -69,6 +69,12 @@ public class ContactsWidgetDirectDialConfigurationActivity extends
 					viaContactIcon.isChecked() && viaContactIcon.getVisibility() == View.VISIBLE);
 		}
 		
+		CheckBox canDirectSms = (CheckBox)findViewById(R.id.checkDirectSms);
+		if (canDirectSms != null) {
+			saveDirectSms(context, appWidgetId, 
+					canDirectSms.isChecked() && canDirectSms.getVisibility() == View.VISIBLE);
+		}
+		
 		super.savePreferences(context, appWidgetId);
 	}
 

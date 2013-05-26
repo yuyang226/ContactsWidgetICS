@@ -32,6 +32,7 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
 	public static final String INTENT_TAG_ACTION = "action";
 	public static final String SHOW_QUICK_CONTACT_ACTION = "com.gmail.yuyang226.contactswidget.SHOW_QUICK_CONTACT_ACTION"; //$NON-NLS-1$
 	public static final String DIRECT_DIAL_ACTION = "com.gmail.yuyang226.contactswidget.DIRECT_DIAL_ACTION"; //$NON-NLS-1$
+	public static final String DIRECT_SMS_ACTION = "com.gmail.yuyang226.contactswidget.DIRECT_SMS_ACTION"; //$NON-NLS-1$
 	public static final String LAUNCH_PEOPLE_ACTION = "com.gmail.yuyang226.contactswidget.LAUNCH_PEOPLE_ACTION"; //$NON-NLS-1$
 	public static final String CONTACT_URI = "com.gmail.yuyang226.contactswidget.CONTACT_URI"; //$NON-NLS-1$
 	public static final String CONTACTS = "contacts"; //$NON-NLS-1$
@@ -61,13 +62,31 @@ public class ContactsWidgetProvider extends AppWidgetProvider {
         if (intent.getAction().equals(SHOW_QUICK_CONTACT_ACTION)) {
             final Uri uri = intent.getData();
             if (uri != null) {
-            	if (intent.hasExtra(INTENT_TAG_ACTION)
-            			&& DIRECT_DIAL_ACTION.equals(intent.getStringExtra(INTENT_TAG_ACTION))) {
+            	if (intent.hasExtra(INTENT_TAG_ACTION) && intent.getStringExtra(INTENT_TAG_ACTION) != null) {
+            		boolean isDirectDial = DIRECT_DIAL_ACTION.equals(intent.getStringExtra(INTENT_TAG_ACTION));
             		//direct dial
-            		Intent dialIntent = new Intent(Intent.ACTION_CALL);
+            		Intent dialIntent = new Intent(isDirectDial ? Intent.ACTION_CALL : Intent.ACTION_SENDTO);
             		dialIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                	dialIntent.setData(uri);
-                	context.startActivity(dialIntent);
+            		dialIntent.setData(uri);
+            		boolean notStartActivity = false;
+            		if (!isDirectDial) {
+            			//direct sms
+            			dialIntent.putExtra("compose_mode", true);
+            			if (isKeyguard) {
+                			//need to dismiss the keyguard screen
+                    		Intent in = new Intent(context, DismissSafeguardActivity.class);
+                    		in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    		in.setData(uri);
+                    		in.putExtra("sourceBundle", intent.getSourceBounds());
+                    		in.putExtra(INTENT_TAG_ACTION, DIRECT_SMS_ACTION);
+                    		context.startActivity(in);
+                    		notStartActivity = true;
+                    	}
+            		}
+            		if (!notStartActivity) {
+            			//it is running keyguard mode and users want direct SMS
+            			context.startActivity(dialIntent);
+            		}
             	} else {
             		//show quick contacts
             		if (isKeyguard) {

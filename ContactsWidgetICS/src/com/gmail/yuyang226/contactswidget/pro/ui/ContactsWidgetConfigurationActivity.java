@@ -45,6 +45,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	public static final String PREF_SHOWNAME_PREFIX = "showname_"; //$NON-NLS-1$
 	public static final String PREF_MAXNUMBER_PREFIX = "maxnumber_"; //$NON-NLS-1$
 	public static final String PREF_DIRECTDIAL_PREFIX = "directdial_"; //$NON-NLS-1$
+	public static final String PREF_DIRECTSMS_PREFIX = "directsms_"; //$NON-NLS-1$
 	public static final String PREF_SHOWPHONENUMBER_PREFIX = "showphonenumber_"; //$NON-NLS-1$
 	public static final String PREF_VIACONTACTICON_PREFIX = "viacontacticon_"; //$NON-NLS-1$
 	public static final String PREF_SHOWPEOPLE_PREFIX = "showpeope_"; //$NON-NLS-1$
@@ -60,7 +61,7 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
 	
 	public static final String[] PREFS_PREFIX = {PREF_GROUP_PREFIX, PREF_SORTING_PREFIX, PREF_HIGH_RES, 
 		PREF_SHOWNAME_PREFIX, PREF_MAXNUMBER_PREFIX, PREF_SHOWPEOPLE_PREFIX, PREF_IMAGESIZE_PREFIX,
-		PREF_ENTRYLAYOUT_PREFIX, PREF_VIACONTACTICON_PREFIX};
+		PREF_ENTRYLAYOUT_PREFIX, PREF_VIACONTACTICON_PREFIX, PREF_DIRECTSMS_PREFIX};
 	
 	private Spinner groupList;
 	private Spinner contactsSorting;
@@ -177,6 +178,10 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
         final View directDialView = findViewById(R.id.checkDirectDial);
         if (directDialView instanceof CheckBox) {
         	directDialView.setVisibility(canDirectDial() && hasPhoneCapability ? View.VISIBLE : View.GONE);
+        	final View directSmsView = findViewById(R.id.checkDirectSms);
+        	if (directSmsView != null) {
+        		directSmsView.setVisibility(directDialView.getVisibility());
+        	}
         	final View phoneNumberView = findViewById(R.id.checkShowPhoneNumber);
         	final View viaContactIconView = findViewById(R.id.checkViaContactPic);
             if (phoneNumberView != null) {
@@ -195,6 +200,8 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
             				((CheckBox)phoneNumberView).setChecked(isDirectDialChecked);
             				viaContactIconView.setEnabled(isDirectDialChecked);
             				((CheckBox)viaContactIconView).setChecked(false);
+            				directSmsView.setEnabled(isDirectDialChecked);
+            				((CheckBox)directSmsView).setChecked(false);
             			}
             		});
             	}
@@ -496,6 +503,18 @@ public class ContactsWidgetConfigurationActivity extends Activity  {
     public static boolean loadViaContactIcon(Context context, int appWidgetId) {
         SharedPreferences prefs = context.getSharedPreferences(PREF_VIACONTACTICON_PREFIX, 0);
         String value = prefs.getString(PREF_VIACONTACTICON_PREFIX + appWidgetId, Boolean.FALSE.toString());
+        return Boolean.valueOf(value);
+    }
+    
+    public static void saveDirectSms(Context context, int appWidgetId, boolean directSms) {
+        SharedPreferences.Editor prefs = context.getSharedPreferences(PREF_DIRECTSMS_PREFIX, 0).edit();
+        prefs.putString(PREF_DIRECTSMS_PREFIX + appWidgetId, String.valueOf(directSms));
+        prefs.commit();
+    }
+    
+    public static boolean loadDirectSms(Context context, int appWidgetId) {
+        SharedPreferences prefs = context.getSharedPreferences(PREF_DIRECTSMS_PREFIX, 0);
+        String value = prefs.getString(PREF_DIRECTSMS_PREFIX + appWidgetId, Boolean.FALSE.toString());
         return Boolean.valueOf(value);
     }
     

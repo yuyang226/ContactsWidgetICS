@@ -82,9 +82,13 @@ public class DismissSafeguardActivity extends Activity {
 					//For viewing the call log
 					 Intent intent = new Intent(Intent.ACTION_VIEW, CallLog.Calls.CONTENT_URI);*/
 					DismissSafeguardActivity.this.startActivity(intent);
+				} else if (ContactsWidgetProvider.DIRECT_SMS_ACTION.equals(action)) {
+					Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
+            		smsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            		smsIntent.setData(getIntent().getData());
+            		DismissSafeguardActivity.this.startActivity(smsIntent);
 				}
 			}
-			
 		});
 	}
 	

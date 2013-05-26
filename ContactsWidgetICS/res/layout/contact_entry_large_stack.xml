@@ -41,7 +41,19 @@
         android:clickable="true"
         android:contentDescription="@+string/directDialText"
         android:src="@drawable/dialer"
-        android:visibility="gone" >
+        android:visibility="visible" >
+    </ImageView>
+    
+    <ImageView
+        android:id="@+id/smsButton"
+        android:layout_width="@dimen/dialer_size_large"
+        android:layout_height="@dimen/dialer_size_large"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/dialerButton"
+        android:clickable="true"
+        android:contentDescription="@+string/directSmsText"
+        android:src="@drawable/direct_sms"
+        android:visibility="visible" >
     </ImageView>
     
     <TextView

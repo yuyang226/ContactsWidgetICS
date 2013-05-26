@@ -37,7 +37,8 @@
         android:id="@+id/directDialPanel"
         android:layout_width="@dimen/size_small"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/contactIconPanel" >
+        android:layout_toRightOf="@+id/contactIconPanel"
+        android:layout_marginBottom="0dp" >
 
         <TextView
             android:id="@+id/lineDialer"
@@ -46,6 +47,7 @@
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_marginRight="7dp"
+            android:layout_marginBottom="0dp"
             android:layout_toLeftOf="@+id/dialerButton"
             android:background="@color/grey"
             android:gravity="center_vertical"
@@ -57,10 +59,47 @@
             android:layout_height="@dimen/dialer_size_small"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:layout_marginBottom="0dp"
             android:clickable="true"
             android:contentDescription="@+string/directDialText"
             android:gravity="center_vertical"
             android:src="@drawable/dialer" >
+        </ImageView>
+        
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/directSmsPanel"
+        android:layout_width="@dimen/size_small"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_below="@+id/directDialPanel"
+        android:layout_toRightOf="@+id/contactIconPanel" >
+
+        <TextView
+            android:id="@+id/lineSms"
+            style="?android:attr/listSeparatorTextViewStyle"
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="0dp"
+            android:layout_toLeftOf="@+id/smsButton"
+            android:background="@color/grey"
+            android:gravity="center_vertical"
+            android:textIsSelectable="false" />
+
+        <ImageView
+            android:id="@+id/smsButton"
+            android:layout_width="@dimen/dialer_size_small"
+            android:layout_height="@dimen/dialer_size_small"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="0dp"
+            android:clickable="true"
+            android:contentDescription="@+string/directSmsText"
+            android:gravity="center_vertical"
+            android:src="@drawable/direct_sms" >
         </ImageView>
     </RelativeLayout>
 
