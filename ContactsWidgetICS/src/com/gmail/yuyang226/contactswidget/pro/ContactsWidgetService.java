@@ -150,6 +150,8 @@ public class ContactsWidgetService extends RemoteViewsService {
             rv.setViewVisibility(R.id.smsButton, supportDirectSms ? View.VISIBLE : View.GONE);
             rv.setViewVisibility(R.id.contactPhoneNumberText, supportDirectDial ? View.VISIBLE : View.GONE);
             rv.setViewVisibility(R.id.lineDialer, supportDirectDial && !viaContactIcon ? View.VISIBLE : View.GONE);
+            rv.setViewVisibility(R.id.lineSms, supportDirectSms ? View.VISIBLE : View.GONE);
+            rv.setViewVisibility(R.id.directSmsPanel, supportDirectSms ? View.VISIBLE : View.GONE);
             rv.setViewVisibility(R.id.directDialPanel, supportDirectDial && !viaContactIcon ? View.VISIBLE : View.GONE);
             rv.setViewVisibility(R.id.contactPhoneNumberText, this.showPhoneNumber ? View.VISIBLE : View.GONE);
             
