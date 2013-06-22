@@ -18,47 +18,48 @@
 
 <resources>
     <string name="app_name">Kontakt Widget</string>
-    <string name="activity_title">Kontakt Widget - Samouczek</string>
+    <string name="activity_title">Kontakt Widget - Przewodnik</string>
     <string name="help_file_name">help_pl.html</string>
+    <string name="help_file_encoding">utf&#8211;8</string>
     <string name="widget_name">Kontakt Widget</string>
-    <string name="widget_name_stack">Kontakt Widget(Stos Zobacz)</string>
+    <string name="widget_name_stack">Kontakt Widget(Stos kart)</string>
     <string name="widget_name_large">Kontakt Widget(Duży)</string>
-    <string name="widget_name_super">Kontakt Widget(Wspaniały)</string>
-    <string name="widget_name_direct_dial">Kontakt Widget(Bezpośredni Dial)</string>
-    <string name="empty_view_text">Brak Kontakt Loaded</string>
-    <string name="contactImageDescription">Skontaktuj się obraz</string>
-    <string name="checkShowNameText">Pokaż Nazwa Kontaktowa</string>
-    <string name="showNameOverlayText">Ponad Kontaktowy Ikona</string>
-    <string name="loopContactsText">Loop Through Kontakty</string>
-    <string name="showPeopleAppShortcut">Skrót do aplikacji Kontakty</string>
-    <string name="directDialText">Bezpośrednio Dial</string>
-    <string name="directSmsText">Bezpośrednio SMS</string>
-    <string name="showPhoneNumberText">Wyświetl numer telefonu</string>
+    <string name="widget_name_super">Kontakt Widget(Super Duży)</string>
+    <string name="widget_name_direct_dial">Kontakt Widget(Bezpośrednie Dzwonienie)</string>
+    <string name="empty_view_text">Nie załadowano żadnych kontaktów</string>
+    <string name="contactImageDescription">Obraz Kontaktu</string>
+    <string name="checkShowNameText">Pokaż nazwę Kontaktu</string>
+    <string name="showNameOverlayText">Ponad Ikona Kontaktu</string>
+    <string name="loopContactsText">Zapętlenie przeglądania kontaktów</string>
+    <string name="showPeopleAppShortcut">Skrót do aplikacji Osoby</string>
+    <string name="directDialText">Bezpośrednie dzwonienie</string>
+    <string name="directSmsText">Bezpośredni SMS</string>
+    <string name="showPhoneNumberText">Pokaż numer telefonu</string>
     <string name="viaContactIcon">poprzez kontakt Ikona</string>
-    <string name="save">uratować</string>
+    <string name="save">Zapisz</string>
 
     <!-- Configurations -->
-    <string name="contactGroup">Grupa</string>
-    <string name="contactGroupPrompt">Wybierz grupę kontaktów, aby wyświetlić kontakty</string>
-    <string name="contactSorting">Sortowanie</string>
+    <string name="contactGroup">Grupa kontaktów</string>
+    <string name="contactGroupPrompt">Wybierz grupę kontaktów, która ma być wyświetlana</string>
+    <string name="contactSorting">Uporządkowanie wg</string>
     <string name="invalid_provider_info">Nieprawidłowy informacji dostawca widget: </string>
-    <string name="open_the_people_app">Otworzyć aplikacji Ludzie</string>
-    <string name="loading">Załadunek&#8230;</string>
-    <string name="showHighResText">Pokaż hi-res</string>
-    <string name="setMaxNumberTitle">Maksymalna Liczba Kontaktów</string>
+    <string name="open_the_people_app">Otwórz aplikację Osoby</string>
+    <string name="loading">Ładowanie&#8230;</string>
+    <string name="showHighResText">Pokaż zdjęcia w wysokiej jakości</string>
+    <string name="setMaxNumberTitle">Maksymalna ilość kontaktów</string>
     <string-array name="sortingOptions">
-        <item>Przez Times Kontaktujesz</item>
-        <item>Przez ostatni raz Skontaktowałem</item>
-        <item>By Name reklamowej</item>
+        <item>wg częstotliwości kontaktu</item>
+        <item>wg kolejności kontaktu (kto ostatni)</item>
+        <item>wg nazwy kontaktu, alfabetycznie</item>
     </string-array>
 
     <!-- Localization -->
     <string name="starredContacts">Ulubione w Android</string>
     <string name="myContacts">Moje Kontakty</string>
     
-    <string name="menu_item_rate">Oceniać</string>
-    <string name="thanks_rating">Dziękujemy za ranking</string>
-    <string name="menu_item_about">Około</string>
-    <string name="about_content">Wywoływacz: Toby Yu \n\nWersja: %s</string>
+    <string name="menu_item_rate">Oceń</string>
+    <string name="thanks_rating">Dziękuję za wystawienie oceny!</string>
+    <string name="menu_item_about">O aplikacji</string>
+    <string name="about_content">Autor: Toby Yu \n\nVersion: %s</string>
 
 </resources>
