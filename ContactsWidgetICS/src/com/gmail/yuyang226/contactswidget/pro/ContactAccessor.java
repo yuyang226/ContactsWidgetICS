@@ -62,6 +62,9 @@ public class ContactAccessor {
 			ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?"; //$NON-NLS-1$
 	private static final String PHONENUMBER_SORTSTRING = ContactsContract.CommonDataKinds.Phone.TIMES_CONTACTED + " DESC"; //$NON-NLS-1$
 	
+	private static final String CONTACTS_BY_GROUP_SELECTION = 
+			ContactsContract.CommonDataKinds.GroupMembership.GROUP_ROW_ID + " = ?"; //$NON-NLS-1$
+	
 	private static final Comparator<PhoneNumber> PHONENUMBER_COMPARATOR = new Comparator<PhoneNumber>() {
 		@Override
 		public int compare(PhoneNumber n1, PhoneNumber n2) {
@@ -344,16 +347,14 @@ public class ContactAccessor {
 			Rect size, int maxNumber) {
 		final List<Contact> contacts = new ArrayList<Contact>();
 		Uri uri = ContactsContract.Data.CONTENT_URI;
-		String selection = new StringBuffer(ContactsContract.CommonDataKinds.GroupMembership.GROUP_ROW_ID)
-				.append("=").append(groupID).toString(); //$NON-NLS-1$
 		boolean showHighRes = ContactsWidgetConfigurationActivity
 				.loadShowHighRes(context, appWidgetId);
 		boolean supportDirectDial = ContactsWidgetConfigurationActivity
 				.loadSupportDirectDial(context, appWidgetId);
-		String[] selectionArgs = null;
+		String[] selectionArgs = {groupID};
 
 		CursorLoader loader = new CursorLoader(context, uri, CONTACTS_BY_GROUP_PROJECTION,
-				selection, selectionArgs, sortOrder);
+				CONTACTS_BY_GROUP_SELECTION, selectionArgs, sortOrder);
 		Cursor cursor = null;
 		try {
 			loader.startLoading();
