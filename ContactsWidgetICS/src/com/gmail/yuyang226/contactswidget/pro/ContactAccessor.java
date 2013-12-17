@@ -65,6 +65,14 @@ public class ContactAccessor {
 	private static final String CONTACTS_BY_GROUP_SELECTION = 
 			ContactsContract.CommonDataKinds.GroupMembership.GROUP_ROW_ID + " = ?"; //$NON-NLS-1$
 	
+	private static final String GROUP_ORDER_ASC = ContactsContract.Groups.TITLE	+ " COLLATE LOCALIZED ASC"; //$NON-NLS-1$
+	
+	private static final String[] GROUP_PROJECTION = new String[] { ContactsContract.Groups._ID,
+			ContactsContract.Groups.ACCOUNT_TYPE,
+			ContactsContract.Groups.TITLE};
+	
+	private static final String GROUP_SELECTION = ContactsContract.Groups.DELETED+" != '1'"; //$NON-NLS-1$
+	
 	private static final Comparator<PhoneNumber> PHONENUMBER_COMPARATOR = new Comparator<PhoneNumber>() {
 		@Override
 		public int compare(PhoneNumber n1, PhoneNumber n2) {
@@ -178,17 +186,10 @@ public class ContactAccessor {
 					ContactsWidgetConfigurationActivity.CONTACT_STARRED_GROUP_ID, 
 					null, starredContacts));
 		// Run query
-		Uri uri = ContactsContract.Groups.CONTENT_URI;
-		String[] projection = new String[] { ContactsContract.Groups._ID,
-				ContactsContract.Groups.ACCOUNT_TYPE,
-				ContactsContract.Groups.TITLE, };
-		String selection = null;
 		String[] selectionArgs = null;
-		String sortOrder = ContactsContract.Groups.TITLE
-				+ " COLLATE LOCALIZED ASC"; //$NON-NLS-1$
 
-		CursorLoader loader = new CursorLoader(context, uri, projection,
-				selection, selectionArgs, sortOrder);
+		CursorLoader loader = new CursorLoader(context, ContactsContract.Groups.CONTENT_URI, GROUP_PROJECTION,
+				GROUP_SELECTION, selectionArgs, GROUP_ORDER_ASC);
 		Cursor cursor = null;
 		
 		try {
