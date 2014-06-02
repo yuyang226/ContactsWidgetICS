@@ -20,45 +20,45 @@
     <string name="help_file_name">help_fr.html</string>
     <string name="help_file_encoding">windows&#8211;1252</string>
     <string name="widget_name">Contacts Widget</string>
-    <string name="widget_name_stack">Contacts Widget(Empiler Voir)</string>
-    <string name="widget_name_large">Contacts Widget(Grand)</string>
-    <string name="widget_name_super">Contacts Widget(Savoir)</string>
-    <string name="widget_name_direct_dial">Contacts Widget(Direct Dial)</string>
-    <string name="empty_view_text">Pas de Contacts Alimentés</string>
-    <string name="contactImageDescription">Contact Image</string>
-    <string name="checkShowNameText">Montrer Nom du Contact</string>
+    <string name="widget_name_stack">Contacts Widget (Pile)</string>
+    <string name="widget_name_large">Contacts Widget (Grand)</string>
+    <string name="widget_name_super">Contacts Widget (Savoir)</string>
+    <string name="widget_name_direct_dial">Contacts Widget (Appel direct)</string>
+    <string name="empty_view_text">Pas de contacts à afficher</string>
+    <string name="contactImageDescription">Image du contact</string>
+    <string name="checkShowNameText">Afficher le nom</string>
     <string name="showNameOverlayText">Au cours Contact Icon</string>
     <string name="loopContactsText">Loop Through Contacts</string>
     <string name="showPeopleAppShortcut">Raccourci vers l\'application Contacts</string>
-    <string name="directDialText">Composez Directement</string>
-    <string name="directSmsText">Directement SMS</string>
+    <string name="directDialText">Appel direct</string>
+    <string name="directSmsText">SMS direct</string>
     <string name="showPhoneNumberText">Afficher le numéro de téléphone</string>
     <string name="viaContactIcon">via Contact Icon</string>
-    <string name="save">Sauver</string>
+    <string name="save">Sauvegarder</string>
     
     <!-- Configurations -->
     <string name="contactGroup">Groupe</string>
-    <string name="contactGroupPrompt">Sélectionnez un groupe de contact pour afficher les contacts</string>
-    <string name="contactSorting">Sorte</string>
+    <string name="contactGroupPrompt">Sélectionnez un groupe de contact</string>
+    <string name="contactSorting">Tri</string>
     
-    <string name="invalid_provider_info">Invalid informations sur le fournisseur widget de: </string>
-    <string name="open_the_people_app">Ouvrez l\'application Contacts</string>
-    <string name="loading">Chargement&#8230;</string>
-    <string name="showHighResText">Afficher les Images à Haute Résolution</string>
-    <string name="setMaxNumberTitle">Nombre Maximal de Contacts</string>
+    <string name="invalid_provider_info">Informations invalides sur le fournisseur: </string>
+    <string name="open_the_people_app">Ouvrir l\'application Contacts</string>
+    <string name="loading">Chargement...</string>
+    <string name="showHighResText">Afficher les images en haute résolution</string>
+    <string name="setMaxNumberTitle">Nombre maximal de contacts</string>
     <string-array name="sortingOptions">
-        <item>Contacté par le Times</item>
-        <item>Par Last Time Contacté</item>
-        <item>Par nom d\'affichage</item>
+        <item>Les plus fréquents</item>
+        <item>Les plus récents</item>
+        <item>Par nom</item>
     </string-array>
     
     <!-- Localization -->
     <string name="starredContacts">Favoris dans Android</string>
     <string name="myContacts">Mes Contacts</string>
     
-    <string name="menu_item_rate">Vote</string>
-    <string name="thanks_rating">Merci pour voter</string>
-    <string name="menu_item_about">au sujet de</string>
-    <string name="about_content">Développateur: Toby Yu \n\nVersion: %s</string>
+    <string name="menu_item_rate">Noter l'application</string>
+    <string name="thanks_rating">Merci !</string>
+    <string name="menu_item_about">A propos</string>
+    <string name="about_content">Développeur: Toby Yu \n\nVersion: %s</string>
     
 </resources>
