@@ -56,7 +56,7 @@
     <string name="starredContacts">Favoris dans Android</string>
     <string name="myContacts">Mes Contacts</string>
     
-    <string name="menu_item_rate">Noter l'application</string>
+    <string name="menu_item_rate">Noter l\'application</string>
     <string name="thanks_rating">Merci !</string>
     <string name="menu_item_about">A propos</string>
     <string name="about_content">Développeur: Toby Yu \n\nVersion: %s</string>
