@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Contacts Widget</string>
+    <string name="activity_title">Contacts Widget - How To</string>
+    <string name="help_file_name">help_hu.html</string>
+    <string name="help_file_encoding">utf&#8211;8</string>
+    <string name="widget_name">Contacts Widget</string>
+    <string name="widget_name_stack">Contacts Widget(Stack View)</string>
+    <string name="widget_name_large">Contacts Widget(Large)</string>
+    <string name="widget_name_super">Contacts Widget(Super)</string>
+    <string name="widget_name_direct_dial">Contacts Widget(Direct Dial)</string>
+    <string name="empty_view_text">No Contacts Loaded</string>
+
+    <!-- Configurations -->
+    <string name="contactImageDescription">Contact Image</string>
+    <string name="checkShowNameText">Show Contact Name</string>
+    <string name="showNameOverlayText">Over Contact Icon</string>
+    <string name="showPeopleAppShortcut">People App Shortcut</string>
+    <string name="directDialText">Direct Dial</string>
+    <string name="directSmsText">Direct SMS</string>
+    <string name="showPhoneNumberText">Show Phone Number</string>
+    <string name="viaContactIcon">via Contact Icon</string>
+    <string name="loopContactsText">Loop Through Contacts</string>
+    <string name="save">Save</string>
+    <string name="contactGroup">Group</string>
+    <string name="contactGroupPrompt">Select a contact group to display contacts</string>
+    <string name="contactSorting">Sorting</string>
+    <string name="invalid_provider_info">Invalid widget provider info: </string>
+    <string name="open_the_people_app">Open the People app</string>
+    <string name="loading">Loading&#8230;</string>
+    <string name="showHighResText">Show High Resolution Pictures</string>
+    <string name="setMaxNumberTitle">Maximum Number of Contacts</string>
+
+    <string-array name="sortingOptions">
+        <item>By Times Contacted</item>
+        <item>By Last Time Contacted</item>
+        <item>By Display Name</item>
+    </string-array>
+
+    <!-- Localization -->
+    <string name="starredContacts">Starred in Android</string>
+    <string name="myContacts">My Contacts</string>
+    
+    <string name="menu_item_rate">Rate</string>
+    <string name="thanks_rating">Thank you for rating</string>
+    <string name="menu_item_about">About</string>
+    <string name="about_content">Developer: Toby Yu \n\nVersion: %s</string>
+
+</resources>

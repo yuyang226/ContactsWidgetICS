@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+
+-->
+
+<resources>
+    <string name="app_name">Виджет Контакты</string>
+    <string name="activity_title">Виджет Контакты - Учебник</string>
+    <string name="help_file_name">help_ru.html</string>
+    <string name="widget_name">Контакты маленький</string>
+    <string name="widget_name_stack">Контакты колода</string>
+    <string name="widget_name_large">Контакты плитка</string>
+    <string name="widget_name_super">Контакты большой</string>
+    <string name="widget_name_direct_dial">Контакты вызов</string>
+    <string name="empty_view_text">невозможно загрузить контакты</string>
+    <string name="contactImageDescription">изображение контакта</string>
+    <string name="checkShowNameText">показывать имена</string>
+    <string name="showNameOverlayText">За Связаться с Иконка</string>
+    <string name="loopContactsText">бесконечная прокрутка</string>
+    <string name="showPeopleAppShortcut">кнопка Контакты</string>
+    <string name="directDialText">Кнопка вызова</string>
+    <string name="directSmsText">непосредственно SMS</string>
+    <string name="showPhoneNumberText">Показывать номер</string>
+    <string name="viaContactIcon">Контакт через иконку</string>
+    <string name="save">Сохранить</string>
+
+    <!-- Configurations -->
+    <string name="contactGroup">группа</string>
+    <string name="contactGroupPrompt">Выберите группу контактов для отображения</string>
+    <string name="contactSorting">сортировка</string>
+    <string name="buttonContactFrequency">частота обновления</string>
+    <string name="buttonContactRecent">последний контакт</string>
+    <string name="buttonContactDisplayName">имя контакта</string>
+    <string name="invalid_provider_info">Неверная информация провайдер виджетов: </string>
+    <string name="open_the_people_app">Открыть Контакты</string>
+    <string name="loading">загрузка&#8230;</string>
+    <string name="showHighResText">Показывать изображения в высоком разрешении</string>
+    <string name="setMaxNumberTitle">Максимальное число контактов</string>
+    <string-array name="sortingOptions">
+        <item>часто набираемый контакт</item>
+        <item>последний набранный контакт</item>
+        <item>по имени</item>
+    </string-array>
+
+    <!-- Localization -->
+    <string name="starredContacts">Избранные (Starred in android)</string>
+    <string name="myContacts">Мои контакты</string>
+
+    <string name="menu_item_rate">Oценивать</string>
+    <string name="thanks_rating">Благодарю вас за рейтинг</string>
+    <string name="menu_item_about">о</string>
+    <string name="about_content">Pазработчик: Toby Yu \n\nBерсия: %s</string>
+</resources>

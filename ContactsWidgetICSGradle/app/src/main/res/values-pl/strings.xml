@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+
+-->
+
+<resources>
+    <string name="app_name">Kontakt Widget</string>
+    <string name="activity_title">Kontakt Widget - Przewodnik</string>
+    <string name="help_file_name">help_pl.html</string>
+    <string name="help_file_encoding">utf&#8211;8</string>
+    <string name="widget_name">Kontakt Widget</string>
+    <string name="widget_name_stack">Kontakt Widget(Stos kart)</string>
+    <string name="widget_name_large">Kontakt Widget(Duży)</string>
+    <string name="widget_name_super">Kontakt Widget(Super Duży)</string>
+    <string name="widget_name_direct_dial">Kontakt Widget(Bezpośrednie Dzwonienie)</string>
+    <string name="empty_view_text">Nie załadowano żadnych kontaktów</string>
+    <string name="contactImageDescription">Obraz Kontaktu</string>
+    <string name="checkShowNameText">Pokaż nazwę Kontaktu</string>
+    <string name="showNameOverlayText">Ponad Ikona Kontaktu</string>
+    <string name="loopContactsText">Zapętlenie przeglądania kontaktów</string>
+    <string name="showPeopleAppShortcut">Skrót do aplikacji Osoby</string>
+    <string name="directDialText">Bezpośrednie dzwonienie</string>
+    <string name="directSmsText">Bezpośredni SMS</string>
+    <string name="showPhoneNumberText">Pokaż numer telefonu</string>
+    <string name="viaContactIcon">poprzez kontakt Ikona</string>
+    <string name="save">Zapisz</string>
+
+    <!-- Configurations -->
+    <string name="contactGroup">Grupa kontaktów</string>
+    <string name="contactGroupPrompt">Wybierz grupę kontaktów, która ma być wyświetlana</string>
+    <string name="contactSorting">Uporządkowanie wg</string>
+    <string name="invalid_provider_info">Nieprawidłowy informacji dostawca widget: </string>
+    <string name="open_the_people_app">Otwórz aplikację Osoby</string>
+    <string name="loading">Ładowanie&#8230;</string>
+    <string name="showHighResText">Pokaż zdjęcia w wysokiej jakości</string>
+    <string name="setMaxNumberTitle">Maksymalna ilość kontaktów</string>
+    <string-array name="sortingOptions">
+        <item>wg częstotliwości kontaktu</item>
+        <item>wg kolejności kontaktu (kto ostatni)</item>
+        <item>wg nazwy kontaktu, alfabetycznie</item>
+    </string-array>
+
+    <!-- Localization -->
+    <string name="starredContacts">Ulubione w Android</string>
+    <string name="myContacts">Moje Kontakty</string>
+    
+    <string name="menu_item_rate">Oceń</string>
+    <string name="thanks_rating">Dziękuję za wystawienie oceny!</string>
+    <string name="menu_item_about">O aplikacji</string>
+    <string name="about_content">Autor: Toby Yu \n\nVersion: %s</string>
+
+</resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+    <string name="app_name">Contatti Widget</string>
+    <string name="activity_title">Contatti Widget - Per iniziare</string>
+    <string name="help_file_name">help_it.html</string>
+    <string name="widget_name">Contatti Widget</string>
+    <string name="widget_name_stack">Contatti Widget(Pila di contatti)</string>
+    <string name="widget_name_large">Contatti Widget(Grande)</string>
+    <string name="widget_name_super">Contatti Widget(Molto grande)</string>
+    <string name="widget_name_direct_dial">Contatti Widget(linea esterna diretta)</string>
+    <string name="empty_view_text">Contatto non caricato</string>
+    <string name="contactImageDescription">Immagine del contatto</string>
+    <string name="checkShowNameText">Mostra nome del contatto</string>
+    <string name="viaContactIcon">tramite contatto Icona</string>
+    <string name="showNameOverlayText">Oltre Contatto Icon</string>
+    <string name="loopContactsText">Sfoglia contatti</string>
+    <string name="showPeopleAppShortcut">Contatti Applicazione di scelta rapida</string>
+    <string name="directDialText">Direttamente Dial</string>
+    <string name="directSmsText">Direttamente SMS</string>
+    <string name="showPhoneNumberText">Mostra numero telefonico</string>
+    <string name="save">Salvare</string>
+    
+    <!-- Configurations -->
+    <string name="contactGroup">Gruppo</string>
+    <string name="contactGroupPrompt">Selezionare un gruppo per visualizzare i contatti</string>
+    <string name="contactSorting">Ordinamento</string>
+    <string name="buttonContactFrequency"></string>
+    <string name="buttonContactRecent"></string>
+    <string name="buttonContactDisplayName"></string>
+    
+    <string name="invalid_provider_info">Provider non valido, informazioni: </string>
+    <string name="open_the_people_app">Aprire l\'applicazione Contatti</string>
+    <string name="loading">Caricamento&#8230;</string>
+    <string name="showHighResText">Mostra immagini ad alta risoluzione</string>
+    <string name="setMaxNumberTitle">Numero Massimo di Contatti</string>
+    <string-array name="sortingOptions">
+        <item>Più contattato</item>
+        <item>Più recente</item>
+        <item>Nome</item>
+    </string-array>
+    
+    <!-- Localization -->
+    <string name="starredContacts">Preferiti in Android</string>
+    <string name="myContacts">I miei contatti</string>
+    
+    <string name="menu_item_rate">Voto</string>
+    <string name="thanks_rating">Grazie per il tuo voto</string>
+    <string name="menu_item_about">Su</string>
+    <string name="about_content">Sviluppatore: Toby Yu \n\nVersione: %s</string>
+</resources>

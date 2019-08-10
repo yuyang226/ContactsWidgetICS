@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+    <string name="app_name">Contactos Widget</string>
+    <string name="activity_title">Contactos Widget - Tutorial</string>
+    <string name="help_file_name">help_pt.html</string>
+    <string name="help_file_encoding">iso&#8211;8859&#8211;1</string>
+    <string name="widget_name">Contactos Widget</string>
+    <string name="widget_name_stack">Contactos Widget(Pilha Ver)</string>
+    <string name="widget_name_large">Contactos Widget(Grande)</string>
+    <string name="widget_name_super">Contactos Widget(Super)</string>
+    <string name="widget_name_direct_dial">Contactos Widget(Discagem Direta)</string>
+    <string name="empty_view_text">Não Contactos Carregado</string>
+    <string name="contactImageDescription">Fale Imagem</string>
+    <string name="checkShowNameText">Mostrar Nome de Contato</string>
+    <string name="showNameOverlayText">Contato sobre Ícone</string>
+    <string name="loopContactsText">Loop Através de Contatos</string>
+    <string name="showPeopleAppShortcut">Contatos atalho do Aplicativo</string>
+    <string name="directDialText">Discagem Direta</string>
+    <string name="directSmsText">Discagem SMS</string>
+    <string name="showPhoneNumberText">Mostrar telefone</string>
+    <string name="viaContactIcon">Contato através do ícone</string>
+    <string name="save">Guardar</string>
+
+    <!-- Configurations -->
+    <string name="contactGroup">Grupo</string>
+    <string name="contactGroupPrompt">Selecione um grupo de contatos para exibir contatos</string>
+    <string name="contactSorting">Seqüência</string>
+    <string name="buttonContactFrequency"></string>
+    <string name="buttonContactRecent"></string>
+    <string name="buttonContactDisplayName"></string>
+    <string name="invalid_provider_info">Informações provedor inválido widget: </string>
+    <string name="open_the_people_app">Open the People Application</string>
+    <string name="loading">Carregamento&#8230;</string>
+    <string name="showHighResText">Mostrar Imagens de alta Resolução</string>
+    <string name="setMaxNumberTitle">Número Máximo de Contatos</string>
+    <string-array name="sortingOptions">
+        <item>Por vezes Contactada</item>
+        <item>Por última vez Contactado</item>
+        <item>Por Nome</item>
+    </string-array>
+
+    <!-- Localization -->
+    <string name="starredContacts">Favoritos no Android</string>
+    <string name="myContacts">Meus Contatos</string>
+    
+    <string name="menu_item_rate">Avaliar</string>
+    <string name="thanks_rating">Obrigado por classificação</string>
+    <string name="menu_item_about">Sobre</string>
+    <string name="about_content">Revelador: Toby Yu \n\nVersão: %s</string>
+
+</resources>

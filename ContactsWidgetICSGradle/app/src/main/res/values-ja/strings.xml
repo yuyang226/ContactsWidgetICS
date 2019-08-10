@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+    <string name="app_name">通信精霊</string>
+    <string name="activity_title">通信精霊 - ユーザー·ガイド</string>
+    <string name="help_file_name">help_ja.html</string>
+    <string name="widget_name">通信精霊</string>
+    <string name="widget_name_stack">通信精霊(積む)</string>
+    <string name="widget_name_large">通信精霊(大きい)</string>
+    <string name="widget_name_super">通信精霊(超大)</string>
+    <string name="widget_name_direct_dial">通信精霊(直通)</string>
+    <string name="empty_view_text">連絡先なし</string>
+    <string name="contactImageDescription">連絡先の画像</string>
+    <string name="loopContactsText">連絡先を循環的にディスプレーします</string>
+    <string name="checkShowNameText">連絡先の名前をにディスプレーします</string>
+    <string name="showNameOverlayText">連絡先の写真をカバー</string>
+    <string name="showPeopleAppShortcut">連絡先アプリケーションのショートカット</string>
+    <string name="directDialText">直通</string>
+    <string name="directSmsText">直接SMS</string>
+    <string name="showPhoneNumberText">電話番号を表示</string>
+    <string name="viaContactIcon">直接写真をクリック</string>
+    <string name="save">保存</string>
+    
+    <!-- Configurations -->
+    <string name="contactGroup">連絡先をグループに分けします</string>
+    <string name="contactGroupPrompt">連絡先のグループ一つを選択して下さい。</string>
+    <string name="contactSorting">連絡先の順番を変更します</string>
+    
+    <string name="invalid_provider_info">無効なウィジェットの情報: </string>
+    <string name="open_the_people_app">連絡先の応用をオープンします。</string>
+    <string name="loading">読込む中&#8230;</string>
+    <string name="showHighResText">高解像度の画像を優先にディスプレーします。</string>
+    <string name="setMaxNumberTitle">連絡先の最大数</string>
+    <string-array name="sortingOptions">
+        <item>連絡の回数に基づきます</item>
+        <item>最後の連絡時間に基づきます</item>
+        <item>名前に基づきます</item>
+    </string-array>
+    
+    <!-- Localization -->
+    <string name="starredContacts">星付けの友達</string>
+    <string name="myContacts">全ての連絡先</string>
+    
+    <string name="menu_item_rate">スコア</string>
+    <string name="thanks_rating">評価していただきありがとうございます</string>
+    <string name="menu_item_about">約</string>
+    <string name="about_content">開発者: Toby Yu \n\nバージョン: %s</string>
+</resources>

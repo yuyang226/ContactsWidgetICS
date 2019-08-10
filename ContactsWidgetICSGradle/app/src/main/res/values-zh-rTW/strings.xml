@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+    <string name="app_name">通訊精靈</string>
+    <string name="activity_title">通訊精靈 - 用戶指南</string>
+    <string name="help_file_name">help_zht.html</string>
+    <string name="widget_name">通訊精靈</string>
+    <string name="widget_name_stack">通訊精靈(層疊)</string>
+    <string name="widget_name_large">通訊精靈(大)</string>
+    <string name="widget_name_super">通訊精靈(超大)</string>
+    <string name="widget_name_direct_dial">通訊精靈(直撥)</string>
+    <string name="empty_view_text">沒有聯繫人</string>
+    <string name="contactImageDescription">聯繫人頭像</string>
+    <string name="loopContactsText">循環顯示聯繫人</string>
+    <string name="checkShowNameText">顯示聯繫人姓名</string>
+    <string name="showNameOverlayText">覆蓋聯繫人圖片</string>
+    <string name="showPeopleAppShortcut">通訊錄快捷方式</string>
+    <string name="directDialText">直接撥打</string>
+    <string name="directSmsText">直接短信</string>
+    <string name="showPhoneNumberText">顯示電話號碼</string>
+    <string name="viaContactIcon">直接點擊圖片</string>
+    <string name="save">保存</string>
+    
+    <!-- Configurations -->
+    <string name="contactGroup">聯繫人分組</string>
+    <string name="contactGroupPrompt">請選擇一個聯繫人分組</string>
+    <string name="contactSorting">聯繫人排序</string>
+    
+    <string name="invalid_provider_info">無效的小組件信息: </string>
+    <string name="open_the_people_app">打開聯繫人應用</string>
+    <string name="loading">讀取中&#8230;</string>
+    <string name="showHighResText">優先顯示高分辨率圖片</string>
+    <string name="setMaxNumberTitle">最大聯繫人數</string>
+    <string-array name="sortingOptions">
+        <item>按聯繫次數</item>
+        <item>按最近聯繫時間</item>
+        <item>按姓名</item>
+    </string-array>
+    
+    <!-- Localization -->
+    <string name="starredContacts">加星好友</string>
+    <string name="myContacts">所有聯繫人</string>
+    
+    <string name="menu_item_rate">評分</string>
+    <string name="thanks_rating">感謝您給本軟件打分</string>
+    <string name="menu_item_about">關於</string>
+    <string name="about_content">開發者: Toby Yu \n\n版本: %s</string>
+</resources>
